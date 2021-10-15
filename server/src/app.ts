@@ -37,7 +37,6 @@ const authCheck = (req: Request, res: Response, next: NextFunction) => {
 };
 
 app.get("/", authCheck, (req: Request, res: Response) => {
-  res.send("yo");
   res.status(200).json({
     authenticated: true,
     message: "user successfully authenticated",
@@ -46,6 +45,10 @@ app.get("/", authCheck, (req: Request, res: Response) => {
   });
 });
 
+app.get("/logout", (req: Request, res: Response) => {
+  req.logOut();
+  res.redirect("/");
+});
 app.listen(port, () => {
   console.log(`Backend running on port ${port}🏃`);
 });

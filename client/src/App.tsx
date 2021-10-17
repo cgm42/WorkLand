@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
+  const [user, setUser] = useState<any>({});
+
   return (
     <div className="App">
-      <a href="https://github.com/login/oauth/authorize?client_id=b0010984d0eaf27b2a38">
-        login with github
-      </a>
+      {user?.name ? (
+        <div> {user.name} </div>
+      ) : (
+        <a href="https://github.com/login/oauth/authorize?client_id=b0010984d0eaf27b2a38">
+          login with github
+        </a>
+      )}
       <p>
         <a href="/logout">logout</a>
       </p>

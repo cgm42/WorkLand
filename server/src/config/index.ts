@@ -32,16 +32,12 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       // find current user in UserModel
       console.log("profile :>> ", profile);
-      const user = await userDb.getPersonByGitHub(profile.id);
+      let user = await userDb.getPersonByGitHub(profile.id);
 
       // create new user if the database doesn't have this user
       if (!user.rows.length) {
         await userDb.createPersonByGitHub(profile.id);
-        const user = await userDb.getPersonByGitHub(profile.id);
-
-        if (user.rows.length) {
-          done(null, user.rows[0]);
-        }
+        user = await userDb.getPersonByGitHub(profile.id);
       }
       done(null, user.rows[0]);
     }

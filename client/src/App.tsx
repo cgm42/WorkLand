@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import './App.css'
+import Sidenav from "./components/SideNav";
 
 function App() {
   const [user, setUser] = useState<any>({});
 
   return (
-    <div className="App">
+    <div className="app">
+      <Sidenav></Sidenav>
       {user?.name ? (
         <div> {user.name} </div>
       ) : (

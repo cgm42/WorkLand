@@ -14,7 +14,7 @@ function getPersonByGitHub(githubId: number) {
                      WHERE oauth.oauth_id = $1`,
     [githubId]
   );
-} //
+}
 
 async function createPersonByGitHub(githubId: number, displayName: string) {
   const client = await pool.connect();

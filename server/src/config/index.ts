@@ -36,7 +36,7 @@ passport.use(
 
       // create new user if the database doesn't have this user
       if (!user.rows.length) {
-        await userDb.createPersonByGitHub(profile.id);
+        await userDb.createPersonByGitHub(profile.id, profile.displayName);
         user = await userDb.getPersonByGitHub(profile.id);
       }
       done(null, user.rows[0]);

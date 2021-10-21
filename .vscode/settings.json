@@ -10,5 +10,6 @@
     "statusBarItem.remoteBackground": "#db9e68",
     "statusBarItem.remoteForeground": "#15202b"
   },
-  "peacock.color": "#db9e68"
+  "peacock.color": "#db9e68",
+  "git.ignoreLimitWarning": true
 }

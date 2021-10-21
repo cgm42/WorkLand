@@ -1,5 +1,5 @@
 import React from "react";
-import "./SideNav.css";
+import "./styles/SideNav.css";
 import { AiFillHome, AiFillMessage } from "react-icons/ai";
 import { FaClipboardList, FaSpotify } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
@@ -7,10 +7,10 @@ import { BsFillAlarmFill } from "react-icons/bs";
 import { RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
-import Dashboard from "../../pages/Dashboard";
-import Tasks from "../../pages/Tasks";
-import Meeting from "../../pages/Meeting";
-import Messages from "../../pages/Messages";
+import Dashboard from "../pages/Dashboard";
+import Tasks from "../pages/Tasks";
+import Meeting from "../pages/Meeting";
+import Messages from "../pages/Messages";
 
 const Sidenav = () => {
   return (

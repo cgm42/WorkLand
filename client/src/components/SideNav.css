@@ -34,6 +34,10 @@
   color: rgb(0, 0, 0);
 }
 
+li {
+  list-style-type: none;
+}
+
 /* Style links on mouse-over */
 .sidebar a:hover {
   color: #f1f1f1;

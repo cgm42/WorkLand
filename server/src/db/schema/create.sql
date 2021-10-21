@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS messages;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
+  avatar VARCHAR(255),
   total_experience INT DEFAULT 0
 );
 

@@ -16,11 +16,15 @@ function getPersonByGitHub(githubId: number) {
   );
 }
 
-async function createPersonByGitHub(githubId: number) {
+async function createPersonByGitHub(
+  githubId: number,
+  name: string,
+  avatar: string
+) {
   const client = await pool.connect();
 
   try {
-    const insertPersonText =
+    const insertPersonText = //TODO: Update query values
       "INSERT INTO person(name) VALUES('TEST') RETURNING person_id";
     const insertedPersonId = (await client.query(insertPersonText)).rows[0]
       .person_id;

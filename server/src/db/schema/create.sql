@@ -38,6 +38,7 @@ CREATE TABLE users_projects (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id REFERENCES users(id) NOT NULL ON DELETE CASCADE,
   project_id REFERENCES projects(id) NOT NULL ON DELETE CASCADE,
+  role VARCHAR(255)
   UNIQUE (user_id, project_id)
 );
 
@@ -88,6 +89,7 @@ CREATE TABLE users_meetings (
 
 CREATE TABLE messages (
   id SERIAL PRIMARY KEY NOT NULL,
+  message TEXT NOT NULL,
   sender_id REFERENCES users(id) NOT NULL,
   receiver_id REFERENCES users(id)
 );

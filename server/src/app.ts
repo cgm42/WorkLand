@@ -3,7 +3,7 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import passport from "passport";
 import cookieSession from "cookie-session";
 import cookieParser from "cookie-parser";
-import projectRouter from "./routes/project";
+import projectRouter from "./routes/projects";
 import authRouter from "./routes/auth";
 import { getPersonByGitHub } from "./models/person";
 const app: Application = express();
@@ -24,7 +24,7 @@ app.use(passport.session());
 app.use(cookieParser());
 
 app.use("/auth", authRouter);
-app.use("/project", projectRouter);
+app.use("/projects", projectRouter);
 
 const authCheck = (req: Request, res: Response, next: NextFunction) => {
   if (!req.user) {

@@ -8,10 +8,10 @@ function getPerson(id: number) {
 
 function getPersonByGitHub(githubId: number) {
   return pool.query(
-    `SELECT pers.person_id, pers.name, oauth.oauth_id
-                     FROM person pers
-                     JOIN oauth_mapping oauth on oauth.person_id = pers.person_id 
-                     WHERE oauth.oauth_id = $1`,
+    `SELECT users.id, users.name, oauth.oauth_id
+      FROM users
+      JOIN oauth_mapping on oauth.user_id = users.id
+      WHERE oauth.oauth_id = $1`,
     [githubId]
   );
 }
@@ -25,13 +25,16 @@ async function createPersonByGitHub(
 
   try {
     const insertPersonText = //TODO: Update query values
-      "INSERT INTO person(name) VALUES('TEST') RETURNING person_id";
-    const insertedPersonId = (await client.query(insertPersonText)).rows[0]
-      .person_id;
+      "INSERT INTO users(name) VALUES('TEST') RETURNING users.id";
+    const insertedUserId = (await client.query(insertPersonText))
+      .rows[0]
+      .users.id;
 
-    const insertText = `INSERT INTO oauth_mapping(person_id, oauth_provider, oauth_id) 
-                        VALUES($1, $2, $3)`;
-    const insertValues = [insertedPersonId, "GitHub", githubId];
+    const insertText = `
+      INSERT INTO oauth_mapping(user_id, oauth_provider, oauth_id) 
+      VALUES($1, $2, $3);
+      `;
+    const insertValues = [insertedUserId, "GitHub", githubId];
     await client.query(insertText, insertValues);
   } catch (e) {
     throw e;

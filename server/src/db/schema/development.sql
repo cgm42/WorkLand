@@ -10,12 +10,16 @@ VALUES
   ('Archie', 'https://i.imgur.com/31MtvRN.png'),
   ('Justin', 'https://i.imgur.com/31MtvRN.png');
 
-INSERT INTO projects (creator_id, name, description, start_date, end_date, background_img, current_status)
+INSERT INTO projects (creator_id, name, description, start_date, end_date, background_img)
 VALUES
-  (2, 'Final Project', 'Create a tech-focused project management system with an integrated virtual meeting room', '2021-10-21', '2021-11-04', '', null),
-  (5, 'Refactor legacy code', 'Legacy code test coverage is currently only 20% and we introduce new bugs every time we add features. Let''s change that with a complete refactor.', '2021-03-10', '2022-03-10', '', null),
-  (1, 'Continued education', 'This purpose of this project is to allocate time blocks for everyone to advance their learning and keep their knowledge up to date', '2022-01-02', '2022-02-01', '', null),
-  (3, 'Put-it-on-a-tee', 'Ecommerce website for client that sells custom tshirts', '2021-04-18', '2021-06-12', '', 'Complete');
+  (2, 'Final Project', 'Create a tech-focused project management system with an integrated virtual meeting room', '2021-10-21', '2021-11-04', ''),
+  (5, 'Refactor legacy code', 'Legacy code test coverage is currently only 20% and we introduce new bugs every time we add features. Let''s change that with a complete refactor.', '2021-03-10', '2022-03-10', ''),
+  (1, 'Continued education', 'This purpose of this project is to allocate time blocks for everyone to advance their learning and keep their knowledge up to date', '2022-01-02', '2022-02-01', ''),
+  (3, 'Put-it-on-a-tee', 'Ecommerce website for client that sells custom tshirts', '2021-04-18', '2021-06-12', '');
+
+UPDATE projects
+SET current_status = 'Complete'
+WHERE projects.id = 4;
 
 INSERT INTO users_projects (user_id, project_id, role)
 VALUES
@@ -40,22 +44,30 @@ VALUES
   (9, 4, 'QA & Testing');
 
 
-INSERT INTO sprints (project_id, name, description, start_date, end_date, current_status)
+INSERT INTO sprints (project_id, name, description, start_date, end_date)
 VALUES
-  (1, 'Project skeleton and database setup', '100m dash to get the projects skeleton and database setup before meeting with Andy', '2021-10-21', '2021-10-22', null),
-  (2, 'Planning and organization', 'Come up with a game plan and make sure all devs are on the same page about what needs to be done', '2021-03-12', '2021-03-19', 'Complete');
+  (1, 'Project skeleton and database setup', '100m dash to get the projects skeleton and database setup before meeting with Andy', '2021-10-21', '2021-10-22'),
+  (2, 'Planning and organization', 'Come up with a game plan and make sure all devs are on the same page about what needs to be done', '2021-03-12', '2021-03-19');
 
-INSERT INTO tasks (project_id, sprint_id, name, description, start_date, end_date, priority_level, current_status)
+UPDATE sprints
+SET current_status = 'Complete'
+WHERE sprints.id = 2;
+
+INSERT INTO tasks (project_id, sprint_id, name, description, start_date, end_date, priority_level)
 VALUES
-  (1, 1, 'Create tables and insert statements for db', null, '2021-10-21', '2021-10-21', 'High', 'Complete'),
-  (1, 1, 'Project layout and barebones css', 'Need to get the jist of our vision presentable to Andy', '2021-10-21', '2021-10-22', 'High', null),
-  (1, null, 'State management configuration', 'Figure out which states we will need to track and where', '2021-10-21', '2021-10-22', 'Medium', null),
-  (2, 2, 'Set schedule for daily standups/meetings', null, '2021-03-12', '2021-03-12', 'High', 'Complete'),
-  (2, null, 'Refactor My Cart', 'Put state management into a reducer', '2021-04-15', '2021-04-16', 'Medium', 'Complete'),
-  (3, null, 'React tutorial', 'Watch lecture on React', '2022-01-02', '2021-01-02', 'Low', null),
-  (3, null, 'Redux-Toolkit introduction', 'Do the tutorial on state management with Redux-Toolkit', '2022-01-10', '2022-01-10', 'Medium', null),
-  (4, null, 'Initialize project', 'Create project file structure and necessary initial setup files', '2021-04-19', '2021-04-20', 'High', 'Complete'),
-  (4, null, 'Schdedule pair programming sessions', 'Allow everyone an opportunity to choose their partners, encourage senior-junior pairing', '2021-04-20', '2021-04-20', 'Medium', 'Complete');
+  (1, 1, 'Create tables and insert statements for db', null, '2021-10-21', '2021-10-21', 'High'),
+  (1, 1, 'Project layout and barebones css', 'Need to get the jist of our vision presentable to Andy', '2021-10-21', '2021-10-22', 'High'),
+  (1, null, 'State management configuration', 'Figure out which states we will need to track and where', '2021-10-21', '2021-10-22', 'Medium'),
+  (2, 2, 'Set schedule for daily standups/meetings', null, '2021-03-12', '2021-03-12', 'High'),
+  (2, null, 'Refactor My Cart', 'Put state management into a reducer', '2021-04-15', '2021-04-16', 'Medium'),
+  (3, null, 'React tutorial', 'Watch lecture on React', '2022-01-02', '2021-01-02', 'Low'),
+  (3, null, 'Redux-Toolkit introduction', 'Do the tutorial on state management with Redux-Toolkit', '2022-01-10', '2022-01-10', 'Medium'),
+  (4, null, 'Initialize project', 'Create project file structure and necessary initial setup files', '2021-04-19', '2021-04-20', 'High'),
+  (4, null, 'Schdedule pair programming sessions', 'Allow everyone an opportunity to choose their partners, encourage senior-junior pairing', '2021-04-20', '2021-04-20', 'Medium');
+
+UPDATE tasks
+SET current_status = 'Complete'
+WHERE tasks.id IN (1, 4, 5, 8, 9);
 
 INSERT INTO users_tasks (user_id, task_id)
 VALUES

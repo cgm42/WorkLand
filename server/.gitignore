@@ -1,10 +1,4 @@
-.idea/
-.vscode/
-node_modules/
-*.log
+
 .env
 .env.*
 !.env.example
-*.cert
-*.key
-dist/

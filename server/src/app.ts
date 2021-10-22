@@ -3,14 +3,14 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import passport from "passport";
 import cookieSession from "cookie-session";
 import cookieParser from "cookie-parser";
-import projectRouter from "./routes/projects";
 import authRouter from "./routes/auth";
+import projectsRouter from "./routes/projects";
+import usersProjectsRouter from "./routes/users_projects";
 import { getPersonByGitHub } from "./models/person";
 const app: Application = express();
 const port = process.env.PORT || 5000;
 
-const passportSetup = require("./config");
-
+// const passportSetup = require("./config/");
 app.use(
   cookieSession({
     name: "session",
@@ -24,7 +24,8 @@ app.use(passport.session());
 app.use(cookieParser());
 
 app.use("/auth", authRouter);
-app.use("/projects", projectRouter);
+app.use("/projects", projectsRouter);
+app.use("/users_projects", usersProjectsRouter);
 
 const authCheck = (req: Request, res: Response, next: NextFunction) => {
   if (!req.user) {

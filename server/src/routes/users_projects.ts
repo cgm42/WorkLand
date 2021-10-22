@@ -3,4 +3,7 @@ const router = express.Router();
 
 import * as controller from "../controllers/user_project";
 
-// router.post('/', controller.)
+router.post('/:id', controller.addUserToProject)
+router.delete('/:id', controller.deleteUserFromProject);
+
+export default router;

@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 import camelcaseKeys from "camelcase-keys";
 
 import * as model from "../models/project";

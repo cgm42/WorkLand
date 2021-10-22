@@ -1,0 +1,32 @@
+.info-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  flex-wrap: wrap;
+  height: auto;
+}
+.project-card {
+  background-color: red;
+  width: 29%;
+  height: 400px;
+  margin: 0 20px 50px 20px
+}
+
+.project-card img {
+  border: 1px solid;
+  height:33%
+}
+.description {
+  margin: 10px ;
+  
+}
+
+.description header {
+  font-size: 40px;
+}
+
+.description p {
+  font-size: 30px;
+  margin-left: 20px;
+  margin: 20px;
+}

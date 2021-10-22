@@ -10,13 +10,12 @@
 .user-info-cards{
   display: flex;
   flex-direction: row;
-  justify-content: center;
   justify-content: space-around;
 
 }
 .card{
   background-color: red;
-  width: 380px;
+  width: 31%;
   height: 350px;
 }
 
@@ -28,7 +27,14 @@
 }
 
 .card li {
-  font-size:20px;
+  font-size: 25px;
+  list-style-type: none;
+  border: 1px solid;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
 }
 
 

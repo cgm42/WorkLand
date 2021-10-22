@@ -1,5 +1,6 @@
 import React from 'react';
 import '../components/styles/dashboard.css';
+import '../components/styles/animations.css';
 import { FaUserAlt } from "react-icons/fa";
 import { FcPieChart } from "react-icons/fc";
 const Dashboard = () => {
@@ -10,7 +11,7 @@ const Dashboard = () => {
       </div>
 
       <section className='user-info-cards'>
-        <div className='card'>
+        <div className='card float'>
           <header>Meetings Today</header>
           <ul>
             <li>Google: 9AM</li>
@@ -18,7 +19,7 @@ const Dashboard = () => {
             <li>Youtube: 4PM</li>
           </ul>
         </div>
-        <div className='card'>
+        <div className='card float'>
           <header>My tasks</header>
           <ul>
             <li>Create new feature for user</li>
@@ -26,7 +27,7 @@ const Dashboard = () => {
             <li>Commit all my changes before the end of the day</li>
           </ul>
         </div>
-        <div className='card'>
+        <div className='card float'>
           <header>My projects</header>
           <ul>
             <li>Final</li>

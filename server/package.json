@@ -7,7 +7,7 @@
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
     "build": "tsc -p .",
-    "db:reset": "node "
+    "db:reset": "psql -U development -d final < ./src/db/schema/create.sql && psql -U development -d final < ./src/db/schema/development.sql"
   },
   "keywords": [],
   "author": "",

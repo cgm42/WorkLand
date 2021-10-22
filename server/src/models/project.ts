@@ -1,4 +1,4 @@
-import pool from "../dbConfig/dbConfig";
+import pool from "../db/dbConfig";
 
 function getAllProjects() {
   return pool.query("SELECT * from project");

@@ -11,7 +11,7 @@ import Dashboard from "../pages/Dashboard";
 import Projects from "../pages/Projects";
 import Meeting from "../pages/Meeting";
 import Messages from "../pages/Messages";
-
+import Login from "../pages/Login";
 const Sidenav = () => {
   return (
     <Router>
@@ -82,6 +82,9 @@ const Sidenav = () => {
 
         <Route path="/dashboard" exact>
           <Dashboard></Dashboard>
+        </Route>
+        <Route path="/login" exact>
+          <Login></Login>
         </Route>
       </Switch>
     </Router>

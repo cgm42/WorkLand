@@ -1,6 +1,6 @@
-import pool from "../dbConfig/dbConfig";
+import pool from "../db/dbConfig";
 
-import { Person } from "../../../types";
+// import { Person } from "../../../types";
 
 function getPerson(id: number) {
   return pool.query("SELECT * FROM person WHERE person_id = $1", [id]);

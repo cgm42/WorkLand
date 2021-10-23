@@ -4,6 +4,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_USER } from "../reducers/globalReducer";
 import Modal from "react-modal";
+import "nes.css/css/nes.min.css";
 import "../components/styles/dashboard.css";
 import "../components/styles/animations.css";
 import Players from "../components/players";

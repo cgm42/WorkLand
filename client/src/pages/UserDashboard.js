@@ -1,40 +1,32 @@
 import React from "react";
-import { useEffect } from "react";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { SET_USER } from "../reducers/userReducer";
-
+import "nes.css/css/nes.min.css";
+import "../components/rpgui.css";
 import "../components/styles/dashboard.css";
 import "../components/styles/animations.css";
 import { FaUserAlt } from "react-icons/fa";
 import { FcPieChart } from "react-icons/fc";
-const Dashboard = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    axios.get("/user").then((data) => {
-      dispatch(SET_USER({ name: data.data.name, avatar: data.data.person_id })); //TODO:
-    });
-  }, [dispatch]);
 
-  const userState = useSelector((state) => {
-    return state.user;
-  });
+const UserDashboard = () => {
 
   return (
+    <div className="rpgui-container framed">
+    
     <div className="dashboard-layout">
       <div className="welcome">
-        <h1>Welcome to your Dashboard {userState.name}</h1>
+        <h1>Welcome to your Dashboard</h1>
       </div>
 
-      <section className="user-info-cards">
-        <div className="card float">
-          <header>Meetings Today</header>
-          <ul>
-            <li>Google: 9AM</li>
-            <li>Facebook: 11AM</li>
-            <li>Youtube: 4PM</li>
-          </ul>
-        </div>
+      <section className="user-info-cards ">
+        <div className="rpgui-content">
+
+            <header>Meetings Today</header>
+            <ul>
+              <li>Google: 9AM</li>
+              <li>Facebook: 11AM</li>
+              <li>Youtube: 4PM</li>
+            </ul>
+          </div>
+          
         <div className="card float">
           <header>My tasks</header>
           <ul>
@@ -67,7 +59,8 @@ const Dashboard = () => {
         </div>
       </section>
     </div>
+    </div>
   );
 };
 
-export default Dashboard;
+export default UserDashboard;

@@ -14,27 +14,38 @@
 
 }
 .card{
-  background-color: red;
   width: 31%;
   height: 350px;
+  background: url('./img/border-image-golden2.png') no-repeat;
+  background-size: 100% 100%;
+  /* overflow: vertical; */
 }
 
 .card header {
   display: flex;
-  font-size: 35px;
-  margin-top: 10px;
-  margin-left: 40px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin-top: 30px;
+  color:rgb(252, 252, 252);
+  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38), -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
+
+}
+
+.card ul {
+  margin-top: 20px;
 }
 
 .card li {
-  font-size: 25px;
+  font-size: 18px;
   list-style-type: none;
-  border: 1px solid;
   margin-bottom: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 90%;
+  color:rgb(252, 252, 252);
+  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38), -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
 }
 
 
@@ -67,7 +78,7 @@
   font-size:75px;
 }
 .user p {
-  font-size:30px;
+  font-size:20px;
   margin: 10px;
 }
 

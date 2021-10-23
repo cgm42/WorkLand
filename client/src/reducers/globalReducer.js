@@ -10,26 +10,30 @@ import { initX, initY } from "../utils/constants";
 //a temp user id
 
 const initialState = {
-  localID: "local",
+  localID: 1,
   user: {
-    id: "", //id_from_db
-    name: "",
+    id: 1, //id_from_db
+    name: "Johnny",
     avatar: "",
   },
   players: {
-    //   [id_from_db]: {
-    //     id: id_from_db,
-    //     isJoined: true,
-    //     x: initX * 32,
-    //     y: initY * 32,
-    //     dir: "ArrowDown",
-    //     step: 0,
-    //     name: "local user",
-    //     skin: "f1",
-    //   },
+      1: {
+        id: 1,
+        isJoined: true,
+        x: initX * 32,
+        y: initY * 32,
+        dir: "ArrowDown",
+        step: 0,
+        name: "local user",
+        skin: "f1",
+      },
   },
   mapGuide: {
+    userDashboard: false,
+    projectDashboard: false,
     kanban: false,
+    ganttChart: false,
+    taskList: false
   },
   mapRoute: {
     modalCanOpen: false,

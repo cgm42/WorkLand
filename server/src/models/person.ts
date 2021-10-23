@@ -3,7 +3,7 @@ import pool from "../db/dbConfig";
 // import { Person } from "../../../types";
 
 function getPerson(id: number) {
-  return pool.query("SELECT * FROM person WHERE person_id = $1", [id]);
+  return pool.query("SELECT * FROM users WHERE id = $1", [id]);
 }
 
 function getPersonByGitHub(githubId: number) {

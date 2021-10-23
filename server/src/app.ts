@@ -20,7 +20,7 @@ const port = process.env.PORT || 5000;
 app.use(
   cookieSession({
     name: "session",
-    keys: [process.env.COOKIE_KEY!],
+    keys: [process.env.COOKIE_KEY!]
   })
 );
 
@@ -58,9 +58,14 @@ app.get("/", authCheck, (req: Request, res: Response) => {
   });
 });
 
+app.get("/login/:id", (req: Request, res: Response) => {
+  console.log(req.user);
+  res.redirect('/');
+})
+
 app.get("/logout", (req: Request, res: Response) => {
   req.logOut();
-  res.redirect("/");
+  res.redirect("/login");
 });
 
 app.get("/user", (req: Request, res: Response) => {

@@ -28,12 +28,16 @@ const initialState = {
     //     skin: "f1",
     //   },
   },
+  mapGuide: {
+    kanban: false,
+  },
 };
 export const SET_USER = createAction("SET_USER");
 export const WALK = createAction("WALK");
 export const UPDATE_OTHERS = createAction("UPDATE_OTHERS");
 export const SELECT_AVATAR = createAction("SELECT_AVATAR");
-
+export const WALK_IN_PLACE = createAction("WALK_IN_PLACE");
+export const SET_MAP_GUIDE = createAction("SET_MAP_GUIDE");
 export const userReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
   builder.addCase(SET_USER, (state, action) => {
@@ -44,6 +48,7 @@ export const userReducer = createReducer(initialState, (builder) => {
     state.user.id = id;
     state.players[id] = { ...playerTemplate };
     state.players[id]["id"] = id;
+    state.players[id]["name"] = action.payload.name;
   });
 
   //WALK: handle movement animation (turning and walking)
@@ -66,10 +71,6 @@ export const userReducer = createReducer(initialState, (builder) => {
 
     // console.log("id :>> ", id);
     // console.log("dir :>> ", dir);
-    console.log(
-      "in reducer! state.players[id].dir :>> ",
-      state.players[id].dir
-    );
     // console.log("directions[dir] :>> ", directions[dir]);
     // console.log("newX :>> ", newX);
     // console.log("newY :>> ", newX);
@@ -80,6 +81,26 @@ export const userReducer = createReducer(initialState, (builder) => {
     state.players[id].dir = newDir ? newDir : state.players[id].dir;
     state.players[id].step = newStep;
     return state;
+  });
+
+  builder.addCase(WALK_IN_PLACE, (state, action) => {
+    const id = action.payload.id;
+    const dir = action.payload.dir;
+    let newDir;
+    if (state["players"][id]["dir"] !== dir) {
+      newDir = dir;
+    }
+    const newStep =
+      state.players[id]["step"] < maxSteps - 1
+        ? state.players[id]["step"] + 1
+        : 0;
+    state.players[id].dir = newDir ? newDir : state.players[id].dir;
+    state.players[id].step = newStep;
+    return state;
+  });
+
+  builder.addCase(SET_MAP_GUIDE, (state, action) => {
+    state.mapGuide.kanban = true;
   });
 
   builder.addCase(UPDATE_OTHERS, (state, action) => {

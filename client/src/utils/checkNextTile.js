@@ -1,5 +1,5 @@
-import { MAP_TABLE } from "../constants/constants";
-import { initX, initY, stepSize } from "../constants/constants";
+import { MAP_TABLE } from "../utils/constants";
+import { initX, initY, stepSize } from "../utils/constants";
 function getNextTile(direction, x, y, key) {
   let position = { left: x, top: y };
   let newPos;

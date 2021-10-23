@@ -5,7 +5,7 @@
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  left: 95%;
   background-color: #fb6262;
   overflow-x: hidden;
   display: flex;
@@ -19,7 +19,7 @@
   font-size: 40px;
   display: flex;
   justify-content: center;
-  margin-top:30px;
+  margin-top: 30px;
   transition: 0.3s;
   color: rgb(0, 0, 0);
 }
@@ -29,7 +29,7 @@
   font-size: 40px;
   display: flex;
   justify-content: center;
-  margin-bottom:20px;
+  margin-bottom: 20px;
   transition: 0.3s;
   color: rgb(0, 0, 0);
 }

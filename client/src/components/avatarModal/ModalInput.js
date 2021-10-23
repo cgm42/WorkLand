@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
-import { avatarSkinArr } from "../../constants/constants";
+import { avatarSkinArr } from "../../utils/constants";
 import { SELECT_AVATAR } from "../../reducers/userReducer";
 import "./modal.css";
 function ModalInput({ isOpen }) {

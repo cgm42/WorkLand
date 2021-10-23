@@ -6,8 +6,9 @@ import { SET_USER } from "../reducers/userReducer";
 
 import "../components/styles/dashboard.css";
 import "../components/styles/animations.css";
-import { FaUserAlt } from "react-icons/fa";
-import { FcPieChart } from "react-icons/fc";
+import Players from "../components/players";
+import Map from "../components/map/Map";
+import ModalInput from "../components/avatarModal/ModalInput";
 const Dashboard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,11 +24,15 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-layout">
-      <div className="welcome">
+      {/* <div className="welcome">
         <h1>Welcome to your Dashboard {userState.name}</h1>
-      </div>
+      </div> */}
 
-      <section className="user-info-cards">
+      <ModalInput isOpen={true} />
+      <Map x={0} />
+      <Players />
+
+      {/* <section className="user-info-cards">
         <div className="card float">
           <header>Meetings Today</header>
           <ul>
@@ -66,7 +71,7 @@ const Dashboard = () => {
           <p>Task Tracker</p>
           <FcPieChart className="chart"></FcPieChart>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

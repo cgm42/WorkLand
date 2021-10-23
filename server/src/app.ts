@@ -8,6 +8,9 @@ import projectsRouter from "./routes/projects";
 import usersProjectsRouter from "./routes/users_projects";
 import tasksRouter from "./routes/tasks";
 import usersTasksRouter from "./routes/users_tasks";
+import meetingsRouter from "./routes/meetings";
+import usersMeetingsRouter from "./routes/users_meetings";
+import messagesRouter from "./routes/messages";
 import { getPersonByGitHub } from "./models/person";
 const app: Application = express();
 const port = process.env.PORT || 5000;
@@ -30,6 +33,9 @@ app.use("/projects", projectsRouter);
 app.use("/users_projects", usersProjectsRouter);
 app.use("/tasks", tasksRouter);
 app.use("/users_tasks", usersTasksRouter);
+app.use("/meetings", meetingsRouter);
+app.use("/users_meetings", usersMeetingsRouter);
+app.use("/messages", messagesRouter);
 
 const authCheck = (req: Request, res: Response, next: NextFunction) => {
   if (!req.user) {

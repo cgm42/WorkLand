@@ -2,13 +2,14 @@ import React from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_USER } from "../reducers/userReducer";
-
+import { SET_USER } from "../reducers/globalReducer";
+import Modal from "react-modal";
 import "../components/styles/dashboard.css";
 import "../components/styles/animations.css";
 import Players from "../components/players";
 import Map from "../components/map/Map";
-import ModalInput from "../components/avatarModal/ModalInput";
+import ModalInput from "../components/modal/ModalInput";
+import MainModal from "../components/modal/MainModal";
 const Dashboard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -18,16 +19,16 @@ const Dashboard = () => {
     });
   }, [dispatch]);
 
-  const userState = useSelector((state) => {
-    return state.user;
-  });
+  const modalCanOpen = useSelector((state) => state.mapRoute.modalCanOpen);
+
+  const userState = useSelector((state) => state.user);
 
   return (
     <div className="dashboard-layout">
       {/* <div className="welcome">
         <h1>Welcome to your Dashboard {userState.name}</h1>
       </div> */}
-
+      {modalCanOpen && <MainModal isOpen={true} />}
       <ModalInput isOpen={true} />
       <Map x={0} />
       <Players />

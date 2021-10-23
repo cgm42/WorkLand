@@ -1,4 +1,4 @@
-import { wsEndpoint } from "../constants/constants";
+import { wsEndpoint } from "../utils/constants";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import {
@@ -6,7 +6,7 @@ import {
   RECEIVECALL,
   SETSOCKETID,
   ACCEPTCALL,
-} from "../reducers/userReducer";
+} from "../reducers/globalReducer";
 export const socketRTK = (url) => {
   return (storeAPI) => {
     const socket = io(wsEndpoint);

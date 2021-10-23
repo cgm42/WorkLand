@@ -1,16 +1,15 @@
 import Actor from "../actor";
 import useKeyPress from "../../hooks/useKeyPress";
-
 import { useSelector, useDispatch } from "react-redux";
 import {
   HIDE_MAP_GUIDE,
   WALK,
   WALK_IN_PLACE,
   SET_MAP_GUIDE,
-} from "../../reducers/userReducer";
+  TOGGLE_MODAL_CAN_OPEN,
+} from "../../reducers/globalReducer";
 import { directions } from "../../utils/constants";
 import checkNextTile from "../../utils/checkNextTile";
-import { checkActionAsset } from "../../utils/checkActionAsset";
 
 export default function Players({ socket }) {
   const localUserState = useSelector((state) => {
@@ -26,9 +25,6 @@ export default function Players({ socket }) {
   const dispatch = useDispatch();
 
   function walk(dir) {
-    // console.log("localUserState.x :>> ", localUserState.x);
-    // console.log("localUserState.y :>> ", localUserState.y);
-
     if (checkNextTile(dir, localUserState.x, localUserState.y)["action"]) {
       const actionAsset = checkNextTile(
         dir,
@@ -51,7 +47,18 @@ export default function Players({ socket }) {
 
   useKeyPress((e) => {
     e.preventDefault();
-    return walk(e.key);
+    if (
+      e.key === "ArrowDown" ||
+      e.key === "ArrowUp" ||
+      e.key === "ArrowLeft" ||
+      e.key === "ArrowRight"
+    ) {
+      walk(e.key);
+      return;
+    }
+    if (e.code === "Space") {
+      dispatch(TOGGLE_MODAL_CAN_OPEN());
+    }
   });
 
   const playerListArr = Object.keys(playerListState).map((key) => (

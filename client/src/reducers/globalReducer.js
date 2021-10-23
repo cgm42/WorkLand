@@ -31,6 +31,10 @@ const initialState = {
   mapGuide: {
     kanban: false,
   },
+  mapRoute: {
+    modalCanOpen: false,
+    routeName: null,
+  },
 };
 export const SET_USER = createAction("SET_USER");
 export const WALK = createAction("WALK");
@@ -39,7 +43,9 @@ export const SELECT_AVATAR = createAction("SELECT_AVATAR");
 export const WALK_IN_PLACE = createAction("WALK_IN_PLACE");
 export const SET_MAP_GUIDE = createAction("SET_MAP_GUIDE");
 export const HIDE_MAP_GUIDE = createAction("HIDE_MAP_GUIDE");
-export const userReducer = createReducer(initialState, (builder) => {
+export const TOGGLE_MODAL_CAN_OPEN = createAction("TOGGLE_MODAL_CAN_OPEN");
+
+export const globalReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
   builder.addCase(SET_USER, (state, action) => {
     state.user.name = action.payload.name;
@@ -102,10 +108,17 @@ export const userReducer = createReducer(initialState, (builder) => {
 
   builder.addCase(SET_MAP_GUIDE, (state, action) => {
     state.mapGuide[action.payload.actionAsset] = true;
+    state.mapRoute.routeName = action.payload.actionAsset;
   });
   builder.addCase(HIDE_MAP_GUIDE, (state, action) => {
-    state.mapGuide.kanban = false;
-    //list all map guides here
+    for (let key in state.mapGuide) {
+      state.mapGuide[key] = false;
+    }
+    state.mapRoute.modalCanOpen = false;
+    state.mapRoute.routeName = null;
+  });
+  builder.addCase(TOGGLE_MODAL_CAN_OPEN, (state, action) => {
+    state.mapRoute.modalCanOpen = !state.mapRoute.modalCanOpen;
   });
 
   builder.addCase(UPDATE_OTHERS, (state, action) => {

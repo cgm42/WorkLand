@@ -58,7 +58,7 @@ app.get("/user", (req: any, res: Response) => {
     });
     return;
   }
-  console.log("NOT AUTHENTICATED!");
+  console.log("Not logged in or not authenticated");
 });
 
 app.listen(port, () => {

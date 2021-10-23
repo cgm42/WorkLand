@@ -1,8 +1,8 @@
 import { createServer } from "http";
 import { Server, Socket } from "socket.io";
 
-const httpServer = createServer();
-const io = new Server(httpServer, {
+export const socketServer = createServer();
+const io = new Server(socketServer, {
   cors: {
     origin: "*",
     method: ["GET", "POST"],
@@ -14,7 +14,7 @@ io.on("connection", (socket: Socket) => {
   socket.emit("getId", socket.id);
 
   socket.on("movementMessage", (arg) => {
-    // console.log("event :>> ", arg);
+    console.log("event :>> ", arg);
     socket.broadcast.emit("movementMessage", arg);
   });
 
@@ -32,5 +32,3 @@ io.on("connection", (socket: Socket) => {
     socket.broadcast.emit("callAccepted", data.signal);
   });
 });
-
-httpServer.listen(5001);

@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import projectRouter from "./routes/project";
 import authRouter from "./routes/auth";
 import { getPersonByGitHub } from "./models/person";
+import { socketServer } from "./socketServer";
 const app: Application = express();
 const port = process.env.PORT || 5000;
 
@@ -65,3 +66,5 @@ app.get("/user", (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`Backend running on port ${port}🏃`);
 });
+
+socketServer.listen(5080);

@@ -1,24 +1,26 @@
 .dashboard-layout {
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
+  height: 100vh;
 }
 
 .welcome {
   margin-left: 20px;
+  font-size: 2rem;
+  letter-spacing: 3px;
 }
 
 .user-info-cards{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-
+  justify-content: space-between;
+  align-self: center;
+  max-width: 1920px;
 }
 .card{
   width: 31%;
   height: 350px;
-  background: url('./img/border-image-golden2.png') no-repeat;
-  background-size: 100% 100%;
-  /* overflow: vertical; */
 }
 
 .card header {
@@ -53,39 +55,55 @@
   margin-top:50px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  /* align-items: center; */
+  align-self: center;
+  max-width: 1920px;
 }
 
 .user-progress {
-  width: 550px;
-  height:200px;
+  width: 650px;
+  height:100%;
   background-color:yellow;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  margin-right: 40px;
+  /* padding: 10px; */
 }
 
 .user{
   width: 25%;
-  background: aqua;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right:20px;
 }
 
 .user-icon{
   font-size:75px;
 }
-.user p {
+
+.user-info {
+  display:flex;
+  flex-direction:column;
+  width: 100%;
+  margin-right: 10px;
+}
+
+.user-info-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-size:20px;
-  margin: 10px;
 }
 
 .experience-bar {
   margin-left: 30px;
   display: flex;
-  align-items: center;
+  align-self: flex-end;
   border: 1px solid black;
   height: 50px;
   width: 65%;
@@ -98,10 +116,12 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-left: 40px;
+  height: 100%;
 }
 
 .pie-chart p {
-  font-size:20px;
+  font-size:30px;
   margin: 0;
 }
 

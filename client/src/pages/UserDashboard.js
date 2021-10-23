@@ -9,15 +9,15 @@ import { FcPieChart } from "react-icons/fc";
 const UserDashboard = () => {
 
   return (
-    <div className="rpgui-container framed">
-    
-    <div className="dashboard-layout">
+    <div className="rpgui-content golden">
+
+    <div className="dashboard-layout rpgui-container framed-golden-2">
       <div className="welcome">
-        <h1>Welcome to your Dashboard</h1>
+        <h1>Dashboard</h1>
       </div>
 
-      <section className="user-info-cards ">
-        <div className="rpgui-content">
+      <section className="user-info-cards">
+          <div className="card rpgui-container framed float">
 
             <header>Meetings Today</header>
             <ul>
@@ -26,8 +26,7 @@ const UserDashboard = () => {
               <li>Youtube: 4PM</li>
             </ul>
           </div>
-          
-        <div className="card float">
+        <div className="card rpgui-container framed float">
           <header>My tasks</header>
           <ul>
             <li>Create new feature for user</li>
@@ -35,7 +34,7 @@ const UserDashboard = () => {
             <li>Commit all my changes before the end of the day</li>
           </ul>
         </div>
-        <div className="card float">
+        <div className="card rpgui-container framed float">
           <header>My projects</header>
           <ul>
             <li>Final</li>
@@ -46,14 +45,21 @@ const UserDashboard = () => {
       </section>
 
       <section className="level-chart-cards">
-        <div className="user-progress">
+        <div className="user-progress rpgui-container framed-golden">
           <div className="user">
             <FaUserAlt className="user-icon"></FaUserAlt>
-            <p>Level 80</p>
           </div>
-          <div className="experience-bar"></div>
+          <div className="user-info">
+            <div className="user-info-text">
+              <p>Name</p>
+              <p>Lvl:</p>
+            </div>
+            <progress className="nes-progress is-success" value="50" max="100"></progress>
+          </div>
+          <div className="exp-bar">
         </div>
-        <div className="pie-chart">
+        </div>
+        <div className="pie-chart rpgui-container framed-golden">
           <p>Task Tracker</p>
           <FcPieChart className="chart"></FcPieChart>
         </div>

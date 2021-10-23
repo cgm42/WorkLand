@@ -7,7 +7,8 @@ function getAllProjects(user_id: number) {
       FROM projects
       JOIN users_projects ON projects.id = users_projects.project_id
       JOIN users ON users_projects.user_id = users.id
-      WHERE user_id = $1;
+      WHERE user_id = $1
+      GROUP BY projects.id;
     `, [user_id]);
 }
 

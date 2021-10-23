@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth";
 import projectsRouter from "./routes/projects";
 import usersProjectsRouter from "./routes/users_projects";
+import tasksRouter from "./routes/tasks";
+import usersTasksRouter from "./routes/users_tasks";
 import { getPersonByGitHub } from "./models/person";
 const app: Application = express();
 const port = process.env.PORT || 5000;
@@ -26,6 +28,8 @@ app.use(cookieParser());
 app.use("/auth", authRouter);
 app.use("/projects", projectsRouter);
 app.use("/users_projects", usersProjectsRouter);
+app.use("/tasks", tasksRouter);
+app.use("/users_tasks", usersTasksRouter);
 
 const authCheck = (req: Request, res: Response, next: NextFunction) => {
   if (!req.user) {

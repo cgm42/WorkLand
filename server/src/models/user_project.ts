@@ -1,7 +1,7 @@
 import pool from "../db/dbConfig";
 
-function addUserToProject(user_id: number, project_id: number, role: string) {
-  const values = [user_id, project_id, role]
+function addUserToProject(userProject: {user_id: number; project_id: number; role: string;}) {
+  const values = [userProject.user_id, userProject.project_id, userProject.role]
 
   return pool
     .query(`
@@ -10,8 +10,8 @@ function addUserToProject(user_id: number, project_id: number, role: string) {
     `, values);
 };
 
-function deleteUserFromProject(user_id:number, project_id: number) {
-  const values = [user_id, project_id]
+function deleteUserFromProject(userProject: {user_id: number; project_id: number;}) {
+  const values = [userProject.user_id, userProject.project_id]
   
   return pool
     .query(`

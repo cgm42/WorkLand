@@ -12,6 +12,7 @@ import meetingsRouter from "./routes/meetings";
 import usersMeetingsRouter from "./routes/users_meetings";
 import messagesRouter from "./routes/messages";
 import { getPersonByGitHub } from "./models/person";
+import { socketServer } from "./socketServer";
 const app: Application = express();
 const port = process.env.PORT || 5000;
 
@@ -62,16 +63,19 @@ app.get("/logout", (req: Request, res: Response) => {
   res.redirect("/");
 });
 
-app.get("/user", (req: any, res: Response) => {
+app.get("/user", (req: Request, res: Response) => {
   if (req.isAuthenticated()) {
-    getPersonByGitHub(req.user.oauth_id).then((data) => {
+    const reqUser = req.user as any;
+    getPersonByGitHub(reqUser.oauth_id).then((data) => {
       res.status(200).send(data.rows[0]);
     });
     return;
   }
-  console.log("NOT AUTHENTICATED!");
+  console.log("Not logged in or not authenticated");
 });
 
 app.listen(port, () => {
   console.log(`Backend running on port ${port}🏃`);
 });
+
+socketServer.listen(5080);

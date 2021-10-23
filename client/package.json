@@ -12,9 +12,11 @@
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-modal": "^3.14.3",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "socket.io-client": "^4.3.2"
   },
   "scripts": {
     "start": "PORT=5001 react-scripts start",

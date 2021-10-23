@@ -2,31 +2,38 @@ import React from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_USER } from "../reducers/userReducer";
-
+import { SET_USER } from "../reducers/globalReducer";
+import Modal from "react-modal";
 import "../components/styles/dashboard.css";
 import "../components/styles/animations.css";
-import { FaUserAlt } from "react-icons/fa";
-import { FcPieChart } from "react-icons/fc";
+import Players from "../components/players";
+import Map from "../components/map/Map";
+import ModalInput from "../components/modal/ModalInput";
+import MainModal from "../components/modal/MainModal";
 const Dashboard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     axios.get("/user").then((data) => {
-      dispatch(SET_USER({ name: data.data.name, avatar: data.data.person_id })); //TODO:
+      console.log(data);
+      dispatch(SET_USER({ name: data.data.name, id: data.data.person_id })); //TODO:add avatar
     });
   }, [dispatch]);
 
-  const userState = useSelector((state) => {
-    return state.user;
-  });
+  const modalCanOpen = useSelector((state) => state.mapRoute.modalCanOpen);
+
+  const userState = useSelector((state) => state.user);
 
   return (
     <div className="dashboard-layout">
-      <div className="welcome">
+      {/* <div className="welcome">
         <h1>Welcome to your Dashboard {userState.name}</h1>
-      </div>
+      </div> */}
+      {modalCanOpen && <MainModal isOpen={true} />}
+      <ModalInput isOpen={true} />
+      <Map x={0} />
+      <Players />
 
-      <section className="user-info-cards">
+      {/* <section className="user-info-cards">
         <div className="card float">
           <header>Meetings Today</header>
           <ul>
@@ -65,7 +72,7 @@ const Dashboard = () => {
           <p>Task Tracker</p>
           <FcPieChart className="chart"></FcPieChart>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

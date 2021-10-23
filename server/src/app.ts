@@ -51,9 +51,10 @@ app.get("/logout", (req: Request, res: Response) => {
   res.redirect("/");
 });
 
-app.get("/user", (req: any, res: Response) => {
+app.get("/user", (req: Request, res: Response) => {
   if (req.isAuthenticated()) {
-    getPersonByGitHub(req.user.oauth_id).then((data) => {
+    const reqUser = req.user as any;
+    getPersonByGitHub(reqUser.oauth_id).then((data) => {
       res.status(200).send(data.rows[0]);
     });
     return;

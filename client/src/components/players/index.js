@@ -3,13 +3,14 @@ import useKeyPress from "../../hooks/useKeyPress";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
-  SET_USER,
+  HIDE_MAP_GUIDE,
   WALK,
   WALK_IN_PLACE,
   SET_MAP_GUIDE,
 } from "../../reducers/userReducer";
 import { directions } from "../../utils/constants";
 import checkNextTile from "../../utils/checkNextTile";
+import { checkActionAsset } from "../../utils/checkActionAsset";
 
 export default function Players({ socket }) {
   const localUserState = useSelector((state) => {
@@ -28,10 +29,17 @@ export default function Players({ socket }) {
     // console.log("localUserState.x :>> ", localUserState.x);
     // console.log("localUserState.y :>> ", localUserState.y);
 
-    if (checkNextTile(dir, localUserState.x, localUserState.y, "action")) {
-      dispatch(SET_MAP_GUIDE({ dir }));
+    if (checkNextTile(dir, localUserState.x, localUserState.y)["action"]) {
+      const actionAsset = checkNextTile(
+        dir,
+        localUserState.x,
+        localUserState.y
+      )["asset"];
+      dispatch(SET_MAP_GUIDE({ actionAsset }));
+    } else {
+      dispatch(HIDE_MAP_GUIDE());
     }
-    if (checkNextTile(dir, localUserState.x, localUserState.y, "walk")) {
+    if (checkNextTile(dir, localUserState.x, localUserState.y)["walk"]) {
       dispatch(WALK({ dir, id: localIdState }));
       return {
         type: "WALK",

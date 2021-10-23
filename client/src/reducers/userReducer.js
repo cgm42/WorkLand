@@ -38,6 +38,7 @@ export const UPDATE_OTHERS = createAction("UPDATE_OTHERS");
 export const SELECT_AVATAR = createAction("SELECT_AVATAR");
 export const WALK_IN_PLACE = createAction("WALK_IN_PLACE");
 export const SET_MAP_GUIDE = createAction("SET_MAP_GUIDE");
+export const HIDE_MAP_GUIDE = createAction("HIDE_MAP_GUIDE");
 export const userReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
   builder.addCase(SET_USER, (state, action) => {
@@ -100,7 +101,11 @@ export const userReducer = createReducer(initialState, (builder) => {
   });
 
   builder.addCase(SET_MAP_GUIDE, (state, action) => {
-    state.mapGuide.kanban = true;
+    state.mapGuide[action.payload.actionAsset] = true;
+  });
+  builder.addCase(HIDE_MAP_GUIDE, (state, action) => {
+    state.mapGuide.kanban = false;
+    //list all map guides here
   });
 
   builder.addCase(UPDATE_OTHERS, (state, action) => {

@@ -41,13 +41,14 @@ export const maxSteps = 3;
 const X = { walk: false, action: false, special: false };
 const O = { walk: true, action: false, special: false };
 const A = { walk: true, action: true, special: false };
+const K = { walk: true, action: true, special: false, asset: "kanban" };
 const I = { walk: false, action: true, special: false };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [
   // 0  1  2  3  4  5  6  7  8  9  10 11
   [X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
-  [X, O, O, X, I, I, I, X, X, X, X, X], // y = 1
+  [X, O, O, X, K, K, K, X, X, X, X, X], // y = 1
   [X, O, O, O, O, O, O, O, O, O, O, X], // y= 2
   [X, O, O, O, X, X, X, O, O, O, O, X], // y = 3
   [X, O, O, O, X, X, X, O, O, O, O, X], // y = 4

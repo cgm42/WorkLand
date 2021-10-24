@@ -1,6 +1,5 @@
 import React from "react";
 import UserInfoCardList from "./UserInfoCardList";
-import Button from "../button/Button";
 
 function UserInfoCard(props) {
   const { heading, projects, meetings } = props;
@@ -51,7 +50,6 @@ function UserInfoCard(props) {
             />
           )
         })}
-        <Button>Hello!</Button>
       </ul>
     </div>
   );

@@ -8,7 +8,7 @@ import { RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import Dashboard from "../pages/Dashboard";
-import Projects from "../pages/Projects";
+import ProjectCardList from "./projects/ProjectCardList";
 import Meeting from "../pages/Meeting";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
@@ -74,7 +74,7 @@ const Sidenav = () => {
         </Route>
 
         <Route path="/project" exact>
-          <Projects></Projects>
+          <ProjectCardList></ProjectCardList>
         </Route>
 
         <Route path="/meeting" exact>

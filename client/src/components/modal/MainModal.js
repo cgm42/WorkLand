@@ -5,9 +5,9 @@ import { TOGGLE_MODAL_CAN_OPEN } from "../../reducers/globalReducer";
 import "./modal.css";
 import UserDashboard from "../userDashboard/UserDashboard";
 
-function MainModal(isOpen) {
+function MainModal(props) {
   const dispatch = useDispatch();
-  const [modalIsOpen, setModalIsOpen] = useState(isOpen);
+  const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
   const mapRoute = useSelector((state) => state.mapRoute.routeName);
   return (
     <>

@@ -12,7 +12,7 @@ async function getProjects(req: Request, res: Response) {
   //   user_id = reqUser.user_id;
   // }
 
-  const user_id = 7;
+  const user_id = 10;
 
   const queryResult = await model.getAllProjects(user_id);
   res.send(queryResult.rows.map((row: String) => camelcaseKeys(row)));
@@ -26,12 +26,15 @@ async function getProject(req: Request, res: Response) {
 
 async function addProject(req: Request, res: Response) {
   // const project = req.body
+  console.log(req.body);
+  const {creatorID, projectName, description, startDate, endDate} = req.body;
+
   const project = {
-    creator_id: 3,
-    name: 'Put-it-on-a-tee',
-    description: 'Custom tshirt website for client',
-    start_date: '2021-04-18',
-    end_date: '2021-06-12',
+    creator_id: creatorID,
+    name: projectName,
+    description: description,
+    start_date: startDate,
+    end_date: endDate,
     background_img: ''
   }
 

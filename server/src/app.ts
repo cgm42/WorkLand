@@ -13,6 +13,7 @@ import usersMeetingsRouter from "./routes/users_meetings";
 import messagesRouter from "./routes/messages";
 import { getPersonByGitHub } from "./models/person";
 import { socketServer } from "./socketServer";
+const cors = require("cors");
 const app: Application = express();
 const port = process.env.PORT || 5000;
 
@@ -24,6 +25,7 @@ app.use(
   })
 );
 
+app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());

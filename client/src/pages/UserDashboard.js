@@ -5,8 +5,17 @@ import "../components/styles/dashboard.css";
 import "../components/styles/animations.css";
 import { FaUserAlt } from "react-icons/fa";
 import { FcPieChart } from "react-icons/fc";
+// import {useApplicationData} from '../hooks/useApplicationData.js'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const UserDashboard = () => {
+  useEffect(() => {
+    axios.get("/projects")
+      .then(all => {
+        console.log(all.data);
+      })
+  }, []);
 
   return (
     <div className="rpgui-content golden">

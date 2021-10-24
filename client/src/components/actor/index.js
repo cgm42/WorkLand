@@ -1,5 +1,7 @@
 import Sprite from "../sprites";
 import { spriteDimensions } from "../../utils/constants";
+import "./actor.css";
+
 export default function Actor({
   sprite,
   position = { x: 0, y: 0 },
@@ -14,7 +16,7 @@ export default function Actor({
     left: position.x + w * 0.2,
   };
   return (
-    <div>
+    <div className="dimension">
       <div style={style}>{displayName}</div>
       <Sprite
         image={sprite}
@@ -22,7 +24,7 @@ export default function Actor({
           x: step * w,
           y: dir * h,
           w,
-          h,
+          h
         }}
         position={position}
       />

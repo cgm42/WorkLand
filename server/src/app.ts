@@ -13,10 +13,13 @@ import usersMeetingsRouter from "./routes/users_meetings";
 import messagesRouter from "./routes/messages";
 import { getPersonByGitHub } from "./models/person";
 import { socketServer } from "./socketServer";
+const cors = require("cors");
 const app: Application = express();
 const port = process.env.PORT || 5000;
 
-// const passportSetup = require("./config/");
+app.use(cors());
+const passportSetup = require("./config/");
+app.use(cookieParser());
 app.use(
   cookieSession({
     name: "session",
@@ -27,7 +30,6 @@ app.use(
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser());
 
 app.use("/auth", authRouter);
 app.use("/projects", projectsRouter);
@@ -58,9 +60,14 @@ app.get("/", authCheck, (req: Request, res: Response) => {
   });
 });
 
+// app.get("/login/:id", (req: Request, res: Response) => {
+//   console.log(req.user);
+//   res.redirect('/');
+// })
+
 app.get("/logout", (req: Request, res: Response) => {
   req.logOut();
-  res.redirect("/");
+  res.redirect("/login");
 });
 
 app.get("/user", (req: Request, res: Response) => {

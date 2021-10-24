@@ -19,6 +19,7 @@ CREATE TABLE users (
 CREATE TABLE oauth_mapping (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  -- person_id INT NOT NULL,
   oauth_provider TEXT NOT NULL,
   oauth_id INT NOT NULL
 );

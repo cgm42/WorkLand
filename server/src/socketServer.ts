@@ -4,8 +4,8 @@ import { Server, Socket } from "socket.io";
 export const socketServer = createServer();
 const io = new Server(socketServer, {
   cors: {
-    origin: "*",
-    method: ["GET", "POST"],
+    origin: "*"
+    // method: ["GET", "POST"],
   },
 });
 

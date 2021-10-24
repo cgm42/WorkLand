@@ -12,6 +12,9 @@ import Projects from "../pages/Projects";
 import Meeting from "../pages/Meeting";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
+import UserDashboard from "./userDashboard/UserDashboard";
+
+
 const Sidenav = () => {
   return (
     <Router>
@@ -23,20 +26,22 @@ const Sidenav = () => {
             </Link>
           </li>
           <li>
-            {" "}
             <Link to="/project">
               <FaClipboardList></FaClipboardList>
             </Link>
           </li>
           <li>
-            {" "}
             <Link to="/meeting">
               <MdGroup></MdGroup>
             </Link>
           </li>
           <li>
-            {" "}
             <Link to="/messages">
+              <AiFillMessage></AiFillMessage>
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard">
               <AiFillMessage></AiFillMessage>
             </Link>
           </li>
@@ -81,11 +86,16 @@ const Sidenav = () => {
         </Route>
 
         <Route path="/dashboard" exact>
-          <Dashboard></Dashboard>
+          <UserDashboard></UserDashboard>
         </Route>
         <Route path="/login" exact>
           <Login></Login>
         </Route>
+        <Route path="/login" exact>
+          <Login></Login>
+        </Route>
+
+        userDashboard
       </Switch>
     </Router>
   );

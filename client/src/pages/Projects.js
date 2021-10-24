@@ -8,8 +8,8 @@ const Projects = () => {
         <h1>Projects</h1>
       </div>
 
-      <section className='info-cards'>
-        <div className='project-card float'>
+      <section className='info-cards rpgui-content'>
+        <div className='project-card rpgui-container framed float'>
           <img></img>
           <div className='description'>
             <header>Project name</header>

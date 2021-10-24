@@ -13,12 +13,17 @@ const Login = () => {
       {userState.name !== "" ? (
         <div></div>
       ) : (
-        <div>
-          <BsGithub />
-          <a href={process.env.REACT_APP_GITHUB_LOGIN}>
-            {" Log in with Github"}
-          </a>
-        </div>
+        <>
+          <div>
+          <button><a href="/login">login</a></button>
+          </div>
+          <div>
+            <BsGithub />
+            <a href={process.env.REACT_APP_GITHUB_LOGIN}>
+              {" Log in with Github"}
+            </a>
+          </div>
+        </>
       )}
 
       {userState.name !== "" ? <a href="/logout">logout</a> : <div> </div>}

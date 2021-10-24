@@ -7,7 +7,8 @@
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
     "build": "tsc -p .",
-    "db:reset": "psql -U development -d final < ./src/db/schema/create.sql && psql -U development -d final < ./src/db/schema/development.sql"
+    "db:reset": "psql -U development -d final < ./src/db/schema/create.sql && psql -U development -d final < ./src/db/schema/development.sql",
+    "db:restart": "psql -U cgm -d final < ./src/db/schema/create.sql && psql -U cgm -d final < ./src/db/schema/development.sql"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "camelcase-keys": "^7.0.1",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "passport": "^0.5.0",
     "passport-github2": "^0.1.12",

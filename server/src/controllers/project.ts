@@ -4,7 +4,16 @@ import camelcaseKeys from "camelcase-keys";
 import * as model from "../models/project";
 
 async function getProjects(req: Request, res: Response) {
-  const user_id = 7
+  // let user_id;
+
+  // if(req.isAuthenticated()) {
+  //   const reqUser = req.user as any;
+  //   console.log(reqUser);
+  //   user_id = reqUser.user_id;
+  // }
+
+  const user_id = 7;
+
   const queryResult = await model.getAllProjects(user_id);
   res.send(queryResult.rows.map((row: String) => camelcaseKeys(row)));
 };

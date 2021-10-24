@@ -1,11 +1,15 @@
 import React from 'react';
 
-export default function UserInfoList(props) {
+function UserInfoCardList(props) {
   const {name, startTime} = props;
+  console.log(startTime)
 
   return (
-    <li>
-      {name}
-    </li>
+    <>
+      {startTime && <li>{name}{startTime}</li>}
+      {!startTime && <li>{name}</li>}
+    </>
   );
-}
+};
+
+export default UserInfoCardList;

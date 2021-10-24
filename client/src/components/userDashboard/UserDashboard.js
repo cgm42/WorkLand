@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import UserInfoCard from "./UserInfoCard";
 import axios from "axios";
 
-const UserDashboard = () => {
+function UserDashboard() {
   const [projects, setProjects] = useState([]);
   const [meetings, setMeetings] = useState([]);
 

@@ -1,8 +1,19 @@
 import React from "react";
 import UserInfoCardList from "./UserInfoCardList";
 
-const UserInfoCard = (props) => {
+function UserInfoCard(props) {
   const { heading, projects, meetings } = props;
+  const getTodaysDate = () => {
+    let date = new Date;
+    const offset = date.getTimezoneOffset()
+    date = new Date(date.getTime() - (offset*60*1000))
+    return date.toISOString().split('T')[0]
+  }
+
+  const getMeetingsDate = meeting => {
+    const date = meeting.date.split('T');
+    return date[0];
+  }
   
   // const projectsList = projects.map(project => {
   //   return (
@@ -30,13 +41,12 @@ const UserInfoCard = (props) => {
           )
         })}
         {meetings && meetings.map(meeting => {
-          console.log(meeting.meeting);
-          console.log(Date.now())
-          if (meeting.date === Date.now())
+          if (getMeetingsDate(meeting) === getTodaysDate())
            return (
             <UserInfoCardList
               key={meeting.id}
               name={meeting.name}
+              startTime={meeting.startTime}
             />
           )
         })}

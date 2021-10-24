@@ -1,6 +1,8 @@
 import react from "react";
+import classNames from "classnames";
+import "./Button.css";
 
-export default function Button(props) {
+function Button(props) {
   const buttonClass = classNames(
     'button',
     'rpgui-button golden'
@@ -10,3 +12,5 @@ export default function Button(props) {
     <button onClick={props.onClick} className={buttonClass}>{props.children}</button>
   )
 }
+
+export default Button;

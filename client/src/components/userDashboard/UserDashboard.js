@@ -15,14 +15,12 @@ const UserDashboard = () => {
   const [meetings, setMeetings] = useState([]);
 
   useEffect(() => {
-    Promise.all([
-      axios.get("/projects"),
-      axios.get("/meetings")
-    ])
-      .then((all) => {
+    Promise.all([axios.get("/projects"), axios.get("/meetings")]).then(
+      (all) => {
         setProjects(all[0].data);
         setMeetings(all[1].data);
-    });
+      }
+    );
   }, []);
 
   return (
@@ -58,8 +56,7 @@ const UserDashboard = () => {
               <progress
                 className="nes-progress is-success"
                 value="50"
-                max="100"
-              ></progress>
+                max="100"></progress>
             </div>
             <div className="exp-bar"></div>
           </div>

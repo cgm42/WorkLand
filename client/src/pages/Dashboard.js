@@ -15,7 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     axios.get("/user").then((data) => {
       console.log(data);
-      dispatch(SET_USER({ name: data.data.name, id: data.data.person_id })); //TODO:add avatar
+      dispatch(SET_USER(data.data));
     });
   }, [dispatch]);
 

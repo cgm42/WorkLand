@@ -10,11 +10,11 @@ const store = configureStore({
   reducer: globalReducer,
 });
 
-if (process.env.REACT_APP_BACKEND_URL) {
-  axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
-}
+// if (process.env.REACT_APP_BACKEND_URL) {
+//   axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
+// }
 
-axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+// axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 
 ReactDOM.render(
   <BrowserRouter>

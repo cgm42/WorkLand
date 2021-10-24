@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { TOGGLE_MODAL_CAN_OPEN } from "../../reducers/globalReducer";
 import "./modal.css";
-import UserDashboard from "../../pages/UserDashboard";
+import UserDashboard from "../userDashboard/UserDashboard";
 
 function MainModal(isOpen) {
   const dispatch = useDispatch();

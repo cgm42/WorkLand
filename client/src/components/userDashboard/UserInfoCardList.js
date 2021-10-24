@@ -1,11 +1,11 @@
 import React from 'react';
 
 export default function UserInfoList(props) {
-  const {userInfo} = props;
+  const {name} = props;
 
   return (
     <li>
-      {userInfo}
+      {name}
     </li>
   );
 }

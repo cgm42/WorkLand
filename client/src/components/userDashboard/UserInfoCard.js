@@ -1,16 +1,23 @@
 import React from "react";
-import UserInfoList from "./UserInfoList";
+import UserInfoCardList from "./UserInfoCardList";
 
 const UserInfoCard = (props) => {
-  const { heading } = props;
+  const { heading, projects } = props;
+  const projectsList = projects.map(project => {
+    return (
+      <UserInfoCardList
+        key={project.id}
+        name={project.name}
+      />
+    )
+  })
+
   return (
-    <div className="project-card float">
+    <div className="card rpgui-container framed float">
       <header>{heading}</header>
-      <div className="description">
-        <ul>
-          <UserInfoList></UserInfoList>
-        </ul>
-      </div>
+      <ul>
+        {projectsList}
+      </ul>
     </div>
   );
 };

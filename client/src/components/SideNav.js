@@ -12,7 +12,7 @@ import Projects from "../pages/Projects";
 import Meeting from "../pages/Meeting";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
-import UserDashboard from "../pages/UserDashboard";
+import UserDashboard from "./userDashboard/UserDashboard";
 
 
 const Sidenav = () => {

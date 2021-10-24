@@ -1,5 +1,5 @@
 import React from "react";
-import UserInfoCardList from "./UserInfoCardList";
+import UserInfoCardData from "./UserInfoCardData";
 
 function UserInfoCard(props) {
   const { heading, projects, meetings } = props;
@@ -34,7 +34,7 @@ function UserInfoCard(props) {
       <ul>
         {projects && projects.map(project => {
            return (
-            <UserInfoCardList
+            <UserInfoCardData
               key={project.id}
               name={project.name}
             />
@@ -43,7 +43,7 @@ function UserInfoCard(props) {
         {meetings && meetings.map(meeting => {
           if (getMeetingsDate(meeting) === getTodaysDate())
            return (
-            <UserInfoCardList
+            <UserInfoCardData
               key={meeting.id}
               name={meeting.name}
               startTime={meeting.startTime}

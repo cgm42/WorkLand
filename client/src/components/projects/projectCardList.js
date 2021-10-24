@@ -1,50 +1,40 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './projects.css';
+import ProjectCard from './ProjectCard';
+import axios from "axios";
 
-const Projects = () => {
+function ProjectCardList(props) {
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    axios.get("/projects")
+      .then(projects => {
+        setProjects(projects.data);
+      });
+  }, []);
+
+  const projectsList = projects.map(project => {
+    return (
+      <ProjectCard
+        key={project.id}
+        name={project.name}
+        description={project.description}
+      />
+    )
+  });
+
+
   return (
     <div className='dashboard-layout'>
       <div className='welcome'>
         <h1>Projects</h1>
       </div>
 
-      <section className='info-cards rpgui-content'>
-        <div className='project-card rpgui-container framed float'>
-          <img></img>
-          <div className='description'>
-            <header>Project name</header>
-            <p>Progress is progress/10</p>
-            <p>The team:</p>
-            <p>. . . . .</p>
-          </div>
-        </div>
-        <div className='project-card float'>
-          <header>Project name</header>
-          <ul>
-            <li>Google: 9AM</li>
-            <li>Facebook: 11AM</li>
-            <li>Youtube: 4PM</li>
-          </ul>
-        </div>
-        <div className='project-card float'>
-          <header>Project name</header>
-          <ul>
-            <li>Google: 9AM</li>
-            <li>Facebook: 11AM</li>
-            <li>Youtube: 4PM</li>
-          </ul>
-        </div>
-        <div className='project-card float'>
-          <header>Project name</header>
-          <ul>
-            <li>Google: 9AM</li>
-            <li>Facebook: 11AM</li>
-            <li>Youtube: 4PM</li>
-          </ul>
-        </div>
+      <section className='rpgui-content'>
+        {projectsList}
       </section>
     </div>
   );
 };
 
-export default Projects;
+export default ProjectCardList;

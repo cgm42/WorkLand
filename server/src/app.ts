@@ -17,19 +17,19 @@ const cors = require("cors");
 const app: Application = express();
 const port = process.env.PORT || 5000;
 
+app.use(cors());
 const passportSetup = require("./config/");
+app.use(cookieParser());
 app.use(
   cookieSession({
     name: "session",
-    keys: [process.env.COOKIE_KEY!]
+    keys: [process.env.COOKIE_KEY!],
   })
 );
 
-app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser());
 
 app.use("/auth", authRouter);
 app.use("/projects", projectsRouter);

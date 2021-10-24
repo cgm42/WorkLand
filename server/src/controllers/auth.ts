@@ -3,7 +3,6 @@ import express, { Request, Response } from "express";
 
 function loginSuccess(req: Request, res: Response) {
   if (req.user) {
-    console.log("req.user :>> ", req.user);
     res.json({
       success: true,
       message: "user has successfully authenticated",

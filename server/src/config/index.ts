@@ -33,13 +33,14 @@ passport.use(
       // find current user in UserModel
       console.log("profile :>> ", profile);
       let user = await userDb.getPersonByGitHub(profile.id);
-
+      console.log("user :>> ", user);
       // create new user if the database doesn't have this user
       if (!user.rows.length) {
+        console.log("are you sure?");
         await userDb.createPersonByGitHub(
           profile.id,
-          profile.name,
-          profile.avatar_url
+          profile.displayName,
+          profile.photos[0].value
         );
         user = await userDb.getPersonByGitHub(profile.id);
       }

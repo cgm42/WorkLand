@@ -8,10 +8,10 @@ function getPerson(id: number) {
 
 function getPersonByGitHub(githubId: number) {
   return pool.query(
-    `SELECT users.id, users.name, oauth.oauth_id
+    `SELECT users.id, users.name, oauth_mapping.oauth_id
       FROM users
-      JOIN oauth_mapping on oauth.user_id = users.id
-      WHERE oauth.oauth_id = $1`,
+      JOIN oauth_mapping on oauth_mapping.user_id = users.id
+      WHERE oauth_mapping.oauth_id = $1`,
     [githubId]
   );
 }
@@ -27,8 +27,7 @@ async function createPersonByGitHub(
     const insertPersonText = //TODO: Update query values
       "INSERT INTO users(name) VALUES('TEST') RETURNING users.id";
     const insertedUserId = (await client.query(insertPersonText))
-      .rows[0]
-      .users.id;
+      .rows[0].id;
 
     const insertText = `
       INSERT INTO oauth_mapping(user_id, oauth_provider, oauth_id) 

@@ -17,7 +17,7 @@ const cors = require("cors");
 const app: Application = express();
 const port = process.env.PORT || 5000;
 
-// const passportSetup = require("./config/");
+const passportSetup = require("./config/");
 app.use(
   cookieSession({
     name: "session",
@@ -60,10 +60,10 @@ app.get("/", authCheck, (req: Request, res: Response) => {
   });
 });
 
-app.get("/login/:id", (req: Request, res: Response) => {
-  console.log(req.user);
-  res.redirect('/');
-})
+// app.get("/login/:id", (req: Request, res: Response) => {
+//   console.log(req.user);
+//   res.redirect('/');
+// })
 
 app.get("/logout", (req: Request, res: Response) => {
   req.logOut();

@@ -12,10 +12,16 @@ import axios from "axios";
 
 const UserDashboard = () => {
   const [projects, setProjects] = useState([]);
+  const [meetings, setMeetings] = useState([]);
 
   useEffect(() => {
-    axios.get("/projects").then((all) => {
-      setProjects(all.data);
+    Promise.all([
+      axios.get("/projects"),
+      axios.get("/meetings")
+    ])
+      .then((all) => {
+        setProjects(all[0].data);
+        setMeetings(all[1].data);
     });
   }, []);
 
@@ -27,15 +33,7 @@ const UserDashboard = () => {
         </div>
 
         <section className="user-info-cards">
-          <div className="card rpgui-container framed float">
-
-            <header>Meetings Today</header>
-            <ul>
-              <li>Google: 9AM</li>
-              <li>Facebook: 11AM</li>
-              <li>Youtube: 4PM</li>
-            </ul>
-          </div>
+          <UserInfoCard heading={"Meetings Today"} meetings={meetings} />
           <div className="card rpgui-container framed float">
             <header>My tasks</header>
             <ul>

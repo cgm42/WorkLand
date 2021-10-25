@@ -26,7 +26,9 @@ function Form(props) {
           name={name}
         />
       )
-  })
+  });
+
+  console.log("users list array:", usersListArray)
 
 
   const validate = () => {

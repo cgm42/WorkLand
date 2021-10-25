@@ -13,6 +13,7 @@ export default function applicationDataReducer(state, action) {
 
 const setApplicationData = (state, action) => ({
   ...state,
+  users: action.value.users,
   projects: action.value.projects
 });
 

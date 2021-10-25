@@ -11,6 +11,7 @@ import usersTasksRouter from "./routes/users_tasks";
 import meetingsRouter from "./routes/meetings";
 import usersMeetingsRouter from "./routes/users_meetings";
 import messagesRouter from "./routes/messages";
+import usersRouter from "./routes/users";
 import { getPersonByGitHub } from "./models/person";
 import { socketServer } from "./socketServer";
 const cors = require("cors");
@@ -39,6 +40,7 @@ app.use("/users_tasks", usersTasksRouter);
 app.use("/meetings", meetingsRouter);
 app.use("/users_meetings", usersMeetingsRouter);
 app.use("/messages", messagesRouter);
+app.use("/users", usersRouter);
 
 const authCheck = (req: Request, res: Response, next: NextFunction) => {
   if (!req.user) {

@@ -13,20 +13,23 @@ export default function useApplicationData() {
   });
 
   const [state, dispatch] = useReducer(applicationDataReducer, {
+    users: [],
     projects: [],
     current_project: 1
   })
 
   useEffect(() => {
     Promise.all([
+      axios.get("/users"),
       axios.get("/projects")
     ])
       .then(all => {
-        console.log(all[0].data)
+        console.log("in main query",all[0].data)
         dispatch({
           type: SET_APPLICATION_DATA,
           value: {
-            projects: all[0].data
+            users: all[0].data,
+            projects: all[1].data
           }
         })
       });

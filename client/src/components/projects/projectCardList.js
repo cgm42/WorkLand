@@ -5,25 +5,37 @@ import "../rpgui.css";
 import ProjectCard from './projectCard';
 import Form from './Form';
 import Button from '../button/Button';
-import axios from "axios";
+import User from '../users/User';
 import useApplicationData from '../../hooks/useApplicationData';
+
 
 function ProjectCardList(props) {
   const { state, createProject } = useApplicationData();
   const [showForm, setShowForm] = useState(false);
 
-  // console.log
-  
-
   const projectsList = state.projects.map(project => {
     return (
       <ProjectCard
         key={project.id}
+        id={project.id}
         name={project.name}
         description={project.description}
       />
     )
   });
+
+  const usersList = state.users.map(user => {
+    console.log("in usersList:", user.name);
+    const {id, name, avatar} = user;
+    return (
+      <User 
+        key={id}
+        id={id}
+        avatar={avatar}
+        name={name}
+      />
+    )
+  })
 
 
   return (
@@ -38,6 +50,7 @@ function ProjectCardList(props) {
         {showForm ? 
           <Form 
             setShowForm={setShowForm}
+            usersList={usersList}
             onSave={createProject}
           /> 
           :

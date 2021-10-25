@@ -12,7 +12,8 @@ function Form(props) {
   // const [endDate, setEndDate] = useState(props.endDate || null);
   const [error, setError] = useState("");
 
-  const {setShowForm, onSave} = props;
+  const {usersList, setShowForm, onSave} = props;
+
 
   const validate = () => {
     const project = {
@@ -57,6 +58,13 @@ function Form(props) {
               setError("");
             }}
           />
+        </label>
+
+        <label>
+          Team members:
+          <ul className="rpgui">
+            {usersList}
+          </ul>
         </label>
         
         <label>

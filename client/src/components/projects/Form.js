@@ -7,23 +7,27 @@ function Form(props) {
   const [name, setName] = useState(props.name || '');
   const [description, setDescription] = useState(props.description || '');
   const [users, setUsers] = useState(props.users || []);
-  const [startDate, setStartDate] = useState('2021-10-25');
-  // const [startDate, setStartDate] = useState(props.startDate || null);
-  const [endDate, setEndDate] = useState('2021-10-30');
-  // const [endDate, setEndDate] = useState(props.endDate || null);
   const [error, setError] = useState('');
-  const [startValue, onStart] = useState(new Date());
-  const [endValue, onEnd] = useState(new Date());
+  const [startDate, onStart] = useState(new Date());
+  const [endDate, onEnd] = useState(new Date());
   
-  const { setShowForm, onSave } = props;
 
-  console.log(name);
+  const {usersList, setShowForm, onSave} = props;
+
 
   const validate = () => {
-    const creatorID = 10;
+    const project = {
+      creatorID: 10,
+      name,
+      description,
+      startDate,
+      endDate
+    }
+    
     setError('');
     setShowForm(false);
-    onSave(creatorID, name, description, startDate, endDate);
+    onSave(project);
+    
   };
 
   const cancel = () => {
@@ -32,11 +36,13 @@ function Form(props) {
 
   return (
     <div className='rpgui-container framed'>
+      
       <form
         className='form'
         autoComplete='off'
         onSubmit={(e) => e.preventDefault()}
       >
+        
         <label>
           Project name:
           <input
@@ -60,17 +66,28 @@ function Form(props) {
             }}
           />
         </label>
+        
+        <label>
+          Team members:
+          <ul className="rpgui">
+            {usersList}
+          </ul>
+        </label>
+
         <div className='date'>
           <label>
             Start date:
-            <DatePicker onChange={onStart} value={startValue} className='date-size'/>
+            <DatePicker onChange={onStart} value={startDate} className='date-size'/>
           </label>
+
 
           <label>
             End date:
-            <DatePicker onChange={onEnd} value={endValue} className='date-size'/>
+            <DatePicker onChange={onEnd} value={endDate} className='date-size'/>
           </label>
+
         </div>
+
       </form>
       <div className='cancel-submit'>
         <Button onClick={cancel}>Cancel</Button>

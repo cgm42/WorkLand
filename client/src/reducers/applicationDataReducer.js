@@ -1,4 +1,5 @@
 export const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
+export const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 
 export default function applicationDataReducer(state, action) {
   if (reducers[action.type]) {
@@ -12,21 +13,16 @@ export default function applicationDataReducer(state, action) {
 
 const setApplicationData = (state, action) => ({
   ...state,
+  users: action.value.users,
   projects: action.value.projects
 });
 
-const createProject = (state, action) => {
-  const projects = [
-    ...state.projects,
-    action.value.project
-  ]
-  
-  return {
-    ...state,
-    projects
-  }
-};
+const setCurrentProject = (state, action) => ({
+  ...state,
+  current_project: action.id
+})
 
 const reducers = {
-  SET_APPLICATION_DATA: setApplicationData
+  SET_APPLICATION_DATA: setApplicationData,
+  SET_CURRENT_PROJECT: setCurrentProject
 }

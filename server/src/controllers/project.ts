@@ -2,19 +2,12 @@ import { Request, Response } from "express";
 import camelcaseKeys from "camelcase-keys";
 
 import * as model from "../models/project";
+import * as user_project_model from "../models/user_project";
 
 async function getProjects(req: Request, res: Response) {
-  // let user_id;
+  const user = req.user as any;
 
-  // if(req.isAuthenticated()) {
-  //   const reqUser = req.user as any;
-  //   console.log(reqUser);
-  //   user_id = reqUser.user_id;
-  // }
-
-  const user_id = 7;
-
-  const queryResult = await model.getAllProjects(user_id);
+  const queryResult = await model.getAllProjects(user.id);
   res.send(queryResult.rows.map((row: String) => camelcaseKeys(row)));
 };
 
@@ -25,20 +18,25 @@ async function getProject(req: Request, res: Response) {
 };
 
 async function addProject(req: Request, res: Response) {
-  // const project = req.body
-  console.log(req.body);
-  const {creatorID, projectName, description, startDate, endDate} = req.body;
+  const {creatorID, name, description, startDate, endDate} = req.body;
 
   const project = {
     creator_id: creatorID,
-    name: projectName,
-    description: description,
+    name,
+    description,
     start_date: startDate,
     end_date: endDate,
     background_img: ''
   }
 
   const queryResult = await model.addProject(project)
+
+  const userProject = {
+    user_id: creatorID,
+    project_id: queryResult.rows[0].id,
+    role: "Project Manager"
+  }
+  user_project_model.addUserToProject(userProject)
   res.send(camelcaseKeys(queryResult.rows[0]))
 };
 

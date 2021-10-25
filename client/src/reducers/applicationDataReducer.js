@@ -20,7 +20,7 @@ const setApplicationData = (state, action) => ({
 const setCurrentProject = (state, action) => ({
   ...state,
   current_project: action.id
-})
+});
 
 const reducers = {
   SET_APPLICATION_DATA: setApplicationData,

@@ -42,6 +42,7 @@ export default function useApplicationData() {
       dispatch({
         type: SET_APPLICATION_DATA,
         value: {
+          users: state.users,
           projects: data.data
         }
       })

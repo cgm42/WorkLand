@@ -5,7 +5,6 @@ import "../rpgui.css";
 import ProjectCard from './projectCard';
 import Form from './Form';
 import Button from '../button/Button';
-import User from '../users/User';
 import useApplicationData from '../../hooks/useApplicationData';
 
 
@@ -23,22 +22,6 @@ function ProjectCardList(props) {
       />
     )
   });
-
-  // const usersList = state.users.map(user => {
-  //   console.log("in usersList:", user.name);
-  //   const {id, name, avatar} = user;
-  //   if (showForm) {
-  //     return (
-  //       <User
-  //         key={id}
-  //         id={id}
-  //         avatar={avatar}
-  //         name={name}
-  //       />
-  //     )
-  //   }
-  // })
-
 
   return (
     <div className='rpgui-content rpgui-container framed-golden-2'>

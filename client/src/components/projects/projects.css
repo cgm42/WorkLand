@@ -36,8 +36,14 @@
   justify-content: space-around;
 }
 
+.team-date-container {
+  display:flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
 .users-container {
-  height:80px;
+  height:150px;
   overflow:auto;
   width: 200px;
   padding:0
@@ -68,10 +74,14 @@
 .date {
   display:flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .date-size input{
   padding: 0;
+  height: 35px !important;
+  font-size: 12px;
+  margin: 0px 12px;
 }
 
 

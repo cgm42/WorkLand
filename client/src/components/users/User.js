@@ -10,7 +10,7 @@ export default function User(props) {
   )
 
   return (
-    <li id={id} className="user-list">
+    <li id={id} className={userClass}>
       <img src={avatar}/>
       <p>{name}</p>
     </li>

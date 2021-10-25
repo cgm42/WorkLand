@@ -129,7 +129,7 @@ inside your html file.
   content: "";
   width: 34px;
   display: block;
-  height: 110%;
+  height: 100%;
   background: transparent url("img/button-golden-left.png") no-repeat right center;
   background-size: 100% 100%;
   margin: 0 0 0 0;
@@ -143,7 +143,7 @@ inside your html file.
   display: block;
   content: "";
   width: 34px;
-  height: 110%;
+  height: 100%;
   background: transparent url("img/button-golden-right.png") no-repeat left center;
   background-size: 100% 100%;
   margin: 0 0 0 0;

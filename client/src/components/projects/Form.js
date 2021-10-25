@@ -11,23 +11,14 @@ function Form(props) {
   const [error, setError] = useState('');
   const [startDate, onStart] = useState(new Date());
   const [endDate, onEnd] = useState(new Date());
-  
 
-  const {usersList, setShowForm, onSave} = props;
+  const { usersList, setShowForm, onSave } = props;
 
-  const usersListArray = usersList.map(user => {
-    console.log("in usersList:", user.name);
-    const {id, name, avatar} = user;
-      return (
-        <User
-          key={id}
-          id={id}
-          avatar={avatar}
-          name={name}
-        />
-      )
-  })
-
+  const usersListArray = usersList.map((user) => {
+    console.log('in usersList:', user.name);
+    const { id, name, avatar } = user;
+    return <User key={id} id={id} avatar={avatar} name={name} />;
+  });
 
   const validate = () => {
     const project = {
@@ -36,12 +27,11 @@ function Form(props) {
       description,
       startDate,
       endDate
-    }
-    
+    };
+
     setError('');
     setShowForm(false);
     onSave(project);
-    
   };
 
   const cancel = () => {
@@ -50,13 +40,11 @@ function Form(props) {
 
   return (
     <div className='rpgui-container framed'>
-      
       <form
         className='form'
         autoComplete='off'
         onSubmit={(e) => e.preventDefault()}
       >
-        
         <label>
           Project name:
           <input
@@ -80,28 +68,33 @@ function Form(props) {
             }}
           />
         </label>
-        
-        <label>
-          Team members:
-          <ul className="rpgui users-container">
-            {usersListArray}
-          </ul>
-        </label>
 
-        <div className='date'>
+        <div className="team-date-container">
           <label>
-            Start date:
-            <DatePicker onChange={onStart} value={startDate} className='date-size'/>
+            Team members:
+            <ul className='rpgui users-container'>{usersListArray}</ul>
           </label>
 
+          <div className='date'>
+            <label>
+              Start date:
+              <DatePicker
+                onChange={onStart}
+                value={startDate}
+                className='date-size'
+              />
+            </label>
 
-          <label>
-            End date:
-            <DatePicker onChange={onEnd} value={endDate} className='date-size'/>
-          </label>
-
+            <label>
+              End date:
+              <DatePicker
+                onChange={onEnd}
+                value={endDate}
+                className='date-size'
+              />
+            </label>
+          </div>
         </div>
-
       </form>
       <div className='cancel-submit'>
         <Button onClick={cancel}>Cancel</Button>

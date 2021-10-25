@@ -4,23 +4,24 @@ import ProjectCard from './ProjectCard';
 import Form from './Form';
 import Button from '../button/Button';
 import axios from "axios";
+import useApplicationData from '../../hooks/useApplicationData';
 
 function ProjectCardList(props) {
-  const [projects, setProjects] = useState([]);
+  const { state } = useApplicationData();
   const [showForm, setShowForm] = useState(false);
   
-  useEffect(() => {
-    axios.get("/projects")
-    .then(projects => {
-      setProjects(projects.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("/projects")
+  //   .then(projects => {
+  //     setProjects(projects.data);
+  //   });
+  // }, []);
   
   const createProject = async (creatorID, projectName, description, startDate, endDate) => {
     await axios.post('/projects/', {creatorID, projectName, description, startDate, endDate})
   }
 
-  const projectsList = projects.map(project => {
+  const projectsList = state.projects.map(project => {
     return (
       <ProjectCard
         key={project.id}

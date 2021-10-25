@@ -5,9 +5,10 @@ import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { globalReducer } from "./reducers/globalReducer";
+import { applicationDataReducer } from "./reducers/applicationDataReducer";
 import axios from "axios";
 const store = configureStore({
-  reducer: globalReducer,
+  reducer: globalReducer
 });
 
 // if (process.env.REACT_APP_BACKEND_URL) {

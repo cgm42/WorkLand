@@ -5,6 +5,7 @@ import { BsGithub } from "react-icons/bs";
 
 const Login = () => {
   const userState = useSelector((state) => {
+    console.log('state:', state);
     return state.user;
   });
   console.log(process.env);

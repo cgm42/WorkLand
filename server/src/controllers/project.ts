@@ -12,7 +12,7 @@ async function getProjects(req: Request, res: Response) {
   //   user_id = reqUser.user_id;
   // }
 
-  const user_id = 10;
+  const user_id = 7;
 
   const queryResult = await model.getAllProjects(user_id);
   res.send(queryResult.rows.map((row: String) => camelcaseKeys(row)));

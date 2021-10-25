@@ -44,7 +44,7 @@ function Form(props) {
 
         <label>
           Description:
-          <input 
+          <textarea 
             value={description}
             type="text"
             onChange={(e) => {
@@ -56,7 +56,7 @@ function Form(props) {
         
         <label>
           Start date:
-          <input 
+          <input
             value={startDate}
           />
         </label>

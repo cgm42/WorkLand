@@ -1,15 +1,29 @@
-import { useState, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import axios from "axios";
+import applicationDataReducer, {
+  SET_APPLICATION_DATA
+} from "../reducers/applicationDataReducer"
 
 export default function useApplicationData() {
+  const [state, dispatch] = useReducer(applicationDataReducer, {
+    projects: []
+  })
+
   useEffect(() => {
     Promise.all([
-      axios.get("/projects"),
-      axios.get("/meetings")
+      axios.get("/projects")
     ])
       .then(all => {
-        console.log(all[0].data);
-        console.log(all[1].data);
-      })
+        dispatch({
+          type: SET_APPLICATION_DATA,
+          value: {
+            projects: all[0].data
+          }
+        })
+      });
   }, []);
-}
+
+  return {
+    state
+  }
+};

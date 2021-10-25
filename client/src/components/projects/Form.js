@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import Button from '../button/Button';
 import DatePicker from 'react-date-picker';
-// import UserList from "../Users/UserList";
 import User from '../users/User';
+import { useSelector } from "react-redux";
 
 function Form(props) {
+  const userState = useSelector((state) => {
+    console.log('state:', state);
+    return state.user;
+  });
+
+  console.log(userState);
+
   const [name, setName] = useState(props.name || '');
   const [description, setDescription] = useState(props.description || '');
   const [users, setUsers] = useState(props.users || []);
@@ -15,7 +22,6 @@ function Form(props) {
   const {usersList, setShowForm, onSave} = props;
 
   const usersListArray = usersList.map(user => {
-    console.log("in usersList:", user.name);
     const {id, name, avatar} = user;
       return (
         <User
@@ -27,16 +33,26 @@ function Form(props) {
       )
   });
 
-  console.log("users list array:", usersListArray)
+  
 
   const validate = () => {
     const project = {
-      creatorID: 10,
+      creatorID: userState.id,
       name,
       description,
       startDate,
       endDate
     };
+
+    const selectedUsers = document.getElementsByClassName('user-list--selected');
+
+    const selectedUsersIDs = [];
+
+    for (const user of selectedUsers) {
+      selectedUsersIDs.push(user.id);
+    }
+
+    console.log(selectedUsersIDs);
 
     setError('');
     setShowForm(false);

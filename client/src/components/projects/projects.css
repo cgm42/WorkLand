@@ -43,9 +43,9 @@
 }
 
 .users-container {
-  height:150px;
+  height: 300px;
   overflow:auto;
-  width: 200px;
+  width: 300px;
   padding:0
 }
 

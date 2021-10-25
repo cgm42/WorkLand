@@ -24,18 +24,20 @@ function ProjectCardList(props) {
     )
   });
 
-  const usersList = state.users.map(user => {
-    console.log("in usersList:", user.name);
-    const {id, name, avatar} = user;
-    return (
-      <User 
-        key={id}
-        id={id}
-        avatar={avatar}
-        name={name}
-      />
-    )
-  })
+  // const usersList = state.users.map(user => {
+  //   console.log("in usersList:", user.name);
+  //   const {id, name, avatar} = user;
+  //   if (showForm) {
+  //     return (
+  //       <User
+  //         key={id}
+  //         id={id}
+  //         avatar={avatar}
+  //         name={name}
+  //       />
+  //     )
+  //   }
+  // })
 
 
   return (
@@ -50,7 +52,7 @@ function ProjectCardList(props) {
         {showForm ? 
           <Form 
             setShowForm={setShowForm}
-            usersList={usersList}
+            usersList={state.users}
             onSave={createProject}
           /> 
           :

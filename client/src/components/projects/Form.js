@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '../button/Button';
 import DatePicker from 'react-date-picker';
 // import UserList from "../Users/UserList";
+import User from '../users/User';
 
 function Form(props) {
   const [name, setName] = useState(props.name || '');
@@ -13,6 +14,19 @@ function Form(props) {
   
 
   const {usersList, setShowForm, onSave} = props;
+
+  const usersListArray = usersList.map(user => {
+    console.log("in usersList:", user.name);
+    const {id, name, avatar} = user;
+      return (
+        <User
+          key={id}
+          id={id}
+          avatar={avatar}
+          name={name}
+        />
+      )
+  })
 
 
   const validate = () => {
@@ -70,7 +84,7 @@ function Form(props) {
         <label>
           Team members:
           <ul className="rpgui">
-            {usersList}
+            {usersListArray}
           </ul>
         </label>
 

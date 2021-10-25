@@ -14,13 +14,18 @@ function Form(props) {
 
   const {setShowForm, onSave} = props;
 
-  console.log(name);
-
   const validate = () => {
-    const creatorID = 10;
+    const project = {
+      creatorID: 10,
+      name,
+      description,
+      startDate,
+      endDate
+    }
+
     setError("");
     setShowForm(false);
-    onSave(creatorID, name, description, startDate, endDate);
+    onSave(project);
   }
 
   const cancel = () => {

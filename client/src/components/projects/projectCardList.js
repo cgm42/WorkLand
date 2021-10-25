@@ -7,19 +7,11 @@ import axios from "axios";
 import useApplicationData from '../../hooks/useApplicationData';
 
 function ProjectCardList(props) {
-  const { state } = useApplicationData();
+  const { state, createProject } = useApplicationData();
   const [showForm, setShowForm] = useState(false);
+
+  // console.log
   
-  // useEffect(() => {
-  //   axios.get("/projects")
-  //   .then(projects => {
-  //     setProjects(projects.data);
-  //   });
-  // }, []);
-  
-  const createProject = async (creatorID, projectName, description, startDate, endDate) => {
-    await axios.post('/projects/', {creatorID, projectName, description, startDate, endDate})
-  }
 
   const projectsList = state.projects.map(project => {
     return (

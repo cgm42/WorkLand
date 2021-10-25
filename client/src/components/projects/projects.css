@@ -33,3 +33,12 @@
   display:flex;
   justify-content: space-around;
 }
+
+.date {
+  display:flex;
+  flex-direction: column;
+}
+
+.date-size input{
+  padding: 0;
+}

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './projects.css';
-import ProjectCard from './ProjectCard';
+import "nes.css/css/nes.min.css";
+import "../rpgui.css";
+import ProjectCard from './projectCard';
 import Form from './Form';
 import Button from '../button/Button';
 import axios from "axios";
@@ -33,13 +35,14 @@ function ProjectCardList(props) {
 
 
   return (
-    <div className='rpgui-content'>
+    <div className='rpgui-content rpgui-container framed-golden-2'>
       <div className='welcome'>
-        <h1>Projects</h1>
+        <h1>Project Dashboard</h1>
       </div>
 
       <section>
         {projectsList}
+        <div className='new-project'>
         {showForm ? 
           <Form 
             setShowForm={setShowForm}
@@ -51,6 +54,7 @@ function ProjectCardList(props) {
           >
             New Project
           </Button>}
+        </div>
       </section>
     </div>
   );

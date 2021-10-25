@@ -1,16 +1,21 @@
 /* Style the sidebar - fixed full height */
 .sidebar {
-  height: 100%;
-  width: 80px;
+  /* height: 100%; */
+  width: 100%;
   position: fixed;
   z-index: 1;
-  top: 0;
-  left: 95%;
   background-color: #fb6262;
-  overflow-x: hidden;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+}
+
+.sidebar-top {
+  width: inherit;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    justify-content: flex-end;
 }
 
 /* Style sidebar links */

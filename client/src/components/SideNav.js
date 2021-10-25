@@ -8,7 +8,7 @@ import { RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import Dashboard from "../pages/Dashboard";
-import ProjectCardList from "./projects/ProjectCardList";
+import ProjectCardList from "./projects/projectCardList";
 import Meeting from "../pages/Meeting";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
@@ -46,27 +46,7 @@ const Sidenav = () => {
             </Link>
           </li>
         </div>
-
-        <div className="sidebar-bottom">
-          <li>
-            <Link to="/">
-              <FaSpotify></FaSpotify>
-            </Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/">
-              <BsFillAlarmFill></BsFillAlarmFill>
-            </Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/login">
-              <RiLogoutCircleFill></RiLogoutCircleFill>
-            </Link>
-          </li>
         </div>
-      </div>
 
       <Switch>
         <Route path="/" exact>

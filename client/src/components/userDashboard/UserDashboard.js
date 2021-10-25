@@ -1,8 +1,8 @@
 import React from "react";
 import "nes.css/css/nes.min.css";
 import "../rpgui.css";
-import "./userDashboard.css";
 import "../styles/animations.css";
+import "./userDashboard.css";
 import { FaUserAlt } from "react-icons/fa";
 import { FcPieChart } from "react-icons/fc";
 import { useState, useEffect } from "react";
@@ -24,7 +24,7 @@ function UserDashboard() {
   }, []);
 
   return (
-    <div className="rpgui-content golden">
+    <div className="rpgui-content">
       <div className="dashboard-layout rpgui-container framed-golden-2">
         <div className="welcome">
           <h1>Dashboard</h1>

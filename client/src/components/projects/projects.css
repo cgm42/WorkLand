@@ -25,6 +25,8 @@
   color:rgb(252, 252, 252);
   text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38), -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
 }
+
+/*form */
 .new-project {
   display: flex;
   justify-content: center;
@@ -32,6 +34,35 @@
 .cancel-submit {
   display:flex;
   justify-content: space-around;
+}
+
+.users-container {
+  height:80px;
+  overflow:auto;
+  width: 200px;
+  padding:0
+}
+
+.user-list {
+  list-style-type: none;
+  display: flex;
+  margin: 20px;
+}
+
+.user-list img{
+  height: 30px;
+  width:30px;
+  background-color:none;
+}
+
+.user-list p{
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  font-size:15px;
 }
 
 .date {
@@ -42,3 +73,5 @@
 .date-size input{
   padding: 0;
 }
+
+

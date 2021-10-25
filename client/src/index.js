@@ -7,10 +7,7 @@ import { Provider } from "react-redux";
 import { mapReducer } from "./reducers/mapReducer";
 import axios from "axios";
 import { socketRTK } from "./middleware/socketRTK";
-const reducer = {
-  map: mapReducer,
-  // visibility: visibilityReducer,
-};
+
 const store = configureStore({
   reducer: mapReducer,
   middleware: (getDefaultMiddleware) =>

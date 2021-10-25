@@ -1,20 +1,20 @@
-import { createReducer, createAction } from "@reduxjs/toolkit";
+import { createReducer, createAction } from '@reduxjs/toolkit';
 import {
   directions,
   modifier,
   maxSteps,
   playerTemplate,
-} from "../utils/constants";
-import { initX, initY } from "../utils/constants";
+} from '../utils/constants';
+import { initX, initY } from '../utils/constants';
 
 //a temp user id
 
 const initialState = {
-  localID: "local",
+  localID: 'local',
   user: {
-    id: "", //id_from_db
-    name: "",
-    avatar: "",
+    id: '', //id_from_db
+    name: '',
+    avatar: '',
   },
   players: {
     // [id_from_db]: {
@@ -39,16 +39,22 @@ const initialState = {
     modalCanOpen: false,
     routeName: null,
   },
+  video: {
+    localSocketId: '',
+    peers: [], //[{peerId: peerObj}]
+    socketArr: [], //for rendering
+  },
 };
-export const SET_USER = createAction("SET_USER");
-export const WALK = createAction("WALK");
-export const UPDATE_OTHERS = createAction("UPDATE_OTHERS");
-export const SELECT_AVATAR = createAction("SELECT_AVATAR");
-export const WALK_IN_PLACE = createAction("WALK_IN_PLACE");
-export const SET_MAP_GUIDE = createAction("SET_MAP_GUIDE");
-export const HIDE_MAP_GUIDE = createAction("HIDE_MAP_GUIDE");
-export const TOGGLE_MODAL_CAN_OPEN = createAction("TOGGLE_MODAL_CAN_OPEN");
-
+export const SET_USER = createAction('SET_USER');
+export const WALK = createAction('WALK');
+export const UPDATE_OTHERS = createAction('UPDATE_OTHERS');
+export const SELECT_AVATAR = createAction('SELECT_AVATAR');
+export const WALK_IN_PLACE = createAction('WALK_IN_PLACE');
+export const SET_MAP_GUIDE = createAction('SET_MAP_GUIDE');
+export const HIDE_MAP_GUIDE = createAction('HIDE_MAP_GUIDE');
+export const TOGGLE_MODAL_CAN_OPEN = createAction('TOGGLE_MODAL_CAN_OPEN');
+export const JOIN_VIDEO = createAction('JOIN_VIDEO');
+export const SET_VIDEO_PARTICIPANTS = createAction('SET_VIDEO_PARTICIPANTS');
 export const mapReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
   builder.addCase(SET_USER, (state, action) => {
@@ -58,8 +64,8 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.localID = id;
     state.user.id = id;
     state.players[id] = { ...playerTemplate };
-    state.players[id]["id"] = id;
-    state.players[id]["name"] = action.payload.name;
+    state.players[id]['id'] = id;
+    state.players[id]['name'] = action.payload.name;
   });
 
   //WALK: handle movement animation (turning and walking)
@@ -68,16 +74,16 @@ export const mapReducer = createReducer(initialState, (builder) => {
     const dir = action.payload.dir;
     let newX, newY, newDir;
     //check if walking
-    if (state["players"][id]["dir"] === dir) {
-      newX = state.players[id]["x"] + modifier[dir]["x"];
-      newY = state.players[id]["y"] + modifier[dir]["y"];
+    if (state['players'][id]['dir'] === dir) {
+      newX = state.players[id]['x'] + modifier[dir]['x'];
+      newY = state.players[id]['y'] + modifier[dir]['y'];
     } else {
       // else turning
       newDir = dir;
     }
     const newStep =
-      state.players[id]["step"] < maxSteps - 1
-        ? state.players[id]["step"] + 1
+      state.players[id]['step'] < maxSteps - 1
+        ? state.players[id]['step'] + 1
         : 0;
 
     // console.log("id :>> ", id);
@@ -87,8 +93,8 @@ export const mapReducer = createReducer(initialState, (builder) => {
     // console.log("newY :>> ", newX);
     // console.log("newDir :>> ", newX);
 
-    state.players[id].x = newX ? newX : state.players[id]["x"];
-    state.players[id].y = newY ? newY : state.players[id]["y"];
+    state.players[id].x = newX ? newX : state.players[id]['x'];
+    state.players[id].y = newY ? newY : state.players[id]['y'];
     state.players[id].dir = newDir ? newDir : state.players[id].dir;
     state.players[id].step = newStep;
     return state;
@@ -98,12 +104,12 @@ export const mapReducer = createReducer(initialState, (builder) => {
     const id = action.payload.id;
     const dir = action.payload.dir;
     let newDir;
-    if (state["players"][id]["dir"] !== dir) {
+    if (state['players'][id]['dir'] !== dir) {
       newDir = dir;
     }
     const newStep =
-      state.players[id]["step"] < maxSteps - 1
-        ? state.players[id]["step"] + 1
+      state.players[id]['step'] < maxSteps - 1
+        ? state.players[id]['step'] + 1
         : 0;
     state.players[id].dir = newDir ? newDir : state.players[id].dir;
     state.players[id].step = newStep;
@@ -133,5 +139,11 @@ export const mapReducer = createReducer(initialState, (builder) => {
 
   builder.addCase(SELECT_AVATAR, (state, action) => {
     state.players[state.localID].skin = action.payload.skin;
+  });
+  builder.addCase(JOIN_VIDEO, (state, action) => {
+    //do nothing!
+  });
+  builder.addCase(SET_VIDEO_PARTICIPANTS, (state, action) => {
+    state.video.socketArr = action.payload;
   });
 });

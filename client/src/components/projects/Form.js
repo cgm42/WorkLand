@@ -73,8 +73,10 @@ function Form(props) {
           />
         </label>
       </form>
+      <div className="cancel-submit">
       <Button onClick={cancel}>Cancel</Button>
       <Button onClick={validate}>Submit</Button>
+      </div>
     </div>
   )
 };

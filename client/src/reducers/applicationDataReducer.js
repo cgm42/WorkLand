@@ -15,6 +15,18 @@ const setApplicationData = (state, action) => ({
   projects: action.value.projects
 });
 
+const createProject = (state, action) => {
+  const projects = [
+    ...state.projects,
+    action.value.project
+  ]
+  
+  return {
+    ...state,
+    projects
+  }
+};
+
 const reducers = {
   SET_APPLICATION_DATA: setApplicationData
 }

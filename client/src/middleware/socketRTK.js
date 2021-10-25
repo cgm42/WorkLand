@@ -1,13 +1,14 @@
+// middleware example link: https://gist.github.com/markerikson/3df1cf5abbac57820a20059287b4be58
 import { wsEndpoint } from "../utils/constants";
 import { io } from "socket.io-client";
-import Peer from "simple-peer";
-import {
-  INITCALLACCEPTED,
-  RECEIVECALL,
-  SETSOCKETID,
-  ACCEPTCALL,
-} from "../reducers/globalReducer";
-export const socketRTK = (url) => {
+// import Peer from "simple-peer";
+// import {
+//   INITCALLACCEPTED,
+//   RECEIVECALL,
+//   SETSOCKETID,
+//   ACCEPTCALL,
+// } from "../reducers/mapReducer";
+export const socketRTK = () => {
   return (storeAPI) => {
     const socket = io(wsEndpoint);
     // socket.on("getId", (id) => {
@@ -15,17 +16,17 @@ export const socketRTK = (url) => {
     // });
     socket.on("callUser", (data) => {
       console.log("call user recevied at B", data);
-      storeAPI.dispatch(
-        RECEIVECALL({
-          receivingCall: true,
-          caller: data.from,
-          name: data.name,
-          callerSignal: data.signal,
-        })
-      );
+      // storeAPI.dispatch(
+      //   RECEIVECALL({
+      //     receivingCall: true,
+      //     caller: data.from,
+      //     name: data.name,
+      //     callerSignal: data.signal,
+      //   })
+      // );
     });
     socket.on("callAccepted", (signal) => {
-      storeAPI.dispatch(INITCALLACCEPTED({ callAccepted: true, signal }));
+      // storeAPI.dispatch(INITCALLACCEPTED({ callAccepted: true, signal }));
     });
     socket.on("movementMessage", (arg) => {
       // console.log("MW on message payload :>> ", arg);

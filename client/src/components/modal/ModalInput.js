@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import { avatarSkinArr } from "../../utils/constants";
-import { SELECT_AVATAR } from "../../reducers/globalReducer";
+import { SELECT_AVATAR } from "../../reducers/mapReducer";
 import "./modal.css";
 function ModalInput({ isOpen }) {
   const [modalIsOpen, setModalIsOpen] = useState(isOpen);

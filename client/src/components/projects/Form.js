@@ -12,13 +12,22 @@ function Form(props) {
   const [startDate, onStart] = useState(new Date());
   const [endDate, onEnd] = useState(new Date());
 
-  const { usersList, setShowForm, onSave } = props;
+  const {usersList, setShowForm, onSave} = props;
 
-  const usersListArray = usersList.map((user) => {
-    console.log('in usersList:', user.name);
-    const { id, name, avatar } = user;
-    return <User key={id} id={id} avatar={avatar} name={name} />;
+  const usersListArray = usersList.map(user => {
+    console.log("in usersList:", user.name);
+    const {id, name, avatar} = user;
+      return (
+        <User
+          key={id}
+          id={id}
+          avatar={avatar}
+          name={name}
+        />
+      )
   });
+
+  console.log("users list array:", usersListArray)
 
   const validate = () => {
     const project = {

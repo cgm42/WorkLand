@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
-import { TOGGLE_MODAL_CAN_OPEN } from "../../reducers/globalReducer";
+import { TOGGLE_MODAL_CAN_OPEN } from "../../reducers/mapReducer";
 import "./modal.css";
 import UserDashboard from "../userDashboard/UserDashboard";
 
@@ -21,7 +21,7 @@ function MainModal(props) {
         </button>
         {mapRoute === "kanban" ? <div>kanban</div> : <div />}
         <div>
-        <UserDashboard />
+          <UserDashboard />
         </div>
       </Modal>
     </>

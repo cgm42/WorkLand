@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_USER } from "../reducers/globalReducer";
+import { SET_USER } from "../reducers/mapReducer";
 import Modal from "react-modal";
 import "nes.css/css/nes.min.css";
 import "../components/styles/animations.css";

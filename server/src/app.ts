@@ -74,6 +74,7 @@ app.get("/user", (req: Request, res: Response) => {
   if (req.isAuthenticated()) {
     const reqUser = req.user as any;
     getPersonByGitHub(reqUser.oauth_id).then((data) => {
+      console.log("user authenticated");
       res.status(200).send(data.rows[0]);
     });
     return;

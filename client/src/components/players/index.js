@@ -7,7 +7,7 @@ import {
   WALK_IN_PLACE,
   SET_MAP_GUIDE,
   TOGGLE_MODAL_CAN_OPEN,
-} from "../../reducers/globalReducer";
+} from "../../reducers/mapReducer";
 import { directions } from "../../utils/constants";
 import checkNextTile from "../../utils/checkNextTile";
 

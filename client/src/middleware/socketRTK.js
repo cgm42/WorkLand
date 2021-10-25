@@ -1,33 +1,32 @@
-import { wsEndpoint } from "../utils/constants";
-import { io } from "socket.io-client";
-import Peer from "simple-peer";
-import {
-  INITCALLACCEPTED,
-  RECEIVECALL,
-  SETSOCKETID,
-  ACCEPTCALL,
-} from "../reducers/globalReducer";
-export const socketRTK = (url) => {
+// middleware example link: https://gist.github.com/markerikson/3df1cf5abbac57820a20059287b4be58
+import { wsEndpoint } from '../utils/constants';
+import { io } from 'socket.io-client';
+import Peer from 'simple-peer';
+import { SET_VIDEO_PARTICIPANTS } from '../reducers/mapReducer';
+export const socketRTK = () => {
   return (storeAPI) => {
     const socket = io(wsEndpoint);
     // socket.on("getId", (id) => {
     //   storeAPI.dispatch(SETSOCKETID({ id }));
     // });
-    socket.on("callUser", (data) => {
-      console.log("call user recevied at B", data);
-      storeAPI.dispatch(
-        RECEIVECALL({
-          receivingCall: true,
-          caller: data.from,
-          name: data.name,
-          callerSignal: data.signal,
-        })
-      );
+    socket.on('callUser', (data) => {
+      console.log('call user recevied at B', data);
+      // storeAPI.dispatch(
+      //   RECEIVECALL({
+      //     receivingCall: true,
+      //     caller: data.from,
+      //     name: data.name,
+      //     callerSignal: data.signal,
+      //   })
+      // );
     });
-    socket.on("callAccepted", (signal) => {
-      storeAPI.dispatch(INITCALLACCEPTED({ callAccepted: true, signal }));
+    socket.on('userList', (users) => {
+      storeAPI.dispatch(SET_VIDEO_PARTICIPANTS(users));
     });
-    socket.on("movementMessage", (arg) => {
+    socket.on('callAccepted', (signal) => {
+      // storeAPI.dispatch(INITCALLACCEPTED({ callAccepted: true, signal }));
+    });
+    socket.on('movementMessage', (arg) => {
       // console.log("MW on message payload :>> ", arg);
       //receives an update from server
       storeAPI.dispatch(JSON.parse(arg)); //type:UPDATE_OTHERS
@@ -37,15 +36,15 @@ export const socketRTK = (url) => {
 
     return (next) => (action) => {
       const newState = next(action);
-      if (action.type === "WALK") {
-        console.log("storeAPI.getState() :>> ", storeAPI.getState());
+      if (action.type === 'WALK') {
+        console.log('storeAPI.getState() :>> ', storeAPI.getState());
         //throttle to optimize performance
         let currentTime = new Date().getTime();
         if (currentTime - lastSent > 100) {
           socket.emit(
-            "movementMessage",
+            'movementMessage',
             JSON.stringify({
-              type: "UPDATE_OTHERS",
+              type: 'UPDATE_OTHERS',
               payload: storeAPI.getState().players[action.payload.id],
             })
           );
@@ -53,22 +52,22 @@ export const socketRTK = (url) => {
         }
       }
 
-      if (action.type === "INITCALL") {
-        console.log("middleware init call");
-        socket.emit("callUser", {
-          userToCall: action.payload.otherId,
-          signalData: action.payload.data,
-          from: storeAPI.getState().localId,
-          // name: name,
-        });
-      }
-      if (action.type === "ACCEPTCALL") {
-        console.log("sending call acceptance");
-        socket.emit("answerCall", {
-          signal: action.payload.data,
-          to: storeAPI.getState().chat.caller,
-        });
-      }
+      // if (action.type === 'INITCALL') {
+      //   console.log('middleware init call');
+      //   socket.emit('callUser', {
+      //     userToCall: action.payload.otherId,
+      //     signalData: action.payload.data,
+      //     from: storeAPI.getState().localId,
+      //     // name: name,
+      //   });
+      // }
+      // if (action.type === 'ACCEPTCALL') {
+      //   console.log('sending call acceptance');
+      //   socket.emit('answerCall', {
+      //     signal: action.payload.data,
+      //     to: storeAPI.getState().chat.caller,
+      //   });
+      // }
       return newState;
     };
   };

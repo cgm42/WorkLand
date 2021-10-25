@@ -1,5 +1,5 @@
 //web socket endpoint(our server)
-export const wsEndpoint = "ws://localhost:5000";
+export const wsEndpoint = "ws://localhost:5080";
 
 //number of pixel a character walks at a time
 export const stepSize = 2;

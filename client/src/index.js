@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import StateProvider from "./components/providers/StateProvider";
 import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { mapReducer } from "./reducers/mapReducer";
-import axios from "axios";
 import { socketRTK } from "./middleware/socketRTK";
 
 const store = configureStore({
@@ -14,11 +14,6 @@ const store = configureStore({
     getDefaultMiddleware().concat(socketRTK()),
 });
 
-// if (process.env.REACT_APP_BACKEND_URL) {
-//   axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
-// }
-
-// axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 
 ReactDOM.render(
   <BrowserRouter>

@@ -4,8 +4,10 @@ import './tasks.css'
 import "../rpgui.css";
 import "nes.css/css/nes.min.css";
 import classNames from "classnames";
+import ProjectUser from "../users/ProjectUser";
 
 export default function TaskRow(props) {
+  const {id, name, status, priority, startDate, endDate, users, taskTeams} = props;
 
   const priorityClass = classNames(
     'priority',
@@ -24,7 +26,7 @@ export default function TaskRow(props) {
   return (
     <tr>
       <td>{props.name}</td>
-      <td>{props.user}</td>
+      <td></td>
       <td className={statusClass}>{props.status}</td>
       <td className={priorityClass}><IoMdWarning className='icon'/></td>
       <td>{props.startDate}</td>

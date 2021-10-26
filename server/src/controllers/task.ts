@@ -2,6 +2,7 @@ import { query, Request, Response } from "express";
 import camelcaseKeys from "camelcase-keys";
 
 import * as model from "../models/task";
+import * as user_task_model from "../models/user_task";
 
 async function getAllTasksForProject(req: Request, res: Response) {
   const project_id = parseInt(req.params.id);
@@ -11,7 +12,6 @@ async function getAllTasksForProject(req: Request, res: Response) {
 };
 
 async function createTask(req: Request, res: Response) {
-  console.log(req.body);
   const {project_id, sprint_id, name, description, startDate, endDate, users} = req.body;
 
   const task = {
@@ -25,6 +25,16 @@ async function createTask(req: Request, res: Response) {
   }
   
   const queryResult = await model.createTask(task);
+
+  for (const user of users) {
+    const userTask = {
+      user_id: user,
+      task_id: queryResult.rows[0].id
+    }
+
+    user_task_model.addUserToTask(userTask);
+  }
+
   res.send(camelcaseKeys(queryResult.rows[0]))
 }
 

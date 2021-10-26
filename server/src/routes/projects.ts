@@ -5,7 +5,6 @@ import * as controller from "../controllers/project";
 
 router.get("/", controller.getProjects);
 router.get("/:id", controller.getProject);
-// router.get("/latest", controller.getLatestProject);
 router.post("/", controller.addProject);
 router.patch("/:id", controller.editProject);
 router.delete("/:id", controller.deleteProject);

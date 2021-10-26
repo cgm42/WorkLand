@@ -57,18 +57,11 @@ const Sidenav = () => {
         </Route>
 
         <Route path="/project" exact>
-          <ProjectCardList 
-            state={state}
-            createProject={createProject}
-            setCurrentProject={setCurrentProject}
-          />
+          <ProjectCardList />
         </Route>
 
         <Route path="/tasks" exact>
-          <TaskTable 
-            state={state}
-            createTask={createTask}
-          />
+          <TaskTable />
         </Route>
 
         <Route path="/messages" exact>

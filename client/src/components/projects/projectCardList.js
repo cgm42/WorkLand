@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { stateContext } from '../providers/StateProvider';
 import './projects.css';
 import "nes.css/css/nes.min.css";
 import "../rpgui.css";
@@ -9,7 +10,7 @@ import Button from '../button/Button';
 
 
 function ProjectCardList(props) {
-  const { state, createProject, setCurrentProject } = props;
+  const { state, createProject, setCurrentProject} = useContext(stateContext);
   const [showForm, setShowForm] = useState(false);
 
 

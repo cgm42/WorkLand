@@ -1,16 +1,18 @@
-import React, {useState} from 'react';
-import { IoMdWarning } from 'react-icons/io';
+import React, {useState, useContext} from 'react';
+import { stateContext } from '../providers/StateProvider';
 import './tasks.css'
 import "../rpgui.css";
 import "nes.css/css/nes.min.css";
 import TaskRow from './TaskRow';
 import TaskForm from './TaskForm';
 import Button from '../button/Button';
-import ProjectUser from '../users/ProjectUser';
+
 
 function TaskTable(props) {
-  const {state, createTask} = props;
+  const {state, createTask} = useContext(stateContext);
   const [showForm, setShowForm] = useState(false);
+
+  console.log("hello 1111", state);
   
   const formatDate = date => {
     return date.split('T')[0]
@@ -24,10 +26,12 @@ function TaskTable(props) {
         id={task.id}
         name={task.name}
         description={task.description}
-        status={task.status}
+        status={task.currentStatus}
         priority={task.priorityLevel}
         startDate={formatDate(task.startDate)}
         endDate={formatDate(task.endDate)}
+        users={state.users}
+        taskTeams={state.projectTeams}
       />
     )
   })

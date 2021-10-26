@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 import { BiEdit } from 'react-icons/bi';
 
 export default function ProjectCard(props) {
-  const userState = useSelector((state) => {
-    console.log('state:', state);
-    return state.user;
-  });
+  // const userState = useSelector((state) => {
+  //   console.log('state:', state);
+  //   return state.user;
+  // });
 
   // const [edit, setEdit] = useState(false);
 

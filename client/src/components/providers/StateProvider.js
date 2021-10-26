@@ -1,22 +1,24 @@
-import { useReducer, useEffect } from "react";
+import {createContext, useReducer, useEffect } from "react";
 import axios from "axios";
 import applicationDataReducer, {
   SET_APPLICATION_DATA,
   SET_CURRENT_PROJECT
-} from "../reducers/applicationDataReducer"
-import { useSelector } from "react-redux";
+} from "../../reducers/applicationDataReducer";
+// import { useSelector } from "react-redux";
 
-export default function useApplicationData() {
-  const userState = useSelector((state) => {
-    console.log('state:', state);
-    return state.user;
-  });
+export const stateContext = createContext();
+
+export default function StateProvider(props) {
+  // const userState = useSelector((state) => {
+  //   console.log('state:', state);
+  //   return state.user;
+  // });
 
   const [state, dispatch] = useReducer(applicationDataReducer, {
     users: [],
     projects: [],
     projectTeams: [],
-    current_project: 1,
+    current_project: null,
     tasks: [],
     taskTeams: []
   })
@@ -26,7 +28,7 @@ export default function useApplicationData() {
       axios.get("/users"),
       axios.get("/projects"),
       axios.get("/users_projects"),
-      axios.get(`/tasks/project/${1}`),
+      // axios.get(`/tasks/project/${state.current_project}`),
       axios.get("/users_tasks")
     ])
       .then(all => {
@@ -36,8 +38,8 @@ export default function useApplicationData() {
             users: all[0].data,
             projects: all[1].data,
             projectTeams: all[2].data,
-            tasks: all[3].data,
-            taskTeams: all[4].data
+            // tasks: all[3].data,
+            taskTeams: all[3].data
           }
         })
       });
@@ -96,7 +98,7 @@ export default function useApplicationData() {
   
   const updateTaskList = () => {
     Promise.all([
-      axios.get("/tasks"),
+      axios.get(`/tasks/project/${state.current_project}`),
       axios.get("/users_tasks")
     ])
     .then(all => {
@@ -120,10 +122,16 @@ export default function useApplicationData() {
   //     })
   // }
 
-  return {
+  const providerData = {
     state,
     createProject,
     setCurrentProject,
     createTask
   }
+
+  return (
+    <stateContext.Provider value={providerData}>
+      {props.children}
+    </stateContext.Provider>
+  )
 };

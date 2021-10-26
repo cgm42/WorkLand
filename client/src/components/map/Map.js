@@ -13,6 +13,15 @@ function Map({ x }) {
   console.log('width :>> ', width);
   const left = (width - 1024) / 2;
   return (
+    // <div
+    //   id="map"
+    //   style={{
+    //     zIndex: -1,
+    //     position: "absolute",
+    //     top: 0,
+    //     left: -x,
+    //   }}>
+    //   <MapTile map={`officev0`} />
     <div
       id="map"
       style={{

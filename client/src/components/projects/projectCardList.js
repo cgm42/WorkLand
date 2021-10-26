@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './projects.css';
 import "nes.css/css/nes.min.css";
 import "../rpgui.css";
-import ProjectCard from './projectCard';
-import Form from './Form';
+import ProjectCard from './ProjectCard';
+import ProjectForm from './ProjectForm';
 import Button from '../button/Button';
 import useApplicationData from '../../hooks/useApplicationData';
 
@@ -11,6 +11,7 @@ import useApplicationData from '../../hooks/useApplicationData';
 function ProjectCardList(props) {
   const { state, createProject, setCurrentProject } = useApplicationData();
   const [showForm, setShowForm] = useState(false);
+
 
   const projectsList = state.projects.map(project => {
     return (
@@ -39,7 +40,7 @@ function ProjectCardList(props) {
         {projectsList}
         <div className='new-project'>
         {showForm &&
-          <Form 
+          <ProjectForm 
             setShowForm={setShowForm}
             usersList={state.users}
             onSave={createProject}

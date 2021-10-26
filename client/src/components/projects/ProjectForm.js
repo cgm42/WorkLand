@@ -4,7 +4,7 @@ import DatePicker from 'react-date-picker';
 import User from '../users/User';
 import { useSelector } from "react-redux";
 
-function Form(props) {
+function ProjectForm(props) {
   const userState = useSelector((state) => {
     console.log('state:', state);
     return state.user;
@@ -129,4 +129,4 @@ function Form(props) {
   );
 }
 
-export default Form;
+export default ProjectForm;

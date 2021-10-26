@@ -1,4 +1,8 @@
 import React from "react";
+import { IoMdWarning } from 'react-icons/io';
+import './tasks.css'
+import "../rpgui.css";
+import "nes.css/css/nes.min.css";
 
 export default function TaskRow(props) {
   return (

@@ -6,14 +6,14 @@ import ProjectCard from './projectCard';
 import Form from './Form';
 import Button from '../button/Button';
 import useApplicationData from '../../hooks/useApplicationData';
+import axios from 'axios';
 
 
 function ProjectCardList(props) {
   const { state, createProject } = useApplicationData();
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);   
 
   const projectsList = state.projects.map(project => {
-    console.log(project);
     return (
       <ProjectCard
         key={project.id}
@@ -21,6 +21,8 @@ function ProjectCardList(props) {
         creatorID={project.creatorId}
         name={project.name}
         description={project.description}
+        projectTeams={state.projectTeams}
+        users={state.users}
       />
     )
   });

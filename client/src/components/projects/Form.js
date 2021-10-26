@@ -10,8 +10,6 @@ function Form(props) {
     return state.user;
   });
 
-  console.log(userState);
-
   const [name, setName] = useState(props.name || '');
   const [description, setDescription] = useState(props.description || '');
   const [users, setUsers] = useState(props.users || []);
@@ -36,14 +34,6 @@ function Form(props) {
   
 
   const validate = () => {
-    const project = {
-      creatorID: userState.id,
-      name,
-      description,
-      startDate,
-      endDate
-    };
-
     const selectedUsers = document.getElementsByClassName('user-list--selected');
 
     const selectedUsersIDs = [];
@@ -52,7 +42,14 @@ function Form(props) {
       selectedUsersIDs.push(user.id);
     }
 
-    console.log(selectedUsersIDs);
+    const project = {
+      creatorID: userState.id,
+      name,
+      description,
+      startDate,
+      endDate,
+      users: selectedUsersIDs
+    };
 
     setError('');
     setShowForm(false);

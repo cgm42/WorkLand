@@ -24,7 +24,6 @@ export default function useApplicationData() {
       axios.get("/projects")
     ])
       .then(all => {
-        console.log("in main query",all[0].data)
         dispatch({
           type: SET_APPLICATION_DATA,
           value: {

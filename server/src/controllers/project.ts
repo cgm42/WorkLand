@@ -20,6 +20,8 @@ async function getProject(req: Request, res: Response) {
 async function addProject(req: Request, res: Response) {
   const {creatorID, name, description, startDate, endDate} = req.body;
 
+  console.log(req.body.users);
+
   const project = {
     creator_id: creatorID,
     name,
@@ -30,6 +32,16 @@ async function addProject(req: Request, res: Response) {
   }
 
   const queryResult = await model.addProject(project)
+
+  for (const user of req.body.users) {
+    const userProject = {
+      user_id: user,
+      project_id: queryResult.rows[0].id,
+      role: ""
+    }
+
+    user_project_model.addUserToProject(userProject);
+  }
 
   const userProject = {
     user_id: creatorID,

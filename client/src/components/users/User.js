@@ -15,7 +15,8 @@ export default function User(props) {
 
   const userClass = classNames(
     "user-list",
-    {"rpgui-container framed-golden-2": selected }
+    {"rpgui-container framed-golden-2": selected },
+    {"user-list--selected": selected}
   )
 
   return (

@@ -39,13 +39,17 @@ export default function useApplicationData() {
 
   
   const updateProjectList = () => {
-    axios.get("/projects")
-    .then(data => {
+    Promise.all([
+      axios.get("/projects"),
+      axios.get("/users_projects")
+    ])
+    .then(all => {
       dispatch({
         type: SET_APPLICATION_DATA,
         value: {
           ...state,
-          projects: data.data,
+          projects: all[0].data,
+          projectTeams: all[1].data
         }
       })
     })

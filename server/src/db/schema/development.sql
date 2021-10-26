@@ -55,18 +55,18 @@ WHERE sprints.id = 2;
 
 INSERT INTO tasks (project_id, sprint_id, name, description, start_date, end_date, priority_level)
 VALUES
-  (1, 1, 'Create tables and insert statements for db', null, '2021-10-21', '2021-10-21', 'High'),
-  (1, 1, 'Project layout and barebones css', 'Need to get the jist of our vision presentable to Andy', '2021-10-21', '2021-10-22', 'High'),
-  (1, null, 'State management configuration', 'Figure out which states we will need to track and where', '2021-10-21', '2021-10-22', 'Medium'),
-  (2, 2, 'Set schedule for daily standups/meetings', null, '2021-03-12', '2021-03-12', 'High'),
-  (2, null, 'Refactor My Cart', 'Put state management into a reducer', '2021-04-15', '2021-04-16', 'Medium'),
-  (3, null, 'React tutorial', 'Watch lecture on React', '2022-01-02', '2021-01-02', 'Low'),
-  (3, null, 'Redux-Toolkit introduction', 'Do the tutorial on state management with Redux-Toolkit', '2022-01-10', '2022-01-10', 'Medium'),
-  (4, null, 'Initialize project', 'Create project file structure and necessary initial setup files', '2021-04-19', '2021-04-20', 'High'),
-  (4, null, 'Schdedule pair programming sessions', 'Allow everyone an opportunity to choose their partners, encourage senior-junior pairing', '2021-04-20', '2021-04-20', 'Medium');
+  (1, 1, 'Create tables and insert statements for db', null, '2021-10-21', '2021-10-21', 2),
+  (1, 1, 'Project layout and barebones css', 'Need to get the jist of our vision presentable to Andy', '2021-10-21', '2021-10-22', 2),
+  (1, null, 'State management configuration', 'Figure out which states we will need to track and where', '2021-10-21', '2021-10-22', 1),
+  (2, 2, 'Set schedule for daily standups/meetings', null, '2021-03-12', '2021-03-12', 2),
+  (2, null, 'Refactor My Cart', 'Put state management into a reducer', '2021-04-15', '2021-04-16', 1),
+  (3, null, 'React tutorial', 'Watch lecture on React', '2022-01-02', '2021-01-02', 0),
+  (3, null, 'Redux-Toolkit introduction', 'Do the tutorial on state management with Redux-Toolkit', '2022-01-10', '2022-01-10', 1),
+  (4, null, 'Initialize project', 'Create project file structure and necessary initial setup files', '2021-04-19', '2021-04-20', 2),
+  (4, null, 'Schdedule pair programming sessions', 'Allow everyone an opportunity to choose their partners, encourage senior-junior pairing', '2021-04-20', '2021-04-20', 1);
 
 UPDATE tasks
-SET current_status = 'Complete'
+SET current_status = 2
 WHERE tasks.id IN (1, 4, 5, 8, 9);
 
 INSERT INTO users_tasks (user_id, task_id)

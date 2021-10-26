@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 function TaskForm(props) {
   const userState = useSelector((state) => {
-    console.log('state:', state);
     return state.user;
   });
 
@@ -22,10 +21,6 @@ function TaskForm(props) {
     return team.projectId === projectID;
   });
 
-  console.log("current project", projectID)
-  console.log("projectTeams", state.projectTeams)
-  console.log("filtered team", team);
-
   const usersList = [];
 
   for (const member of team) {
@@ -37,21 +32,16 @@ function TaskForm(props) {
   }
 
   const usersListArray = usersList.map(user => {
-    console.log("hello", user);
-    if (user.id !== userState.id) {
-      const {id, name, avatar} = user;
-        return (
-          <User
-            key={id}
-            id={id}
-            avatar={avatar}
-            name={name}
-          />
-        )
-    }
+    const {id, name, avatar} = user;
+      return (
+        <User
+          key={id}
+          id={id}
+          avatar={avatar}
+          name={name}
+        />
+      )
   });
-
-  
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName('user-list--selected');

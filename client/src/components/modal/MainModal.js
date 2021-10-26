@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TOGGLE_MODAL_CAN_OPEN } from "../../reducers/mapReducer";
 import "./modal.css";
 import UserDashboard from "../userDashboard/UserDashboard";
-import ProjectCardList from '../projects/projectCardList';
+import ProjectCardList from '../projects/ProjectCardList';
 
 function MainModal(props) {
   const dispatch = useDispatch();

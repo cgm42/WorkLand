@@ -11,17 +11,20 @@ async function getAllTasksForProject(req: Request, res: Response) {
 };
 
 async function createTask(req: Request, res: Response) {
+  console.log(req.body);
+  const {project_id, sprint_id, name, description, startDate, endDate, users} = req.body;
+
   const task = {
-    project_id: 1,
-    sprint_id: null,
-    name: 'style login button',
-    description: 'Make the button look better then what its like now',
-    start_date: '2021-10-23',
-    end_date: '2021-10-23',
-    priority_level: 'low'
+    project_id,
+    sprint_id,
+    name,
+    description,
+    start_date: startDate,
+    end_date: endDate,
+    priority_level: 0
   }
   
-  const queryResult = await model.createTask(task)
+  const queryResult = await model.createTask(task);
   res.send(camelcaseKeys(queryResult.rows[0]))
 }
 

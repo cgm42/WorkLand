@@ -11,6 +11,26 @@ import ProjectUser from '../users/ProjectUser';
 function TaskTable(props) {
   const {state, createTask} = props;
   const [showForm, setShowForm] = useState(false);
+  
+  const formatDate = date => {
+    return date.split('T')[0]
+  }
+
+  
+  const tasksList = state.tasks.map(task => {
+    return (
+      <TaskRow 
+        key={task.id}
+        id={task.id}
+        name={task.name}
+        description={task.description}
+        status={task.status}
+        priority={task.priorityLevel}
+        startDate={formatDate(task.startDate)}
+        endDate={formatDate(task.endDate)}
+      />
+    )
+  })
 
   return (
     <div className='rpgui-content'>
@@ -36,30 +56,19 @@ function TaskTable(props) {
 
           <table className='table'>
             <thead>
-            <tr>
-              <th>Tasks</th>
-              <th>Users</th>
-              <th>Status</th>
-              <th>Priority</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-            </tr>
+              <tr>
+                <th>Tasks</th>
+                <th>Users</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+              </tr>
             </thead>
             <tbody>
-            <TaskRow />
-            <TaskRow />
-            <TaskRow />
-            <tr>
-              <td>Fix the home page button</td>
-              <td>Jake</td>
-              <td>Complete</td>
-              <td><IoMdWarning className='icon'/></td>
-              <td> 2021-10-26</td>
-              <td> 2021-10-27</td>
-            </tr>
+              {tasksList}
             </tbody>
           </table>
-
         </div>
       </div>
     </div>

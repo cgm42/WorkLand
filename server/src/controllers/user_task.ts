@@ -3,6 +3,11 @@ import camelcaseKeys from "camelcase-keys";
 
 import * as model from "../models/user_task";
 
+async function getAllUsersAndTasks(req: Request, res: Response) {
+  const queryResult = await model.getAllUsersAndTasks();
+  res.send(queryResult.rows.map((row) => camelcaseKeys(row)));
+}
+
 async function addUserToTask(req: Request, res: Response) {
   const userTask = {
     user_id: 5, //switch to req.body.user_id later
@@ -23,4 +28,4 @@ async function deleteUserFromTask(req: Request, res: Response) {
   res.send(camelcaseKeys(queryResult.rows[0]));
 };
 
-export {addUserToTask, deleteUserFromTask};
+export {getAllUsersAndTasks, addUserToTask, deleteUserFromTask};

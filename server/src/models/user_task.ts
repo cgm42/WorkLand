@@ -1,5 +1,13 @@
 import pool from "../db/dbConfig";
 
+function getAllUsersAndTasks() {
+  return pool
+    .query(`
+      SELECT *
+      FROM users_tasks;  
+    `);
+};
+
 function addUserToTask(userTask: {user_id: number, task_id: number}) {
   const values = [userTask.user_id, userTask.task_id];
 
@@ -20,4 +28,4 @@ function deleteUserFromTask(userTask: {user_id: number, task_id: number}) {
     `, values);
 };
 
-export {addUserToTask, deleteUserFromTask};
+export {getAllUsersAndTasks, addUserToTask, deleteUserFromTask};

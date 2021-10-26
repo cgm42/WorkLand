@@ -4,7 +4,7 @@ import camelcaseKeys from "camelcase-keys";
 import * as model from "../models/task";
 
 async function getAllTasksForProject(req: Request, res: Response) {
-  const project_id = 1;
+  const project_id = parseInt(req.params.id);
 
   const queryResult = await model.getAllTasksForProject(project_id);
   res.send(queryResult.rows.map((row: String) => camelcaseKeys(row)));

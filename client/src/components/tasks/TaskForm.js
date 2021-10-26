@@ -16,9 +16,28 @@ function TaskForm(props) {
   const [startDate, onStart] = useState(new Date());
   const [endDate, onEnd] = useState(new Date());
 
-  const {usersList, setShowForm, onSave, setEdit} = props;
+  const {state, setShowForm, onSave, projectID, setEdit} = props;
+
+  const team = state.projectTeams.filter((team) => {
+    return team.projectId === projectID;
+  });
+
+  console.log("current project", projectID)
+  console.log("projectTeams", state.projectTeams)
+  console.log("filtered team", team);
+
+  const usersList = [];
+
+  for (const member of team) {
+    for (const user of state.users) {
+      if (user.id === member.userId) {
+        usersList.push(user);
+      }
+    }
+  }
 
   const usersListArray = usersList.map(user => {
+    console.log("hello", user);
     if (user.id !== userState.id) {
       const {id, name, avatar} = user;
         return (
@@ -44,11 +63,13 @@ function TaskForm(props) {
     }
 
     const task = {
-      creatorID: userState.id,
+      project_id: projectID,
+      sprint_id: null,
       name,
       description,
       startDate,
       endDate,
+      // priority_level,
       users: selectedUsersIDs
     };
 
@@ -95,10 +116,10 @@ function TaskForm(props) {
         </label>
 
         <div className="team-date-container">
-          {/* <label>
+          <label>
             Choose your team:
             <ul className='rpgui users-container'>{usersListArray}</ul>
-          </label> */}
+          </label>
 
           <div className='date'>
             <label>

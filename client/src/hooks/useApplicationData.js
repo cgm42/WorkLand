@@ -89,7 +89,7 @@ export default function useApplicationData() {
 
   const createTask = task => {
     axios.post('/tasks', task)
-    .then((data) => {
+    .then(() => {
       updateTaskList();
     })
   };
@@ -123,6 +123,7 @@ export default function useApplicationData() {
   return {
     state,
     createProject,
-    setCurrentProject
+    setCurrentProject,
+    createTask
   }
 };

@@ -6,6 +6,7 @@ import { MdGroup } from "react-icons/md";
 import { BsFillAlarmFill } from "react-icons/bs";
 import { RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
+import useApplicationData from "../hooks/useApplicationData";
 
 import Dashboard from "../pages/Dashboard";
 import ProjectCardList from "./projects/ProjectCardList";
@@ -16,6 +17,8 @@ import TaskTable from './tasks/TaskTable';
 
 
 const Sidenav = () => {
+  const {state, createProject, setCurrentProject, createTask} = useApplicationData();
+
   return (
     <Router>
       <div className="sidebar">
@@ -54,11 +57,18 @@ const Sidenav = () => {
         </Route>
 
         <Route path="/project" exact>
-          <ProjectCardList></ProjectCardList>
+          <ProjectCardList 
+            state={state}
+            createProject={createProject}
+            setCurrentProject={setCurrentProject}
+          />
         </Route>
 
         <Route path="/tasks" exact>
-          <TaskTable></TaskTable>
+          <TaskTable 
+            state={state}
+            createTask={createTask}
+          />
         </Route>
 
         <Route path="/messages" exact>

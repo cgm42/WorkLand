@@ -6,8 +6,10 @@ import "nes.css/css/nes.min.css";
 import TaskRow from './TaskRow';
 import TaskForm from './TaskForm';
 import Button from '../button/Button';
+import ProjectUser from '../users/ProjectUser';
 
-function TaskTable() {
+function TaskTable(props) {
+  const {state, createTask} = props;
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -16,6 +18,14 @@ function TaskTable() {
         <div className='welcome'>
           <h1>Tasks</h1>
         </div>
+          {showForm &&
+            <TaskForm 
+              setShowForm={setShowForm}
+              onSave={createTask}
+              state={state}
+              projectID={state.current_project}
+            /> 
+          }
         <div className='rpgui-container framed'>
           {!showForm &&
             <Button onClick={() => setShowForm(true)}>
@@ -23,13 +33,6 @@ function TaskTable() {
             </Button>
           } 
 
-          {showForm &&
-            <TaskForm 
-              setShowForm={setShowForm}
-              usersList={state.users}
-              onSave={createProject}
-            /> 
-          }
 
           <table className='table'>
             <thead>

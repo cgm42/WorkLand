@@ -5,11 +5,11 @@ import "../rpgui.css";
 import ProjectCard from './ProjectCard';
 import ProjectForm from './ProjectForm';
 import Button from '../button/Button';
-import useApplicationData from '../../hooks/useApplicationData';
+
 
 
 function ProjectCardList(props) {
-  const { state, createProject, setCurrentProject } = useApplicationData();
+  const { state, createProject, setCurrentProject } = props;
   const [showForm, setShowForm] = useState(false);
 
 

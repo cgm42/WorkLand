@@ -15,7 +15,9 @@ const setApplicationData = (state, action) => ({
   ...state,
   users: action.value.users,
   projects: action.value.projects,
-  projectTeams: action.value.projectTeams
+  projectTeams: action.value.projectTeams,
+  tasks: action.value.tasks,
+  taskTeams: action.value.taskTeams
 });
 
 const setCurrentProject = (state, action) => ({

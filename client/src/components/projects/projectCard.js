@@ -12,7 +12,7 @@ export default function ProjectCard(props) {
 
   // const [edit, setEdit] = useState(false);
 
-  const {id, projectTeams, users, setShowForm, editProject} = props;
+  const {id, projectTeams, users, setCurrentProject, setShowForm, editProject} = props;
 
   const team = projectTeams.filter((team) => {
     return team.projectId === id;
@@ -34,15 +34,15 @@ export default function ProjectCard(props) {
   });
 
   return (
-    <div className='project-card rpgui-container framed float'>
+    <div className='project-card rpgui-container framed float' onClick={() => setCurrentProject(id)}>
       <div className='card-header'>
         <header>{props.name}</header>
-        {userState.id === props.creatorID && <div className='edit-button' onClick={() => {
+        {/* {userState.id === props.creatorID && <div className='edit-button' onClick={() => {
         setShowForm(true)
-        // setEdit(true);
+        setEdit(true);
         }}>
-          {/* <BiEdit ></BiEdit> */}
-        </div>}
+          <BiEdit ></BiEdit> */}
+        {/* </div>} */}
       </div>
       <h1>Description:</h1>
       <p>{props.description}</p>

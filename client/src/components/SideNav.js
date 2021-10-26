@@ -12,7 +12,7 @@ import ProjectCardList from "./projects/projectCardList";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
 import UserDashboard from "./userDashboard/UserDashboard";
-import Tasks from './tasks/Tasks';
+import TaskTable from './tasks/TaskTable';
 
 
 const Sidenav = () => {
@@ -58,7 +58,7 @@ const Sidenav = () => {
         </Route>
 
         <Route path="/tasks" exact>
-          <Tasks></Tasks>
+          <TaskTable></TaskTable>
         </Route>
 
         <Route path="/messages" exact>

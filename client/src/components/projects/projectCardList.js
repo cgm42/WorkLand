@@ -9,7 +9,7 @@ import useApplicationData from '../../hooks/useApplicationData';
 
 
 function ProjectCardList(props) {
-  const { state, createProject, editProject } = useApplicationData();
+  const { state, createProject, setCurrentProject } = useApplicationData();
   const [showForm, setShowForm] = useState(false);
 
   const projectsList = state.projects.map(project => {
@@ -22,6 +22,7 @@ function ProjectCardList(props) {
         description={project.description}
         projectTeams={state.projectTeams}
         users={state.users}
+        setCurrentProject={setCurrentProject}
         // setShowForm={setShowForm}
         // editProject={editProject}
       />

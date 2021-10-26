@@ -8,11 +8,11 @@ import { RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import Dashboard from "../pages/Dashboard";
-import Projects from "../pages/Projects";
-import Meeting from "../pages/Meeting";
+import ProjectCardList from "./projects/projectCardList";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
 import UserDashboard from "./userDashboard/UserDashboard";
+import Tasks from './tasks/Tasks';
 
 
 const Sidenav = () => {
@@ -31,7 +31,7 @@ const Sidenav = () => {
             </Link>
           </li>
           <li>
-            <Link to="/meeting">
+            <Link to="/tasks">
               <MdGroup></MdGroup>
             </Link>
           </li>
@@ -46,27 +46,7 @@ const Sidenav = () => {
             </Link>
           </li>
         </div>
-
-        <div className="sidebar-bottom">
-          <li>
-            <Link to="/">
-              <FaSpotify></FaSpotify>
-            </Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/">
-              <BsFillAlarmFill></BsFillAlarmFill>
-            </Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/login">
-              <RiLogoutCircleFill></RiLogoutCircleFill>
-            </Link>
-          </li>
         </div>
-      </div>
 
       <Switch>
         <Route path="/" exact>
@@ -74,11 +54,11 @@ const Sidenav = () => {
         </Route>
 
         <Route path="/project" exact>
-          <Projects></Projects>
+          <ProjectCardList></ProjectCardList>
         </Route>
 
-        <Route path="/meeting" exact>
-          <Meeting></Meeting>
+        <Route path="/tasks" exact>
+          <Tasks></Tasks>
         </Route>
 
         <Route path="/messages" exact>

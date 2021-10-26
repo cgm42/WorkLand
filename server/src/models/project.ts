@@ -21,6 +21,16 @@ function getProjectByID(project_id: number) {
     `, [project_id]);
 }
 
+// function getLatestProject() {
+//   return pool
+//     .query(`
+//       SELECT projects.id
+//       FROM PROJECTS
+//       ORDER BY id DESC
+//       LIMIT 1;
+//     `)
+// };
+
 function addProject(project: { creator_id: number; name: string; description: string; start_date: string; end_date: string; background_img: string;}) {
   const {creator_id, name, description, start_date, end_date, background_img} = project;
 
@@ -36,7 +46,8 @@ function addProject(project: { creator_id: number; name: string; description: st
   return pool
     .query(`
       INSERT INTO projects (creator_id, name, description, start_date, end_date, background_img)
-      VALUES ($1, $2, $3, $4, $5, $6);
+      VALUES ($1, $2, $3, $4, $5, $6)
+      RETURNING id;
     `, values);
 }
 

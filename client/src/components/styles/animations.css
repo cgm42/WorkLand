@@ -22,8 +22,7 @@
   height: 10px;
   width: 90%;
   opacity: 0;
-  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+
   /* W3C */
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -37,6 +36,6 @@
 }
 .float:hover:before, .float:focus:before, .float:active:before {
   opacity: 1;
-  -webkit-transform: translateY(15px);
+  -webkit-transform: translateY(25px);
   transform: translateY(15px);
 }

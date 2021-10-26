@@ -1,5 +1,13 @@
 import pool from "../db/dbConfig";
 
+function getAllUsersAndProjects() {
+  return pool
+    .query(`
+      SELECT *
+      FROM users_projects;  
+    `);
+};
+
 function addUserToProject(userProject: {user_id: number; project_id: number; role: string;}) {
   const values = [userProject.user_id, userProject.project_id, userProject.role]
 
@@ -20,4 +28,4 @@ function deleteUserFromProject(userProject: {user_id: number; project_id: number
     `, values)
 };
 
-export {addUserToProject, deleteUserFromProject};
+export {addUserToProject, deleteUserFromProject, getAllUsersAndProjects};

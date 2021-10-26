@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TOGGLE_MODAL_CAN_OPEN } from "../../reducers/mapReducer";
 import "./modal.css";
 import UserDashboard from "../userDashboard/UserDashboard";
+import ProjectCardList from '../projects/projectCardList';
 
 function MainModal(props) {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function MainModal(props) {
         {mapRoute === "kanban" ? <div>kanban</div> : <div />}
         <div>
           <UserDashboard />
+        </div>
+        <div>
+          <ProjectCardList  />
         </div>
       </Modal>
     </>

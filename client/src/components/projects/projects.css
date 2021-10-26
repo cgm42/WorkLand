@@ -1,0 +1,110 @@
+.project-card {
+  width: 29%;
+  height: 400px;
+  margin: 0 20px 50px 20px;
+  overflow:auto;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.edit-button {
+  font-size: 40px;
+  color:rgb(252, 252, 252);
+  cursor: pointer;
+  transition: 1s;
+}
+
+.edit-button:hover {
+  color:rgb(214, 203, 101);
+}
+
+.project-card header {
+  font-size: 25px;
+  color:rgb(252, 252, 252);
+  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38), -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
+}
+
+.project-card h1 {
+  margin: 5px;
+  display: flex;
+  font-size:17px
+}
+
+.project-card p {
+  margin: 20px 0 15px 35px;
+  font-size: 15px;
+  list-style-type: none;
+  margin-bottom: 15px;
+  display: flex;
+  width: 90%;
+  color:rgb(252, 252, 252);
+  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38), -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
+}
+
+/*form */
+.new-project {
+  display: flex;
+  justify-content: center;
+}
+.cancel-submit {
+  display:flex;
+  justify-content: space-around;
+}
+
+.team-date-container {
+  display:flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.users-container {
+  height: 300px;
+  overflow:auto;
+  width: 300px;
+  padding:0
+}
+
+.user-list {
+  list-style-type: none;
+  display: flex;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.user-list img{
+  height: 30px;
+  width:30px;
+  background-color:none;
+}
+
+.user-list p{
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.date {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.date-size input{
+  padding: 0;
+  height: 35px !important;
+  font-size: 12px;
+  margin: 0px 12px;
+}
+
+

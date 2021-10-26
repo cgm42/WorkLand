@@ -22,8 +22,8 @@ function Map({ x }) {
       style={{
         zIndex: -1,
         position: 'absolute',
-        top: `${top}px`,
-        left: `${left}px`,
+        top: `${topMargin}px`,
+        left: `${leftMargin}px`,
       }}>
       <MapTile map={`officev1`} />
       {kanbanGuideState && (

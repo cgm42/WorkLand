@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './login.css';
+import './index.css';
 import { useSelector } from 'react-redux';
 import { BsGithub } from 'react-icons/bs';
 
@@ -11,19 +11,17 @@ const Login = () => {
   });
   console.log(process.env);
   return (
-    <div className='app'>
+    <div className="background">
       {userState.name !== '' ? (
         <div></div>
       ) : (
         <>
-          <div className='login'>
-            <div>
-              <button>
-                <a href='/login'>login</a>
-              </button>
-            </div>
-            <div>
-              <BsGithub />
+          <div id='stars'></div>
+          <div id='stars2'></div>
+          <div id='stars3'></div>
+          <div className='login-container'>
+            <div className='login'>
+              <BsGithub className='github'/>
               <a href={process.env.REACT_APP_GITHUB_LOGIN}>
                 {' Log in with Github'}
               </a>

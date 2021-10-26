@@ -39,9 +39,9 @@ export default function ProjectCard(props) {
         <header>{props.name}</header>
         {userState.id === props.creatorID && <div className='edit-button' onClick={() => {
         setShowForm(true)
-        setEdit(true);
+        // setEdit(true);
         }}>
-          <BiEdit ></BiEdit>
+          {/* <BiEdit ></BiEdit> */}
         </div>}
       </div>
       <h1>Description:</h1>

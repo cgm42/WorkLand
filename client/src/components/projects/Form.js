@@ -12,12 +12,11 @@ function Form(props) {
 
   const [name, setName] = useState(props.name || '');
   const [description, setDescription] = useState(props.description || '');
-  const [users, setUsers] = useState(props.users || []);
   const [error, setError] = useState('');
   const [startDate, onStart] = useState(new Date());
   const [endDate, onEnd] = useState(new Date());
 
-  const {usersList, setShowForm, onSave} = props;
+  const {usersList, setShowForm, onSave, setEdit} = props;
 
   const usersListArray = usersList.map(user => {
     const {id, name, avatar} = user;
@@ -53,11 +52,13 @@ function Form(props) {
 
     setError('');
     setShowForm(false);
+    // setEdit(false);
     onSave(project);
   };
-
+  
   const cancel = () => {
     setShowForm(false);
+    // setEdit(false);
   };
 
   return (

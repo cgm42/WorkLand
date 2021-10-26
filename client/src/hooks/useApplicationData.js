@@ -73,6 +73,7 @@ export default function useApplicationData() {
 
   return {
     state,
-    createProject
+    createProject,
+    editProject
   }
 };

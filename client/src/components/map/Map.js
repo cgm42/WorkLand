@@ -6,12 +6,12 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function Map({ x }) {
   const kanbanGuideState = useSelector((state) => state.mapGuide.kanban);
-  const { width } = useWindowDimensions();
-  if (width < 1024) {
-    const left = 0;
-  }
-  console.log('width :>> ', width);
-  const left = (width - 1024) / 2;
+  const { left } = useWindowDimensions();
+  // if (width < 1024) {
+  //   const left = 0;
+  // }
+  // console.log('width :>> ', width);
+  // const left = (width - 1024) / 2;
   return (
     // <div
     //   id="map"

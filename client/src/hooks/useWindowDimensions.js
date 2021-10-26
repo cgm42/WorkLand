@@ -3,8 +3,14 @@ import ReactDOM from 'react-dom';
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
+  let left;
+  if (width < 1024) {
+    left = 0;
+  } else {
+    left = (width - 1024) / 2;
+  }
   return {
-    width,
+    left,
     height,
   };
 }

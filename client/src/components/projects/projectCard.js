@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import Button from '../button/Button';
 import ProjectUser from '../users/ProjectUser';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,9 @@ export default function ProjectCard(props) {
     return state.user;
   });
 
-  const { id, projectTeams, users, setShowForm } = props;
+  const [edit, setEdit] = useState(false);
+
+  const {id, projectTeams, users, setShowForm, editProject} = props;
 
   const team = projectTeams.filter((team) => {
     return team.projectId === id;
@@ -35,9 +37,12 @@ export default function ProjectCard(props) {
     <div className='project-card rpgui-container framed float'>
       <div className='card-header'>
         <header>{props.name}</header>
-        <div className='edit-button'>
-          <BiEdit >BiEdit</BiEdit>
-        </div>
+        {userState.id === props.creatorID && <div className='edit-button' onClick={() => {
+        setShowForm(true)
+        setEdit(true);
+        }}>
+          <BiEdit ></BiEdit>
+        </div>}
       </div>
       <h1>Description:</h1>
       <p>{props.description}</p>
@@ -45,9 +50,6 @@ export default function ProjectCard(props) {
       <p>9/10</p>
       <h1>The team:</h1>
       {usersListArray}
-      {userState.id === props.creatorID && (
-        <Button onClick={() => setShowForm(true)}>Edit</Button>
-      )}
     </div>
   );
 }

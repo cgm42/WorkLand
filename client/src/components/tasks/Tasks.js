@@ -11,8 +11,8 @@ function Tasks() {
         <div className='welcome'>
           <h1>Tasks</h1>
         </div>
-
-        <table className='rpgui-container framed-golden table'>
+        <div className='rpgui-container framed'>
+        <table className='table'>
           <thead>
           <tr>
             <th>Tasks</th>
@@ -50,6 +50,8 @@ function Tasks() {
           </tr>
           </tbody>
         </table>
+
+        </div>
       </div>
     </div>
   );

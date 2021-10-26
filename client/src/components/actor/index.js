@@ -1,6 +1,6 @@
-import Sprite from "../sprites";
-import { spriteDimensions } from "../../utils/constants";
-import "./actor.css";
+import Sprite from '../sprites';
+import { spriteDimensions } from '../../utils/constants';
+import './actor.css';
 
 export default function Actor({
   sprite,
@@ -10,21 +10,25 @@ export default function Actor({
   displayName,
 }) {
   const { h, w } = spriteDimensions;
-  const style = {
-    position: "absolute",
+  const styleForDisplayName = {
+    position: 'absolute',
     top: position.y - h * 0.4, //adjust position for display name above character
     left: position.x + w * 0.2,
   };
+  let nameToDisplay = displayName.match(/[^\s]+/);
+  nameToDisplay = nameToDisplay.slice(0, 10);
+
   return (
     <div className="dimension">
-      <div style={style}>{displayName}</div>
+      <div style={styleForDisplayName}>{nameToDisplay}</div>
       <Sprite
+        style={{ width: '250%' }}
         image={sprite}
         data={{
           x: step * w,
           y: dir * h,
           w,
-          h
+          h,
         }}
         position={position}
       />

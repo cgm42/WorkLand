@@ -6,12 +6,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function Map({ x }) {
   const kanbanGuideState = useSelector((state) => state.mapGuide.kanban);
-  const { left } = useWindowDimensions();
-  // if (width < 1024) {
-  //   const left = 0;
-  // }
-  // console.log('width :>> ', width);
-  // const left = (width - 1024) / 2;
+  const { left, top } = useWindowDimensions();
   return (
     // <div
     //   id="map"
@@ -27,7 +22,7 @@ function Map({ x }) {
       style={{
         zIndex: -1,
         position: 'absolute',
-        top: 0,
+        top: `${top}px`,
         left: `${left}px`,
       }}>
       <MapTile map={`officev1`} />

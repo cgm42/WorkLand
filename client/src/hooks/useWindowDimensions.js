@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-
+import { basemapWidth, basemapHeight, navBarHeight } from '../utils/constants';
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
-  let left;
-  if (width < 1024) {
+  let left, top;
+  if (width < basemapWidth) {
     left = 0;
   } else {
-    left = (width - 1024) / 2;
+    left = (width - basemapWidth) / 2;
+  }
+  if (height < basemapHeight + navBarHeight) {
+    top = navBarHeight;
+  } else {
+    top = (height - basemapHeight - navBarHeight) / 2 + navBarHeight;
   }
   return {
     left,
-    height,
+    top,
   };
 }
 

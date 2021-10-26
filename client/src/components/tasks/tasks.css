@@ -1,0 +1,22 @@
+.table {
+  border-collapse: collapse;
+}
+.table thead{
+  font-size:18px;
+  border: 1px solid #ddd;
+}
+
+.table tbody{
+  font-size:15px;
+  border: 1px solid #ddd;
+}
+
+.icon {
+  color: red;
+  font-size: 30px;
+}
+
+.priority {
+  display: flex;
+  justify-content: center;
+}

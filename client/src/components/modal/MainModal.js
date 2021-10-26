@@ -22,10 +22,10 @@ function MainModal(props) {
         </button>
         {mapRoute === "kanban" ? <div>kanban</div> : <div />}
         <div>
-          <ProjectCardList />
+          <UserDashboard />
         </div>
         <div>
-          <UserDashboard />
+          <ProjectCardList  />
         </div>
       </Modal>
     </>

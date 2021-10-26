@@ -9,10 +9,10 @@ import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import Dashboard from "../pages/Dashboard";
 import ProjectCardList from "./projects/projectCardList";
-import Meeting from "../pages/Meeting";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
 import UserDashboard from "./userDashboard/UserDashboard";
+import Tasks from './tasks/Tasks';
 
 
 const Sidenav = () => {
@@ -31,7 +31,7 @@ const Sidenav = () => {
             </Link>
           </li>
           <li>
-            <Link to="/meeting">
+            <Link to="/tasks">
               <MdGroup></MdGroup>
             </Link>
           </li>
@@ -57,8 +57,8 @@ const Sidenav = () => {
           <ProjectCardList></ProjectCardList>
         </Route>
 
-        <Route path="/meeting" exact>
-          <Meeting></Meeting>
+        <Route path="/tasks" exact>
+          <Tasks></Tasks>
         </Route>
 
         <Route path="/messages" exact>

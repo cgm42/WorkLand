@@ -53,6 +53,7 @@
   list-style-type: none;
   display: flex;
   margin: 20px;
+  cursor: pointer;
 }
 
 .user-list img{

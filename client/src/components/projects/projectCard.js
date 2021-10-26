@@ -9,7 +9,7 @@ export default function ProjectCard(props) {
     return state.user;
   });
 
-  const [edit, setEdit] = useState(false);
+  // const [edit, setEdit] = useState(false);
 
   const {id, projectTeams, users, setShowForm, editProject} = props;
 
@@ -48,10 +48,10 @@ export default function ProjectCard(props) {
       <p>9/10</p>
       <p>The team:</p>
       {usersListArray}
-      {userState.id === props.creatorID && <Button onClick={() => {
+      {/* {userState.id === props.creatorID && <Button onClick={() => {
         setShowForm(true)
         setEdit(true);
-        }}>Edit</Button>}
+        }}>Edit</Button>} */}
     </div>
   );
 };

@@ -22,8 +22,8 @@ function ProjectCardList(props) {
         description={project.description}
         projectTeams={state.projectTeams}
         users={state.users}
-        setShowForm={setShowForm}
-        editProject={editProject}
+        // setShowForm={setShowForm}
+        // editProject={editProject}
       />
     )
   });

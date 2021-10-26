@@ -62,18 +62,17 @@ export default function useApplicationData() {
       });
   };
 
-  const editProject = project => {
-    const id = project.id
+  // const editProject = project => {
+  //   const id = project.id
 
-    axios.patch(`/projects/${id}`)
-      .then(() => {
-        updateProjectList();
-      })
-  }
+  //   axios.patch(`/projects/${id}`)
+  //     .then(() => {
+  //       updateProjectList();
+  //     })
+  // }
 
   return {
     state,
-    createProject,
-    editProject
+    createProject
   }
 };

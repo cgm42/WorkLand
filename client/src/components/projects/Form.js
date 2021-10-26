@@ -19,15 +19,17 @@ function Form(props) {
   const {usersList, setShowForm, onSave, setEdit} = props;
 
   const usersListArray = usersList.map(user => {
-    const {id, name, avatar} = user;
-      return (
-        <User
-          key={id}
-          id={id}
-          avatar={avatar}
-          name={name}
-        />
-      )
+    if (user.id !== userState.id) {
+      const {id, name, avatar} = user;
+        return (
+          <User
+            key={id}
+            id={id}
+            avatar={avatar}
+            name={name}
+          />
+        )
+    }
   });
 
   

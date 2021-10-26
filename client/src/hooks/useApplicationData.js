@@ -54,9 +54,6 @@ export default function useApplicationData() {
       })
     })
   };
-
-  
-
   
   const createProject = project => {
     axios.post('/projects', project)
@@ -64,6 +61,15 @@ export default function useApplicationData() {
         updateProjectList();
       });
   };
+
+  const editProject = project => {
+    const id = project.id
+
+    axios.patch(`/projects/${id}`)
+      .then(() => {
+        updateProjectList();
+      })
+  }
 
   return {
     state,

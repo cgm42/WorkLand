@@ -93,7 +93,7 @@ function Form(props) {
 
         <div className="team-date-container">
           <label>
-            Team members:
+            Choose your team:
             <ul className='rpgui users-container'>{usersListArray}</ul>
           </label>
 

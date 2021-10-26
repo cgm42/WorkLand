@@ -13,10 +13,12 @@ function ProjectCardList(props) {
   const [showForm, setShowForm] = useState(false);
 
   const projectsList = state.projects.map(project => {
+    console.log(project);
     return (
       <ProjectCard
         key={project.id}
         id={project.id}
+        creatorID={project.creatorId}
         name={project.name}
         description={project.description}
       />

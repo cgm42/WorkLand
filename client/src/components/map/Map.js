@@ -6,7 +6,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function Map({ x }) {
   const kanbanGuideState = useSelector((state) => state.mapGuide.kanban);
-  const { left, top } = useWindowDimensions();
+  const { leftMargin, topMargin } = useWindowDimensions();
   return (
     // <div
     //   id="map"

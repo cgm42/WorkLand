@@ -15,8 +15,8 @@ function getWindowDimensions() {
     top = (height - basemapHeight - navBarHeight) / 2 + navBarHeight;
   }
   return {
-    left,
-    top,
+    leftMargin: left,
+    topMargin: top,
   };
 }
 

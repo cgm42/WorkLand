@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import React, {useState} from 'react';
 import Button from '../button/Button';
 import ProjectUser from '../users/ProjectUser';
 import { useSelector } from 'react-redux';

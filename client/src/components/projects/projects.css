@@ -5,18 +5,39 @@
   overflow:auto;
 }
 
-.project-card header {
+.card-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
   align-items: center;
-  font-size: 20px;
+}
+
+.edit-button {
+  font-size: 40px;
+  color:rgb(252, 252, 252);
+  cursor: pointer;
+  transition: 1s;
+}
+
+.edit-button:hover {
+  color:rgb(214, 203, 101);
+}
+
+.project-card header {
+  font-size: 25px;
   color:rgb(252, 252, 252);
   text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38), -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
 }
 
+.project-card h1 {
+  margin: 5px;
+  display: flex;
+  font-size:17px
+}
 
 .project-card p {
-  margin-top: 20px;
+  margin: 20px 0 15px 35px;
   font-size: 15px;
   list-style-type: none;
   margin-bottom: 15px;
@@ -68,8 +89,9 @@
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin: 0;
   margin-bottom: 0;
-  font-size:15px;
+  font-size: 15px;
 }
 
 .date {

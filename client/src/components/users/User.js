@@ -25,4 +25,4 @@ export default function User(props) {
       <p>{name}</p>
     </li>
   );
-}
+};

@@ -20,8 +20,6 @@ async function getProject(req: Request, res: Response) {
 async function addProject(req: Request, res: Response) {
   const {creatorID, name, description, startDate, endDate} = req.body;
 
-  console.log(req.body.users);
-
   const project = {
     creator_id: creatorID,
     name,

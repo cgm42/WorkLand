@@ -3,6 +3,11 @@ import camelcaseKeys from "camelcase-keys";
 
 import * as model from "../models/user_project";
 
+async function getAllUsersAndProjects(req: Request, res: Response) {
+  const queryResult = await model.getAllUsersAndProjects();
+  res.send(queryResult.rows.map((row) => camelcaseKeys(row)));
+}
+
 async function addUserToProject(req: Request, res: Response) {
   const userProject = {
     user_id: 5, //switch to req.body.user_id later
@@ -24,4 +29,4 @@ async function deleteUserFromProject(req: Request, res: Response) {
   res.send(camelcaseKeys(queryResult.rows[0]));
 };
 
-export {addUserToProject, deleteUserFromProject};
+export {getAllUsersAndProjects, addUserToProject, deleteUserFromProject};

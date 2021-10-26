@@ -6,7 +6,6 @@ import { MdGroup } from "react-icons/md";
 import { BsFillAlarmFill } from "react-icons/bs";
 import { RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
-import useApplicationData from "../hooks/useApplicationData";
 
 import Dashboard from "../pages/Dashboard";
 import ProjectCardList from "./projects/ProjectCardList";
@@ -17,7 +16,6 @@ import TaskTable from './tasks/TaskTable';
 
 
 const Sidenav = () => {
-  const {state, createProject, setCurrentProject, createTask} = useApplicationData();
 
   return (
     <Router>

@@ -11,8 +11,6 @@ import Button from '../button/Button';
 function TaskTable(props) {
   const {state, createTask} = useContext(stateContext);
   const [showForm, setShowForm] = useState(false);
-
-  console.log("hello 1111", state);
   
   const formatDate = date => {
     return date.split('T')[0]
@@ -31,7 +29,7 @@ function TaskTable(props) {
         startDate={formatDate(task.startDate)}
         endDate={formatDate(task.endDate)}
         users={state.users}
-        taskTeams={state.projectTeams}
+        taskTeams={state.taskTeams}
       />
     )
   })

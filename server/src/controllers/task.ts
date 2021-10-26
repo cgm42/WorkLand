@@ -12,7 +12,7 @@ async function getAllTasksForProject(req: Request, res: Response) {
 };
 
 async function createTask(req: Request, res: Response) {
-  const {project_id, sprint_id, name, description, startDate, endDate, users} = req.body;
+  const {project_id, sprint_id, name, description, priority_level, startDate, endDate, users} = req.body;
 
   const task = {
     project_id,
@@ -21,7 +21,7 @@ async function createTask(req: Request, res: Response) {
     description,
     start_date: startDate,
     end_date: endDate,
-    priority_level: 0
+    priority_level
   }
   
   const queryResult = await model.createTask(task);

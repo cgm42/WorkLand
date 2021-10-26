@@ -11,18 +11,20 @@ function TaskForm(props) {
 
   const [name, setName] = useState(props.name || '');
   const [description, setDescription] = useState(props.description || '');
-  const [error, setError] = useState('');
   const [startDate, onStart] = useState(new Date());
   const [endDate, onEnd] = useState(new Date());
+  const [priority, setPriority] = useState(0);
+  const [error, setError] = useState('');
 
+  
   const {state, setShowForm, onSave, projectID, setEdit} = props;
-
+  
   const team = state.projectTeams.filter((team) => {
     return team.projectId === projectID;
   });
-
+  
   const usersList = [];
-
+  
   for (const member of team) {
     for (const user of state.users) {
       if (user.id === member.userId) {
@@ -30,19 +32,19 @@ function TaskForm(props) {
       }
     }
   }
-
+  
   const usersListArray = usersList.map(user => {
     const {id, name, avatar} = user;
-      return (
-        <User
-          key={id}
-          id={id}
-          avatar={avatar}
-          name={name}
-        />
-      )
+    return (
+      <User
+      key={id}
+      id={id}
+      avatar={avatar}
+      name={name}
+      />
+    )
   });
-
+    
   const validate = () => {
     const selectedUsers = document.getElementsByClassName('user-list--selected');
 
@@ -59,7 +61,7 @@ function TaskForm(props) {
       description,
       startDate,
       endDate,
-      // priority_level,
+      priority_level: priority,
       users: selectedUsersIDs
     };
 
@@ -107,8 +109,17 @@ function TaskForm(props) {
 
         <div className="team-date-container">
           <label>
-            Choose your team:
+            Assignees:
             <ul className='rpgui users-container'>{usersListArray}</ul>
+          </label>
+
+          <label>
+            Priority:
+            <select className="rpgui-dropdown" onChange={(e) => setPriority(e.target.value)}>
+              <option value={0}>Low</option>
+              <option value={1}>Medium</option>
+              <option value={2}>High</option>
+            </select>
           </label>
 
           <div className='date'>

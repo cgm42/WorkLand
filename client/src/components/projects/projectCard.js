@@ -9,7 +9,7 @@ export default function ProjectCard(props) {
     return state.user;
   });
 
-  const {id, projectTeams, users} = props;
+  const {id, projectTeams, users, setShowForm} = props;
 
   const team = projectTeams.filter(team => {
     return team.projectId === id;
@@ -46,7 +46,7 @@ export default function ProjectCard(props) {
       <p>9/10</p>
       <p>The team:</p>
       {usersListArray}
-      {userState.id === props.creatorID && <Button>Edit</Button>}
+      {userState.id === props.creatorID && <Button onClick={() => setShowForm(true)}>Edit</Button>}
     </div>
   );
 };

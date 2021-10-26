@@ -7,10 +7,16 @@ export const basemapWidth = 1024;
 export const basemapHeight = 704;
 
 //number of pixel a character walks at a time
-export const stepSize = 2;
+export const stepSize = 5;
 
 //corresponds to filenames in /public/sprites/skins
-export const avatarSkinArr = ['f1', 'f2', 'f3'];
+export const avatarSkinArr = ['f1', 'f2', 'f3', 'cara'];
+
+//Zoom factor for sprite file names starting with f
+export const spriteSizeFactorF = 1.35;
+
+//Zoom factor for modern sprite files
+export const spriteSizeFactorC = 1.5;
 
 export const modifier = {
   ArrowDown: { x: 0, y: stepSize },
@@ -53,12 +59,12 @@ const I = { walk: false, action: true, special: false };
 const OFFICE_MAP = [
   // 0  1  2  3  4  5  6  7  8  9  10 11
   [X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
-  [X, O, O, X, K, K, K, X, X, X, X, X], // y = 1
-  [X, O, O, O, O, O, O, O, O, O, O, X], // y= 2
-  [X, O, O, O, X, X, X, O, O, O, O, X], // y = 3
-  [X, O, O, O, X, X, X, O, O, O, O, X], // y = 4
-  [X, O, O, O, X, X, X, O, O, O, O, X], // y = 5
-  [X, O, O, O, X, X, X, O, O, O, O, X], // y = 6
+  [X, X, X, X, X, X, X, X, X, X, X, X], // y = 1
+  [X, O, O, O, K, K, K, O, O, O, O, X], // y= 2
+  [X, O, O, O, O, O, O, O, O, O, O, X], // y = 3
+  [X, O, O, O, O, O, O, O, O, O, O, X], // y = 4
+  [X, O, O, O, O, O, O, O, O, O, O, X], // y = 5
+  [X, O, O, O, O, O, O, O, O, O, O, X], // y = 6
   [X, O, O, O, O, O, O, O, X, X, X, X], // y = 7
   [X, X, O, X, X, X, X, O, X, X, X, X], // y = 8
   [X, X, O, X, X, X, X, O, O, O, O, X], // y = 9

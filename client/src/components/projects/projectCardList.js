@@ -1,18 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './projects.css';
-import "nes.css/css/nes.min.css";
-import "../rpgui.css";
+import 'nes.css/css/nes.min.css';
+import '../rpgui.css';
 import ProjectCard from './projectCard';
 import Form from './Form';
 import Button from '../button/Button';
 import useApplicationData from '../../hooks/useApplicationData';
 
-
 function ProjectCardList(props) {
   const { state, createProject, editProject } = useApplicationData();
   const [showForm, setShowForm] = useState(false);
 
-  const projectsList = state.projects.map(project => {
+  const projectsList = state.projects.map((project) => {
     return (
       <ProjectCard
         key={project.id}
@@ -25,7 +24,7 @@ function ProjectCardList(props) {
         // setShowForm={setShowForm}
         // editProject={editProject}
       />
-    )
+    );
   });
 
   return (
@@ -37,31 +36,29 @@ function ProjectCardList(props) {
       <section>
         {projectsList}
         <div className='new-project'>
-        {showForm &&
-          <Form 
-            setShowForm={setShowForm}
-            usersList={state.users}
-            onSave={createProject}
-          /> 
-        }
+          {showForm && (
+            <Form
+              setShowForm={setShowForm}
+              usersList={state.users}
+              onSave={createProject}
+            />
+          )}
 
-        {/* {showForm && edit &&
+          {/* {showForm && edit &&
           <Form 
           setShowForm={setShowForm}
           usersList={state.users}
           onSave={createProject}
           setEdit={setEdit}
         />}  */}
-          
-         {!showForm &&
-          <Button onClick={() => setShowForm(true)}>
-            New Project
-          </Button>
-         } 
+
+          {!showForm && (
+            <Button onClick={() => setShowForm(true)}>New Project</Button>
+          )}
         </div>
       </section>
     </div>
   );
-};
+}
 
 export default ProjectCardList;

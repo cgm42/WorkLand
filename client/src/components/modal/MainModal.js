@@ -30,12 +30,10 @@ function MainModal(props) {
         ) : (
           <div />
         )}
-        {mapRoute === 'projectDashboard' ? (
-          <div>project dashboard lives here</div>
-        ) : (
+        {mapRoute === 'projectDashboard' ? <ProjectCardList /> : (
           <div />
         )}
-        {mapRoute === 'taskList' ? <div>task table</div> : <div />}
+        {mapRoute === 'taskList' ? <TaskTable /> : <div />}
 
         {/* <div>
           <ProjectCardList />
@@ -48,7 +46,7 @@ function MainModal(props) {
           </div>
         ) : (
           <div />
-        )}
+        )} 
       </Modal>
     </>
   );

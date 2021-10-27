@@ -69,6 +69,7 @@ function TaskForm(props) {
     setShowForm(false);
     // setEdit(false);
     onSave(task);
+    document.getElementById('dialog-dark-rounded').close()
   };
   
   const cancel = () => {
@@ -77,11 +78,16 @@ function TaskForm(props) {
   };
 
   return (
-    <div className='rpgui-container framed'>
+    <div>
+    <button type="button" className="nes-btn is-primary" onClick={() => document.getElementById('dialog-dark-rounded').showModal()}>
+      Open
+    </button>
+    <dialog className="nes-dialog is-dark is-rounded" id="dialog-dark-rounded">
       <form
         className='form'
         autoComplete='off'
         onSubmit={(e) => e.preventDefault()}
+        method="dialog"
       >
         <label>
           Task name:
@@ -142,11 +148,12 @@ function TaskForm(props) {
             </label>
           </div>
         </div>
-      </form>
       <div className='cancel-submit'>
-        <Button onClick={cancel} title={'cancel'}></Button>
+        <Button onClick={() => document.getElementById('dialog-dark-rounded').close()} title={'cancel'}></Button>
         <Button onClick={validate} title={'submit'}></Button>
       </div>
+      </form>
+      </dialog>
     </div>
   );
 }

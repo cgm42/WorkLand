@@ -56,19 +56,12 @@ function TaskTable(props) {
               </Button>
             } 
             <section>
-              <button type="button" class="nes-btn is-primary" onClick={() => document.getElementById('dialog-default').showModal()}>
-                Open dialog
-              </button>
-              <dialog class="nes-dialog" id="dialog-default">
-                <form method="dialog">
-                  <p class="title">Dialog</p>
-                  <p>Alert: this is a dialog.</p>
-                  <menu class="dialog-menu">
-                    <button class="nes-btn">Cancel</button>
-                    <button class="nes-btn is-primary" >Confirm</button>
-                  </menu>
-                </form>
-              </dialog>
+            <TaskForm 
+              setShowForm={setShowForm}
+              onSave={createTask}
+              state={state}
+              projectID={state.current_project}
+            /> 
             </section>
           </div>
 

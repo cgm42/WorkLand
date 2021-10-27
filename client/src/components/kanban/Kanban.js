@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { stateContext } from "../providers/StateProvider";
 import "./kanban.css";
 import "nes.css/css/nes.min.css";
 import "../rpgui.css";
 import { AiFillWarning } from "react-icons/ai";
 import KanbanCard from "./KanbanCard";
+
 function Kanban() {
+  const { state } = useContext(stateContext);
+
   return (
     <div className="rpgui-content rpgui-container framed-golden-2">
       <div className="welcome">

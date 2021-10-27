@@ -48,12 +48,29 @@ function TaskTable(props) {
               projectID={state.current_project}
             /> 
           }
-        <div className='rpgui-container framed'>
-          {!showForm &&
-            <Button onClick={() => setShowForm(true)}>
-              New Task
-            </Button>
-          } 
+        <div className='rpgui-container framed '>
+          <div className='table-container'>
+            {!showForm &&
+              <Button onClick={() => setShowForm(true) && document.getElementById('dialog-default').showModal()} title={'New Task'}>
+
+              </Button>
+            } 
+            <section>
+              <button type="button" class="nes-btn is-primary" onClick={() => document.getElementById('dialog-default').showModal()}>
+                Open dialog
+              </button>
+              <dialog class="nes-dialog" id="dialog-default">
+                <form method="dialog">
+                  <p class="title">Dialog</p>
+                  <p>Alert: this is a dialog.</p>
+                  <menu class="dialog-menu">
+                    <button class="nes-btn">Cancel</button>
+                    <button class="nes-btn is-primary" >Confirm</button>
+                  </menu>
+                </form>
+              </dialog>
+            </section>
+          </div>
 
 
           <table className='table'>

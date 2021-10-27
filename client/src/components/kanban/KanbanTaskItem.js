@@ -15,6 +15,14 @@ function KanbanTaskItem(props) {
     users,
     taskTeams,
   } = props;
+  console.log("ohjfihfpa", priority);
+
+  const iconPriorityClass = classNames(
+    "priority-icon",
+    { late: priority === 0 },
+    { progress: priority === 1 },
+    { done: priority === 2 }
+  );
 
   const iconPriorityClass = classNames(
     "priority-icon",

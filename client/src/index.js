@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { mapReducer } from "./reducers/mapReducer";
-import { socketRTK } from "./middleware/socketRTK";
+import { socketRTK } from "./middleware/socketRTK";;
 
 const store = configureStore({
   reducer: mapReducer,

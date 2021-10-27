@@ -78,9 +78,9 @@ const Sidenav = () => {
         <Route path="/kanban" exact>
           <Kanban></Kanban>
         </Route>
-        <Route path="/login" exact>
+        {/* <Route path="/login" exact>
           <Login></Login>
-        </Route>
+        </Route> */}
 
         userDashboard
       </Switch>

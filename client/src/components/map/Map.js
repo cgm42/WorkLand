@@ -26,9 +26,10 @@ function Map({ x }) {
       <MapTile map={`officev4`} />
       {kanban && (
         <Sprite
-          image={'/sprites/action.png'}
-          data={{ h: 32, w: 32, x: 0, y: 0 }}
-          position={{ x: 173, y: 20 }}
+          zoom={0.4}
+          image={'/sprites/bubbles/kanban.gif'}
+          data={{ h: 180, w: 279, x: 0, y: 0 }}
+          position={{ x: 83, y: -68 }}
         />
       )}
       {userDashboard && (

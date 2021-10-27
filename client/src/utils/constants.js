@@ -10,7 +10,7 @@ export const basemapHeight = 704;
 export const stepSize = 5;
 
 //corresponds to filenames in /public/sprites/skins
-export const avatarSkinArr = ['f1', 'f2', 'f3', 'cara'];
+export const avatarSkinArr = ['f1', 'f2', 'f3', 'dc1', 'dc2'];
 
 //Zoom factor for sprite file names starting with f
 export const spriteSizeFactorF = 1.35;

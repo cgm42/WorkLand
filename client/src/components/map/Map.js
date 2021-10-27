@@ -23,7 +23,7 @@ function Map({ x }) {
         top: `${topMargin}px`,
         left: `${leftMargin}px`,
       }}>
-      <MapTile map={`officev4`} />
+      <MapTile map={`officev5`} />
       {kanban && (
         <Sprite
           zoom={0.4}

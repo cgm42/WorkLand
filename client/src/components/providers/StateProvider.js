@@ -1,8 +1,8 @@
-import {createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect } from "react";
 import axios from "axios";
 import applicationDataReducer, {
   SET_APPLICATION_DATA,
-  SET_CURRENT_PROJECT
+  SET_CURRENT_PROJECT,
 } from "../../reducers/applicationDataReducer";
 // import { useSelector } from "react-redux";
 
@@ -20,8 +20,8 @@ export default function StateProvider(props) {
     projectTeams: [],
     current_project: null,
     tasks: [],
-    taskTeams: []
-  })
+    taskTeams: [],
+  });
 
   useEffect(() => {
     Promise.all([
@@ -29,88 +29,96 @@ export default function StateProvider(props) {
       axios.get("/projects"),
       axios.get("/users_projects"),
       // axios.get(`/tasks/project/${state.current_project}`),
-      axios.get("/users_tasks")
-    ])
-      .then(all => {
-        dispatch({
-          type: SET_APPLICATION_DATA,
-          value: {
-            users: all[0].data,
-            projects: all[1].data,
-            projectTeams: all[2].data,
-            // tasks: all[3].data,
-            taskTeams: all[3].data
-          }
-        })
-      });
-  }, []);
-
-  
-  const updateProjectList = () => {
-    Promise.all([
-      axios.get("/projects"),
-      axios.get("/users_projects")
-    ])
-    .then(all => {
+      axios.get("/users_tasks"),
+    ]).then((all) => {
       dispatch({
         type: SET_APPLICATION_DATA,
         value: {
-          ...state,
-          projects: all[0].data,
-          projectTeams: all[1].data
-        }
-      })
-    })
-  };
-  
-  const createProject = project => {
-    axios.post('/projects', project)
-      .then((data) => {
-        setCurrentProject(data.data.id);
-        updateProjectList();
+          users: all[0].data,
+          projects: all[1].data,
+          projectTeams: all[2].data,
+          // tasks: all[3].data,
+          taskTeams: all[3].data,
+        },
       });
-  };
-
-  const setCurrentProject = id => {
-    dispatch({
-      type: SET_CURRENT_PROJECT,
-      id
     });
+  }, []);
 
-    axios.get(`/tasks/project/${id}`)
-      .then(data => {
+  const updateProjectList = () => {
+    Promise.all([axios.get("/projects"), axios.get("/users_projects")]).then(
+      (all) => {
         dispatch({
           type: SET_APPLICATION_DATA,
           value: {
             ...state,
-            tasks: data.data
-          }
+            projects: all[0].data,
+            projectTeams: all[1].data,
+          },
         });
-      });
+      }
+    );
   };
 
-  const createTask = task => {
-    axios.post('/tasks', task)
-    .then(() => {
-      updateTaskList();
-    })
+  const createProject = (project) => {
+    axios.post("/projects", project).then((data) => {
+      setCurrentProject(data.data.id);
+      updateProjectList();
+    });
   };
-  
+
+  const setCurrentProject = (id) => {
+    dispatch({
+      type: SET_CURRENT_PROJECT,
+      id,
+    });
+
+    axios.get(`/tasks/project/${id}`).then((data) => {
+      dispatch({
+        type: SET_APPLICATION_DATA,
+        value: {
+          ...state,
+          tasks: data.data,
+        },
+      });
+    });
+  };
+
+  const createTask = (task) => {
+    axios.post("/tasks", task).then(() => {
+      updateTaskList();
+    });
+  };
+
   const updateTaskList = () => {
     Promise.all([
       axios.get(`/tasks/project/${state.current_project}`),
-      axios.get("/users_tasks")
-    ])
-    .then(all => {
+      axios.get("/users_tasks"),
+    ]).then((all) => {
       dispatch({
         type: SET_APPLICATION_DATA,
         value: {
           ...state,
           tasks: all[0].data,
-          taskTeams: all[1].data
-        }
-      })
-    })
+          taskTeams: all[1].data,
+        },
+      });
+    });
+  };
+
+  const updateTaskStatus = (status, id) => {
+    axios.patch(`/tasks/status/${id}`, { status }).then((data) => {
+      console.log("data in state provider", data);
+      dispatch({
+        type: SET_APPLICATION_DATA,
+        value: {
+          ...state,
+          tasks: [
+            ...state.tasks,
+            (state.tasks[data.data[0].id] = data.data[0]),
+          ],
+        },
+      });
+    });
   };
 
   // const editProject = project => {
@@ -126,12 +134,13 @@ export default function StateProvider(props) {
     state,
     createProject,
     setCurrentProject,
-    createTask
-  }
+    createTask,
+    updateTaskStatus,
+  };
 
   return (
     <stateContext.Provider value={providerData}>
       {props.children}
     </stateContext.Provider>
-  )
-};
+  );
+}

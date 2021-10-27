@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiFillWarning } from "react-icons/ai";
 import TaskUser from "../users/TaskUser";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import classNames from 'classnames';
+import classNames from "classnames";
 
 function KanbanTaskItem(props) {
   const {
@@ -15,15 +15,13 @@ function KanbanTaskItem(props) {
     users,
     taskTeams,
   } = props;
-  console.log("ohjfihfpa" , priority)
 
   const iconPriorityClass = classNames(
     "priority-icon",
-    { "late": priority === 0 },
-    { "progress": priority === 1 },
-    { "done": priority === 2 }
+    { late: priority === 0 },
+    { progress: priority === 1 },
+    { done: priority === 2 }
   );
-
 
   const team = taskTeams.filter((team) => {
     return team.taskId === id;

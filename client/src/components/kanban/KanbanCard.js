@@ -9,13 +9,13 @@ import KanbanTaskItem from "./KanbanTaskItem";
 import { Droppable } from "react-beautiful-dnd";
 
 function KanbanCard(props) {
-  const { name, status } = props;
+  const { name, status, column } = props;
   const { state } = useContext(stateContext);
 
   const kanBanCardClass = classNames(
     "kanban-card",
-    "nes-container", "is-rounded",
-    "float",
+    "nes-container",
+    "is-rounded",
     { "is-late": status === 3 },
     { "to-do": status === 0 },
     { "in-progress": status === 1 },
@@ -41,23 +41,16 @@ function KanbanCard(props) {
     }
   });
 
-  const [tasks, updateTasks] = useState(tasksList);
-
-  const handleOnDragEnd = (result) => {
-    console.log(result);
-  };
-
   return (
-
-    <Droppable droppableId="kanban-card">
+    <Droppable droppableId={column}>
       {(provided) => (
         <div
           className={kanBanCardClass}
           {...provided.droppableProps}
           ref={provided.innerRef}
-          id='kanban-card-id'
+          id="kanban-card-id"
         >
-          <header className="title" >{name}</header>
+          <header className="title">{name}</header>
           {tasksList}
           {provided.placeholder}
         </div>

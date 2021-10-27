@@ -29,7 +29,7 @@ async function addProject(req: Request, res: Response) {
     background_img: ''
   }
 
-  const queryResult = await model.addProject(project)
+  const queryResult = await model.addProject(project);
 
   for (const user of req.body.users) {
     const userProject = {

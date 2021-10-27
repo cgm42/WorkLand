@@ -12,7 +12,7 @@ function getAllTasksForProject(project_id: number) {
     `, [project_id]);
 };
 
-function createTask(task: {project_id: number; sprint_id: any; name: string; description: string; start_date: string; end_date: string; priority_level: string;}) {
+function createTask(task: {project_id: number; sprint_id: any; name: string; description: string; start_date: string; end_date: string; priority_level: number;}) {
   const {project_id, sprint_id, name, description, start_date, end_date, priority_level} = task;
     
   const values = [project_id, sprint_id, name, description, start_date, end_date, priority_level]
@@ -20,7 +20,8 @@ function createTask(task: {project_id: number; sprint_id: any; name: string; des
   return pool
   .query(`
     INSERT INTO tasks (project_id, sprint_id, name, description, start_date, end_date, priority_level)
-    VALUES ($1, $2, $3, $4, $5, $6, $7);
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING id;
   `, values);
 }
 

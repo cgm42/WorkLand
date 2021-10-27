@@ -61,8 +61,8 @@ CREATE TABLE tasks (
   description TEXT,
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
-  priority_level TEXT NOT NULL,
-  current_status TEXT DEFAULT 'Incomplete'
+  priority_level INT NOT NULL,
+  current_status INT DEFAULT 0
 );
 
 CREATE TABLE users_tasks (

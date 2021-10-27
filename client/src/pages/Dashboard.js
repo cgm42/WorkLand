@@ -1,8 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
-import axios from "axios";
+// import { useEffect } from "react";
+// import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_USER } from "../reducers/mapReducer";
+// import { SET_USER } from "../reducers/mapReducer";
 import Modal from "react-modal";
 import "nes.css/css/nes.min.css";
 import "../components/styles/animations.css";
@@ -11,17 +11,17 @@ import Map from "../components/map/Map";
 import ModalInput from "../components/modal/ModalInput";
 import MainModal from "../components/modal/MainModal";
 const Dashboard = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    axios.get("/user").then((data) => {
-      console.log(data);
-      dispatch(SET_USER(data.data));
-    });
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   axios.get("/user").then((data) => {
+  //     console.log(data);
+  //     dispatch(SET_USER(data.data));
+  //   });
+  // }, [dispatch]);
 
   const modalCanOpen = useSelector((state) => state.mapRoute.modalCanOpen);
 
-  const userState = useSelector((state) => state.user);
+  // const userState = useSelector((state) => state.user);
 
   return (
     <div className="dashboard-layout">

@@ -12,11 +12,12 @@ import ProjectCardList from "./projects/projectCardList";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
 import UserDashboard from "./userDashboard/UserDashboard";
-import Tasks from './tasks/Tasks';
+import TaskTable from "./tasks/TaskTable";
 import Kanban from './kanban/Kanban';
 
 
 const Sidenav = () => {
+
   return (
     <Router>
       <div className="sidebar">
@@ -60,11 +61,11 @@ const Sidenav = () => {
         </Route>
 
         <Route path="/project" exact>
-          <ProjectCardList></ProjectCardList>
+          <ProjectCardList />
         </Route>
 
         <Route path="/tasks" exact>
-          <Tasks></Tasks>
+          <TaskTable />
         </Route>
 
         <Route path="/messages" exact>
@@ -77,9 +78,9 @@ const Sidenav = () => {
         <Route path="/kanban" exact>
           <Kanban></Kanban>
         </Route>
-        <Route path="/login" exact>
+        {/* <Route path="/login" exact>
           <Login></Login>
-        </Route>
+        </Route> */}
 
         userDashboard
       </Switch>

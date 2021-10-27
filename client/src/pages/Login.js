@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './login.css';
 import './index.css';
-import { useSelector } from 'react-redux';
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_USER } from "../reducers/mapReducer";
 import { BsGithub } from 'react-icons/bs';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    axios.get("/user").then((data) => {
+      console.log(data);
+      dispatch(SET_USER(data.data));
+    });
+  }, [dispatch]);
+
+
   const userState = useSelector((state) => {
     console.log('state:', state);
     return state.user;

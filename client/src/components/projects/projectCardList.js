@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useContext} from 'react';
+import { stateContext } from '../providers/StateProvider';
 import './projects.css';
-import 'nes.css/css/nes.min.css';
-import '../rpgui.css';
+import "nes.css/css/nes.min.css";
+import "../rpgui.css";
 import ProjectCard from './projectCard';
-import Form from './Form';
+import ProjectForm from './ProjectForm';
 import Button from '../button/Button';
-import useApplicationData from '../../hooks/useApplicationData';
+
 
 function ProjectCardList(props) {
-  const { state, createProject, editProject } = useApplicationData();
+  const { state, createProject, setCurrentProject} = useContext(stateContext);
   const [showForm, setShowForm] = useState(false);
 
-  const projectsList = state.projects.map((project) => {
+
+  const projectsList = state.projects.map(project => {
     return (
       <ProjectCard
         key={project.id}
@@ -21,6 +23,7 @@ function ProjectCardList(props) {
         description={project.description}
         projectTeams={state.projectTeams}
         users={state.users}
+        setCurrentProject={setCurrentProject}
         // setShowForm={setShowForm}
         // editProject={editProject}
       />
@@ -36,13 +39,13 @@ function ProjectCardList(props) {
       <section>
         {projectsList}
         <div className='new-project'>
-          {showForm && (
-            <Form
-              setShowForm={setShowForm}
-              usersList={state.users}
-              onSave={createProject}
-            />
-          )}
+        {showForm &&
+          <ProjectForm 
+            setShowForm={setShowForm}
+            usersList={state.users}
+            onSave={createProject}
+          /> 
+        }
 
           {/* {showForm && edit &&
           <Form 

@@ -27,7 +27,7 @@ function Map({ x }) {
       {kanban && (
         <Sprite
           zoom={0.4}
-          image={'/sprites/bubbles/kanban.gif'}
+          image={'/sprites/bubbles/kanban3.gif'}
           data={{ h: 180, w: 279, x: 0, y: 0 }}
           position={{ x: 83, y: -68 }}
         />

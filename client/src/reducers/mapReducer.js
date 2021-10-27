@@ -34,6 +34,7 @@ const initialState = {
     kanban: false,
     ganttChart: false,
     taskList: false,
+    piano: false,
   },
   mapRoute: {
     modalCanOpen: false,

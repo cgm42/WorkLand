@@ -21,6 +21,7 @@ function MainModal(props) {
           }}>
           close
         </button>
+        {/* {===============project management features==========} */}
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}
         {mapRoute === 'ganttChart' ? (
@@ -33,11 +34,14 @@ function MainModal(props) {
         ) : (
           <div />
         )}
-        {mapRoute === 'taskList' ? <TaskTable></TaskTable> : <div />}
+        {mapRoute === 'taskList' ? <div>task table</div> : <div />}
 
         {/* <div>
           <ProjectCardList />
         </div> */}
+
+        {/* {===============cool extra features==============} */}
+        {mapRoute === 'piano' ? <div>piano</div> : <div />}
       </Modal>
     </>
   );

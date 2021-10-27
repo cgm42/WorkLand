@@ -12,6 +12,7 @@ function Map({ x }) {
     (state) => state.mapGuide.projectDashboard
   );
   const taskList = useSelector((state) => state.mapGuide.taskList);
+  const piano = useSelector((state) => state.mapGuide.piano);
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
     <div
@@ -56,6 +57,13 @@ function Map({ x }) {
           image={'/sprites/action.png'}
           data={{ h: 32, w: 32, x: 0, y: 0 }}
           position={{ x: 691, y: 20 }}
+        />
+      )}
+      {piano && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 336, y: 286 }}
         />
       )}
     </div>

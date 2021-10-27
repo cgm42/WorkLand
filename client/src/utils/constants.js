@@ -49,9 +49,9 @@ export const playerTemplate = {
 export const spriteDimensions = { h: 32, w: 32 };
 export const maxSteps = 3;
 
+//Project Management Assets
 const X = { walk: false, action: false, special: false };
 const O = { walk: true, action: false, special: false };
-const A = { walk: true, action: true, special: false };
 const K = { walk: true, action: true, special: false, asset: 'kanban' };
 const G = { walk: true, action: true, special: false, asset: 'ganttChart' };
 const P = {
@@ -62,6 +62,9 @@ const P = {
 };
 const U = { walk: true, action: true, special: false, asset: 'userDashboard' };
 const L = { walk: true, action: true, special: false, asset: 'taskList' };
+
+//Cool features
+const p = { walk: true, action: true, special: false, asset: 'piano' };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [
@@ -77,7 +80,7 @@ const OFFICE_MAP = [
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 8
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 9
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X], // y = 10
-  [X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 11
+  [X, O, O, O, O, O, O, O, O, O, p, p, O, O, O, O, O, O, O, O, O, X, X, X], // y = 11
   [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 12
   [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 13
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 14

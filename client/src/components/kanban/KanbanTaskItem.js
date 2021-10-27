@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillWarning } from "react-icons/ai";
 import TaskUser from "../users/TaskUser";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function KanbanTaskItem(props) {
   const {
+    index,
     id,
     title,
     description,
@@ -33,17 +35,26 @@ function KanbanTaskItem(props) {
   });
 
   return (
-    <div className="task-item-container">
-      <div className="task-item-header">
-        <h1>{title}</h1>
-        <div className="priority-icon">
-          <AiFillWarning></AiFillWarning>
-        </div>
-      </div>
+    <Draggable key={id} draggableId={`${id}`} index={index}>
+      {(provided) => (
+        <div
+          className="task-item-container"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <div className="task-item-header">
+            <h1>{title}</h1>
+            <div className="priority-icon">
+              <AiFillWarning></AiFillWarning>
+            </div>
+          </div>
 
-      <p>{description}</p>
-      <div className="task-users">{usersListArray}</div>
-    </div>
+          <p>{description}</p>
+          <div className="task-users">{usersListArray}</div>
+        </div>
+      )}
+    </Draggable>
   );
 }
 

@@ -3,8 +3,8 @@ import "./styles/SideNav.css";
 import { AiFillHome, AiFillMessage } from "react-icons/ai";
 import { FaClipboardList, FaSpotify } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
-import { BsFillAlarmFill } from "react-icons/bs";
-import { RiLogoutCircleFill } from "react-icons/ri";
+import { BsFillAlarmFill, BsKanbanFill } from "react-icons/bs";
+import { RiDashboardFill, RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import Dashboard from "../pages/Dashboard";
@@ -12,7 +12,8 @@ import ProjectCardList from "./projects/ProjectCardList";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
 import UserDashboard from "./userDashboard/UserDashboard";
-import TaskTable from './tasks/TaskTable';
+import TaskTable from "./tasks/TaskTable";
+import Kanban from './kanban/Kanban';
 
 
 const Sidenav = () => {
@@ -43,7 +44,12 @@ const Sidenav = () => {
           </li>
           <li>
             <Link to="/dashboard">
-              <AiFillMessage></AiFillMessage>
+              <RiDashboardFill></RiDashboardFill>
+            </Link>
+          </li>
+          <li>
+            <Link to="/kanban">
+              <BsKanbanFill></BsKanbanFill>
             </Link>
           </li>
         </div>
@@ -69,8 +75,8 @@ const Sidenav = () => {
         <Route path="/dashboard" exact>
           <UserDashboard></UserDashboard>
         </Route>
-        <Route path="/login" exact>
-          <Login></Login>
+        <Route path="/kanban" exact>
+          <Kanban></Kanban>
         </Route>
         <Route path="/login" exact>
           <Login></Login>

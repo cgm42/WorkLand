@@ -8,7 +8,6 @@ import ProjectForm from './ProjectForm';
 import Button from '../button/Button';
 
 
-
 function ProjectCardList(props) {
   const { state, createProject, setCurrentProject} = useContext(stateContext);
   const [showForm, setShowForm] = useState(false);
@@ -28,7 +27,7 @@ function ProjectCardList(props) {
         // setShowForm={setShowForm}
         // editProject={editProject}
       />
-    )
+    );
   });
 
   return (
@@ -48,23 +47,21 @@ function ProjectCardList(props) {
           /> 
         }
 
-        {/* {showForm && edit &&
+          {/* {showForm && edit &&
           <Form 
           setShowForm={setShowForm}
           usersList={state.users}
           onSave={createProject}
           setEdit={setEdit}
         />}  */}
-          
-         {!showForm &&
-          <Button onClick={() => setShowForm(true)}>
-            New Project
-          </Button>
-         } 
+
+          {!showForm && (
+            <Button onClick={() => setShowForm(true)}>New Project</Button>
+          )}
         </div>
       </section>
     </div>
   );
-};
+}
 
 export default ProjectCardList;

@@ -29,10 +29,10 @@ export default function TaskRow(props) {
   });
 
   const priorityClass = classNames(
-    'priority',
-    {'low': priority === 0},
-    {'medium': priority === 1},
-    {'high': priority === 2}
+    "priority",
+    { "late": priority === 0 },
+    { "progress": priority === 1 },
+    { "done": priority === 2 }
   );
 
   const statusClass = classNames(

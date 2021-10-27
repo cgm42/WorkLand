@@ -14,7 +14,7 @@ function KanbanCard(props) {
 
   const kanBanCardClass = classNames(
     "kanban-card",
-    "nes-container is -rounded",
+    "nes-container", "is-rounded",
     "float",
     { "is-late": status === 3 },
     { "to-do": status === 0 },
@@ -51,15 +51,16 @@ function KanbanCard(props) {
 
     <Droppable droppableId="kanban-card">
       {(provided) => (
-        <ul
-          className={kanbanCardClass}
+        <div
+          className={kanBanCardClass}
           {...provided.droppableProps}
           ref={provided.innerRef}
+          id='kanban-card-id'
         >
-          <header className="title">{name}</header>
+          <header className="title" >{name}</header>
           {tasksList}
           {provided.placeholder}
-        </ul>
+        </div>
       )}
     </Droppable>
   );

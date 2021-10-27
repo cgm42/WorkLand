@@ -15,8 +15,32 @@
   padding:0;
 }
 
-#late {
-  background-color: red;
+.is-late {
+  background-color:crimson;
+}
+
+.to-do {
+  background-color:rgb(135, 59, 223);
+}
+
+.in-progress {
+  background-color:rgb(227, 230, 51);
+}
+
+.is-done {
+  background-color:rgb(58, 207, 53);
+}
+
+.late {
+  color:crimson;
+}
+
+.progress {
+  color:rgb(227, 230, 51);
+}
+
+.done {
+  color:rgb(58, 207, 53);
 }
 
 .kanban-card header {
@@ -27,12 +51,30 @@
 }
 
 .task-item-container{
-  background: aqua;
+  background: linear-gradient(32deg, #FFE783, #A2F2FF, #F5BCFF);
+  background-size: 600% 600%;
+  animation: GradientBackground 3s ease infinite;
   margin: 15px;
-  height: 140px;
+  height: 145px;
   border-radius:15px;
-  padding:0
+  padding:0;
+  border: 3px solid black;
+  color: black
 }
+
+@keyframes GradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+};
 
 .task-item-container li {
   list-style: none;
@@ -47,17 +89,18 @@
 }
 
 .task-item-header h1{
-margin: 0;
+margin: 0 0 0 10px;;
 }
 
 .task-item-container p{
-  margin:0;
+  margin:0 0 0 15px;
   height:70px
 }
 
 .priority-icon {
   font-size: 30px;
   display: flex;
+  margin: 0 10px 0 0;
 }
 
 .task-users {
@@ -65,6 +108,11 @@ margin: 0;
   margin-right: 10px;
   justify-content:flex-end;
   font-size:20px
+}
+
+.task-users li {
+  margin: 0;
+  border-radius: 25px;
 }
 
 .task-users img {

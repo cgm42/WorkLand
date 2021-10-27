@@ -5,7 +5,8 @@ import './style.css';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function Map({ x }) {
-  const kanbanGuideState = useSelector((state) => state.mapGuide.kanban);
+  const kanban = useSelector((state) => state.mapGuide.kanban);
+  const userDashboard = useSelector((state) => state.mapGuide.userDashboard);
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
     <div
@@ -17,11 +18,18 @@ function Map({ x }) {
         left: `${leftMargin}px`,
       }}>
       <MapTile map={`officev3`} />
-      {kanbanGuideState && (
+      {kanban && (
         <Sprite
           image={'/sprites/action.png'}
           data={{ h: 32, w: 32, x: 0, y: 0 }}
-          position={{ x: 173, y: 0 }}
+          position={{ x: 173, y: 20 }}
+        />
+      )}
+      {userDashboard && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 558, y: 20 }}
         />
       )}
     </div>

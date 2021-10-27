@@ -53,7 +53,7 @@ const X = { walk: false, action: false, special: false };
 const O = { walk: true, action: false, special: false };
 const A = { walk: true, action: true, special: false };
 const K = { walk: true, action: true, special: false, asset: 'kanban' };
-const S = { walk: true, action: true, special: false, asset: 'schedule' };
+const G = { walk: true, action: true, special: false, asset: 'ganttChart' };
 const P = {
   walk: true,
   action: true,
@@ -68,7 +68,7 @@ const OFFICE_MAP = [
   // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 1
-  [X, X, X, X, K, K, K, X, S, S, X, X, P, P, X, X, U, U, O, X, X, N, N, X], // y= 2
+  [X, X, X, X, K, K, K, X, G, G, X, X, P, P, X, X, U, U, O, X, X, N, N, X], // y= 2
   [X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 3
   [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X, X], // y = 4
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 5

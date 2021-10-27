@@ -25,7 +25,7 @@ function Map({ x }) {
         top: `${topMargin}px`,
         left: `${leftMargin}px`,
       }}>
-      <MapTile map={`officev1`} />
+      <MapTile map={`officev2`} />
       {kanbanGuideState && (
         <Sprite
           image={'/sprites/action.png'}

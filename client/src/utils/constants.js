@@ -60,7 +60,7 @@ const OFFICE_MAP = [
   // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 1
-  [X, X, X, O, K, K, K, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y= 2
+  [X, X, X, X, K, K, K, X, O, O, X, X, O, O, X, X, O, O, O, X, X, O, O, X], // y= 2
   [X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 3
   [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X, X], // y = 4
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 5

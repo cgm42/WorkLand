@@ -15,6 +15,7 @@ export default function Actor({
 }) {
   const { h, w } = spriteDimensions;
   const styleForDisplayName = {
+    opacity: '0.5',
     position: 'absolute',
     top: position.y - h * 0.8, //adjust position for display name above character
     left: position.x - displayName.length - 8, //8 is an adjustment factor to display name on top of character

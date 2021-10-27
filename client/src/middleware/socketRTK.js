@@ -2,13 +2,13 @@
 import { wsEndpoint } from '../utils/constants';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
-import { SET_VIDEO_PARTICIPANTS } from '../reducers/mapReducer';
+import { SET_VIDEO_PARTICIPANTS, SET_SOCKETID } from '../reducers/mapReducer';
 export const socketRTK = () => {
   return (storeAPI) => {
     const socket = io(wsEndpoint);
-    // socket.on("getId", (id) => {
-    //   storeAPI.dispatch(SETSOCKETID({ id }));
-    // });
+    socket.on('connect', () => {
+      storeAPI.dispatch(SET_SOCKETID({ id: socket.id }));
+    });
     socket.on('callUser', (data) => {
       console.log('call user recevied at B', data);
       // storeAPI.dispatch(

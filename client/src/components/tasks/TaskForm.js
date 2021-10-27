@@ -73,15 +73,14 @@ function TaskForm(props) {
   };
   
   const cancel = () => {
-    setShowForm(false);
+    document.getElementById('dialog-dark-rounded').close()
     // setEdit(false);
   };
 
   return (
     <div>
-    <button type="button" className="nes-btn is-primary" onClick={() => document.getElementById('dialog-dark-rounded').showModal()}>
-      Open
-    </button>
+    <Button type="button" className="nes-btn is-primary" onClick={() => document.getElementById('dialog-dark-rounded').showModal()} title={'New Task'}>
+    </Button>
     <dialog className="nes-dialog is-dark is-rounded" id="dialog-dark-rounded">
       <form
         className='form'
@@ -149,7 +148,7 @@ function TaskForm(props) {
           </div>
         </div>
       <div className='cancel-submit'>
-        <Button onClick={() => document.getElementById('dialog-dark-rounded').close()} title={'cancel'}></Button>
+        <Button onClick={cancel} title={'cancel'}></Button>
         <Button onClick={validate} title={'submit'}></Button>
       </div>
       </form>

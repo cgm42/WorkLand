@@ -41,7 +41,13 @@ function MainModal(props) {
         </div> */}
 
         {/* {===============cool extra features==============} */}
-        {mapRoute === 'piano' ? <div>piano</div> : <div />}
+        {mapRoute === 'piano' ? (
+          <div>
+            piano <input></input>
+          </div>
+        ) : (
+          <div />
+        )}
       </Modal>
     </>
   );

@@ -144,8 +144,8 @@ function TaskForm(props) {
         </div>
       </form>
       <div className='cancel-submit'>
-        <Button onClick={cancel}>Cancel</Button>
-        <Button onClick={validate}>Submit</Button>
+        <Button onClick={cancel} title={'cancel'}></Button>
+        <Button onClick={validate} title={'submit'}></Button>
       </div>
     </div>
   );

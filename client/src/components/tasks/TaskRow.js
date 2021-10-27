@@ -45,7 +45,7 @@ export default function TaskRow(props) {
   return (
     <tr>
       <td>{name}</td>
-      <td>{usersListArray}</td>
+      <td className="task-user-container">{usersListArray}</td>
       <td className={statusClass}>{status}</td>
       <td className={priorityClass}><IoMdWarning className='icon'/></td>
       <td>{startDate}</td>

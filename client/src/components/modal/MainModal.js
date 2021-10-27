@@ -7,6 +7,7 @@ import UserDashboard from '../userDashboard/UserDashboard';
 import ProjectCardList from '../projects/projectCardList';
 import Kanban from '../kanban/Kanban';
 import TaskTable from '../tasks/TaskTable';
+import PianoComp from '../piano';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -43,7 +44,7 @@ function MainModal(props) {
         {/* {===============cool extra features==============} */}
         {mapRoute === 'piano' ? (
           <div>
-            piano <input></input>
+            <PianoComp></PianoComp>
           </div>
         ) : (
           <div />

@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 
-import DimensionsProvider from './DimensionsProvider';
 import SoundfontProvider from './SoundfontProvider';
 import './styles.css';
-
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 // webkitAudioContext fallback needed to support Safari
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const soundfontHostname = 'https://d1pzp51pvbm36p.cloudfront.net';
@@ -18,29 +17,16 @@ const noteRange = {
 const keyboardShortcuts = KeyboardShortcuts.create({
   firstNote: noteRange.first,
   lastNote: noteRange.last,
-  keyboardConfig: KeyboardShortcuts.HOME_ROW,
+  keyboardConfig: KeyboardShortcuts.QWERTY_ROW,
 });
-
 function PianoComp() {
+  const { width } = useWindowDimensions();
   return (
     <div>
-      <h1>react-piano demos</h1>
-      <div className="mt-5">
-        <p>Basic piano with hardcoded width</p>
-        <BasicPiano />
-      </div>
+      <h1>Play some tunes!</h1>
 
       <div className="mt-5">
-        <p>
-          Responsive piano which resizes to container's width. Try resizing the
-          window!
-        </p>
-        <ResponsivePiano />
-      </div>
-
-      <div className="mt-5">
-        <p>Piano with custom styling - see styles.css</p>
-        <ResponsivePiano className="PianoDarkTheme" />
+        <ResponsivePiano width={width} />
       </div>
     </div>
   );
@@ -70,8 +56,8 @@ function BasicPiano() {
 
 function ResponsivePiano(props) {
   return (
-    <DimensionsProvider>
-      {({ containerWidth, containerHeight }) => (
+    <div>
+      {
         <SoundfontProvider
           instrumentName="acoustic_grand_piano"
           audioContext={audioContext}
@@ -79,15 +65,15 @@ function ResponsivePiano(props) {
           render={({ isLoading, playNote, stopNote }) => (
             <Piano
               noteRange={noteRange}
-              width={containerWidth}
+              width={props.width - 122}
               playNote={playNote}
               stopNote={stopNote}
               disabled={isLoading}
-              {...props}
+              keyboardShortcuts={keyboardShortcuts}
             />
           )}
         />
-      )}
-    </DimensionsProvider>
+      }
+    </div>
   );
 }

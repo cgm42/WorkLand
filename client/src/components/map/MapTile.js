@@ -3,13 +3,13 @@ function MapTile({ map }) {
     <div
       id={map}
       style={{
-        boxSizing: "border-box",
+        boxSizing: 'border-box',
         backgroundImage: `url(/maps/${map}.png)`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "0px 0px",
-        display: "inline-block",
-        width: "384px",
-        height: "384px",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: '0px 0px',
+        backgroundSize: '100% 100%',
+        width: '1024px',
+        height: '704px',
       }}
     />
   );

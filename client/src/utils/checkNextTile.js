@@ -1,7 +1,7 @@
-import { MAP_TABLE } from "../utils/constants";
-import { initX, initY, stepSize } from "../utils/constants";
+import { MAP_TABLE } from '../utils/constants';
+import { initX, initY, stepSize } from '../utils/constants';
 function getNextTile(direction, x, y) {
-  //absolute position on screen, px
+  //relative position related x and y
   let position = { left: x, top: y };
   let newPos;
   //Map array coordinates:
@@ -11,28 +11,28 @@ function getNextTile(direction, x, y) {
   // console.log("postion :>> ", position);
 
   switch (direction) {
-    case "ArrowDown":
+    case 'ArrowDown':
       newPos = position.top + stepSize;
       X = (position.left - (position.left % 32)) / 32;
       Y = (newPos - (newPos % 32)) / 32;
 
       return MAP_TABLE[Y][X];
 
-    case "ArrowLeft":
+    case 'ArrowLeft':
       newPos = position.left - stepSize;
       X = (newPos - (newPos % 32)) / 32;
       Y = (position.top - (position.top % 32)) / 32;
 
       return MAP_TABLE[Y][X];
 
-    case "ArrowRight":
+    case 'ArrowRight':
       newPos = position.left + stepSize;
       X = (newPos - (newPos % 32)) / 32;
       Y = (position.top - (position.top % 32)) / 32;
 
       return MAP_TABLE[Y][X];
 
-    case "ArrowUp":
+    case 'ArrowUp':
       newPos = position.top - stepSize;
       X = (position.left - (position.left % 32)) / 32;
       Y = (newPos - (newPos % 32)) / 32;

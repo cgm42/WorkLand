@@ -1,17 +1,20 @@
-import Actor from "../actor";
-import useKeyPress from "../../hooks/useKeyPress";
-import { useSelector, useDispatch } from "react-redux";
+import Actor from '../actor';
+import useKeyPress from '../../hooks/useKeyPress';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   HIDE_MAP_GUIDE,
   WALK,
   WALK_IN_PLACE,
   SET_MAP_GUIDE,
   TOGGLE_MODAL_CAN_OPEN,
-} from "../../reducers/mapReducer";
-import { directions } from "../../utils/constants";
-import checkNextTile from "../../utils/checkNextTile";
+} from '../../reducers/mapReducer';
+import { directions } from '../../utils/constants';
+import checkNextTile from '../../utils/checkNextTile';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export default function Players({ socket }) {
+  const { leftMargin, topMargin } = useWindowDimensions();
+
   const localUserState = useSelector((state) => {
     return state.players[state.localID];
   });
@@ -25,20 +28,20 @@ export default function Players({ socket }) {
   const dispatch = useDispatch();
 
   function walk(dir) {
-    if (checkNextTile(dir, localUserState.x, localUserState.y)["action"]) {
+    if (checkNextTile(dir, localUserState.x, localUserState.y)['action']) {
       const actionAsset = checkNextTile(
         dir,
         localUserState.x,
         localUserState.y
-      )["asset"];
+      )['asset'];
       dispatch(SET_MAP_GUIDE({ actionAsset }));
     } else {
       dispatch(HIDE_MAP_GUIDE());
     }
-    if (checkNextTile(dir, localUserState.x, localUserState.y)["walk"]) {
+    if (checkNextTile(dir, localUserState.x, localUserState.y)['walk']) {
       dispatch(WALK({ dir, id: localIdState }));
       return {
-        type: "WALK",
+        type: 'WALK',
         payload: JSON.stringify(localUserState),
       };
     }
@@ -48,15 +51,15 @@ export default function Players({ socket }) {
   useKeyPress((e) => {
     e.preventDefault();
     if (
-      e.key === "ArrowDown" ||
-      e.key === "ArrowUp" ||
-      e.key === "ArrowLeft" ||
-      e.key === "ArrowRight"
+      e.key === 'ArrowDown' ||
+      e.key === 'ArrowUp' ||
+      e.key === 'ArrowLeft' ||
+      e.key === 'ArrowRight'
     ) {
       walk(e.key);
       return;
     }
-    if (e.code === "Space") {
+    if (e.code === 'Space') {
       dispatch(TOGGLE_MODAL_CAN_OPEN());
     }
   });
@@ -64,14 +67,14 @@ export default function Players({ socket }) {
   const playerListArr = Object.keys(playerListState).map((key) => (
     <Actor
       key={key}
-      sprite={`/sprites/skins/${playerListState[key]["skin"]}.png`}
-      dir={directions[playerListState[key]["dir"]]}
-      step={playerListState[key]["step"]}
+      sprite={`/sprites/skins/${playerListState[key]['skin']}.png`}
+      dir={directions[playerListState[key]['dir']]}
+      step={playerListState[key]['step']}
       position={{
-        x: playerListState[key]["x"],
-        y: playerListState[key]["y"],
+        x: playerListState[key]['x'] + leftMargin,
+        y: playerListState[key]['y'] + topMargin,
       }}
-      displayName={playerListState[key]["name"]}
+      displayName={playerListState[key]['name']}
     />
   ));
   return <div>{playerListArr}</div>;

@@ -52,7 +52,7 @@ function KanbanCard(props) {
     <Droppable droppableId="kanban-card">
       {(provided) => (
         <ul
-          className="kanban-card rpgui-container framed float"
+          className={kanbanCardClass}
           {...provided.droppableProps}
           ref={provided.innerRef}
         >

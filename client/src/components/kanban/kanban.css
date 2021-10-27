@@ -7,27 +7,36 @@
   height:600px;
   width: 300px;
   overflow:auto;
+  background:white
+}
+
+#kanban-card-id {
+  margin:0;
+  padding:0;
+}
+
+#late {
+  background-color: red;
 }
 
 .kanban-card header {
-  background-color: red;
   padding: 10px;
   display: flex;
   justify-content: center;
-  color: white;
+  color: black;
 }
 
 .task-item-container{
   background: aqua;
-  margin-top: 15px;
-  height: 120px;
+  margin: 15px;
+  height: 140px;
   border-radius:15px;
   padding:0
 }
 
 .task-item-container li {
   list-style: none;
-  margin-left: 0;
+  margin: 0;
 }
 
 .task-item-header {
@@ -43,7 +52,7 @@ margin: 0;
 
 .task-item-container p{
   margin:0;
-  height:60px
+  height:70px
 }
 
 .priority-icon {
@@ -56,4 +65,9 @@ margin: 0;
   margin-right: 10px;
   justify-content:flex-end;
   font-size:20px
+}
+
+.task-users img {
+  margin-left: 10px;
+  border-radius: 25px;
 }

@@ -31,8 +31,8 @@ function KanbanCard(props) {
   });
 
   return (
-    <div className="kanban-card rpgui-container framed float">
-      <header>{name}</header>
+    <div className="kanban-card  nes-container is-rounded float" id="kanban-card-id">
+      <header className="title">{name}</header>
       {tasksList}
     </div>
   );

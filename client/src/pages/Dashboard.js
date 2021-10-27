@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { useEffect } from "react";
 // import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,12 +12,18 @@ import ModalInput from '../components/modal/ModalInput';
 import MainModal from '../components/modal/MainModal';
 const Dashboard = () => {
   const modalCanOpen = useSelector((state) => state.mapRoute.modalCanOpen);
-
-  // const userState = useSelector((state) => state.user);
+  const mapGuideState = useSelector((state) => state.mapGuide);
+  let playerNearGuide = false;
+  for (let key in mapGuideState) {
+    if (mapGuideState[key]) {
+      playerNearGuide = true;
+      break;
+    }
+  }
 
   return (
     <div className="dashboard-layout">
-      {modalCanOpen && <MainModal isOpen={true} />}
+      {modalCanOpen && playerNearGuide && <MainModal isOpen={true} />}
       <ModalInput isOpen={true} />
       <Map x={0} />
       <Players />

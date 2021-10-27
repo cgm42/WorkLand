@@ -3,7 +3,7 @@ import { stateContext } from '../providers/StateProvider';
 import './projects.css';
 import "nes.css/css/nes.min.css";
 import "../rpgui.css";
-import ProjectCard from './ProjectCard';
+import ProjectCard from './projectCard';
 import ProjectForm from './ProjectForm';
 import Button from '../button/Button';
 

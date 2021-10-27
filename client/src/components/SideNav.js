@@ -8,7 +8,7 @@ import { RiDashboardFill, RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import Dashboard from "../pages/Dashboard";
-import ProjectCardList from "./projects/ProjectCardList";
+import ProjectCardList from "./projects/projectCardList";
 import Messages from "../pages/Messages";
 import Login from "../pages/Login";
 import UserDashboard from "./userDashboard/UserDashboard";

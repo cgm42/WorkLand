@@ -61,14 +61,14 @@ const P = {
   asset: 'projectDashboard',
 };
 const U = { walk: true, action: true, special: false, asset: 'userDashboard' };
-const N = { walk: true, action: true, special: false, asset: 'newTask' };
+const L = { walk: true, action: true, special: false, asset: 'taskList' };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [
   // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 1
-  [X, X, X, X, K, K, K, X, G, G, X, X, P, P, X, X, U, U, O, X, X, N, N, X], // y= 2
+  [X, X, X, X, K, K, K, X, G, G, X, X, P, P, X, X, U, U, O, X, X, L, L, X], // y= 2
   [X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 3
   [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X, X], // y = 4
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 5

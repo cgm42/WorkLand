@@ -11,6 +11,7 @@ function Map({ x }) {
   const projectDashboard = useSelector(
     (state) => state.mapGuide.projectDashboard
   );
+  const taskList = useSelector((state) => state.mapGuide.taskList);
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
     <div
@@ -48,6 +49,13 @@ function Map({ x }) {
           image={'/sprites/action.png'}
           data={{ h: 32, w: 32, x: 0, y: 0 }}
           position={{ x: 431, y: 20 }}
+        />
+      )}
+      {taskList && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 691, y: 20 }}
         />
       )}
     </div>

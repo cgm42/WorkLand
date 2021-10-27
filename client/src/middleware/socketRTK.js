@@ -2,7 +2,11 @@
 import { wsEndpoint } from '../utils/constants';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
-import { SET_VIDEO_PARTICIPANTS, SET_SOCKETID } from '../reducers/mapReducer';
+import {
+  SET_VIDEO_PARTICIPANTS,
+  SET_SOCKETID,
+  USER_DISCONNECT,
+} from '../reducers/mapReducer';
 export const socketRTK = () => {
   return (storeAPI) => {
     const socket = io(wsEndpoint);
@@ -30,6 +34,10 @@ export const socketRTK = () => {
       // console.log("MW on message payload :>> ", arg);
       //receives an update from server
       storeAPI.dispatch(JSON.parse(arg)); //type:UPDATE_OTHERS
+    });
+
+    socket.on('userDisconnect', (id) => {
+      storeAPI.dispatch(USER_DISCONNECT(id));
     });
 
     let lastSent = new Date().getTime();

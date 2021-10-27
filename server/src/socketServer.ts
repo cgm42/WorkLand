@@ -48,7 +48,7 @@ io.on('connection', (socket: Socket) => {
   socket.on('disconnect', () => {
     const allOtherUsers = socketIds.filter((id) => id !== socket.id);
     socketIds = [...allOtherUsers];
-    io.emit('userDisconnect');
+    io.emit('userDisconnect', socket.id);
   });
 
   //-----------------------p2p code below

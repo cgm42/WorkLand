@@ -22,6 +22,16 @@ function MainModal(props) {
         </button>
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}
+        {mapRoute === 'ganttChart' ? (
+          <div>gantt chart lives here</div>
+        ) : (
+          <div />
+        )}
+        {mapRoute === 'projectDashboard' ? (
+          <div>project dashboard lives here</div>
+        ) : (
+          <div />
+        )}
 
         {/* <div>
           <ProjectCardList />

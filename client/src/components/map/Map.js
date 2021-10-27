@@ -7,6 +7,10 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 function Map({ x }) {
   const kanban = useSelector((state) => state.mapGuide.kanban);
   const userDashboard = useSelector((state) => state.mapGuide.userDashboard);
+  const ganttChart = useSelector((state) => state.mapGuide.ganttChart);
+  const projectDashboard = useSelector(
+    (state) => state.mapGuide.projectDashboard
+  );
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
     <div
@@ -30,6 +34,20 @@ function Map({ x }) {
           image={'/sprites/action.png'}
           data={{ h: 32, w: 32, x: 0, y: 0 }}
           position={{ x: 558, y: 20 }}
+        />
+      )}
+      {ganttChart && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 306, y: 20 }}
+        />
+      )}
+      {projectDashboard && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 431, y: 20 }}
         />
       )}
     </div>

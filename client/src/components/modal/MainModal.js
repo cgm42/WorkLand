@@ -6,6 +6,7 @@ import './modal.css';
 import UserDashboard from '../userDashboard/UserDashboard';
 import ProjectCardList from '../projects/projectCardList';
 import Kanban from '../kanban/Kanban';
+import TaskTable from '../tasks/TaskTable';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -32,6 +33,7 @@ function MainModal(props) {
         ) : (
           <div />
         )}
+        {mapRoute === 'taskList' ? <TaskTable></TaskTable> : <div />}
 
         {/* <div>
           <ProjectCardList />

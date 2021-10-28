@@ -3,6 +3,7 @@ import axios from "axios";
 import applicationDataReducer, {
   SET_APPLICATION_DATA,
   SET_CURRENT_PROJECT,
+  SET_TASK_STATUS,
 } from "../../reducers/applicationDataReducer";
 // import { useSelector } from "react-redux";
 
@@ -67,18 +68,18 @@ export default function StateProvider(props) {
   };
 
   const setCurrentProject = (id) => {
-    dispatch({
-      type: SET_CURRENT_PROJECT,
-      id,
-    });
-
     axios.get(`/tasks/project/${id}`).then((data) => {
+      // dispatch({
+      //   type: SET_APPLICATION_DATA,
+      //   value: {
+      //     ...state,
+      //     tasks: data.data,
+      //   },
+      // });
       dispatch({
-        type: SET_APPLICATION_DATA,
-        value: {
-          ...state,
-          tasks: data.data,
-        },
+        type: SET_CURRENT_PROJECT,
+        id,
+        tasks: data.data,
       });
     });
   };
@@ -109,26 +110,12 @@ export default function StateProvider(props) {
     axios.patch(`/tasks/status/${id}`, { status }).then((data) => {
       console.log("data in state provider", data);
       dispatch({
-        type: SET_APPLICATION_DATA,
-        value: {
-          ...state,
-          tasks: [
-            ...state.tasks,
-            (state.tasks[data.data[0].id] = data.data[0]),
-          ],
-        },
+        type: SET_TASK_STATUS,
+        id,
+        status,
       });
     });
   };
-
-  // const editProject = project => {
-  //   const id = project.id
-
-  //   axios.patch(`/projects/${id}`)
-  //     .then(() => {
-  //       updateProjectList();
-  //     })
-  // }
 
   const providerData = {
     state,

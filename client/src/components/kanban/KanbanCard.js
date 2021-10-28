@@ -9,7 +9,7 @@ import KanbanTaskItem from "./KanbanTaskItem";
 import { Droppable } from "react-beautiful-dnd";
 
 function KanbanCard(props) {
-  const { name, status, column } = props;
+  const { name, status, column, tasks } = props;
   const { state } = useContext(stateContext);
 
   const kanBanCardClass = classNames(
@@ -22,23 +22,27 @@ function KanbanCard(props) {
     { "is-done": status === 2 }
   );
 
-  const tasksList = state.tasks.map((task, index) => {
-    const { id, name, description, priorityLevel, currentStatus } = task;
-    if (status === currentStatus) {
-      return (
-        <KanbanTaskItem
-          key={id}
-          index={index}
-          id={id}
-          title={name}
-          description={description}
-          priority={priorityLevel}
-          currentStatus={currentStatus}
-          users={state.users}
-          taskTeams={state.taskTeams}
-        ></KanbanTaskItem>
-      );
-    }
+  console.log("tasks", tasks);
+
+  const tasksList = tasks.map((task) => {
+    // const task = state.tasks.find((task) => task.id === task_id);
+
+    const { id, name, description, priorityLevel, currentStatus, columnIndex } =
+      task;
+
+    return (
+      <KanbanTaskItem
+        key={id}
+        index={columnIndex}
+        id={id}
+        title={name}
+        description={description}
+        priority={priorityLevel}
+        currentStatus={currentStatus}
+        users={state.users}
+        taskTeams={state.taskTeams}
+      ></KanbanTaskItem>
+    );
   });
 
   return (

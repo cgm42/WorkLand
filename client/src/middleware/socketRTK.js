@@ -20,9 +20,7 @@ export const socketRTK = () => {
     });
 
     socket.on('movementMessage', (arg) => {
-      // console.log("MW on message payload :>> ", arg);
-      //receives an update from server
-      storeAPI.dispatch(JSON.parse(arg)); //type:UPDATE_OTHERS
+      storeAPI.dispatch(arg); //type:UPDATE_OTHERS
     });
 
     socket.on('userDisconnect', (id) => {
@@ -30,7 +28,7 @@ export const socketRTK = () => {
     });
 
     socket.on('receivedAnnoucement', (arg) => {
-      storeAPI.dispatch(RECEIVED_ANNOUCEMENT(arg));
+      storeAPI.dispatch(arg);
     });
 
     let lastSent = new Date().getTime();
@@ -52,6 +50,15 @@ export const socketRTK = () => {
         }
       }
 
+      if (action.type === 'ANNOUNCE') {
+        socket.emit('annoucement', {
+          type: 'RECEIVED_ANNOUNCEMENT',
+          payload: {
+            fromSocketId: storeAPI.getState().localSocketId,
+            content: 'here is a message!',
+          },
+        });
+      }
       // if (action.type === 'INITCALL') {
       //   console.log('middleware init call');
       //   socket.emit('callUser', {

@@ -11,6 +11,7 @@ import Map from '../components/map/Map';
 import ModalInput from '../components/modal/ModalInput';
 import MainModal from '../components/modal/MainModal';
 import useMapGuide from './../hooks/useMapGuide';
+import Chat from '../components/chat/chat';
 
 const Dashboard = () => {
   const { playerNearGuide } = useMapGuide();
@@ -23,6 +24,7 @@ const Dashboard = () => {
       <ModalInput isOpen={true} />
       <Map x={0} />
       <Players />
+      <Chat />
     </div>
   );
 };

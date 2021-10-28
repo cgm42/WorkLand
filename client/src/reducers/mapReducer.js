@@ -35,6 +35,9 @@ const initialState = {
     ganttChart: false,
     taskList: false,
     piano: false,
+    guitar: false,
+    arcade: false,
+    typeWritter: false,
   },
   mapRoute: {
     modalCanOpen: false,
@@ -46,10 +49,10 @@ const initialState = {
     socketArr: [], //for rendering
   },
   annoucement: [
-    {
-      fromSocketId: '',
-      content: '',
-    },
+    // {
+    //   fromSocketId: '',
+    //   content: '',
+    // },
   ],
 };
 export const SET_USER = createAction('SET_USER');
@@ -176,5 +179,7 @@ export const mapReducer = createReducer(initialState, (builder) => {
       }
     }
   });
-  builder.addCase(RECEIVED_ANNOUCEMENT, (state, action) => {});
+  builder.addCase(RECEIVED_ANNOUCEMENT, (state, action) => {
+    console.log(action.payload);
+  });
 });

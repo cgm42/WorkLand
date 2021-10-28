@@ -95,7 +95,6 @@ export default function StateProvider(props) {
 
   const updateTaskStatus = (status, id) => {
     axios.patch(`/tasks/status/${id}`, { status }).then((data) => {
-      console.log("data in state provider", data);
       const newTasks = state.tasks.map((task) => {
         if (task.id === id) {
           return data.data;
@@ -103,8 +102,6 @@ export default function StateProvider(props) {
           return task;
         }
       });
-
-      console.log("newTasks in state provider", newTasks);
 
       dispatch({
         type: SET_TASK_STATUS,

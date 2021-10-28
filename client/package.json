@@ -16,6 +16,7 @@
     "react-beautiful-dnd": "^13.1.0",
     "react-date-picker": "^8.3.4",
     "react-dom": "^17.0.2",
+    "react-giphy-searchbox": "^1.5.4",
     "react-icons": "^4.3.1",
     "react-modal": "^3.14.3",
     "react-piano": "^3.1.3",

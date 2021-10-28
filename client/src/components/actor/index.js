@@ -26,7 +26,6 @@ export default function Actor({
   let styleForDisplayNameAtGuide = '';
   if (playerNearGuide) {
     styleForDisplayNameAtGuide = { ...styleForDisplayName, ...opacityStyle };
-    console.log('styleForDisplayNameAtGuide :>> ', styleForDisplayNameAtGuide);
   }
 
   let nameToDisplay = displayName.match(/[^\s]+/);

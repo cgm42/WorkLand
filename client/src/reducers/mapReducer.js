@@ -48,12 +48,16 @@ const initialState = {
     peers: [], //[{peerId: peerObj}]
     socketArr: [], //for rendering
   },
-  annoucement: [
-    // {
-    //   fromSocketId: '',
-    //   content: '',
-    // },
-  ],
+  outgoingGif: {
+    senderName: '',
+    senderAvatar: '',
+    gifObj: null,
+  },
+  incomingGif: {
+    senderName: '',
+    senderAvatar: '',
+    gifObj: null,
+  },
 };
 export const SET_USER = createAction('SET_USER');
 export const WALK = createAction('WALK');
@@ -67,7 +71,8 @@ export const JOIN_VIDEO = createAction('JOIN_VIDEO');
 export const SET_VIDEO_PARTICIPANTS = createAction('SET_VIDEO_PARTICIPANTS');
 export const SET_SOCKETID = createAction('SET_SOCKETID');
 export const USER_DISCONNECT = createAction('USER_DISCONNECT');
-export const RECEIVED_ANNOUCEMENT = createAction('RECEIVED_ANNOUCEMENT');
+export const ANNOUNCEMENT = createAction('ANNOUNCEMENT');
+export const RECEIVED_ANNOUNCEMENT = createAction('RECEIVED_ANNOUNCEMENT');
 
 export const mapReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
@@ -179,7 +184,13 @@ export const mapReducer = createReducer(initialState, (builder) => {
       }
     }
   });
-  builder.addCase(RECEIVED_ANNOUCEMENT, (state, action) => {
-    console.log(action.payload);
+  builder.addCase(RECEIVED_ANNOUNCEMENT, (state, action) => {
+    console.log('received a in reducer:', action.payload);
+  });
+  builder.addCase(ANNOUNCEMENT, (state, action) => {
+    state.outgoingGif.senderName = state.user.name;
+    state.outgoingGif.senderAvatar = state.user.avatar;
+    state.outgoingGif.gifObj = action.payload;
+    console.log('Announcement gif obj action.payload :>> ', action.payload);
   });
 });

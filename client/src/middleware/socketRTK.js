@@ -6,7 +6,6 @@ import {
   SET_VIDEO_PARTICIPANTS,
   SET_SOCKETID,
   USER_DISCONNECT,
-  RECEIVED_ANNOUCEMENT,
 } from '../reducers/mapReducer';
 export const socketRTK = () => {
   return (storeAPI) => {
@@ -20,15 +19,15 @@ export const socketRTK = () => {
     });
 
     socket.on('movementMessage', (arg) => {
-      storeAPI.dispatch(arg); //type:UPDATE_OTHERS
+      storeAPI.dispatch(JSON.parse(arg)); //type:UPDATE_OTHERS
     });
 
     socket.on('userDisconnect', (id) => {
       storeAPI.dispatch(USER_DISCONNECT(id));
     });
 
-    socket.on('receivedAnnoucement', (arg) => {
-      storeAPI.dispatch(arg);
+    socket.on('receivedAnnouncement', (arg) => {
+      storeAPI.dispatch(JSON.parse(arg));
     });
 
     let lastSent = new Date().getTime();
@@ -50,14 +49,15 @@ export const socketRTK = () => {
         }
       }
 
-      if (action.type === 'ANNOUNCE') {
-        socket.emit('annoucement', {
-          type: 'RECEIVED_ANNOUNCEMENT',
-          payload: {
-            fromSocketId: storeAPI.getState().localSocketId,
-            content: 'here is a message!',
-          },
-        });
+      if (action.type === 'ANNOUNCEMENT') {
+        console.log('at the socket');
+        socket.emit(
+          'announcement',
+          JSON.stringify({
+            type: 'RECEIVED_ANNOUNCEMENT',
+            payload: storeAPI.getState().outgoingGif,
+          })
+        );
       }
       // if (action.type === 'INITCALL') {
       //   console.log('middleware init call');

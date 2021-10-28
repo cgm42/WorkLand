@@ -15,12 +15,22 @@ let socketIds: SocketId[] = [];
 
 io.on('connection', (socket: Socket) => {
   console.log('.........socket connected.......🙌');
+  socket.on('disconnect', () => {
+    const allOtherUsers = socketIds.filter((id) => id !== socket.id);
+    socketIds = [...allOtherUsers];
+    io.emit('userDisconnect', socket.id);
+  });
 
   socket.on('movementMessage', (arg) => {
-    console.log('event :>> ', arg);
+    // console.log('event :>> ', arg);
     socket.broadcast.emit('movementMessage', arg);
   });
 
+  socket.on('announcement', (arg) => {
+    socket.broadcast.emit('receivedAnnouncement', arg);
+  });
+
+  //-------------------video attempt below--------------------------
   socket.on('joinVideo', () => {
     if (socketIds.length === 10) {
       socket.emit('capacity reached!');
@@ -43,12 +53,6 @@ io.on('connection', (socket: Socket) => {
       signal: payload.signal,
       id: socket.id,
     });
-  });
-
-  socket.on('disconnect', () => {
-    const allOtherUsers = socketIds.filter((id) => id !== socket.id);
-    socketIds = [...allOtherUsers];
-    io.emit('userDisconnect', socket.id);
   });
 
   //-----------------------p2p code below

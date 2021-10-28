@@ -13,23 +13,11 @@ export const socketRTK = () => {
     socket.on('connect', () => {
       storeAPI.dispatch(SET_SOCKETID({ id: socket.id }));
     });
-    socket.on('callUser', (data) => {
-      console.log('call user recevied at B', data);
-      // storeAPI.dispatch(
-      //   RECEIVECALL({
-      //     receivingCall: true,
-      //     caller: data.from,
-      //     name: data.name,
-      //     callerSignal: data.signal,
-      //   })
-      // );
-    });
+
     socket.on('userList', (users) => {
       storeAPI.dispatch(SET_VIDEO_PARTICIPANTS(users));
     });
-    socket.on('callAccepted', (signal) => {
-      // storeAPI.dispatch(INITCALLACCEPTED({ callAccepted: true, signal }));
-    });
+
     socket.on('movementMessage', (arg) => {
       // console.log("MW on message payload :>> ", arg);
       //receives an update from server

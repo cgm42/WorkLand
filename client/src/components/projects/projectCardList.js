@@ -39,13 +39,11 @@ function ProjectCardList(props) {
       <section>
         {projectsList}
         <div className='new-project'>
-        {showForm &&
           <ProjectForm 
             setShowForm={setShowForm}
             usersList={state.users}
             onSave={createProject}
           /> 
-        }
 
           {/* {showForm && edit &&
           <Form 
@@ -54,10 +52,6 @@ function ProjectCardList(props) {
           onSave={createProject}
           setEdit={setEdit}
         />}  */}
-
-          {!showForm && (
-            <Button onClick={() => setShowForm(true)}>New Project</Button>
-          )}
         </div>
       </section>
     </div>

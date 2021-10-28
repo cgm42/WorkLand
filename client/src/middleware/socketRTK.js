@@ -6,6 +6,7 @@ import {
   SET_VIDEO_PARTICIPANTS,
   SET_SOCKETID,
   USER_DISCONNECT,
+  RECEIVED_ANNOUCEMENT,
 } from '../reducers/mapReducer';
 export const socketRTK = () => {
   return (storeAPI) => {
@@ -26,6 +27,10 @@ export const socketRTK = () => {
 
     socket.on('userDisconnect', (id) => {
       storeAPI.dispatch(USER_DISCONNECT(id));
+    });
+
+    socket.on('receivedAnnoucement', (arg) => {
+      storeAPI.dispatch(RECEIVED_ANNOUCEMENT(arg));
     });
 
     let lastSent = new Date().getTime();

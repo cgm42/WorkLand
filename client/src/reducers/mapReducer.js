@@ -7,8 +7,6 @@ import {
 } from '../utils/constants';
 import { initX, initY } from '../utils/constants';
 
-//a temp user id
-
 const initialState = {
   localID: 'local',
   localSocketId: null,
@@ -47,6 +45,12 @@ const initialState = {
     peers: [], //[{peerId: peerObj}]
     socketArr: [], //for rendering
   },
+  annoucement: [
+    {
+      fromSocketId: '',
+      content: '',
+    },
+  ],
 };
 export const SET_USER = createAction('SET_USER');
 export const WALK = createAction('WALK');
@@ -60,6 +64,7 @@ export const JOIN_VIDEO = createAction('JOIN_VIDEO');
 export const SET_VIDEO_PARTICIPANTS = createAction('SET_VIDEO_PARTICIPANTS');
 export const SET_SOCKETID = createAction('SET_SOCKETID');
 export const USER_DISCONNECT = createAction('USER_DISCONNECT');
+export const RECEIVED_ANNOUCEMENT = createAction('RECEIVED_ANNOUCEMENT');
 
 export const mapReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
@@ -171,4 +176,5 @@ export const mapReducer = createReducer(initialState, (builder) => {
       }
     }
   });
+  builder.addCase(RECEIVED_ANNOUCEMENT, (state, action) => {});
 });

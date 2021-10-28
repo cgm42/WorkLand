@@ -24,8 +24,8 @@ function TaskTable(props) {
         description={task.description}
         status={task.currentStatus}
         priority={task.priorityLevel}
-        startDate={formatDate(task.startDate)}
-        endDate={formatDate(task.endDate)}
+        startDate={task.startDate}
+        endDate={task.endDate}
         users={state.users}
         taskTeams={state.taskTeams}
         updateTaskStatus={updateTaskStatus}

@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import Button from "../button/Button";
-import DatePicker from "react-date-picker";
-import User from "../users/User";
-import { useSelector } from "react-redux";
-import { BiEdit } from "react-icons/bi";
+import React, { useState } from 'react';
+import Button from '../button/Button';
+import DatePicker from 'react-date-picker';
+import User from '../users/User';
+import { useSelector } from 'react-redux';
+import { BiEdit } from 'react-icons/bi';
 
-function TaskForm(props) {
+function EditTaskForm(props) {
   const userState = useSelector((state) => {
     return state.user;
   });
 
-  const [name, setName] = useState(props.name || "");
-  const [description, setDescription] = useState(props.description || "");
+  const [name, setName] = useState(props.name || '');
+  const [description, setDescription] = useState(props.description || '');
   const [startDate, onStart] = useState(props.startDate || new Date());
   const [endDate, onEnd] = useState(props.endDate || new Date());
   const [priority, setPriority] = useState(props.priority || 0);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const { id, state, onSave, projectID, setEdit } = props;
 
@@ -40,7 +40,7 @@ function TaskForm(props) {
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
+      'user-list--selected'
     );
 
     const selectedUsersIDs = [];
@@ -57,10 +57,10 @@ function TaskForm(props) {
       startDate,
       endDate,
       priority_level: priority,
-      users: selectedUsersIDs,
+      users: selectedUsersIDs
     };
 
-    setError("");
+    setError('');
     // setEdit(false);
     onSave(task);
     document.getElementById(makeId(id)).close();
@@ -75,27 +75,31 @@ function TaskForm(props) {
     return `dialog-dark-rounded-edit-${id}`;
   };
 
+  // console.log("start Date", startDate);
+
   return (
     <div>
-      <BiEdit
-        className="edit-icon"
-        onClick={() => document.getElementById(makeId(id)).showModal()}
-      ></BiEdit>
-      <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
+      <div>
+        <BiEdit
+          className='edit-icon'
+          onClick={() => document.getElementById(makeId(id)).showModal()}
+        ></BiEdit>
+      </div>
+      <dialog className='nes-dialog is-dark is-rounded' id={makeId(id)}>
         <form
-          className="form"
-          autoComplete="off"
+          className='form'
+          autoComplete='off'
           onSubmit={(e) => e.preventDefault()}
-          method="dialog"
+          method='dialog'
         >
           <label>
             Task name:
             <input
               value={name}
-              type="text"
+              type='text'
               onChange={(e) => {
                 setName(e.target.value);
-                setError("");
+                setError('');
               }}
             />
           </label>
@@ -104,27 +108,27 @@ function TaskForm(props) {
             Description:
             <textarea
               value={description}
-              type="text"
+              type='text'
               onChange={(e) => {
                 setDescription(e.target.value);
-                setError("");
+                setError('');
               }}
             />
           </label>
 
-          <div className="team-date-container">
+          <div className='team-date-container'>
             <label>
               Assignees:
-              <ul className="rpgui users-container">{usersListArray}</ul>
+              <ul className='rpgui users-container'>{usersListArray}</ul>
             </label>
 
-            <div className="date">
+            <div className='date'>
               <label>
                 Start date:
                 <DatePicker
                   onChange={onStart}
                   value={startDate}
-                  className="date-size"
+                  className='date-size'
                 />
               </label>
 
@@ -133,14 +137,14 @@ function TaskForm(props) {
                 <DatePicker
                   onChange={onEnd}
                   value={endDate}
-                  className="date-size"
+                  className='date-size'
                 />
               </label>
             </div>
           </div>
-          <div className="cancel-submit">
-            <Button onClick={cancel} title={"cancel"}></Button>
-            <Button onClick={validate} title={"submit"}></Button>
+          <div className='cancel-submit'>
+            <Button onClick={cancel} title={'cancel'}></Button>
+            <Button onClick={validate} title={'submit'}></Button>
           </div>
         </form>
       </dialog>
@@ -148,4 +152,4 @@ function TaskForm(props) {
   );
 }
 
-export default TaskForm;
+export default EditTaskForm;

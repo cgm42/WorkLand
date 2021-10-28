@@ -6,11 +6,15 @@ import "../rpgui.css";
 import "nes.css/css/nes.min.css";
 import classNames from "classnames";
 import TaskUser from "../users/TaskUser";
-import { BiEdit } from "react-icons/bi";
+import { RiDeleteBinLine } from "react-icons/ri";
 import EditTaskForm from "./EditTaskForm";
 
 export default function TaskRow(props) {
   const { state, editTask } = useContext(stateContext);
+
+  const formatDate = (date) => {
+    return date.split("T")[0];
+  };
 
   const {
     id,
@@ -25,8 +29,6 @@ export default function TaskRow(props) {
     updateTaskStatus,
     updateTaskPriority,
   } = props;
-
-  console.log("description", description);
 
   const team = taskTeams.filter((team) => {
     return team.taskId === id;
@@ -55,10 +57,11 @@ export default function TaskRow(props) {
   );
 
   const statusClass = classNames(
+      'status',
     { "to-do": props.status === 0 },
-    { "in-progress": props.status === 1 },
-    { complete: props.status === 2 },
-    { late: props.status === 3 }
+    { "progress-status": props.status === 1 },
+    { "is-done": props.status === 2 },
+    { "is-late": props.status === 3 }
   );
 
   const statusToText = (status) => {
@@ -86,9 +89,10 @@ export default function TaskRow(props) {
 
   return (
     <tr>
-      <td>
+      <td >
+      <div className="name-icons">
         {name}
-        <div className="table-container">
+        <div className="edit-delete">
           <EditTaskForm
             state={state}
             id={id}
@@ -98,7 +102,9 @@ export default function TaskRow(props) {
             startDate={startDate}
             endDate={endDate}
           />
+          <RiDeleteBinLine className='delete-icon'></RiDeleteBinLine>
         </div>
+      </div>
       </td>
       <td className="task-user-container">{usersListArray}</td>
       <td
@@ -113,8 +119,8 @@ export default function TaskRow(props) {
       >
         <IoMdWarning className="icon" />
       </td>
-      <td>{startDate}</td>
-      <td>{endDate}</td>
+      <td>{formatDate(startDate)}</td>
+      <td>{formatDate(endDate)}</td>
     </tr>
   );
 }

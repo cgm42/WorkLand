@@ -40,20 +40,16 @@ function TaskTable(props) {
         <div className='welcome'>
           <h1>Tasks</h1>
         </div>
-          {showForm &&
+
+        <divz className='rpgui-container framed '>
+          <div className='table-container'>
             <TaskForm 
               setShowForm={setShowForm}
               onSave={createTask}
               state={state}
               projectID={state.current_project}
             /> 
-          }
-        <div className='rpgui-container framed'>
-          {!showForm &&
-            <Button onClick={() => setShowForm(true)}>
-              New Task
-            </Button>
-          } 
+          </div>
 
 
           <table className='table'>
@@ -71,7 +67,7 @@ function TaskTable(props) {
               {tasksList}
             </tbody>
           </table>
-        </div>
+        </divz>
       </div>
     </div>
   );

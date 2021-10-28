@@ -29,10 +29,10 @@ export default function TaskRow(props) {
   });
 
   const priorityClass = classNames(
-    'priority',
-    {'low': priority === 0},
-    {'medium': priority === 1},
-    {'high': priority === 2}
+    "priority",
+    { "late": priority === 0 },
+    { "progress": priority === 1 },
+    { "done": priority === 2 }
   );
 
   const statusClass = classNames(
@@ -45,7 +45,7 @@ export default function TaskRow(props) {
   return (
     <tr>
       <td>{name}</td>
-      <td>{usersListArray}</td>
+      <td className="task-user-container">{usersListArray}</td>
       <td className={statusClass}>{status}</td>
       <td className={priorityClass}><IoMdWarning className='icon'/></td>
       <td>{startDate}</td>

@@ -34,14 +34,9 @@ export const socketRTK = () => {
       storeAPI.dispatch(arg);
     });
 
-    let lastSent = new Date().getTime();
-
     return (next) => (action) => {
       const newState = next(action);
       if (action.type === 'WALK') {
-        //throttle to optimize performance
-        let currentTime = new Date().getTime();
-        // if (currentTime - lastSent > 100) {
         socket.volatile.emit(
           'movementMessage',
           JSON.stringify({
@@ -49,8 +44,6 @@ export const socketRTK = () => {
             payload: storeAPI.getState().players[action.payload.id],
           })
         );
-        lastSent = currentTime;
-        // }
       }
 
       if (action.type === 'ANNOUNCEMENT') {

@@ -15,6 +15,19 @@ function TaskTable(props) {
     return date.split("T")[0];
   };
 
+  // const dateToNum = (date) => {
+  //   return parseInt(date.split("-").join(""));
+  // };
+
+  // const sortedTasks = state.tasks.sort((a, b) => {
+  //   const aDate = dateToNum(formatDate(a.startDate));
+  //   const bDate = dateToNum(formatDate(b.startDate));
+
+  //   return aDate - bDate;
+  // });
+
+  // console.log("sortedtasks", sortedTasks);
+
   const tasksList = state.tasks.map((task) => {
     return (
       <TaskRow
@@ -40,7 +53,7 @@ function TaskTable(props) {
           <h1>Tasks</h1>
         </div>
 
-        <divz className="rpgui-container framed ">
+        <div className="rpgui-container framed ">
           <div className="table-container">
             <TaskForm
               onSave={createTask}
@@ -62,7 +75,7 @@ function TaskTable(props) {
             </thead>
             <tbody>{tasksList}</tbody>
           </table>
-        </divz>
+        </div>
       </div>
     </div>
   );

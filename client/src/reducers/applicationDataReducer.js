@@ -2,6 +2,10 @@ export const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 export const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 export const SET_TASK_STATUS = "SET_TASK_STATUS";
 
+const dateFormatter = (date) => {
+  return date.split("T")[0];
+};
+
 export default function applicationDataReducer(state, action) {
   if (reducers[action.type]) {
     return reducers[action.type](state, action);
@@ -66,7 +70,12 @@ const giveTasksIndices = (tasks) => {
     });
 
   const newTasks = column1.concat(column2, column3, column4);
-  return newTasks;
+
+  const sortedTasks = newTasks.sort((a, b) => {
+    return a.id - b.id;
+  });
+
+  return sortedTasks;
 };
 
 const reducers = {

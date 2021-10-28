@@ -17,7 +17,7 @@ function Chat() {
     let timer;
     timer = setTimeout(() => {
       setShowGif(false);
-    }, 3800);
+    }, 4200);
 
     // return () => {
     //   clearTimeout(timer);
@@ -86,10 +86,11 @@ function Chat() {
           <div
             style={{
               position: 'absolute',
-              left: `${width / 2 + 200}px`,
-              top: `${height / 2 - 100}px`,
+              left: `${width / 2 + 260}px`,
+              top: `${height / 2 - 50}px`,
               width: '235px',
             }}>
+            <p>A GIF' from: {incomingGifState.senderName}</p>
             <iframe
               style={{
                 width: '235px',
@@ -97,11 +98,10 @@ function Chat() {
               title="ok"
               // src="https://giphy.com/embed/W2nuhlWbyVmV73jIsc"
               src={incomingGifState.gifObj.item.embed_url}
-              width="480"
-              height="480"
+              width="320"
+              height="320"
               frameBorder="0"
               className="giphy-embed"></iframe>
-            <p>From: {incomingGifState.senderName}</p>
           </div>
         </div>
       )}

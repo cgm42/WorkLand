@@ -27,8 +27,12 @@ io.on('connection', (socket: Socket) => {
   });
 
   socket.on('announcement', (arg) => {
-    console.log('announcement :>> ', arg);
     io.emit('receivedAnnouncement', arg);
+  });
+
+  socket.on('sendDirect', (arg) => {
+    console.log(arg);
+    io.to(arg.payload.receiverSocketId).emit('receiveDirect', arg);
   });
 
   //-------------------video attempt below--------------------------

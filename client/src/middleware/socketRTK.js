@@ -30,6 +30,10 @@ export const socketRTK = () => {
       storeAPI.dispatch(JSON.parse(arg));
     });
 
+    socket.on('receiveDirect', (arg) => {
+      storeAPI.dispatch(arg);
+    });
+
     let lastSent = new Date().getTime();
 
     return (next) => (action) => {
@@ -58,22 +62,13 @@ export const socketRTK = () => {
           })
         );
       }
-      // if (action.type === 'INITCALL') {
-      //   console.log('middleware init call');
-      //   socket.emit('callUser', {
-      //     userToCall: action.payload.otherId,
-      //     signalData: action.payload.data,
-      //     from: storeAPI.getState().localId,
-      //     // name: name,
-      //   });
-      // }
-      // if (action.type === 'ACCEPTCALL') {
-      //   console.log('sending call acceptance');
-      //   socket.emit('answerCall', {
-      //     signal: action.payload.data,
-      //     to: storeAPI.getState().chat.caller,
-      //   });
-      // }
+
+      if (action.type === 'SEND_DIRECT') {
+        socket.emit('sendDirect', {
+          type: 'RECEIVE_DIRECT',
+          payload: storeAPI.getState().outgoingGif,
+        });
+      }
       return newState;
     };
   };

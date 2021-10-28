@@ -50,8 +50,10 @@ const initialState = {
   },
   outgoingGif: {
     senderName: '',
+    receiverName: null, //broadcast if null
     senderAvatar: '',
     gifObj: null,
+    receiverSocketId: null,
   },
   incomingGif: {
     senderName: '',
@@ -73,6 +75,8 @@ export const SET_SOCKETID = createAction('SET_SOCKETID');
 export const USER_DISCONNECT = createAction('USER_DISCONNECT');
 export const ANNOUNCEMENT = createAction('ANNOUNCEMENT');
 export const RECEIVED_ANNOUNCEMENT = createAction('RECEIVED_ANNOUNCEMENT');
+export const SEND_DIRECT = createAction('SEND_DIRECT');
+export const RECEIVE_DIRECT = createAction('RECEIVE_DIRECT');
 
 export const mapReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
@@ -119,7 +123,7 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.players[id].y = newY ? newY : state.players[id]['y'];
     state.players[id].dir = newDir ? newDir : state.players[id].dir;
     state.players[id].step = newStep;
-    // state.players[id].socketId = state.localSocketId;
+    state.players[id].socketId = state.localSocketId;
     return state;
   });
 
@@ -185,7 +189,6 @@ export const mapReducer = createReducer(initialState, (builder) => {
     }
   });
   builder.addCase(RECEIVED_ANNOUNCEMENT, (state, action) => {
-    console.log('received a in reducer:', action.payload);
     state.incomingGif.senderName = action.payload.senderName;
     state.incomingGif.senderAvatar = action.payload.senderAvatar;
     state.incomingGif.gifObj = action.payload.gifObj;
@@ -193,7 +196,25 @@ export const mapReducer = createReducer(initialState, (builder) => {
   builder.addCase(ANNOUNCEMENT, (state, action) => {
     state.outgoingGif.senderName = state.user.name;
     state.outgoingGif.senderAvatar = state.user.avatar;
-    state.outgoingGif.gifObj = action.payload;
-    console.log('Announcement gif obj action.payload :>> ', action.payload);
+    state.outgoingGif.gifObj = action.payload.gifObj;
+  });
+  builder.addCase(SEND_DIRECT, (state, action) => {
+    state.outgoingGif.senderName = state.user.name;
+    state.outgoingGif.senderAvatar = state.user.avatar;
+    state.outgoingGif.gifObj = action.payload.gifObj;
+    state.outgoingGif.receiverName = action.payload.receiverName;
+    for (let key in state.players) {
+      if (state.players[key]['name'] === action.payload.receiverName) {
+        state.outgoingGif.receiverSocketId = state.players[key]['socketId'];
+        break;
+      }
+    }
+  });
+  builder.addCase(RECEIVE_DIRECT, (state, action) => {
+    console.log('receiving direct');
+    state.incomingGif.senderName = action.payload.senderName;
+    state.incomingGif.senderAvatar = action.payload.senderAvatar;
+    state.incomingGif.gifObj = action.payload.gifObj;
+    state.outgoingGif.receiverName = action.payload.receiverName;
   });
 });

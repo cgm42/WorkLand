@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactGiphySearchbox from 'react-giphy-searchbox';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import { ANNOUNCEMENT } from '../../reducers/mapReducer';
+import { ANNOUNCEMENT, SEND_DIRECT } from '../../reducers/mapReducer';
 function Chat() {
   const [chatboxShow, setChatboxShow] = useState(false);
   const [showGif, setShowGif] = useState(false);
+  const [receiver, setReceiver] = useState('Everyone');
   const dispatch = useDispatch();
   const { width, height, topMargin, leftMargin } = useWindowDimensions();
   const incomingGifState = useSelector((state) => state.incomingGif);
@@ -24,14 +25,21 @@ function Chat() {
     // };
   }, [incomingGifState]);
 
-  const onChatButtonClick = () => {
+  const hideGifSearch = () => {
     setChatboxShow(!chatboxShow);
   };
+  const userArr = [];
+  for (let key in onlineUsers) {
+    userArr.push(onlineUsers[key].name);
+  }
+  const userSelectList = userArr.map((e) => {
+    return <option value={e}>{e}</option>;
+  });
 
   return (
     <>
       <button
-        onClick={onChatButtonClick}
+        onClick={hideGifSearch}
         style={{
           zIndex: 20,
           position: 'absolute',
@@ -63,20 +71,20 @@ function Chat() {
               width: '100%',
             }}
             name="pets"
-            id="pet-select">
+            id="pet-select"
+            onChange={(event) => setReceiver(event.target.value)}>
             <option value="">Everyone</option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="hamster">Hamster</option>
-            <option value="parrot">Parrot</option>
-            <option value="spider">Spider</option>
-            <option value="goldfish">Goldfish</option>
+            {userSelectList}
           </select>
           <ReactGiphySearchbox
             apiKey="IqdjO72Noi1ikvZCa1ehpeiKkK7atZGd"
             onSelect={(item) => {
-              dispatch(ANNOUNCEMENT({ item }));
-              onChatButtonClick();
+              hideGifSearch();
+              if (receiver === 'Everyone') {
+                return dispatch(ANNOUNCEMENT({ gifObj: item }));
+              }
+              dispatch(SEND_DIRECT({ gifObj: item, receiverName: receiver }));
+              setReceiver('Everyone');
             }}
           />
         </div>
@@ -90,14 +98,18 @@ function Chat() {
               top: `${height / 2 - 50}px`,
               width: '235px',
             }}>
-            <p>A GIF' from: {incomingGifState.senderName}</p>
+            <p>
+              A GIF' from: {incomingGifState.senderName} to{' '}
+              {incomingGifState.receiverName
+                ? incomingGifState.receiverName
+                : 'everyone'}{' '}
+            </p>
             <iframe
               style={{
                 width: '235px',
               }}
               title="ok"
-              // src="https://giphy.com/embed/W2nuhlWbyVmV73jIsc"
-              src={incomingGifState.gifObj.item.embed_url}
+              src={incomingGifState.gifObj.embed_url}
               width="320"
               height="320"
               frameBorder="0"

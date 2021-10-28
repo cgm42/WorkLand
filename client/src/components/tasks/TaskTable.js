@@ -8,7 +8,8 @@ import TaskForm from "./TaskForm";
 import Button from "../button/Button";
 
 function TaskTable(props) {
-  const { state, createTask, updateTaskStatus } = useContext(stateContext);
+  const { state, createTask, updateTaskStatus, updateTaskPriority } =
+    useContext(stateContext);
   const [showForm, setShowForm] = useState(false);
 
   const formatDate = (date) => {
@@ -42,6 +43,7 @@ function TaskTable(props) {
         users={state.users}
         taskTeams={state.taskTeams}
         updateTaskStatus={updateTaskStatus}
+        updateTaskPriority={updateTaskPriority}
       />
     );
   });

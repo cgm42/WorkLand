@@ -17,6 +17,7 @@ export default function TaskRow(props) {
     users,
     taskTeams,
     updateTaskStatus,
+    updateTaskPriority,
   } = props;
 
   const team = taskTeams.filter((team) => {
@@ -66,7 +67,14 @@ export default function TaskRow(props) {
     if (status === 3) return 0;
   };
 
+  const togglePriority = (priority) => {
+    if (priority === 0) return 1;
+    if (priority === 1) return 2;
+    if (priority === 2) return 0;
+  };
+
   const newStatus = toggleStatus(status);
+  const newPriority = togglePriority(priority);
 
   return (
     <tr>
@@ -78,7 +86,10 @@ export default function TaskRow(props) {
       >
         {statusToText(status)}
       </td>
-      <td className={priorityClass}>
+      <td
+        className={priorityClass}
+        onClick={() => updateTaskPriority(newPriority, id)}
+      >
         <IoMdWarning className="icon" />
       </td>
       <td>{startDate}</td>

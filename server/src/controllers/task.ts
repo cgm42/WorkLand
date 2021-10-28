@@ -70,6 +70,14 @@ async function updateTaskStatus(req: Request, res: Response) {
   res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
+async function updateTaskPriority(req: Request, res: Response) {
+  const priority = req.body.priority;
+  const id = parseInt(req.params.id);
+
+  const queryResult = await model.updateTaskPriority(priority, id);
+  res.send(camelcaseKeys(queryResult.rows[0]));
+}
+
 async function deleteTask(req: Request, res: Response) {
   const task_id = parseInt(req.params.id);
 
@@ -82,5 +90,6 @@ export {
   createTask,
   editTask,
   updateTaskStatus,
+  updateTaskPriority,
   deleteTask,
 };

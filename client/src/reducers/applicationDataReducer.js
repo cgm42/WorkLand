@@ -1,10 +1,7 @@
 export const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 export const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 export const SET_TASK_STATUS = "SET_TASK_STATUS";
-
-const dateFormatter = (date) => {
-  return date.split("T")[0];
-};
+export const SET_TASK_PRIORITY = "SET_TASK_PRIORITY";
 
 export default function applicationDataReducer(state, action) {
   if (reducers[action.type]) {
@@ -38,6 +35,16 @@ const setCurrentProject = (state, action) => {
 };
 
 const updateTaskStatus = (state, action) => {
+  const tasks = giveTasksIndices(action.tasks);
+  const newState = {
+    ...state,
+    tasks: tasks,
+  };
+
+  return newState;
+};
+
+const updateTaskPriority = (state, action) => {
   const tasks = giveTasksIndices(action.tasks);
   const newState = {
     ...state,
@@ -82,4 +89,5 @@ const reducers = {
   SET_APPLICATION_DATA: setApplicationData,
   SET_CURRENT_PROJECT: setCurrentProject,
   SET_TASK_STATUS: updateTaskStatus,
+  SET_TASK_PRIORITY: updateTaskPriority,
 };

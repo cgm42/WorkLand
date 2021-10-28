@@ -2,10 +2,9 @@
   border-collapse: collapse;
   width: 100%;
   text-align: center;
-  background-color:rgb(26, 24, 24);
+  background-color: rgb(26, 24, 24);
   color: white;
   border: 1px solid #ddd;
-
 }
 .table thead {
   font-size: 18px;

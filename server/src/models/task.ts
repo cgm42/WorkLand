@@ -89,6 +89,18 @@ function updateTaskStatus(status: number, id: number) {
   );
 }
 
+function updateTaskPriority(priority: number, id: number) {
+  return pool.query(
+    `
+      UPDATE tasks
+      SET priority_level = $1
+      WHERE tasks.id = $2
+      RETURNING *;
+    `,
+    [priority, id]
+  );
+}
+
 function deleteTask(task_id: number) {
   return pool.query(
     `
@@ -104,5 +116,6 @@ export {
   createTask,
   editTask,
   updateTaskStatus,
+  updateTaskPriority,
   deleteTask,
 };

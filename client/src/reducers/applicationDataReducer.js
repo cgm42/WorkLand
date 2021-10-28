@@ -22,48 +22,51 @@ const setApplicationData = (state, action) => ({
 });
 
 const setCurrentProject = (state, action) => {
-  const column1 = action.tasks
-    .filter((task) => task.currentStatus === 3)
-    .map((task, index) => {
-      return { ...task, columnIndex: index };
-    });
-  const column2 = action.tasks
-    .filter((task) => task.currentStatus === 0)
-    .map((task, index) => {
-      return { ...task, columnIndex: index };
-    });
-  const column3 = action.tasks
-    .filter((task) => task.currentStatus === 1)
-    .map((task, index) => {
-      return { ...task, columnIndex: index };
-    });
-  const column4 = action.tasks
-    .filter((task) => task.currentStatus === 2)
-    .map((task, index) => {
-      return { ...task, columnIndex: index };
-    });
-
-  const newTasks = column1.concat(column2, column3, column4);
+  const tasks = giveTasksIndices(action.tasks);
 
   const newState = {
     ...state,
     current_project: action.id,
-    tasks: newTasks,
+    tasks: tasks,
   };
 
   return newState;
 };
 
 const updateTaskStatus = (state, action) => {
-  const newState = { ...state };
-
-  const taskIndex = state.tasks.findIndex((task) => {
-    return task.id === action.id;
-  });
-
-  newState.tasks[taskIndex].currentStatus = action.status;
+  const tasks = giveTasksIndices(action.tasks);
+  const newState = {
+    ...state,
+    tasks: tasks,
+  };
 
   return newState;
+};
+
+const giveTasksIndices = (tasks) => {
+  const column1 = tasks
+    .filter((task) => task.currentStatus === 3)
+    .map((task, index) => {
+      return { ...task, columnIndex: index };
+    });
+  const column2 = tasks
+    .filter((task) => task.currentStatus === 0)
+    .map((task, index) => {
+      return { ...task, columnIndex: index };
+    });
+  const column3 = tasks
+    .filter((task) => task.currentStatus === 1)
+    .map((task, index) => {
+      return { ...task, columnIndex: index };
+    });
+  const column4 = tasks
+    .filter((task) => task.currentStatus === 2)
+    .map((task, index) => {
+      return { ...task, columnIndex: index };
+    });
+
+  const newTasks = column1.concat(column2, column3, column4);
+  return newTasks;
 };
 
 const reducers = {

@@ -5,16 +5,10 @@ import applicationDataReducer, {
   SET_CURRENT_PROJECT,
   SET_TASK_STATUS,
 } from "../../reducers/applicationDataReducer";
-// import { useSelector } from "react-redux";
 
 export const stateContext = createContext();
 
 export default function StateProvider(props) {
-  // const userState = useSelector((state) => {
-  //   console.log('state:', state);
-  //   return state.user;
-  // });
-
   const [state, dispatch] = useReducer(applicationDataReducer, {
     users: [],
     projects: [],
@@ -69,13 +63,6 @@ export default function StateProvider(props) {
 
   const setCurrentProject = (id) => {
     axios.get(`/tasks/project/${id}`).then((data) => {
-      // dispatch({
-      //   type: SET_APPLICATION_DATA,
-      //   value: {
-      //     ...state,
-      //     tasks: data.data,
-      //   },
-      // });
       dispatch({
         type: SET_CURRENT_PROJECT,
         id,
@@ -111,8 +98,7 @@ export default function StateProvider(props) {
       console.log("data in state provider", data);
       dispatch({
         type: SET_TASK_STATUS,
-        id,
-        status,
+        tasks: state.tasks,
       });
     });
   };

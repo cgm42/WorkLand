@@ -78,10 +78,8 @@ function TaskForm(props) {
   return (
     <div>
       <BiEdit
-        type="button"
-        className="nes-btn is-primary"
+        className="edit-icon"
         onClick={() => document.getElementById(makeId(id)).showModal()}
-        title={"New Task"}
       ></BiEdit>
       <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
         <form

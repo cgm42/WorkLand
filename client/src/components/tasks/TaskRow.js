@@ -6,48 +6,20 @@ import "../rpgui.css";
 import "nes.css/css/nes.min.css";
 import classNames from "classnames";
 import TaskUser from "../users/TaskUser";
-import { BiEdit } from "react-icons/bi";
 import EditTaskForm from "./EditTaskForm";
+import getTaskTeams from "../../helpers/getTaskTeams";
 
 export default function TaskRow(props) {
-  const { state, editTask } = useContext(stateContext);
+  const { state, editTask, updateTaskStatus, updateTaskPriority } =
+    useContext(stateContext);
 
   const formatDate = (date) => {
     return date.split("T")[0];
   };
 
-  const {
-    id,
-    name,
-    description,
-    status,
-    priority,
-    startDate,
-    endDate,
-    users,
-    taskTeams,
-    updateTaskStatus,
-    updateTaskPriority,
-  } = props;
+  const { id, name, description, status, priority, startDate, endDate } = props;
 
-  const team = taskTeams.filter((team) => {
-    return team.taskId === id;
-  });
-
-  const usersList = [];
-
-  for (const member of team) {
-    for (const user of users) {
-      if (user.id === member.userId) {
-        usersList.push(user);
-      }
-    }
-  }
-
-  const usersListArray = usersList.map((user) => {
-    const { id, name, avatar } = user;
-    return <TaskUser key={id} id={id} avatar={avatar} name={name} />;
-  });
+  const taskUsersListArray = getTaskTeams(state, id);
 
   const priorityClass = classNames(
     "priority",
@@ -99,10 +71,11 @@ export default function TaskRow(props) {
             priority={priority}
             startDate={startDate}
             endDate={endDate}
+            onSave={editTask}
           />
         </div>
       </td>
-      <td className="task-user-container">{usersListArray}</td>
+      <td className="task-user-container">{taskUsersListArray}</td>
       <td
         className={statusClass}
         onClick={() => updateTaskStatus(newStatus, id)}

@@ -3,6 +3,7 @@ import Button from "../button/Button";
 import DatePicker from "react-date-picker";
 import User from "../users/User";
 import { useSelector } from "react-redux";
+import getProjectTeams from "../../helpers/getProjectTeams";
 
 function TaskForm(props) {
   const userState = useSelector((state) => {
@@ -18,24 +19,8 @@ function TaskForm(props) {
 
   const { state, onSave, projectID, setEdit } = props;
 
-  const team = state.projectTeams.filter((team) => {
-    return team.projectId === projectID;
-  });
-
-  const usersList = [];
-
-  for (const member of team) {
-    for (const user of state.users) {
-      if (user.id === member.userId) {
-        usersList.push(user);
-      }
-    }
-  }
-
-  const usersListArray = usersList.map((user) => {
-    const { id, name, avatar } = user;
-    return <User key={id} id={id} avatar={avatar} name={name} />;
-  });
+  const usersListArray = getProjectTeams(state);
+  console.log(usersListArray);
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName(
@@ -67,7 +52,6 @@ function TaskForm(props) {
 
   const cancel = () => {
     document.getElementById("dialog-dark-rounded").close();
-    // setEdit(false);
   };
 
   return (

@@ -1,41 +1,32 @@
-import React, {useState} from 'react';
-import Button from '../button/Button';
-import ProjectUser from '../users/ProjectUser';
-import { useSelector } from 'react-redux';
-import { BiEdit } from 'react-icons/bi';
+import React, { useContext } from "react";
+import { stateContext } from "../providers/StateProvider";
+import getProjectTeams from "../../helpers/getProjectTeams";
 
 export default function ProjectCard(props) {
+  const { state } = useContext(stateContext);
+
   // const userState = useSelector((state) => {
   //   console.log('state:', state);
   //   return state.user;
   // });
 
-  // const [edit, setEdit] = useState(false);
+  const {
+    id,
+    projectTeams,
+    users,
+    setCurrentProject,
+    setShowForm,
+    editProject,
+  } = props;
 
-  const {id, projectTeams, users, setCurrentProject, setShowForm, editProject} = props;
-
-  const team = projectTeams.filter((team) => {
-    return team.projectId === id;
-  });
-
-  const usersList = [];
-
-  for (const member of team) {
-    for (const user of users) {
-      if (user.id === member.userId) {
-        usersList.push(user);
-      }
-    }
-  }
-
-  const usersListArray = usersList.map((user) => {
-    const { id, name, avatar } = user;
-    return <ProjectUser key={id} id={id} avatar={avatar} name={name} />;
-  });
+  const usersListArray = getProjectTeams(state);
 
   return (
-    <div className='project-card rpgui-container framed float' onClick={() => setCurrentProject(id)}>
-      <div className='card-header'>
+    <div
+      className="project-card rpgui-container framed float"
+      onClick={() => setCurrentProject(id)}
+    >
+      <div className="card-header">
         <header>{props.name}</header>
         {/* {userState.id === props.creatorID && <div className='edit-button' onClick={() => {
         setShowForm(true)
@@ -50,10 +41,6 @@ export default function ProjectCard(props) {
       <p>9/10</p>
       <h1>The team:</h1>
       {usersListArray}
-      {/* {userState.id === props.creatorID && <Button onClick={() => {
-        setShowForm(true)
-        setEdit(true);
-        }}>Edit</Button>} */}
     </div>
   );
 }

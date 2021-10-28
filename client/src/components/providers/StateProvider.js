@@ -78,6 +78,12 @@ export default function StateProvider(props) {
     });
   };
 
+  const editTask = (task, id) => {
+    axios.patch(`/tasks/${id}`, task).then(() => {
+      updateTaskList();
+    });
+  };
+
   const updateTaskList = () => {
     Promise.all([
       axios.get(`/tasks/project/${state.current_project}`),
@@ -133,6 +139,7 @@ export default function StateProvider(props) {
     createProject,
     setCurrentProject,
     createTask,
+    editTask,
     updateTaskStatus,
     updateTaskPriority,
   };

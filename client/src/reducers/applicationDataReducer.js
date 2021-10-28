@@ -13,14 +13,23 @@ export default function applicationDataReducer(state, action) {
   );
 }
 
-const setApplicationData = (state, action) => ({
-  ...state,
-  users: action.value.users,
-  projects: action.value.projects,
-  projectTeams: action.value.projectTeams,
-  tasks: action.value.tasks,
-  taskTeams: action.value.taskTeams,
-});
+const setApplicationData = (state, action) => {
+  let tasks = [];
+  if (action.value.tasks) {
+    tasks = giveTasksIndices(action.value.tasks);
+  }
+
+  const newState = {
+    ...state,
+    users: action.value.users,
+    projects: action.value.projects,
+    projectTeams: action.value.projectTeams,
+    tasks: tasks.length > 0 ? tasks : action.value.tasks,
+    taskTeams: action.value.taskTeams,
+  };
+
+  return newState;
+};
 
 const setCurrentProject = (state, action) => {
   const tasks = giveTasksIndices(action.tasks);

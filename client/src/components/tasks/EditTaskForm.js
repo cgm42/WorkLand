@@ -4,6 +4,8 @@ import DatePicker from "react-date-picker";
 import User from "../users/User";
 import { useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
+import getProjectTeams from "../../helpers/getProjectTeams";
+import getTaskTeams from "../../helpers/getTaskTeams";
 
 function EditTaskForm(props) {
   const userState = useSelector((state) => {
@@ -14,29 +16,15 @@ function EditTaskForm(props) {
   const [description, setDescription] = useState(props.description || "");
   const [startDate, onStart] = useState(props.startDate || new Date());
   const [endDate, onEnd] = useState(props.endDate || new Date());
-  const [priority, setPriority] = useState(props.priority || 0);
   const [error, setError] = useState("");
 
-  const { id, state, onSave, projectID, setEdit } = props;
+  const { id, state, onSave } = props;
 
-  const team = state.projectTeams.filter((team) => {
-    return team.projectId === projectID;
-  });
+  const taskUsersListArray = getTaskTeams(state, id);
+  const projectUsersListArray = getProjectTeams(state, taskUsersListArray);
 
-  const usersList = [];
-
-  for (const member of team) {
-    for (const user of state.users) {
-      if (user.id === member.userId) {
-        usersList.push(user);
-      }
-    }
-  }
-
-  const usersListArray = usersList.map((user) => {
-    const { id, name, avatar } = user;
-    return <User key={id} id={id} avatar={avatar} name={name} />;
-  });
+  // projectUsersListArray.forEach((user) => console.log(user));
+  taskUsersListArray.forEach((user) => console.log("2", user));
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName(
@@ -50,32 +38,28 @@ function EditTaskForm(props) {
     }
 
     const task = {
-      project_id: projectID,
+      project_id: state.current_project,
       sprint_id: null,
       name,
       description,
       startDate,
       endDate,
-      priority_level: priority,
+      priority_level: props.priority,
       users: selectedUsersIDs,
     };
 
     setError("");
-    // setEdit(false);
-    onSave(task);
+    onSave(task, id);
     document.getElementById(makeId(id)).close();
   };
 
   const cancel = () => {
     document.getElementById(makeId(id)).close();
-    // setEdit(false);
   };
 
   const makeId = (id) => {
     return `dialog-dark-rounded-edit-${id}`;
   };
-
-  // console.log("start Date", startDate);
 
   return (
     <div>
@@ -117,7 +101,7 @@ function EditTaskForm(props) {
           <div className="team-date-container">
             <label>
               Assignees:
-              <ul className="rpgui users-container">{usersListArray}</ul>
+              <ul className="rpgui users-container">{projectUsersListArray}</ul>
             </label>
 
             <div className="date">

@@ -8,12 +8,7 @@ import TaskForm from "./TaskForm";
 import Button from "../button/Button";
 
 function TaskTable(props) {
-  const { state, createTask, updateTaskStatus, updateTaskPriority } =
-    useContext(stateContext);
-
-  const formatDate = (date) => {
-    return date.split("T")[0];
-  };
+  const { state, createTask } = useContext(stateContext);
 
   const tasksList = state.tasks.map((task) => {
     return (
@@ -26,10 +21,6 @@ function TaskTable(props) {
         priority={task.priorityLevel}
         startDate={task.startDate}
         endDate={task.endDate}
-        users={state.users}
-        taskTeams={state.taskTeams}
-        updateTaskStatus={updateTaskStatus}
-        updateTaskPriority={updateTaskPriority}
       ></TaskRow>
     );
   });

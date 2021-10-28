@@ -1,19 +1,17 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { stateContext } from '../providers/StateProvider';
 import './projects.css';
-import "nes.css/css/nes.min.css";
-import "../rpgui.css";
+import 'nes.css/css/nes.min.css';
+import '../rpgui.css';
 import ProjectCard from './projectCard';
 import ProjectForm from './ProjectForm';
 import Button from '../button/Button';
 
-
 function ProjectCardList(props) {
-  const { state, createProject, setCurrentProject} = useContext(stateContext);
+  const { state, createProject, setCurrentProject } = useContext(stateContext);
   const [showForm, setShowForm] = useState(false);
 
-
-  const projectsList = state.projects.map(project => {
+  const projectsList = state.projects.map((project) => {
     return (
       <ProjectCard
         key={project.id}
@@ -32,28 +30,19 @@ function ProjectCardList(props) {
 
   return (
     <div className='rpgui-content rpgui-container framed-golden-2'>
-      <div className='welcome'>
+      <div className='welcome project-title'>
         <h1>Project Dashboard</h1>
-      </div>
-
-      <section>
-        {projectsList}
         <div className='new-project'>
-          <ProjectForm 
+          <ProjectForm
             setShowForm={setShowForm}
             usersList={state.users}
             onSave={createProject}
-          /> 
+          />
 
-          {/* {showForm && edit &&
-          <Form 
-          setShowForm={setShowForm}
-          usersList={state.users}
-          onSave={createProject}
-          setEdit={setEdit}
-        />}  */}
         </div>
-      </section>
+      </div>
+
+      <section>{projectsList}</section>
     </div>
   );
 }

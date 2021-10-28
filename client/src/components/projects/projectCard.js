@@ -1,18 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Button from '../button/Button';
 import ProjectUser from '../users/ProjectUser';
 import { useSelector } from 'react-redux';
 import { BiEdit } from 'react-icons/bi';
+import EditProjectForm from './EditProjectForm';
+import DeleteProjectForm from './DeleteProjectForm';
 
 export default function ProjectCard(props) {
-  // const userState = useSelector((state) => {
-  //   console.log('state:', state);
-  //   return state.user;
-  // });
-
-  // const [edit, setEdit] = useState(false);
-
-  const {id, projectTeams, users, setCurrentProject, setShowForm, editProject} = props;
+  const {
+    id,
+    projectTeams,
+    users,
+    setCurrentProject,
+    setShowForm,
+    editProject
+  } = props;
 
   const team = projectTeams.filter((team) => {
     return team.projectId === id;
@@ -34,15 +36,16 @@ export default function ProjectCard(props) {
   });
 
   return (
-    <div className='project-card rpgui-container framed float' onClick={() => setCurrentProject(id)}>
+    <div
+      className='project-card rpgui-container framed float'
+      onClick={() => setCurrentProject(id)}
+    >
       <div className='card-header'>
         <header>{props.name}</header>
-        {/* {userState.id === props.creatorID && <div className='edit-button' onClick={() => {
-        setShowForm(true)
-        setEdit(true);
-        }}>
-          <BiEdit ></BiEdit> */}
-        {/* </div>} */}
+        <div className='buttons'>
+        <EditProjectForm ></EditProjectForm>
+        <DeleteProjectForm></DeleteProjectForm>
+        </div>
       </div>
       <h1>Description:</h1>
       <p>{props.description}</p>

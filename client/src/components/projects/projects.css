@@ -13,15 +13,33 @@
   align-items: center;
 }
 
+.buttons {
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+
+}
+
 .edit-button {
-  font-size: 40px;
   color:rgb(252, 252, 252);
   cursor: pointer;
   transition: 1s;
+  display: flex;
 }
 
 .edit-button:hover {
   color:rgb(214, 203, 101);
+}
+
+.delete-button {
+  color:rgb(252, 252, 252);
+  cursor: pointer;
+  transition: 1s;
+  display: flex;
+}
+
+.delete-button:hover {
+  color:rgb(255, 14, 14);
 }
 
 .project-card header {

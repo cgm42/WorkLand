@@ -5,18 +5,16 @@ import './style.css';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function Map({ x }) {
-  const kanbanGuideState = useSelector((state) => state.mapGuide.kanban);
+  const kanban = useSelector((state) => state.mapGuide.kanban);
+  const userDashboard = useSelector((state) => state.mapGuide.userDashboard);
+  const ganttChart = useSelector((state) => state.mapGuide.ganttChart);
+  const projectDashboard = useSelector(
+    (state) => state.mapGuide.projectDashboard
+  );
+  const taskList = useSelector((state) => state.mapGuide.taskList);
+  const piano = useSelector((state) => state.mapGuide.piano);
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
-    // <div
-    //   id="map"
-    //   style={{
-    //     zIndex: -1,
-    //     position: "absolute",
-    //     top: 0,
-    //     left: -x,
-    //   }}>
-    //   <MapTile map={`officev0`} />
     <div
       id="map"
       style={{
@@ -25,12 +23,48 @@ function Map({ x }) {
         top: `${topMargin}px`,
         left: `${leftMargin}px`,
       }}>
-      <MapTile map={`officev1`} />
-      {kanbanGuideState && (
+      <MapTile map={`officev5`} />
+      {kanban && (
+        <Sprite
+          zoom={0.4}
+          image={'/sprites/bubbles/kanban3.gif'}
+          data={{ h: 180, w: 279, x: 0, y: 0 }}
+          position={{ x: 83, y: -68 }}
+        />
+      )}
+      {userDashboard && (
         <Sprite
           image={'/sprites/action.png'}
           data={{ h: 32, w: 32, x: 0, y: 0 }}
-          position={{ x: 173, y: 0 }}
+          position={{ x: 558, y: 20 }}
+        />
+      )}
+      {ganttChart && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 306, y: 20 }}
+        />
+      )}
+      {projectDashboard && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 431, y: 20 }}
+        />
+      )}
+      {taskList && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 691, y: 20 }}
+        />
+      )}
+      {piano && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 336, y: 286 }}
         />
       )}
     </div>

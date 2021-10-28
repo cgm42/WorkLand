@@ -10,7 +10,7 @@ export const basemapHeight = 704;
 export const stepSize = 5;
 
 //corresponds to filenames in /public/sprites/skins
-export const avatarSkinArr = ['f1', 'f2', 'f3', 'cara'];
+export const avatarSkinArr = ['f1', 'f2', 'f3', 'dc1', 'dc2'];
 
 //Zoom factor for sprite file names starting with f
 export const spriteSizeFactorF = 1.35;
@@ -49,28 +49,59 @@ export const playerTemplate = {
 export const spriteDimensions = { h: 32, w: 32 };
 export const maxSteps = 3;
 
+//Project Management Assets
 const X = { walk: false, action: false, special: false };
 const O = { walk: true, action: false, special: false };
-const A = { walk: true, action: true, special: false };
 const K = { walk: true, action: true, special: false, asset: 'kanban' };
-const I = { walk: false, action: true, special: false };
+const k = { walk: false, action: true, special: false, asset: 'kanban' };
+const G = { walk: true, action: true, special: false, asset: 'ganttChart' };
+const g = { walk: false, action: true, special: false, asset: 'ganttChart' };
+const P = {
+  walk: true,
+  action: true,
+  special: false,
+  asset: 'projectDashboard',
+};
+const p = {
+  walk: false,
+  action: true,
+  special: false,
+  asset: 'projectDashboard',
+};
+const U = { walk: true, action: true, special: false, asset: 'userDashboard' };
+const u = { walk: false, action: true, special: false, asset: 'userDashboard' };
+const L = { walk: true, action: true, special: false, asset: 'taskList' };
+const l = { walk: false, action: true, special: false, asset: 'taskList' };
+
+//Cool features
+const Q = { walk: true, action: true, special: false, asset: 'piano' };
+const q = { walk: false, action: true, special: false, asset: 'piano' };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [
-  // 0  1  2  3  4  5  6  7  8  9  10 11
-  [X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
-  [X, X, X, X, X, X, X, X, X, X, X, X], // y = 1
-  [X, O, O, O, K, K, K, O, O, O, O, X], // y= 2
-  [X, O, O, O, O, O, O, O, O, O, O, X], // y = 3
-  [X, O, O, O, O, O, O, O, O, O, O, X], // y = 4
-  [X, O, O, O, O, O, O, O, O, O, O, X], // y = 5
-  [X, O, O, O, O, O, O, O, O, O, O, X], // y = 6
-  [X, O, O, O, O, O, O, O, X, X, X, X], // y = 7
-  [X, X, O, X, X, X, X, O, X, X, X, X], // y = 8
-  [X, X, O, X, X, X, X, O, O, O, O, X], // y = 9
-  [X, X, O, X, X, X, X, O, O, O, O, X], // y = 10
-  [X, O, O, O, X, X, X, X, X, X, X, X], // y = 11
-  [X, X, X, X, X, X, X, X, X, X, X, X], // y = 12
+  // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23
+  [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
+  [X, X, X, X, k, k, k, X, g, g, X, X, p, p, X, X, u, u, X, X, X, l, l, X], // y = 1
+  [X, X, X, X, K, K, K, X, G, G, X, X, P, P, X, X, U, U, O, X, X, L, L, X], // y= 2
+  [X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 3
+  [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X, X], // y = 4
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 5
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 6
+  [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 7
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 8
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 9
+  [X, X, X, X, X, X, X, X, X, X, q, q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 10
+  [X, O, O, O, O, O, O, O, O, O, Q, Q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 11
+  [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 12
+  [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 13
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 14
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 15
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 16
+  [X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 17
+  [X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 18
+  [X, O, O, O, O, O, O, O, O, O, O, O, X, X, X, X, X, X, X, X, X, X, X, X], // y = 19
+  [X, O, O, O, O, O, O, O, O, O, O, O, X, X, X, X, X, X, X, X, X, X, X, X], // y = 20
+  [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 21
 ];
 
 export const MAP_TABLE = OFFICE_MAP;

@@ -1,9 +1,9 @@
-import pool from "../db/dbConfig";
+import pool from '../db/dbConfig';
 
 // import { Person } from "../../../types";
 
 function getPerson(id: number) {
-  return pool.query("SELECT * FROM users WHERE id = $1", [id]);
+  return pool.query('SELECT * FROM users WHERE id = $1', [id]);
 }
 
 function getPersonByGitHub(githubId: number) {
@@ -24,15 +24,16 @@ async function createPersonByGitHub(
   const client = await pool.connect();
 
   try {
-    const insertPersonText = `INSERT INTO users(name, avatar) VALUES('${name}', '${avatar}') RETURNING users.id`;
-    const insertedUserId = (await client.query(insertPersonText)).rows[0].id;
+    const insertPersonText = `INSERT INTO users(name, avatar) VALUES($1, '${avatar}') RETURNING users.id`;
+    const insertedUserId = (await client.query(insertPersonText, [name]))
+      .rows[0].id;
 
     const insertText = `
       INSERT INTO oauth_mapping(user_id, oauth_provider, oauth_id) 
       VALUES($1, $2, $3);
       `;
-    const insertValues = [insertedUserId, "GitHub", githubId];
-    console.log("insertValues :>> ", insertValues);
+    const insertValues = [insertedUserId, 'GitHub', githubId];
+    console.log('insertValues :>> ', insertValues);
     await client.query(insertText, insertValues);
   } catch (e) {
     throw e;

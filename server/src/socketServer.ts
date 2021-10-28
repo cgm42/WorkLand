@@ -15,7 +15,6 @@ let socketIds: SocketId[] = [];
 
 io.on('connection', (socket: Socket) => {
   console.log('.........socket connected.......🙌');
-  socket.emit('getId', socket.id);
 
   socket.on('movementMessage', (arg) => {
     console.log('event :>> ', arg);
@@ -49,7 +48,9 @@ io.on('connection', (socket: Socket) => {
   socket.on('disconnect', () => {
     const allOtherUsers = socketIds.filter((id) => id !== socket.id);
     socketIds = [...allOtherUsers];
+    io.emit('userDisconnect', socket.id);
   });
+
   //-----------------------p2p code below
   // socket.on("callUser", (data) => {
   //   console.log("call user data :>> ", data);

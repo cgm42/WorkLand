@@ -16,9 +16,6 @@ const getProjectTeams = (state, taskTeam = []) => {
     }
   }
 
-  console.log("taskteam", taskTeam);
-  console.log("projectUSerslist", projectUsersList);
-
   const usersListArray = projectUsersList.map((user) => {
     const { id, name, avatar } = user;
     const selectedUser = taskTeam.filter(

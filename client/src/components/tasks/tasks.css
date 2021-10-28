@@ -48,18 +48,30 @@
   cursor: pointer;
 }
 
+.low {
+  color: green;
+}
+
+.medium {
+  color: yellow;
+}
+
+.high {
+  color: red;
+}
+
 .status {
   cursor: pointer;
-  color:rgb(255, 255, 255)
+  color: rgb(255, 255, 255);
 }
 
 .progress-status {
   background-color: rgba(255, 255, 0, 0.719);
 }
 .edit-icon {
-display: flex;
-align-items: center;
-transition: 1s
+  display: flex;
+  align-items: center;
+  transition: 1s;
 }
 
 .delete-icon {
@@ -75,17 +87,17 @@ transition: 1s
   color: rgb(240, 61, 61);
 }
 
-.name-icons{
+.name-icons {
   display: flex;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
 }
 
 .edit-delete {
   font-size: 25px;
   cursor: pointer;
   display: flex;
-  align-items: center
+  align-items: center;
 }
 
 .warning {

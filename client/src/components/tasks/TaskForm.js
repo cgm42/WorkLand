@@ -23,9 +23,9 @@ function TaskForm(props) {
   console.log(usersListArray);
 
   const validate = () => {
-    const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
-    );
+    const selectedUsers = document
+      .getElementById("dialog-dark-rounded")
+      .getElementsByClassName("user-list--selected");
 
     const selectedUsersIDs = [];
 

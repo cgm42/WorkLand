@@ -12,7 +12,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import DeleteTask from "./DeleteTaskForm";
 
 export default function TaskRow(props) {
-  const { state, editTask, updateTaskStatus, updateTaskPriority } =
+  const { state, editTask, updateTaskStatus, updateTaskPriority, deleteTask } =
     useContext(stateContext);
 
   const formatDate = (date) => {
@@ -25,9 +25,9 @@ export default function TaskRow(props) {
 
   const priorityClass = classNames(
     "priority",
-    { late: priority === 0 },
-    { progress: priority === 1 },
-    { done: priority === 2 }
+    { low: priority === 0 },
+    { medium: priority === 1 },
+    { high: priority === 2 }
   );
 
   const statusClass = classNames(
@@ -77,7 +77,11 @@ export default function TaskRow(props) {
               endDate={endDate}
               onSave={editTask}
             />
-            <DeleteTask id={id} className="delete-icon"></DeleteTask>
+            <DeleteTask
+              id={id}
+              onConfirm={deleteTask}
+              className="delete-icon"
+            ></DeleteTask>
           </div>
         </div>
       </td>

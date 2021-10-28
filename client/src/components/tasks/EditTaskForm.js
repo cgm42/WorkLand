@@ -14,8 +14,10 @@ function EditTaskForm(props) {
 
   const [name, setName] = useState(props.name || "");
   const [description, setDescription] = useState(props.description || "");
-  const [startDate, onStart] = useState(props.startDate || new Date());
-  const [endDate, onEnd] = useState(props.endDate || new Date());
+  const [startDate, onStart] = useState(
+    new Date(props.startDate) || new Date()
+  );
+  const [endDate, onEnd] = useState(new Date(props.endDate) || new Date());
   const [error, setError] = useState("");
 
   const { id, state, onSave } = props;
@@ -23,29 +25,26 @@ function EditTaskForm(props) {
   const taskUsersListArray = getTaskTeams(state, id);
   const projectUsersListArray = getProjectTeams(state, taskUsersListArray);
 
-  // projectUsersListArray.forEach((user) => console.log(user));
-  taskUsersListArray.forEach((user) => console.log("2", user));
-
   const validate = () => {
-    const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
-    );
+    const userIDs = projectUsersListArray.map((user) => user.props.id);
+
+    const selectedUsers = document
+      .getElementById(makeId(id))
+      .getElementsByClassName("user-list--selected");
 
     const selectedUsersIDs = [];
 
     for (const user of selectedUsers) {
-      selectedUsersIDs.push(user.id);
+      selectedUsersIDs.push(parseInt(user.id));
     }
 
     const task = {
-      project_id: state.current_project,
-      sprint_id: null,
       name,
       description,
       startDate,
       endDate,
-      priority_level: props.priority,
-      users: selectedUsersIDs,
+      users: userIDs,
+      selectedUsers: selectedUsersIDs,
     };
 
     setError("");

@@ -84,6 +84,12 @@ export default function StateProvider(props) {
     });
   };
 
+  const deleteTask = (id) => {
+    axios.delete(`/tasks/${id}`).then(() => {
+      updateTaskList();
+    });
+  };
+
   const updateTaskList = () => {
     Promise.all([
       axios.get(`/tasks/project/${state.current_project}`),
@@ -142,6 +148,7 @@ export default function StateProvider(props) {
     editTask,
     updateTaskStatus,
     updateTaskPriority,
+    deleteTask,
   };
 
   return (

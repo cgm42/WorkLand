@@ -49,16 +49,37 @@ async function createTask(req: Request, res: Response) {
 
 async function editTask(req: Request, res: Response) {
   const task_id = parseInt(req.params.id);
+  const users = req.body.users;
+  const selectedUsers = req.body.selectedUsers;
 
   const task = {
     id: task_id,
-    name: "Style Login Button",
-    description: "",
-    start_date: "2021-10-24",
-    end_date: "2021-10-24",
+    name: req.body.name,
+    description: req.body.description,
+    start_date: req.body.startDate,
+    end_date: req.body.endDate,
   };
 
   const queryResult = await model.editTask(task);
+
+  for (const user of users) {
+    const userTask = {
+      user_id: user,
+      task_id: task_id,
+    };
+
+    user_task_model.deleteUserFromTask(userTask);
+  }
+
+  for (const user of selectedUsers) {
+    const userTask = {
+      user_id: user,
+      task_id: task_id,
+    };
+
+    user_task_model.addUserToTask(userTask);
+  }
+
   res.send(camelcaseKeys(queryResult.rows[0]));
 }
 

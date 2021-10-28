@@ -1,8 +1,8 @@
-require("dotenv").config();
-import passport from "passport";
-import camelcaseKeys from "camelcase-keys";
-import GitHubStrategy from "passport-github2";
-import * as userDb from "../models/person";
+require('dotenv').config();
+import passport from 'passport';
+import camelcaseKeys from 'camelcase-keys';
+import GitHubStrategy from 'passport-github2';
+import * as userDb from '../models/person';
 
 // serialize the user.id to save in the cookie session
 // so the browser will remember the user when login
@@ -16,7 +16,7 @@ passport.deserializeUser(async (id: number, done) => {
     const user = await userDb.getPersonByGitHub(id);
     done(null, user.rows[0]);
   } catch (e) {
-    done(new Error("Failed to deserialize an user"));
+    done(new Error('Failed to deserialize an user'));
   }
 });
 
@@ -31,15 +31,16 @@ passport.use(
     //@ts-ignore
     async (accessToken, refreshToken, profile, done) => {
       // find current user in UserModel
-      console.log("profile :>> ", profile);
+      console.log('profile :>> ', profile);
       let user = await userDb.getPersonByGitHub(profile.id);
-      console.log("user :>> ", user);
+      console.log('user :>> ', user);
       // create new user if the database doesn't have this user
+      const name = profile.displayName ? profile.displayName : profile.username;
       if (!user.rows.length) {
-        console.log("are you sure?");
+        console.log('are you sure?');
         await userDb.createPersonByGitHub(
           profile.id,
-          profile.displayName,
+          name,
           profile.photos[0].value
         );
         user = await userDb.getPersonByGitHub(profile.id);

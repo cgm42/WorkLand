@@ -49,7 +49,7 @@ export default function Players({ socket }) {
   }
 
   useKeyPress((e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (
       e.key === 'ArrowDown' ||
       e.key === 'ArrowUp' ||

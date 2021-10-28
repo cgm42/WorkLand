@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
-import { useDispatch, useSelector } from "react-redux";
-import { TOGGLE_MODAL_CAN_OPEN } from "../../reducers/mapReducer";
-import "./modal.css";
-import UserDashboard from "../userDashboard/UserDashboard";
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { TOGGLE_MODAL_CAN_OPEN } from '../../reducers/mapReducer';
+import './modal.css';
+import UserDashboard from '../userDashboard/UserDashboard';
 import ProjectCardList from '../projects/projectCardList';
-
+import Kanban from '../kanban/Kanban';
+import TaskTable from '../tasks/TaskTable';
+import PianoComp from '../piano';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -20,13 +22,31 @@ function MainModal(props) {
           }}>
           close
         </button>
-        {mapRoute === "kanban" ? <div>kanban</div> : <div />}
-        <div>
-          <UserDashboard />
-        </div>
-        <div>
-          <ProjectCardList  />
-        </div>
+        {/* {===============project management features==========} */}
+        {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
+        {mapRoute === 'kanban' ? <Kanban /> : <div />}
+        {mapRoute === 'ganttChart' ? (
+          <div>gantt chart lives here</div>
+        ) : (
+          <div />
+        )}
+        {mapRoute === 'projectDashboard' ? <ProjectCardList /> : (
+          <div />
+        )}
+        {mapRoute === 'taskList' ? <TaskTable /> : <div />}
+
+        {/* <div>
+          <ProjectCardList />
+        </div> */}
+
+        {/* {===============cool extra features==============} */}
+        {mapRoute === 'piano' ? (
+          <div>
+            <PianoComp></PianoComp>
+          </div>
+        ) : (
+          <div />
+        )} 
       </Modal>
     </>
   );

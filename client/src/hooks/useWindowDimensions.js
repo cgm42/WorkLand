@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useEffect, useState } from 'react';
+
 import { basemapWidth, basemapHeight, navBarHeight } from '../utils/constants';
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -17,6 +17,8 @@ function getWindowDimensions() {
   return {
     leftMargin: left,
     topMargin: top,
+    width,
+    height,
   };
 }
 

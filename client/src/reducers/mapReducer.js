@@ -11,6 +11,7 @@ import { initX, initY } from '../utils/constants';
 
 const initialState = {
   localID: 'local',
+  localSocketId: null,
   user: {
     id: '', //id_from_db
     name: '',
@@ -26,6 +27,7 @@ const initialState = {
     //   step: 0,
     //   name: "local user",
     //   skin: "f1",
+    //   socketId: "20digitsofnonesense"
     // },
   },
   mapGuide: {
@@ -34,6 +36,7 @@ const initialState = {
     kanban: false,
     ganttChart: false,
     taskList: false,
+    piano: false,
   },
   mapRoute: {
     modalCanOpen: false,
@@ -55,6 +58,9 @@ export const HIDE_MAP_GUIDE = createAction('HIDE_MAP_GUIDE');
 export const TOGGLE_MODAL_CAN_OPEN = createAction('TOGGLE_MODAL_CAN_OPEN');
 export const JOIN_VIDEO = createAction('JOIN_VIDEO');
 export const SET_VIDEO_PARTICIPANTS = createAction('SET_VIDEO_PARTICIPANTS');
+export const SET_SOCKETID = createAction('SET_SOCKETID');
+export const USER_DISCONNECT = createAction('USER_DISCONNECT');
+
 export const mapReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
   builder.addCase(SET_USER, (state, action) => {
@@ -66,6 +72,9 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.players[id] = { ...playerTemplate };
     state.players[id]['id'] = id;
     state.players[id]['name'] = action.payload.name;
+    if (!state.localSocketId) {
+      state.players[id]['socketId'] = state.localSocketId;
+    }
   });
 
   //WALK: handle movement animation (turning and walking)
@@ -97,6 +106,7 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.players[id].y = newY ? newY : state.players[id]['y'];
     state.players[id].dir = newDir ? newDir : state.players[id].dir;
     state.players[id].step = newStep;
+    // state.players[id].socketId = state.localSocketId;
     return state;
   });
 
@@ -145,5 +155,20 @@ export const mapReducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(SET_VIDEO_PARTICIPANTS, (state, action) => {
     state.video.socketArr = action.payload;
+  });
+  builder.addCase(SET_SOCKETID, (state, action) => {
+    state.localSocketId = action.payload.id;
+    if (state.players[state.localID] !== undefined) {
+      state.players[state.localID]['socketId'] = action.payload.id;
+    }
+  });
+  builder.addCase(USER_DISCONNECT, (state, action) => {
+    const disconnectedId = action.payload;
+    for (let key in state.players) {
+      if (state.players[key]['socketId'] === disconnectedId) {
+        delete state.players[key];
+        break;
+      }
+    }
   });
 });

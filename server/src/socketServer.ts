@@ -9,8 +9,6 @@ const io = new Server(socketServer, {
   },
 });
 
-// const users = {};
-
 let socketIds: SocketId[] = [];
 
 io.on('connection', (socket: Socket) => {
@@ -31,7 +29,6 @@ io.on('connection', (socket: Socket) => {
   });
 
   socket.on('sendDirect', (arg) => {
-    console.log(arg);
     io.to(arg.payload.receiverSocketId).emit('receiveDirect', arg);
     io.to(arg.payload.senderSocketId).emit('receiveDirect', arg);
   });
@@ -60,19 +57,4 @@ io.on('connection', (socket: Socket) => {
       id: socket.id,
     });
   });
-
-  //-----------------------p2p code below
-  // socket.on("callUser", (data) => {
-  //   console.log("call user data :>> ", data);
-  //   socket.broadcast.emit("callUser", {
-  //     signal: data.signalData,
-  //     from: data.from,
-  //     name: data.name,
-  //   });
-  // });
-
-  // socket.on("answerCall", (data) => {
-  //   console.log("answer call data :>> ", data);
-  //   socket.broadcast.emit("callAccepted", data.signal);
-  // });
 });

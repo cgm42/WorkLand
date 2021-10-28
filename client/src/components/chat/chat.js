@@ -94,7 +94,7 @@ function Chat() {
           <div
             style={{
               position: 'absolute',
-              left: `${width / 2 + 260}px`,
+              left: `${width / 2 + 260}px`, //260 to center the GIF within walls on the map
               top: `${height / 2 - 50}px`,
               width: '235px',
             }}>

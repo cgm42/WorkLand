@@ -216,7 +216,6 @@ export const mapReducer = createReducer(initialState, (builder) => {
     }
   });
   builder.addCase(RECEIVE_DIRECT, (state, action) => {
-    console.log('receiving direct');
     state.incomingGif.senderName = action.payload.senderName;
     state.incomingGif.senderAvatar = action.payload.senderAvatar;
     state.incomingGif.gifObj = action.payload.gifObj;

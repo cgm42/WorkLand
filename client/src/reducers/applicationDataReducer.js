@@ -35,6 +35,7 @@ const setCurrentProject = (state, action) => {
 
 const updateTaskStatus = (state, action) => {
   const tasks = giveTasksIndices(action.tasks);
+  console.log("tasks in reducer", tasks);
   const newState = {
     ...state,
     tasks: tasks,

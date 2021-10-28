@@ -22,11 +22,7 @@ function KanbanCard(props) {
     { "is-done": status === 2 }
   );
 
-  console.log("tasks", tasks);
-
   const tasksList = tasks.map((task) => {
-    // const task = state.tasks.find((task) => task.id === task_id);
-
     const { id, name, description, priorityLevel, currentStatus, columnIndex } =
       task;
 

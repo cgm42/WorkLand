@@ -67,7 +67,7 @@ async function updateTaskStatus(req: Request, res: Response) {
   const id = parseInt(req.params.id);
 
   const queryResult = await model.updateTaskStatus(status, id);
-  res.send(queryResult.rows);
+  res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
 async function deleteTask(req: Request, res: Response) {

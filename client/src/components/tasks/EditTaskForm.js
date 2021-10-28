@@ -5,7 +5,7 @@ import User from "../users/User";
 import { useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 
-function TaskForm(props) {
+function EditTaskForm(props) {
   const userState = useSelector((state) => {
     return state.user;
   });
@@ -75,11 +75,11 @@ function TaskForm(props) {
     return `dialog-dark-rounded-edit-${id}`;
   };
 
+  // console.log("start Date", startDate);
+
   return (
     <div>
       <BiEdit
-        type="button"
-        className="nes-btn is-primary"
         onClick={() => document.getElementById(makeId(id)).showModal()}
         title={"New Task"}
       ></BiEdit>
@@ -150,4 +150,4 @@ function TaskForm(props) {
   );
 }
 
-export default TaskForm;
+export default EditTaskForm;

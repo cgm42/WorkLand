@@ -12,6 +12,10 @@ import EditTaskForm from "./EditTaskForm";
 export default function TaskRow(props) {
   const { state, editTask } = useContext(stateContext);
 
+  const formatDate = (date) => {
+    return date.split("T")[0];
+  };
+
   const {
     id,
     name,
@@ -25,8 +29,6 @@ export default function TaskRow(props) {
     updateTaskStatus,
     updateTaskPriority,
   } = props;
-
-  console.log("description", description);
 
   const team = taskTeams.filter((team) => {
     return team.taskId === id;
@@ -113,8 +115,8 @@ export default function TaskRow(props) {
       >
         <IoMdWarning className="icon" />
       </td>
-      <td>{startDate}</td>
-      <td>{endDate}</td>
+      <td>{formatDate(startDate)}</td>
+      <td>{formatDate(endDate)}</td>
     </tr>
   );
 }

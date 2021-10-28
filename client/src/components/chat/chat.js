@@ -115,7 +115,7 @@ function Chat({ canOpen }) {
               style={{
                 width: '235px',
               }}
-              title="ok"
+              title="GIF"
               src={incomingGifState.gifObj.embed_url}
               width="320"
               height="320"

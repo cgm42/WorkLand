@@ -41,16 +41,16 @@ export const socketRTK = () => {
       if (action.type === 'WALK') {
         //throttle to optimize performance
         let currentTime = new Date().getTime();
-        if (currentTime - lastSent > 100) {
-          socket.emit(
-            'movementMessage',
-            JSON.stringify({
-              type: 'UPDATE_OTHERS',
-              payload: storeAPI.getState().players[action.payload.id],
-            })
-          );
-          lastSent = currentTime;
-        }
+        // if (currentTime - lastSent > 100) {
+        socket.volatile.emit(
+          'movementMessage',
+          JSON.stringify({
+            type: 'UPDATE_OTHERS',
+            payload: storeAPI.getState().players[action.payload.id],
+          })
+        );
+        lastSent = currentTime;
+        // }
       }
 
       if (action.type === 'ANNOUNCEMENT') {

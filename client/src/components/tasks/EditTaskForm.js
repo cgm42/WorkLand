@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import Button from "../button/Button";
 import DatePicker from "react-date-picker";
@@ -6,17 +7,30 @@ import { useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 import getProjectTeams from "../../helpers/getProjectTeams";
 import getTaskTeams from "../../helpers/getTaskTeams";
+=======
+import React, { useState } from 'react';
+import Button from '../button/Button';
+import DatePicker from 'react-date-picker';
+import User from '../users/User';
+import { useSelector } from 'react-redux';
+import { BiEdit } from 'react-icons/bi';
+>>>>>>> d6bccb55c27b0e538a8e0d2741d597ae18203b2d
 
 function EditTaskForm(props) {
   const userState = useSelector((state) => {
     return state.user;
   });
 
-  const [name, setName] = useState(props.name || "");
-  const [description, setDescription] = useState(props.description || "");
+  const [name, setName] = useState(props.name || '');
+  const [description, setDescription] = useState(props.description || '');
   const [startDate, onStart] = useState(props.startDate || new Date());
   const [endDate, onEnd] = useState(props.endDate || new Date());
+<<<<<<< HEAD
   const [error, setError] = useState("");
+=======
+  const [priority, setPriority] = useState(props.priority || 0);
+  const [error, setError] = useState('');
+>>>>>>> d6bccb55c27b0e538a8e0d2741d597ae18203b2d
 
   const { id, state, onSave } = props;
 
@@ -28,7 +42,7 @@ function EditTaskForm(props) {
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
+      'user-list--selected'
     );
 
     const selectedUsersIDs = [];
@@ -63,25 +77,27 @@ function EditTaskForm(props) {
 
   return (
     <div>
-      <BiEdit
-        onClick={() => document.getElementById(makeId(id)).showModal()}
-        title={"New Task"}
-      ></BiEdit>
-      <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
+      <div>
+        <BiEdit
+          className='edit-icon'
+          onClick={() => document.getElementById(makeId(id)).showModal()}
+        ></BiEdit>
+      </div>
+      <dialog className='nes-dialog is-dark is-rounded' id={makeId(id)}>
         <form
-          className="form"
-          autoComplete="off"
+          className='form'
+          autoComplete='off'
           onSubmit={(e) => e.preventDefault()}
-          method="dialog"
+          method='dialog'
         >
           <label>
             Task name:
             <input
               value={name}
-              type="text"
+              type='text'
               onChange={(e) => {
                 setName(e.target.value);
-                setError("");
+                setError('');
               }}
             />
           </label>
@@ -90,27 +106,27 @@ function EditTaskForm(props) {
             Description:
             <textarea
               value={description}
-              type="text"
+              type='text'
               onChange={(e) => {
                 setDescription(e.target.value);
-                setError("");
+                setError('');
               }}
             />
           </label>
 
-          <div className="team-date-container">
+          <div className='team-date-container'>
             <label>
               Assignees:
               <ul className="rpgui users-container">{projectUsersListArray}</ul>
             </label>
 
-            <div className="date">
+            <div className='date'>
               <label>
                 Start date:
                 <DatePicker
                   onChange={onStart}
                   value={startDate}
-                  className="date-size"
+                  className='date-size'
                 />
               </label>
 
@@ -119,14 +135,14 @@ function EditTaskForm(props) {
                 <DatePicker
                   onChange={onEnd}
                   value={endDate}
-                  className="date-size"
+                  className='date-size'
                 />
               </label>
             </div>
           </div>
-          <div className="cancel-submit">
-            <Button onClick={cancel} title={"cancel"}></Button>
-            <Button onClick={validate} title={"submit"}></Button>
+          <div className='cancel-submit'>
+            <Button onClick={cancel} title={'cancel'}></Button>
+            <Button onClick={validate} title={'submit'}></Button>
           </div>
         </form>
       </dialog>

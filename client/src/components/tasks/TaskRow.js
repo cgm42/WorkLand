@@ -8,6 +8,9 @@ import classNames from "classnames";
 import TaskUser from "../users/TaskUser";
 import EditTaskForm from "./EditTaskForm";
 import getTaskTeams from "../../helpers/getTaskTeams";
+import { RiDeleteBinLine } from "react-icons/ri";
+import EditTaskForm from "./EditTaskForm";
+import DeleteTask from "./DeleteTaskForm";
 
 export default function TaskRow(props) {
   const { state, editTask, updateTaskStatus, updateTaskPriority } =
@@ -29,10 +32,11 @@ export default function TaskRow(props) {
   );
 
   const statusClass = classNames(
+    "status",
     { "to-do": props.status === 0 },
-    { "in-progress": props.status === 1 },
-    { complete: props.status === 2 },
-    { late: props.status === 3 }
+    { "progress-status": props.status === 1 },
+    { "is-done": props.status === 2 },
+    { "is-late": props.status === 3 }
   );
 
   const statusToText = (status) => {
@@ -61,18 +65,21 @@ export default function TaskRow(props) {
   return (
     <tr>
       <td>
-        {name}
-        <div className="table-container">
-          <EditTaskForm
-            state={state}
-            id={id}
-            name={name}
-            description={description}
-            priority={priority}
-            startDate={startDate}
-            endDate={endDate}
-            onSave={editTask}
-          />
+        <div className="name-icons">
+          {name}
+          <div className="edit-delete">
+            <EditTaskForm
+              state={state}
+              id={id}
+              name={name}
+              description={description}
+              priority={priority}
+              startDate={startDate}
+              endDate={endDate}
+              onSave={editTask}
+            />
+            <DeleteTask id={id} className="delete-icon"></DeleteTask>
+          </div>
         </div>
       </td>
       <td className="task-user-container">{taskUsersListArray}</td>

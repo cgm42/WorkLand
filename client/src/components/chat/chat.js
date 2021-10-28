@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactGiphySearchbox from 'react-giphy-searchbox';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { ANNOUNCEMENT, SEND_DIRECT } from '../../reducers/mapReducer';
-function Chat() {
+function Chat({ canOpen }) {
   const [chatboxShow, setChatboxShow] = useState(false);
   const [showGif, setShowGif] = useState(false);
   const [receiver, setReceiver] = useState('Everyone');
@@ -38,18 +38,20 @@ function Chat() {
 
   return (
     <>
-      <button
-        onClick={hideGifSearch}
-        style={{
-          zIndex: 20,
-          position: 'absolute',
-          left: `${width - leftMargin - 200}px`,
-          top: `${height - topMargin + 100}px`,
-          width: '200px',
-        }}>
-        Send a GIF
-      </button>
-      {chatboxShow && (
+      {canOpen && (
+        <button
+          onClick={hideGifSearch}
+          style={{
+            zIndex: 20,
+            position: 'absolute',
+            left: `${width - leftMargin - 200}px`,
+            top: `${height - topMargin + 100}px`,
+            width: '200px',
+          }}>
+          Send a GIF
+        </button>
+      )}
+      {chatboxShow && canOpen && (
         <div
           className="rpgui-container framed float"
           style={{
@@ -89,7 +91,7 @@ function Chat() {
           />
         </div>
       )}
-      {showGif && (
+      {showGif && canOpen && (
         <div>
           <div
             style={{

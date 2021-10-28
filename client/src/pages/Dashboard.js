@@ -24,7 +24,7 @@ const Dashboard = () => {
       <ModalInput isOpen={true} />
       <Map x={0} />
       <Players />
-      <Chat />
+      {<Chat canOpen={!(modalCanOpen && playerNearGuide)} />}
     </div>
   );
 };

@@ -194,11 +194,13 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.incomingGif.senderName = action.payload.senderName;
     state.incomingGif.senderAvatar = action.payload.senderAvatar;
     state.incomingGif.gifObj = action.payload.gifObj;
+    state.incomingGif.receiverName = null;
   });
   builder.addCase(ANNOUNCEMENT, (state, action) => {
     state.outgoingGif.senderName = state.user.name;
     state.outgoingGif.senderAvatar = state.user.avatar;
     state.outgoingGif.gifObj = action.payload.gifObj;
+    state.outgoingGif.receiverName = null;
   });
   builder.addCase(SEND_DIRECT, (state, action) => {
     state.outgoingGif.senderName = state.user.name;

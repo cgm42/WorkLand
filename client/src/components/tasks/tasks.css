@@ -63,7 +63,8 @@ transition: 1s
 }
 
 .delete-icon {
-  transition: 1s
+  transition: 1s;
+  display: flex;
 }
 
 .edit-icon:hover {
@@ -85,4 +86,8 @@ transition: 1s
   cursor: pointer;
   display: flex;
   align-items: center
+}
+
+.warning {
+  color: red !important;
 }

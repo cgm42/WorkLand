@@ -8,6 +8,7 @@ import classNames from "classnames";
 import TaskUser from "../users/TaskUser";
 import { RiDeleteBinLine } from "react-icons/ri";
 import EditTaskForm from "./EditTaskForm";
+import DeleteTask from './DeleteTaskForm';
 
 export default function TaskRow(props) {
   const { state, editTask } = useContext(stateContext);
@@ -102,7 +103,7 @@ export default function TaskRow(props) {
             startDate={startDate}
             endDate={endDate}
           />
-          <RiDeleteBinLine className='delete-icon'></RiDeleteBinLine>
+          <DeleteTask id={id} className='delete-icon'></DeleteTask>
         </div>
       </div>
       </td>

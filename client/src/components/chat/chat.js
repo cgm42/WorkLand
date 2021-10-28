@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactGiphySearchbox from 'react-giphy-searchbox';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import { ANNOUNCEMENT, SEND_DIRECT } from '../../reducers/mapReducer';
+import {
+  ANNOUNCEMENT,
+  SEND_DIRECT,
+  CLEAR_INCOMING,
+} from '../../reducers/mapReducer';
 function Chat({ canOpen }) {
   const [chatboxShow, setChatboxShow] = useState(false);
   const [showGif, setShowGif] = useState(false);
@@ -13,17 +17,18 @@ function Chat({ canOpen }) {
   const onlineUsers = useSelector((state) => state.players);
 
   useEffect(() => {
-    if (!incomingGifState.gifObj) return;
+    if (!incomingGifState.gifObj || !canOpen) return;
     setShowGif(true);
     let timer;
     timer = setTimeout(() => {
       setShowGif(false);
+      dispatch(CLEAR_INCOMING());
     }, 4200);
 
     // return () => {
     //   clearTimeout(timer);
     // };
-  }, [incomingGifState]);
+  }, [incomingGifState, canOpen]);
 
   const hideGifSearch = () => {
     setChatboxShow(!chatboxShow);

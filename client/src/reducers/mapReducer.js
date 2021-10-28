@@ -79,6 +79,7 @@ export const ANNOUNCEMENT = createAction('ANNOUNCEMENT');
 export const RECEIVED_ANNOUNCEMENT = createAction('RECEIVED_ANNOUNCEMENT');
 export const SEND_DIRECT = createAction('SEND_DIRECT');
 export const RECEIVE_DIRECT = createAction('RECEIVE_DIRECT');
+export const CLEAR_INCOMING = createAction('CLEAR_INCOMING');
 
 export const mapReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
@@ -220,5 +221,11 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.incomingGif.senderAvatar = action.payload.senderAvatar;
     state.incomingGif.gifObj = action.payload.gifObj;
     state.incomingGif.receiverName = action.payload.receiverName;
+  });
+  builder.addCase(CLEAR_INCOMING, (state, action) => {
+    state.incomingGif.senderName = '';
+    state.incomingGif.senderAvatar = '';
+    state.incomingGif.gifObj = null;
+    state.incomingGif.receiverName = '';
   });
 });

@@ -9,7 +9,6 @@ import TaskUser from "../users/TaskUser";
 import EditTaskForm from "./EditTaskForm";
 import getTaskTeams from "../../helpers/getTaskTeams";
 import { RiDeleteBinLine } from "react-icons/ri";
-import EditTaskForm from "./EditTaskForm";
 import DeleteTask from "./DeleteTaskForm";
 
 export default function TaskRow(props) {

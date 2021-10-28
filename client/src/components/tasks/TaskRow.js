@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { stateContext } from "../providers/StateProvider";
 import { IoMdWarning } from "react-icons/io";
 import "./tasks.css";
 import "../rpgui.css";
 import "nes.css/css/nes.min.css";
 import classNames from "classnames";
 import TaskUser from "../users/TaskUser";
+import { BiEdit } from "react-icons/bi";
+import EditTaskForm from "./EditTaskForm";
 
 export default function TaskRow(props) {
+  const { state, editTask } = useContext(stateContext);
+
   const {
     id,
     name,
+    description,
     status,
     priority,
     startDate,
@@ -19,6 +25,8 @@ export default function TaskRow(props) {
     updateTaskStatus,
     updateTaskPriority,
   } = props;
+
+  console.log("description", description);
 
   const team = taskTeams.filter((team) => {
     return team.taskId === id;
@@ -78,7 +86,20 @@ export default function TaskRow(props) {
 
   return (
     <tr>
-      <td>{name}</td>
+      <td>
+        {name}
+        <div className="table-container">
+          <EditTaskForm
+            state={state}
+            id={id}
+            name={name}
+            description={description}
+            priority={priority}
+            startDate={startDate}
+            endDate={endDate}
+          />
+        </div>
+      </td>
       <td className="task-user-container">{usersListArray}</td>
       <td
         className={statusClass}

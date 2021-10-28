@@ -10,24 +10,10 @@ import Button from "../button/Button";
 function TaskTable(props) {
   const { state, createTask, updateTaskStatus, updateTaskPriority } =
     useContext(stateContext);
-  const [showForm, setShowForm] = useState(false);
 
   const formatDate = (date) => {
     return date.split("T")[0];
   };
-
-  // const dateToNum = (date) => {
-  //   return parseInt(date.split("-").join(""));
-  // };
-
-  // const sortedTasks = state.tasks.sort((a, b) => {
-  //   const aDate = dateToNum(formatDate(a.startDate));
-  //   const bDate = dateToNum(formatDate(b.startDate));
-
-  //   return aDate - bDate;
-  // });
-
-  // console.log("sortedtasks", sortedTasks);
 
   const tasksList = state.tasks.map((task) => {
     return (
@@ -44,7 +30,7 @@ function TaskTable(props) {
         taskTeams={state.taskTeams}
         updateTaskStatus={updateTaskStatus}
         updateTaskPriority={updateTaskPriority}
-      />
+      ></TaskRow>
     );
   });
 

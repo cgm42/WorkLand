@@ -28,7 +28,7 @@ io.on('connection', (socket: Socket) => {
 
   socket.on('announcement', (arg) => {
     console.log('announcement :>> ', arg);
-    socket.broadcast.emit('receivedAnnouncement', arg);
+    io.emit('receivedAnnouncement', arg);
   });
 
   //-------------------video attempt below--------------------------

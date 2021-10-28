@@ -5,10 +5,8 @@ import "./tasks.css";
 import "../rpgui.css";
 import "nes.css/css/nes.min.css";
 import classNames from "classnames";
-import TaskUser from "../users/TaskUser";
 import EditTaskForm from "./EditTaskForm";
 import getTaskTeams from "../../helpers/getTaskTeams";
-import { RiDeleteBinLine } from "react-icons/ri";
 import DeleteTask from "./DeleteTaskForm";
 
 export default function TaskRow(props) {

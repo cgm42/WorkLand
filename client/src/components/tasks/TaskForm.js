@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import Button from "../button/Button";
 import DatePicker from "react-date-picker";
-import User from "../users/User";
-import { useSelector } from "react-redux";
 import getProjectTeams from "../../helpers/getProjectTeams";
 
 function TaskForm(props) {
-  const userState = useSelector((state) => {
-    return state.user;
-  });
-
   const [name, setName] = useState(props.name || "");
   const [description, setDescription] = useState(props.description || "");
   const [startDate, onStart] = useState(new Date());

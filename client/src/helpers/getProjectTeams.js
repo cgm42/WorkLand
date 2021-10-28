@@ -1,5 +1,4 @@
 import User from "../components/users/User";
-import getTaskTeams from "./getTaskTeams";
 
 const getProjectTeams = (state, taskTeam = []) => {
   const team = state.projectTeams.filter((team) => {

@@ -12,7 +12,6 @@ function DeleteTaskForm(props) {
 
   const cancel = () => {
     document.getElementById(makeId(id)).close();
-    // setEdit(false);
   };
 
   const makeId = (id) => {

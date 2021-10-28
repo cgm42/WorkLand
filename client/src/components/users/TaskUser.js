@@ -5,7 +5,7 @@ export default function TaskUser(props) {
   const {id, avatar} = props;
 
   const userClass = classNames(
-    "user-list"
+    "task-user-list"
   )
 
   return (

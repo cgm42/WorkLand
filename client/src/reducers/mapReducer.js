@@ -186,6 +186,9 @@ export const mapReducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(RECEIVED_ANNOUNCEMENT, (state, action) => {
     console.log('received a in reducer:', action.payload);
+    state.incomingGif.senderName = action.payload.senderName;
+    state.incomingGif.senderAvatar = action.payload.senderAvatar;
+    state.incomingGif.gifObj = action.payload.gifObj;
   });
   builder.addCase(ANNOUNCEMENT, (state, action) => {
     state.outgoingGif.senderName = state.user.name;

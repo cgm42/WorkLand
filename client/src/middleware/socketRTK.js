@@ -50,7 +50,6 @@ export const socketRTK = () => {
       }
 
       if (action.type === 'ANNOUNCEMENT') {
-        console.log('at the socket');
         socket.emit(
           'announcement',
           JSON.stringify({

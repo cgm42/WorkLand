@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactGiphySearchbox from 'react-giphy-searchbox';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { ANNOUNCEMENT } from '../../reducers/mapReducer';
@@ -8,16 +8,26 @@ function Chat() {
   const [showGif, setShowGif] = useState(false);
   const dispatch = useDispatch();
   const { width, height, topMargin, leftMargin } = useWindowDimensions();
+  const incomingGifState = useSelector((state) => state.incomingGif);
+  const onlineUsers = useSelector((state) => state.players);
+
+  useEffect(() => {
+    if (!incomingGifState.gifObj) return;
+    setShowGif(true);
+    let timer;
+    timer = setTimeout(() => {
+      setShowGif(false);
+    }, 3800);
+
+    // return () => {
+    //   clearTimeout(timer);
+    // };
+  }, [incomingGifState]);
+
   const onChatButtonClick = () => {
     setChatboxShow(!chatboxShow);
   };
-  useEffect(() => {
-    if (showGif) {
-      setTimeout(() => {
-        setShowGif(false);
-      }, 3800);
-    }
-  }, [showGif]);
+
   return (
     <>
       <button
@@ -67,26 +77,32 @@ function Chat() {
             onSelect={(item) => {
               dispatch(ANNOUNCEMENT({ item }));
               onChatButtonClick();
-              setShowGif(true);
             }}
           />
         </div>
       )}
       {showGif && (
         <div>
-          <iframe
+          <div
             style={{
               position: 'absolute',
               left: `${width / 2 + 200}px`,
               top: `${height / 2 - 100}px`,
               width: '235px',
-            }}
-            title="ok"
-            src="https://giphy.com/embed/gWOnlfSwXjbl0c603K"
-            width="480"
-            height="480"
-            frameBorder="0"
-            className="giphy-embed"></iframe>
+            }}>
+            <iframe
+              style={{
+                width: '235px',
+              }}
+              title="ok"
+              // src="https://giphy.com/embed/W2nuhlWbyVmV73jIsc"
+              src={incomingGifState.gifObj.item.embed_url}
+              width="480"
+              height="480"
+              frameBorder="0"
+              className="giphy-embed"></iframe>
+            <p>From: {incomingGifState.senderName}</p>
+          </div>
         </div>
       )}
     </>

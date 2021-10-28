@@ -45,7 +45,6 @@ export const socketRTK = () => {
     return (next) => (action) => {
       const newState = next(action);
       if (action.type === 'WALK') {
-        console.log('storeAPI.getState() :>> ', storeAPI.getState());
         //throttle to optimize performance
         let currentTime = new Date().getTime();
         if (currentTime - lastSent > 100) {

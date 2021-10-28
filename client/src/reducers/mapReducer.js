@@ -54,11 +54,13 @@ const initialState = {
     senderAvatar: '',
     gifObj: null,
     receiverSocketId: null,
+    senderSocketId: null,
   },
   incomingGif: {
     senderName: '',
     senderAvatar: '',
     gifObj: null,
+    receiverName: null,
   },
 };
 export const SET_USER = createAction('SET_USER');
@@ -203,6 +205,7 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.outgoingGif.senderAvatar = state.user.avatar;
     state.outgoingGif.gifObj = action.payload.gifObj;
     state.outgoingGif.receiverName = action.payload.receiverName;
+    state.outgoingGif.senderSocketId = state.localSocketId;
     for (let key in state.players) {
       if (state.players[key]['name'] === action.payload.receiverName) {
         state.outgoingGif.receiverSocketId = state.players[key]['socketId'];
@@ -215,6 +218,6 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.incomingGif.senderName = action.payload.senderName;
     state.incomingGif.senderAvatar = action.payload.senderAvatar;
     state.incomingGif.gifObj = action.payload.gifObj;
-    state.outgoingGif.receiverName = action.payload.receiverName;
+    state.incomingGif.receiverName = action.payload.receiverName;
   });
 });

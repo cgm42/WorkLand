@@ -100,9 +100,9 @@ function Chat() {
             }}>
             <p>
               A GIF' from: {incomingGifState.senderName} to{' '}
-              {incomingGifState.receiverName
-                ? incomingGifState.receiverName
-                : 'everyone'}{' '}
+              {incomingGifState.receiverName === null
+                ? 'everyone'
+                : `${incomingGifState.receiverName}`}
             </p>
             <iframe
               style={{

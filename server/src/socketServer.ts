@@ -33,6 +33,7 @@ io.on('connection', (socket: Socket) => {
   socket.on('sendDirect', (arg) => {
     console.log(arg);
     io.to(arg.payload.receiverSocketId).emit('receiveDirect', arg);
+    io.to(arg.payload.senderSocketId).emit('receiveDirect', arg);
   });
 
   //-------------------video attempt below--------------------------

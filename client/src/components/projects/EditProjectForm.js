@@ -13,7 +13,7 @@ function EditProjectForm(props) {
   const [endDate, onEnd] = useState(new Date(props.endDate) || new Date());
   const [error, setError] = useState("");
 
-  const { id, state, onSave, projectID } = props;
+  const { id, state, onSave } = props;
 
   // const team = state.projectTeams.filter((team) => {
   //   return team.projectId === projectID;
@@ -46,17 +46,16 @@ function EditProjectForm(props) {
     }
 
     const project = {
-      project_id: projectID,
-      sprint_id: null,
       name,
       description,
       startDate,
       endDate,
-      users: selectedUsersIDs,
+      // users: selectedUsersIDs,
+      // selectedUsers: selectedUsersIDs,
     };
 
     setError("");
-    onSave(project);
+    onSave(project, id);
     document.getElementById(makeId(id)).close();
   };
 

@@ -41,25 +41,45 @@ async function createTask(req: Request, res: Response) {
       task_id: queryResult.rows[0].id,
     };
 
-    user_task_model.addUserToTask(userTask);
+    await user_task_model.addUserToTask(userTask);
   }
 
   res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
-async function editTask(req: Request, res: Response) {
+function editTask(req: Request, res: Response) {
   const task_id = parseInt(req.params.id);
+  const selectedUsers = req.body.selectedUsers;
+  console.log("selectUsers in task controller", selectedUsers);
 
   const task = {
     id: task_id,
-    name: "Style Login Button",
-    description: "",
-    start_date: "2021-10-24",
-    end_date: "2021-10-24",
+    name: req.body.name,
+    description: req.body.description,
+    start_date: req.body.startDate,
+    end_date: req.body.endDate,
   };
 
-  const queryResult = await model.editTask(task);
-  res.send(camelcaseKeys(queryResult.rows[0]));
+  model
+    .editTask(task)
+    .then(async (data) => {
+      await user_task_model.deleteUsersFromTask(task_id);
+      return data;
+    })
+    .then(async (data) => {
+      for (const user of selectedUsers) {
+        const userTask = {
+          user_id: user,
+          task_id: task_id,
+        };
+
+        await user_task_model.addUserToTask(userTask);
+      }
+      return data;
+    })
+    .then((data) => {
+      res.send(camelcaseKeys(data.rows[0]));
+    });
 }
 
 async function updateTaskStatus(req: Request, res: Response) {
@@ -67,6 +87,14 @@ async function updateTaskStatus(req: Request, res: Response) {
   const id = parseInt(req.params.id);
 
   const queryResult = await model.updateTaskStatus(status, id);
+  res.send(camelcaseKeys(queryResult.rows[0]));
+}
+
+async function updateTaskPriority(req: Request, res: Response) {
+  const priority = req.body.priority;
+  const id = parseInt(req.params.id);
+
+  const queryResult = await model.updateTaskPriority(priority, id);
   res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
@@ -82,5 +110,6 @@ export {
   createTask,
   editTask,
   updateTaskStatus,
+  updateTaskPriority,
   deleteTask,
 };

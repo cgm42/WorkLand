@@ -1,58 +1,47 @@
-import React, {useState, useContext} from 'react';
-import { stateContext } from '../providers/StateProvider';
-import './tasks.css'
+import React, { useState, useContext } from "react";
+import { stateContext } from "../providers/StateProvider";
+import "./tasks.css";
 import "../rpgui.css";
 import "nes.css/css/nes.min.css";
-import TaskRow from './TaskRow';
-import TaskForm from './TaskForm';
-import Button from '../button/Button';
-
+import TaskRow from "./TaskRow";
+import TaskForm from "./TaskForm";
+import Button from "../button/Button";
 
 function TaskTable(props) {
-  const {state, createTask} = useContext(stateContext);
-  const [showForm, setShowForm] = useState(false);
-  
-  const formatDate = date => {
-    return date.split('T')[0]
-  }
+  const { state, createTask } = useContext(stateContext);
 
-  
-  const tasksList = state.tasks.map(task => {
+  const tasksList = state.tasks.map((task) => {
     return (
-      <TaskRow 
+      <TaskRow
         key={task.id}
         id={task.id}
         name={task.name}
         description={task.description}
         status={task.currentStatus}
         priority={task.priorityLevel}
-        startDate={formatDate(task.startDate)}
-        endDate={formatDate(task.endDate)}
-        users={state.users}
-        taskTeams={state.taskTeams}
-      />
-    )
-  })
+        startDate={task.startDate}
+        endDate={task.endDate}
+      ></TaskRow>
+    );
+  });
 
   return (
-    <div className='rpgui-content'>
-      <div className='dashboard-layout rpgui-container framed-golden-2'>
-        <div className='welcome'>
+    <div className="rpgui-content">
+      <div className="dashboard-layout rpgui-container framed-golden-2">
+        <div className="welcome">
           <h1>Tasks</h1>
         </div>
 
-        <divz className='rpgui-container framed '>
-          <div className='table-container'>
-            <TaskForm 
-              setShowForm={setShowForm}
+        <div className="rpgui-container framed ">
+          <div className="table-container">
+            <TaskForm
               onSave={createTask}
               state={state}
               projectID={state.current_project}
-            /> 
+            />
           </div>
 
-
-          <table className='table'>
+          <table className="table">
             <thead>
               <tr>
                 <th>Tasks</th>
@@ -63,11 +52,9 @@ function TaskTable(props) {
                 <th>End Date</th>
               </tr>
             </thead>
-            <tbody>
-              {tasksList}
-            </tbody>
+            {tasksList && <tbody>{tasksList}</tbody>}
           </table>
-        </divz>
+        </div>
       </div>
     </div>
   );

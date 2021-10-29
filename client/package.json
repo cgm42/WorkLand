@@ -18,11 +18,8 @@
     "react-datetime-picker": "^3.4.2",
     "react-dnd": "^9.4.0",
     "react-dom": "^17.0.2",
-<<<<<<< HEAD
     "react-giphy-searchbox": "^1.5.4",
-=======
     "react-google-charts": "^3.0.15",
->>>>>>> main
     "react-icons": "^4.3.1",
     "react-modal": "^3.14.3",
     "react-piano": "^3.1.3",

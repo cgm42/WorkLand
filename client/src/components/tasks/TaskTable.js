@@ -10,21 +10,6 @@ import Button from "../button/Button";
 function TaskTable(props) {
   const { state, createTask } = useContext(stateContext);
 
-  const tasksList = state.tasks.map((task) => {
-    return (
-      <TaskRow
-        key={task.id}
-        id={task.id}
-        name={task.name}
-        description={task.description}
-        status={task.currentStatus}
-        priority={task.priorityLevel}
-        startDate={task.startDate}
-        endDate={task.endDate}
-      ></TaskRow>
-    );
-  });
-
   return (
     <div className="rpgui-content">
       <div className="dashboard-layout rpgui-container framed-golden-2">
@@ -52,7 +37,24 @@ function TaskTable(props) {
                 <th>End Date</th>
               </tr>
             </thead>
-            {tasksList && <tbody>{tasksList}</tbody>}
+            {state.tasks && (
+              <tbody>
+                {state.tasks.map((task) => {
+                  return (
+                    <TaskRow
+                      key={task.id}
+                      id={task.id}
+                      name={task.name}
+                      description={task.description}
+                      status={task.currentStatus}
+                      priority={task.priorityLevel}
+                      startDate={task.startDate}
+                      endDate={task.endDate}
+                    ></TaskRow>
+                  );
+                })}
+              </tbody>
+            )}
           </table>
         </div>
       </div>

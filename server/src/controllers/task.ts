@@ -47,7 +47,7 @@ async function createTask(req: Request, res: Response) {
   res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
-async function editTask(req: Request, res: Response) {
+function editTask(req: Request, res: Response) {
   const task_id = parseInt(req.params.id);
   const users = req.body.users;
   const selectedUsers = req.body.selectedUsers;
@@ -60,27 +60,59 @@ async function editTask(req: Request, res: Response) {
     end_date: req.body.endDate,
   };
 
-  const queryResult = await model.editTask(task);
+  model
+    .editTask(task)
+    .then((data) => {
+      res.send(camelcaseKeys(data.rows[0]));
+    })
+    .then(() => {
+      for (const user of users) {
+        const userTask = {
+          user_id: user,
+          task_id: task_id,
+        };
 
-  for (const user of users) {
-    const userTask = {
-      user_id: user,
-      task_id: task_id,
-    };
+        console.log("usertask1", userTask);
 
-    user_task_model.deleteUserFromTask(userTask);
-  }
+        user_task_model.deleteUserFromTask(userTask);
+      }
+    })
+    .then(() => {
+      for (const user of selectedUsers) {
+        const userTask = {
+          user_id: user,
+          task_id: task_id,
+        };
+        console.log("usertask2", userTask);
 
-  for (const user of selectedUsers) {
-    const userTask = {
-      user_id: user,
-      task_id: task_id,
-    };
+        user_task_model.addUserToTask(userTask);
+      }
+    });
 
-    user_task_model.addUserToTask(userTask);
-  }
+  // const queryResult = await model.editTask(task);
 
-  res.send(camelcaseKeys(queryResult.rows[0]));
+  // for (const user of users) {
+  //   const userTask = {
+  //     user_id: user,
+  //     task_id: task_id,
+  //   };
+
+  //   console.log("usertask1", userTask);
+
+  //   user_task_model.deleteUserFromTask(userTask);
+  // }
+
+  // for (const user of selectedUsers) {
+  //   const userTask = {
+  //     user_id: user,
+  //     task_id: task_id,
+  //   };
+  //   console.log("usertask2", userTask);
+
+  //   user_task_model.addUserToTask(userTask);
+  // }
+
+  // res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
 async function updateTaskStatus(req: Request, res: Response) {

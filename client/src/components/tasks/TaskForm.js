@@ -6,8 +6,8 @@ import getProjectTeams from "../../helpers/getProjectTeams";
 function TaskForm(props) {
   const [name, setName] = useState(props.name || "");
   const [description, setDescription] = useState(props.description || "");
-  const [startDate, onStart] = useState(new Date());
-  const [endDate, onEnd] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [priority, setPriority] = useState(0);
   const [error, setError] = useState("");
 
@@ -38,6 +38,10 @@ function TaskForm(props) {
       users: selectedUsersIDs,
     };
 
+    setName("");
+    setDescription("");
+    setStartDate(new Date());
+    setEndDate(new Date());
     setError("");
     onSave(task);
     document.getElementById("dialog-dark-rounded").close();
@@ -117,7 +121,7 @@ function TaskForm(props) {
               <label>
                 Start date:
                 <DatePicker
-                  onChange={onStart}
+                  onChange={setStartDate}
                   value={startDate}
                   className="date-size"
                 />
@@ -126,7 +130,7 @@ function TaskForm(props) {
               <label>
                 End date:
                 <DatePicker
-                  onChange={onEnd}
+                  onChange={setStartDate}
                   value={endDate}
                   className="date-size"
                 />

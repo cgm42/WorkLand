@@ -9,16 +9,16 @@ async function getProjects(req: Request, res: Response) {
 
   const queryResult = await model.getAllProjects(user.id);
   res.send(queryResult.rows.map((row: String) => camelcaseKeys(row)));
-};
+}
 
 async function getProject(req: Request, res: Response) {
   const project_id = parseInt(req.params.id);
   const queryResult = await model.getProjectByID(project_id);
   res.send(camelcaseKeys(queryResult.rows[0]));
-};
+}
 
-async function addProject(req: Request, res: Response) {
-  const {creatorID, name, description, startDate, endDate} = req.body;
+function addProject(req: Request, res: Response) {
+  const { creatorID, name, description, startDate, endDate } = req.body;
 
   const project = {
     creator_id: creatorID,
@@ -26,51 +26,75 @@ async function addProject(req: Request, res: Response) {
     description,
     start_date: startDate,
     end_date: endDate,
-    background_img: ''
-  }
+    background_img: "",
+  };
 
-  const queryResult = await model.addProject(project);
+  model
+    .addProject(project)
+    .then((data) => {
+      res.send(camelcaseKeys(data.rows[0]));
+      return data.rows[0].id;
+    })
+    .then((data) => {
+      for (const user of req.body.users) {
+        const userProject = {
+          user_id: user,
+          project_id: data,
+          role: "",
+        };
 
-  for (const user of req.body.users) {
-    const userProject = {
-      user_id: user,
-      project_id: queryResult.rows[0].id,
-      role: ""
-    }
+        user_project_model.addUserToProject(userProject);
+      }
+      const userProject = {
+        user_id: creatorID,
+        project_id: data,
+        role: "Project Manager",
+      };
+      user_project_model.addUserToProject(userProject);
+    });
 
-    user_project_model.addUserToProject(userProject);
-  }
+  // const queryResult = await model.addProject(project);
 
-  const userProject = {
-    user_id: creatorID,
-    project_id: queryResult.rows[0].id,
-    role: "Project Manager"
-  }
-  user_project_model.addUserToProject(userProject)
-  res.send(camelcaseKeys(queryResult.rows[0]))
-};
+  // for (const user of req.body.users) {
+  //   const userProject = {
+  //     user_id: user,
+  //     project_id: queryResult.rows[0].id,
+  //     role: "",
+  //   };
+
+  //   user_project_model.addUserToProject(userProject);
+  // }
+
+  // const userProject = {
+  //   user_id: creatorID,
+  //   project_id: queryResult.rows[0].id,
+  //   role: "Project Manager",
+  // };
+  // user_project_model.addUserToProject(userProject);
+  // res.send(camelcaseKeys(queryResult.rows[0]));
+}
 
 async function editProject(req: Request, res: Response) {
   // const project = req.body
   const project = {
-    id: parseInt(req.params.id), 
+    id: parseInt(req.params.id),
     creator_id: 3,
-    name: 'Put-it-on-a-tee',
-    description: 'Custom tshirt website for client',
-    start_date: '2021-04-18',
-    end_date: '2021-06-12',
-    background_img: ''
-  }
+    name: "Put-it-on-a-tee",
+    description: "Custom tshirt website for client",
+    start_date: "2021-04-18",
+    end_date: "2021-06-12",
+    background_img: "",
+  };
 
   const queryResult = await model.editProject(project);
   res.send(camelcaseKeys(queryResult.rows[0]));
-};
+}
 
 async function deleteProject(req: Request, res: Response) {
   const id = parseInt(req.params.id);
 
   const queryResult = await model.deleteProject(id);
-  res.send(camelcaseKeys(queryResult.rows[0]))
-};
+  res.send(camelcaseKeys(queryResult.rows[0]));
+}
 
 export { getProjects, getProject, addProject, editProject, deleteProject };

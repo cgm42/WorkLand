@@ -12,16 +12,18 @@ function ProjectForm(props) {
 
   const [name, setName] = useState(props.name || "");
   const [description, setDescription] = useState(props.description || "");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [error, setError] = useState("");
-  const [startDate, onStart] = useState(new Date());
-  const [endDate, onEnd] = useState(new Date());
 
   const { usersList, setShowForm, onSave, setEdit } = props;
 
   const usersListArray = usersList.map((user) => {
     if (user.id !== userState.id) {
       const { id, name, avatar } = user;
-      return <User key={id} id={id} avatar={avatar} name={name} />;
+      return (
+        <User key={id} id={id} avatar={avatar} name={name} selected={false} />
+      );
     }
   });
 
@@ -45,6 +47,10 @@ function ProjectForm(props) {
       users: selectedUsersIDs,
     };
 
+    setName("");
+    setDescription("");
+    setStartDate(new Date());
+    setEndDate(new Date());
     setError("");
     onSave(project);
     document.getElementById("dialog-dark-rounded").close();
@@ -107,7 +113,7 @@ function ProjectForm(props) {
               <label>
                 Start date:
                 <DatePicker
-                  onChange={onStart}
+                  onChange={setStartDate}
                   value={startDate}
                   className="date-size"
                 />
@@ -116,7 +122,7 @@ function ProjectForm(props) {
               <label>
                 End date:
                 <DatePicker
-                  onChange={onEnd}
+                  onChange={setEndDate}
                   value={endDate}
                   className="date-size"
                 />

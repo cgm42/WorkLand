@@ -57,7 +57,6 @@ export default function StateProvider(props) {
 
   const createProject = (project) => {
     axios.post("/projects", project).then((data) => {
-      console.log("data in axios", data);
       setCurrentProject(data.data.id);
       updateProjectList();
     });

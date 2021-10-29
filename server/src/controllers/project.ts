@@ -32,14 +32,10 @@ function addProject(req: Request, res: Response) {
   model
     .addProject(project)
     .then((data) => {
-      res.send(camelcaseKeys(data.rows[0]));
-      return data.rows[0].id;
-    })
-    .then((data) => {
       for (const user of req.body.users) {
         const userProject = {
           user_id: user,
-          project_id: data,
+          project_id: data.rows[0].id,
           role: "",
         };
 
@@ -47,10 +43,14 @@ function addProject(req: Request, res: Response) {
       }
       const userProject = {
         user_id: creatorID,
-        project_id: data,
+        project_id: data.rows[0].id,
         role: "Project Manager",
       };
       user_project_model.addUserToProject(userProject);
+      return data.rows[0];
+    })
+    .then((data) => {
+      res.send(camelcaseKeys(data));
     });
 
   // const queryResult = await model.addProject(project);

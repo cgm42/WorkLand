@@ -41,7 +41,7 @@ async function createTask(req: Request, res: Response) {
       task_id: queryResult.rows[0].id,
     };
 
-    user_task_model.addUserToTask(userTask);
+    await user_task_model.addUserToTask(userTask);
   }
 
   res.send(camelcaseKeys(queryResult.rows[0]));
@@ -49,8 +49,8 @@ async function createTask(req: Request, res: Response) {
 
 function editTask(req: Request, res: Response) {
   const task_id = parseInt(req.params.id);
-  const users = req.body.users;
   const selectedUsers = req.body.selectedUsers;
+  console.log("selectUsers in task controller", selectedUsers);
 
   const task = {
     id: task_id,
@@ -62,57 +62,24 @@ function editTask(req: Request, res: Response) {
 
   model
     .editTask(task)
-    .then((data) => {
-      res.send(camelcaseKeys(data.rows[0]));
+    .then(async (data) => {
+      await user_task_model.deleteUsersFromTask(task_id);
+      return data;
     })
-    .then(() => {
-      for (const user of users) {
-        const userTask = {
-          user_id: user,
-          task_id: task_id,
-        };
-
-        console.log("usertask1", userTask);
-
-        user_task_model.deleteUserFromTask(userTask);
-      }
-    })
-    .then(() => {
+    .then(async (data) => {
       for (const user of selectedUsers) {
         const userTask = {
           user_id: user,
           task_id: task_id,
         };
-        console.log("usertask2", userTask);
 
-        user_task_model.addUserToTask(userTask);
+        await user_task_model.addUserToTask(userTask);
       }
+      return data;
+    })
+    .then((data) => {
+      res.send(camelcaseKeys(data.rows[0]));
     });
-
-  // const queryResult = await model.editTask(task);
-
-  // for (const user of users) {
-  //   const userTask = {
-  //     user_id: user,
-  //     task_id: task_id,
-  //   };
-
-  //   console.log("usertask1", userTask);
-
-  //   user_task_model.deleteUserFromTask(userTask);
-  // }
-
-  // for (const user of selectedUsers) {
-  //   const userTask = {
-  //     user_id: user,
-  //     task_id: task_id,
-  //   };
-  //   console.log("usertask2", userTask);
-
-  //   user_task_model.addUserToTask(userTask);
-  // }
-
-  // res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
 async function updateTaskStatus(req: Request, res: Response) {

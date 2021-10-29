@@ -32,8 +32,6 @@ function EditTaskForm(props) {
       selectedUsersIDs.push(parseInt(user.id));
     }
 
-    console.log(selectedUsersIDs);
-
     const task = {
       name,
       description,

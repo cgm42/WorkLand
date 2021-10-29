@@ -7,8 +7,6 @@ import {
 } from '../utils/constants';
 import { initX, initY } from '../utils/constants';
 
-//a temp user id
-
 const initialState = {
   localID: 'local',
   localSocketId: null,
@@ -37,6 +35,9 @@ const initialState = {
     ganttChart: false,
     taskList: false,
     piano: false,
+    guitar: false,
+    arcade: false,
+    typeWritter: false,
   },
   mapRoute: {
     modalCanOpen: false,
@@ -46,6 +47,20 @@ const initialState = {
     localSocketId: '',
     peers: [], //[{peerId: peerObj}]
     socketArr: [], //for rendering
+  },
+  outgoingGif: {
+    senderName: '',
+    receiverName: null, //broadcast if null
+    senderAvatar: '',
+    gifObj: null,
+    receiverSocketId: null,
+    senderSocketId: null,
+  },
+  incomingGif: {
+    senderName: '',
+    senderAvatar: '',
+    gifObj: null,
+    receiverName: null,
   },
 };
 export const SET_USER = createAction('SET_USER');
@@ -60,6 +75,11 @@ export const JOIN_VIDEO = createAction('JOIN_VIDEO');
 export const SET_VIDEO_PARTICIPANTS = createAction('SET_VIDEO_PARTICIPANTS');
 export const SET_SOCKETID = createAction('SET_SOCKETID');
 export const USER_DISCONNECT = createAction('USER_DISCONNECT');
+export const ANNOUNCEMENT = createAction('ANNOUNCEMENT');
+export const RECEIVED_ANNOUNCEMENT = createAction('RECEIVED_ANNOUNCEMENT');
+export const SEND_DIRECT = createAction('SEND_DIRECT');
+export const RECEIVE_DIRECT = createAction('RECEIVE_DIRECT');
+export const CLEAR_INCOMING = createAction('CLEAR_INCOMING');
 
 export const mapReducer = createReducer(initialState, (builder) => {
   //SET_USER: save user in global state and init meeting room rendering params
@@ -106,7 +126,7 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.players[id].y = newY ? newY : state.players[id]['y'];
     state.players[id].dir = newDir ? newDir : state.players[id].dir;
     state.players[id].step = newStep;
-    // state.players[id].socketId = state.localSocketId;
+    state.players[id].socketId = state.localSocketId;
     return state;
   });
 
@@ -170,5 +190,42 @@ export const mapReducer = createReducer(initialState, (builder) => {
         break;
       }
     }
+  });
+  builder.addCase(RECEIVED_ANNOUNCEMENT, (state, action) => {
+    state.incomingGif.senderName = action.payload.senderName;
+    state.incomingGif.senderAvatar = action.payload.senderAvatar;
+    state.incomingGif.gifObj = action.payload.gifObj;
+    state.incomingGif.receiverName = null;
+  });
+  builder.addCase(ANNOUNCEMENT, (state, action) => {
+    state.outgoingGif.senderName = state.user.name;
+    state.outgoingGif.senderAvatar = state.user.avatar;
+    state.outgoingGif.gifObj = action.payload.gifObj;
+    state.outgoingGif.receiverName = null;
+  });
+  builder.addCase(SEND_DIRECT, (state, action) => {
+    state.outgoingGif.senderName = state.user.name;
+    state.outgoingGif.senderAvatar = state.user.avatar;
+    state.outgoingGif.gifObj = action.payload.gifObj;
+    state.outgoingGif.receiverName = action.payload.receiverName;
+    state.outgoingGif.senderSocketId = state.localSocketId;
+    for (let key in state.players) {
+      if (state.players[key]['name'] === action.payload.receiverName) {
+        state.outgoingGif.receiverSocketId = state.players[key]['socketId'];
+        break;
+      }
+    }
+  });
+  builder.addCase(RECEIVE_DIRECT, (state, action) => {
+    state.incomingGif.senderName = action.payload.senderName;
+    state.incomingGif.senderAvatar = action.payload.senderAvatar;
+    state.incomingGif.gifObj = action.payload.gifObj;
+    state.incomingGif.receiverName = action.payload.receiverName;
+  });
+  builder.addCase(CLEAR_INCOMING, (state, action) => {
+    state.incomingGif.senderName = '';
+    state.incomingGif.senderAvatar = '';
+    state.incomingGif.gifObj = null;
+    state.incomingGif.receiverName = '';
   });
 });

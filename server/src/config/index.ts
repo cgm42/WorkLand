@@ -37,7 +37,6 @@ passport.use(
       // create new user if the database doesn't have this user
       const name = profile.displayName ? profile.displayName : profile.username;
       if (!user.rows.length) {
-        console.log('are you sure?');
         await userDb.createPersonByGitHub(
           profile.id,
           name,

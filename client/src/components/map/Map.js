@@ -27,37 +27,41 @@ function Map({ x }) {
       {kanban && (
         <Sprite
           zoom={0.4}
-          image={'/sprites/bubbles/kanban3.gif'}
+          image={'/sprites/bubbles/kanban.gif'}
           data={{ h: 180, w: 279, x: 0, y: 0 }}
           position={{ x: 83, y: -68 }}
         />
       )}
       {userDashboard && (
         <Sprite
-          image={'/sprites/action.png'}
-          data={{ h: 32, w: 32, x: 0, y: 0 }}
-          position={{ x: 558, y: 20 }}
+          zoom={0.4}
+          image={'/sprites/bubbles/dashboard.gif'}
+          data={{ h: 180, w: 351, x: 0, y: 0 }}
+          position={{ x: 437, y: -68 }}
         />
       )}
       {ganttChart && (
         <Sprite
-          image={'/sprites/action.png'}
-          data={{ h: 32, w: 32, x: 0, y: 0 }}
-          position={{ x: 306, y: 20 }}
+          zoom={0.4}
+          image={'/sprites/bubbles/schedule.gif'}
+          data={{ h: 180, w: 306, x: 0, y: 0 }}
+          position={{ x: 206, y: -60 }}
         />
       )}
       {projectDashboard && (
         <Sprite
-          image={'/sprites/action.png'}
-          data={{ h: 32, w: 32, x: 0, y: 0 }}
-          position={{ x: 431, y: 20 }}
+          zoom={0.4}
+          image={'/sprites/bubbles/projects.gif'}
+          data={{ h: 180, w: 350, x: 0, y: 0 }}
+          position={{ x: 310, y: -68 }}
         />
       )}
       {taskList && (
         <Sprite
-          image={'/sprites/action.png'}
-          data={{ h: 32, w: 32, x: 0, y: 0 }}
-          position={{ x: 691, y: 20 }}
+          zoom={0.4}
+          image={'/sprites/bubbles/tasks.gif'}
+          data={{ h: 225, w: 280, x: 0, y: 0 }}
+          position={{ x: 561, y: -78 }}
         />
       )}
       {piano && (

@@ -50,7 +50,7 @@ function Chat({ canOpen }) {
             zIndex: 20,
             position: 'absolute',
             left: `${width - leftMargin - 200}px`,
-            top: `${height - topMargin + 100}px`,
+            top: `${topMargin - 35}px`,
             width: '200px',
           }}>
           Send a GIF

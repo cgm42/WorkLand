@@ -15,6 +15,7 @@ WorkLand is an interactive workspace designed to make tech teams function better
 To be finalized.
 
 Sneak Preview
+
 ![workspace-halloween](./docs/workspace-preview.gif)
 
 ## Tech Stack

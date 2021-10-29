@@ -52,31 +52,10 @@ function addProject(req: Request, res: Response) {
     .then((data) => {
       res.send(camelcaseKeys(data));
     });
-
-  // const queryResult = await model.addProject(project);
-
-  // for (const user of req.body.users) {
-  //   const userProject = {
-  //     user_id: user,
-  //     project_id: queryResult.rows[0].id,
-  //     role: "",
-  //   };
-
-  //   user_project_model.addUserToProject(userProject);
-  // }
-
-  // const userProject = {
-  //   user_id: creatorID,
-  //   project_id: queryResult.rows[0].id,
-  //   role: "Project Manager",
-  // };
-  // user_project_model.addUserToProject(userProject);
-  // res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
-async function editProject(req: Request, res: Response) {
+function editProject(req: Request, res: Response) {
   const project_id = parseInt(req.params.id);
-  const users = req.body.users;
   const selectedUsers = req.body.selectedUsers;
 
   const project = {
@@ -87,34 +66,31 @@ async function editProject(req: Request, res: Response) {
     end_date: req.body.endDate,
   };
 
-  const queryResult = await model.editProject(project);
+  model
+    .editProject(project)
+    .then(async (data) => {
+      await user_project_model.deleteUsersFromProject(project_id);
+      return data;
+    })
+    .then(async (data) => {
+      for (const user of selectedUsers) {
+        const userProject = {
+          user_id: user,
+          project_id,
+          role: "",
+        };
 
-  for (const user of users) {
-    const userProject = {
-      user_id: user,
-      project_id,
-    };
+        await user_project_model.addUserToProject(userProject);
+      }
 
-    user_project_model.deleteUserFromProject(userProject);
-  }
-
-  for (const user of selectedUsers) {
-    const userProject = {
-      user_id: user,
-      project_id,
-      role: "",
-    };
-
-    user_project_model.addUserToProject(userProject);
-  }
-
-  res.send(camelcaseKeys(queryResult.rows[0]));
+      res.send(camelcaseKeys(data.rows[0]));
+    });
 }
 
 async function deleteProject(req: Request, res: Response) {
-  const id = parseInt(req.params.id);
+  const project_id = parseInt(req.params.id);
 
-  const queryResult = await model.deleteProject(id);
+  const queryResult = await model.deleteProject(project_id);
   res.send(camelcaseKeys(queryResult.rows[0]));
 }
 

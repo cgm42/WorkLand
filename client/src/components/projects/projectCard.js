@@ -11,7 +11,7 @@ export default function ProjectCard(props) {
     return state.user;
   });
 
-  const { state, editProject } = useContext(stateContext);
+  const { state, editProject, deleteProject } = useContext(stateContext);
 
   const { id, name, description, startDate, endDate, setCurrentProject } =
     props;
@@ -36,7 +36,7 @@ export default function ProjectCard(props) {
               state={state}
               onSave={editProject}
             />
-            <DeleteProjectForm></DeleteProjectForm>
+            <DeleteProjectForm id={id} onConfirm={deleteProject} />
           </div>
         )}
       </div>

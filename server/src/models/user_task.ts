@@ -10,8 +10,6 @@ function getAllUsersAndTasks() {
 function addUserToTask(userTask: { user_id: number; task_id: number }) {
   const values = [userTask.user_id, userTask.task_id];
 
-  console.log("userTask in query", userTask);
-
   return pool.query(
     `
       INSERT INTO users_tasks (user_id, task_id)

@@ -14,18 +14,10 @@ function ProjectForm(props) {
   const [description, setDescription] = useState(props.description || "");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [showUsers, setShowUsers] = useState(false);
   const [error, setError] = useState("");
 
   const { usersList, setShowForm, onSave, setEdit } = props;
-
-  const usersListArray = usersList.map((user) => {
-    if (user.id !== userState.id) {
-      const { id, name, avatar } = user;
-      return (
-        <User key={id} id={id} avatar={avatar} name={name} selected={false} />
-      );
-    }
-  });
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName(
@@ -51,12 +43,19 @@ function ProjectForm(props) {
     setDescription("");
     setStartDate(new Date());
     setEndDate(new Date());
+    setShowUsers(false);
     setError("");
     onSave(project);
     document.getElementById("dialog-dark-rounded").close();
   };
 
   const cancel = () => {
+    setName("");
+    setDescription("");
+    setStartDate(new Date());
+    setEndDate(new Date());
+    setShowUsers(false);
+    setError("");
     document.getElementById("dialog-dark-rounded").close();
   };
 
@@ -64,9 +63,10 @@ function ProjectForm(props) {
     <div>
       <Button
         type="button"
-        onClick={() =>
-          document.getElementById("dialog-dark-rounded").showModal()
-        }
+        onClick={() => {
+          setShowUsers(true);
+          document.getElementById("dialog-dark-rounded").showModal();
+        }}
         title={"New Project"}
       ></Button>
       <dialog
@@ -104,10 +104,21 @@ function ProjectForm(props) {
           </label>
 
           <div className="team-date-container">
-            <label>
-              Choose your team:
-              <ul className="rpgui users-container">{usersListArray}</ul>
-            </label>
+            {showUsers && (
+              <label>
+                Choose your team:
+                <ul className="rpgui users-container">
+                  {usersList.map((user) => {
+                    if (user.id !== userState.id) {
+                      const { id, name, avatar } = user;
+                      return (
+                        <User key={id} id={id} avatar={avatar} name={name} />
+                      );
+                    }
+                  })}
+                </ul>
+              </label>
+            )}
 
             <div className="date">
               <label>

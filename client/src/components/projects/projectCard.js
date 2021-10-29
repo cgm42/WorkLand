@@ -1,51 +1,44 @@
-import React, { useState } from 'react';
-import Button from '../button/Button';
-import ProjectUser from '../users/ProjectUser';
-import { useSelector } from 'react-redux';
-import { BiEdit } from 'react-icons/bi';
-import EditProjectForm from './EditProjectForm';
-import DeleteProjectForm from './DeleteProjectForm';
+import React, { useContext } from "react";
+import { stateContext } from "../providers/StateProvider";
+import { useSelector } from "react-redux";
+import getProjectTeamsForCard from "../../helpers/getProjectTeamsForCard";
+import EditProjectForm from "./EditProjectForm";
+import DeleteProjectForm from "./DeleteProjectForm";
 
 export default function ProjectCard(props) {
-  const {
-    id,
-    projectTeams,
-    users,
-    setCurrentProject,
-    setShowForm,
-    editProject
-  } = props;
-
-  const team = projectTeams.filter((team) => {
-    return team.projectId === id;
+  const userState = useSelector((state) => {
+    console.log("state:", state);
+    return state.user;
   });
 
-  const usersList = [];
+  const { state, editProject } = useContext(stateContext);
 
-  for (const member of team) {
-    for (const user of users) {
-      if (user.id === member.userId) {
-        usersList.push(user);
-      }
-    }
-  }
+  const { id, name, description, startDate, endDate, setCurrentProject } =
+    props;
 
-  const usersListArray = usersList.map((user) => {
-    const { id, name, avatar } = user;
-    return <ProjectUser key={id} id={id} avatar={avatar} name={name} />;
-  });
+  const usersListArray = getProjectTeamsForCard(state, id);
 
   return (
     <div
-      className='project-card rpgui-container framed float'
+      className="project-card rpgui-container framed float"
       onClick={() => setCurrentProject(id)}
     >
-      <div className='card-header'>
+      <div className="card-header">
         <header>{props.name}</header>
-        <div className='buttons'>
-        <EditProjectForm ></EditProjectForm>
-        <DeleteProjectForm></DeleteProjectForm>
-        </div>
+        {userState.id === props.creatorID && (
+          <div className="buttons">
+            <EditProjectForm
+              id={id}
+              name={name}
+              description={description}
+              startDate={startDate}
+              endDate={endDate}
+              state={state}
+              onSave={editProject}
+            />
+            <DeleteProjectForm></DeleteProjectForm>
+          </div>
+        )}
       </div>
       <h1>Description:</h1>
       <p>{props.description}</p>
@@ -53,10 +46,6 @@ export default function ProjectCard(props) {
       <p>9/10</p>
       <h1>The team:</h1>
       {usersListArray}
-      {/* {userState.id === props.creatorID && <Button onClick={() => {
-        setShowForm(true)
-        setEdit(true);
-        }}>Edit</Button>} */}
     </div>
   );
 }

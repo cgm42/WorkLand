@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Button from "../button/Button";
 import DatePicker from "react-date-picker";
-import User from "../users/User";
 import { BiEdit } from "react-icons/bi";
+import getProjectTeams from "../../helpers/getProjectTeams";
+import getTaskTeams from "../../helpers/getTaskTeams";
 
-function EditProjectForm(props) {
+function EditTaskForm(props) {
   const [name, setName] = useState(props.name || "");
   const [description, setDescription] = useState(props.description || "");
   const [startDate, onStart] = useState(
@@ -13,50 +14,35 @@ function EditProjectForm(props) {
   const [endDate, onEnd] = useState(new Date(props.endDate) || new Date());
   const [error, setError] = useState("");
 
-  const { id, state, onSave, projectID } = props;
+  const { id, state, onSave } = props;
 
-  // const team = state.projectTeams.filter((team) => {
-  //   return team.projectId === projectID;
-  // });
-
-  // const usersList = [];
-
-  // for (const member of team) {
-  //   for (const user of state.users) {
-  //     if (user.id === member.userId) {
-  //       usersList.push(user);
-  //     }
-  //   }
-  // }
-
-  const usersListArray = state.users.map((user) => {
-    const { id, name, avatar } = user;
-    return <User key={id} id={id} avatar={avatar} name={name} />;
-  });
+  const taskUsersListArray = getTaskTeams(state, id);
+  const projectUsersListArray = getProjectTeams(state, taskUsersListArray);
 
   const validate = () => {
-    const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
-    );
+    const userIDs = projectUsersListArray.map((user) => user.props.id);
+
+    const selectedUsers = document
+      .getElementById(makeId(id))
+      .getElementsByClassName("user-list--selected");
 
     const selectedUsersIDs = [];
 
     for (const user of selectedUsers) {
-      selectedUsersIDs.push(user.id);
+      selectedUsersIDs.push(parseInt(user.id));
     }
 
-    const project = {
-      project_id: projectID,
-      sprint_id: null,
+    const task = {
       name,
       description,
       startDate,
       endDate,
-      users: selectedUsersIDs,
+      users: userIDs,
+      selectedUsers: selectedUsersIDs,
     };
 
     setError("");
-    onSave(project);
+    onSave(task, id);
     document.getElementById(makeId(id)).close();
   };
 
@@ -65,14 +51,14 @@ function EditProjectForm(props) {
   };
 
   const makeId = (id) => {
-    return `dialog-dark-rounded-edit-project-${id}`;
+    return `dialog-dark-rounded-edit-${id}`;
   };
 
   return (
     <div>
       <div>
         <BiEdit
-          className="edit-button"
+          className="edit-icon"
           onClick={() => document.getElementById(makeId(id)).showModal()}
         ></BiEdit>
       </div>
@@ -84,7 +70,7 @@ function EditProjectForm(props) {
           method="dialog"
         >
           <label>
-            Project name:
+            Task name:
             <input
               value={name}
               type="text"
@@ -109,8 +95,8 @@ function EditProjectForm(props) {
 
           <div className="team-date-container">
             <label>
-              Team:
-              <ul className="rpgui users-container">{usersListArray}</ul>
+              Assignees:
+              <ul className="rpgui users-container">{projectUsersListArray}</ul>
             </label>
 
             <div className="date">
@@ -143,4 +129,4 @@ function EditProjectForm(props) {
   );
 }
 
-export default EditProjectForm;
+export default EditTaskForm;

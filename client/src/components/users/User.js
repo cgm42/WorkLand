@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 export default function User(props) {
   const { id, avatar, name } = props;
-  const [selected, setSelected] = useState(props.selected);
+  const [selected, setSelected] = useState(props.selected || false);
 
   const toggleSelected = () => {
     if (selected) {

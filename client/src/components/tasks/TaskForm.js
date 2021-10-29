@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../button/Button";
 import DatePicker from "react-date-picker";
-import getProjectTeams from "../../helpers/getProjectTeams";
+import User from "../users/User";
 
 function TaskForm(props) {
   const [name, setName] = useState(props.name || "");
@@ -13,8 +13,25 @@ function TaskForm(props) {
 
   const { state, onSave, projectID, setEdit } = props;
 
-  const usersListArray = getProjectTeams(state);
-  console.log(usersListArray);
+  const team = state.projectTeams.filter((team) => {
+    return team.projectId === state.current_project;
+  });
+
+  const projectUsersList = [];
+
+  for (const member of team) {
+    for (const user of state.users) {
+      if (user.id === member.userId) {
+        projectUsersList.push(user);
+      }
+    }
+  }
+
+  const usersListArray = projectUsersList.map((user) => {
+    const { id, name, avatar } = user;
+
+    return <User key={id} id={id} avatar={avatar} name={name} />;
+  });
 
   const validate = () => {
     const selectedUsers = document

@@ -75,18 +75,39 @@ function addProject(req: Request, res: Response) {
 }
 
 async function editProject(req: Request, res: Response) {
-  // const project = req.body
+  const project_id = parseInt(req.params.id);
+  const users = req.body.users;
+  const selectedUsers = req.body.selectedUsers;
+
   const project = {
-    id: parseInt(req.params.id),
-    creator_id: 3,
-    name: "Put-it-on-a-tee",
-    description: "Custom tshirt website for client",
-    start_date: "2021-04-18",
-    end_date: "2021-06-12",
-    background_img: "",
+    id: project_id,
+    name: req.body.name,
+    description: req.body.description,
+    start_date: req.body.startDate,
+    end_date: req.body.endDate,
   };
 
   const queryResult = await model.editProject(project);
+
+  for (const user of users) {
+    const userProject = {
+      user_id: user,
+      project_id,
+    };
+
+    user_project_model.deleteUserFromProject(userProject);
+  }
+
+  for (const user of selectedUsers) {
+    const userProject = {
+      user_id: user,
+      project_id,
+      role: "",
+    };
+
+    user_project_model.addUserToProject(userProject);
+  }
+
   res.send(camelcaseKeys(queryResult.rows[0]));
 }
 

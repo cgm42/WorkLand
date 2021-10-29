@@ -1,12 +1,17 @@
 /* Style the sidebar - fixed full height */
 .sidebar {
-  /* height: 100%; */
+  width: 1024px;
+  height: 80px;
   position: fixed;
   z-index: 1;
-  background-color: #fb6262;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.sidebar h1 {
+  color: white
+  
 }
 
 .sidebar-top {
@@ -23,9 +28,8 @@
   font-size: 40px;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
   transition: 0.3s;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .sidebar-bottom a {
@@ -50,15 +54,3 @@
 .sidebar a:hover {
   color: #f1f1f1;
 }
-
-/* Style the main content */
-.main {
-  margin-left: 170px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
-}
-
-/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
-/* @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-} */

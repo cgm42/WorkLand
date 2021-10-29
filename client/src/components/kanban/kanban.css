@@ -4,43 +4,43 @@
 }
 
 .kanban-card {
-  height:600px;
+  height: 600px;
   width: 300px;
-  overflow:auto;
-  background:white
+  overflow: auto;
+  background: white;
 }
 
 #kanban-card-id {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 .is-late {
-  background-color:crimson;
+  background-color: crimson;
 }
 
 .to-do {
-  background-color:rgb(135, 59, 223);
+  background-color: rgb(135, 59, 223);
 }
 
 .in-progress {
-  background-color:rgb(227, 230, 51);
+  background-color: rgb(227, 230, 51);
 }
 
 .is-done {
-  background-color:rgb(58, 207, 53);
+  background-color: rgb(58, 207, 53);
 }
 
 .late {
-  color:crimson;
+  color: crimson;
 }
 
 .progress {
-  color:rgb(227, 230, 51);
+  color: rgb(227, 230, 51);
 }
 
 .done {
-  color:rgb(58, 207, 53);
+  color: rgb(58, 207, 53);
 }
 
 .kanban-card header {
@@ -50,16 +50,16 @@
   color: black;
 }
 
-.task-item-container{
-  background: linear-gradient(32deg, #FFE783, #A2F2FF, #F5BCFF);
+.task-item-container {
+  background: linear-gradient(32deg, #ffe783, #a2f2ff, #f5bcff);
   background-size: 600% 600%;
   animation: GradientBackground 3s ease infinite;
   margin: 15px;
   height: 145px;
-  border-radius:15px;
-  padding:0;
+  border-radius: 15px;
+  padding: 0;
   border: 3px solid black;
-  color: black
+  color: black;
 }
 
 @keyframes GradientBackground {
@@ -74,7 +74,7 @@
   100% {
     background-position: 0% 50%;
   }
-};
+}
 
 .task-item-container li {
   list-style: none;
@@ -85,16 +85,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
-.task-item-header h1{
-margin: 0 0 0 10px;;
+.task-item-header h1 {
+  margin: 0 0 0 10px;
 }
 
-.task-item-container p{
-  margin:0 0 0 15px;
-  height:70px
+.task-item-container p {
+  margin: 0 0 0 15px;
+  height: 70px;
 }
 
 .priority-icon {
@@ -103,12 +103,24 @@ margin: 0 0 0 10px;;
   margin: 0 10px 0 0;
 }
 
+.low {
+  color: green;
+}
+
+.medium {
+  color: yellow;
+}
+
+.high {
+  color: red;
+}
+
 .task-users {
   display: flex;
   margin-right: 10px;
-  justify-content:flex-end;
-  font-size:20px;
-  list-style:none
+  justify-content: flex-end;
+  font-size: 20px;
+  list-style: none;
 }
 
 .task-users li {

@@ -17,7 +17,7 @@ async function getProject(req: Request, res: Response) {
   res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
-async function addProject(req: Request, res: Response) {
+function addProject(req: Request, res: Response) {
   const { creatorID, name, description, startDate, endDate } = req.body;
 
   const project = {
@@ -29,25 +29,49 @@ async function addProject(req: Request, res: Response) {
     background_img: "",
   };
 
-  const queryResult = await model.addProject(project);
+  model
+    .addProject(project)
+    .then(async (data) => {
+      for (const user of req.body.users) {
+        const userProject = {
+          user_id: user,
+          project_id: data.rows[0].id,
+          role: "",
+        };
 
-  for (const user of req.body.users) {
-    const userProject = {
-      user_id: user,
-      project_id: queryResult.rows[0].id,
-      role: "",
-    };
+        await user_project_model.addUserToProject(userProject);
+      }
+      const userProject = {
+        user_id: creatorID,
+        project_id: data.rows[0].id,
+        role: "Project Manager",
+      };
+      await user_project_model.addUserToProject(userProject);
+      return data.rows[0];
+    })
+    .then((data) => {
+      res.send(camelcaseKeys(data));
+    });
 
-    user_project_model.addUserToProject(userProject);
-  }
+  // const queryResult = await model.addProject(project);
 
-  const userProject = {
-    user_id: creatorID,
-    project_id: queryResult.rows[0].id,
-    role: "Project Manager",
-  };
-  user_project_model.addUserToProject(userProject);
-  res.send(camelcaseKeys(queryResult.rows[0]));
+  // for (const user of req.body.users) {
+  //   const userProject = {
+  //     user_id: user,
+  //     project_id: queryResult.rows[0].id,
+  //     role: "",
+  //   };
+
+  //   user_project_model.addUserToProject(userProject);
+  // }
+
+  // const userProject = {
+  //   user_id: creatorID,
+  //   project_id: queryResult.rows[0].id,
+  //   role: "Project Manager",
+  // };
+  // user_project_model.addUserToProject(userProject);
+  // res.send(camelcaseKeys(queryResult.rows[0]));
 }
 
 async function editProject(req: Request, res: Response) {

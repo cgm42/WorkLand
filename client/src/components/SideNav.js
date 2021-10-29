@@ -3,6 +3,7 @@ import "./styles/SideNav.css";
 import { AiFillHome, AiFillMessage } from "react-icons/ai";
 import { FaClipboardList, FaSpotify } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
+import { GrLineChart } from "react-icons/gr";
 import { BsFillAlarmFill, BsKanbanFill } from "react-icons/bs";
 import { RiDashboardFill, RiLogoutCircleFill } from "react-icons/ri";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
@@ -14,6 +15,7 @@ import Login from "../pages/Login";
 import UserDashboard from "./userDashboard/UserDashboard";
 import TaskTable from "./tasks/TaskTable";
 import Kanban from './kanban/Kanban';
+import GanttChart from './gantt-chart/GanttChart';
 
 
 const Sidenav = () => {
@@ -52,6 +54,11 @@ const Sidenav = () => {
               <BsKanbanFill></BsKanbanFill>
             </Link>
           </li>
+          <li>
+            <Link to="/gantt">
+              <GrLineChart></GrLineChart>
+            </Link>
+          </li>
         </div>
         </div>
 
@@ -77,6 +84,9 @@ const Sidenav = () => {
         </Route>
         <Route path="/kanban" exact>
           <Kanban></Kanban>
+        </Route>
+        <Route path="/gantt" exact>
+          <GanttChart></GanttChart>
         </Route>
         {/* <Route path="/login" exact>
           <Login></Login>

@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../button/Button";
 import DatePicker from "react-date-picker";
-import getProjectTeams from "../../helpers/getProjectTeams";
+import User from "../users/User";
 
 function TaskForm(props) {
   const [name, setName] = useState(props.name || "");
   const [description, setDescription] = useState(props.description || "");
-  const [startDate, onStart] = useState(new Date());
-  const [endDate, onEnd] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [priority, setPriority] = useState(0);
+  const [showUsers, setShowUsers] = useState(false);
   const [error, setError] = useState("");
 
   const { state, onSave, projectID, setEdit } = props;
 
-  const usersListArray = getProjectTeams(state);
-  console.log(usersListArray);
+  const team = state.projectTeams.filter((team) => {
+    return team.projectId === state.current_project;
+  });
+
+  const projectUsersList = [];
+
+  for (const member of team) {
+    for (const user of state.users) {
+      if (user.id === member.userId) {
+        projectUsersList.push(user);
+      }
+    }
+  }
 
   const validate = () => {
     const selectedUsers = document
@@ -24,7 +36,7 @@ function TaskForm(props) {
     const selectedUsersIDs = [];
 
     for (const user of selectedUsers) {
-      selectedUsersIDs.push(user.id);
+      selectedUsersIDs.push(parseInt(user.id));
     }
 
     const task = {
@@ -38,6 +50,11 @@ function TaskForm(props) {
       users: selectedUsersIDs,
     };
 
+    setName("");
+    setDescription("");
+    setStartDate(new Date());
+    setEndDate(new Date());
+    setShowUsers(false);
     setError("");
     onSave(task);
     document.getElementById("dialog-dark-rounded").close();
@@ -45,20 +62,18 @@ function TaskForm(props) {
 
   const cancel = () => {
     document.getElementById("dialog-dark-rounded").close();
+    setShowUsers(false);
   };
-
-  // const makeId = (id) => {
-  //   return `dialog-dark-rounded-edit-${id}`;
-  // };
 
   return (
     <div>
       <Button
         type="button"
         className="nes-btn is-primary"
-        onClick={() =>
-          document.getElementById("dialog-dark-rounded").showModal()
-        }
+        onClick={() => {
+          document.getElementById("dialog-dark-rounded").showModal();
+          setShowUsers(true);
+        }}
         title={"New Task"}
       ></Button>
       <dialog
@@ -96,10 +111,20 @@ function TaskForm(props) {
           </label>
 
           <div className="team-date-container">
-            <label>
-              Assignees:
-              <ul className="rpgui users-container">{usersListArray}</ul>
-            </label>
+            {showUsers && (
+              <label>
+                Assignees:
+                <ul className="rpgui users-container">
+                  {projectUsersList.map((user) => {
+                    const { id, name, avatar } = user;
+
+                    return (
+                      <User key={id} id={id} avatar={avatar} name={name} />
+                    );
+                  })}
+                </ul>
+              </label>
+            )}
 
             <label>
               Priority:
@@ -117,7 +142,7 @@ function TaskForm(props) {
               <label>
                 Start date:
                 <DatePicker
-                  onChange={onStart}
+                  onChange={setStartDate}
                   value={startDate}
                   className="date-size"
                 />
@@ -126,7 +151,7 @@ function TaskForm(props) {
               <label>
                 End date:
                 <DatePicker
-                  onChange={onEnd}
+                  onChange={setStartDate}
                   value={endDate}
                   className="date-size"
                 />

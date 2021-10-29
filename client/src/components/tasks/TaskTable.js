@@ -52,7 +52,7 @@ function TaskTable(props) {
                 <th>End Date</th>
               </tr>
             </thead>
-            <tbody>{tasksList}</tbody>
+            {tasksList && <tbody>{tasksList}</tbody>}
           </table>
         </div>
       </div>

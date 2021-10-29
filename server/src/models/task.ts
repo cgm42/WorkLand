@@ -71,7 +71,8 @@ function editTask(task: {
           description = $2,
           start_date = $3,
           end_date = $4
-      WHERE tasks.id = $5;
+      WHERE tasks.id = $5
+      RETURNING *;
     `,
     values
   );

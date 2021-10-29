@@ -25,16 +25,6 @@ function getProjectByID(project_id: number) {
   );
 }
 
-// function getLatestProject() {
-//   return pool
-//     .query(`
-//       SELECT projects.id
-//       FROM PROJECTS
-//       ORDER BY id DESC
-//       LIMIT 1;
-//     `)
-// };
-
 function addProject(project: {
   creator_id: number;
   name: string;
@@ -88,8 +78,9 @@ function editProject(project: {
       SET name = $1,
           description = $2,
           start_date = $3,
-          end_date = $4,
-      WHERE projects.id = $5;
+          end_date = $4
+      WHERE projects.id = $5
+      RETURNING *;
     `,
     values
   );

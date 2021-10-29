@@ -7,7 +7,7 @@ import "nes.css/css/nes.min.css";
 import classNames from "classnames";
 import EditTaskForm from "./EditTaskForm";
 import getTaskTeams from "../../helpers/getTaskTeams";
-import DeleteTask from "./DeleteTaskForm";
+import DeleteTaskForm from "./DeleteTaskForm";
 
 export default function TaskRow(props) {
   const { state, editTask, updateTaskStatus, updateTaskPriority, deleteTask } =
@@ -75,11 +75,11 @@ export default function TaskRow(props) {
               endDate={endDate}
               onSave={editTask}
             />
-            <DeleteTask
+            <DeleteTaskForm
               id={id}
               onConfirm={deleteTask}
               className="delete-icon"
-            ></DeleteTask>
+            ></DeleteTaskForm>
           </div>
         </div>
       </td>

@@ -3,41 +3,24 @@ import Button from "../button/Button";
 import DatePicker from "react-date-picker";
 import User from "../users/User";
 import { BiEdit } from "react-icons/bi";
+import getPreselectedProjectTeams from "../../helpers/getPreselectedProjectTeams";
 
 function EditProjectForm(props) {
   const [name, setName] = useState(props.name || "");
   const [description, setDescription] = useState(props.description || "");
-  const [startDate, onStart] = useState(
+  const [startDate, setStartDate] = useState(
     new Date(props.startDate) || new Date()
   );
-  const [endDate, onEnd] = useState(new Date(props.endDate) || new Date());
+  const [endDate, setEndDate] = useState(new Date(props.endDate) || new Date());
+  const [showUsers, setShowUsers] = useState(false);
   const [error, setError] = useState("");
 
   const { id, state, onSave } = props;
 
-  // const team = state.projectTeams.filter((team) => {
-  //   return team.projectId === projectID;
-  // });
-
-  // const usersList = [];
-
-  // for (const member of team) {
-  //   for (const user of state.users) {
-  //     if (user.id === member.userId) {
-  //       usersList.push(user);
-  //     }
-  //   }
-  // }
-
-  const usersListArray = state.users.map((user) => {
-    const { id, name, avatar } = user;
-    return <User key={id} id={id} avatar={avatar} name={name} />;
-  });
-
   const validate = () => {
-    const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
-    );
+    const selectedUsers = document
+      .getElementById(makeId(id))
+      .getElementsByClassName("user-list--selected");
 
     const selectedUsersIDs = [];
 
@@ -50,16 +33,18 @@ function EditProjectForm(props) {
       description,
       startDate,
       endDate,
-      // users: selectedUsersIDs,
-      // selectedUsers: selectedUsersIDs,
+      selectedUsers: selectedUsersIDs,
     };
 
+    setShowUsers(false);
     setError("");
     onSave(project, id);
     document.getElementById(makeId(id)).close();
   };
 
   const cancel = () => {
+    setShowUsers(false);
+    setError("");
     document.getElementById(makeId(id)).close();
   };
 
@@ -72,7 +57,10 @@ function EditProjectForm(props) {
       <div>
         <BiEdit
           className="edit-button"
-          onClick={() => document.getElementById(makeId(id)).showModal()}
+          onClick={() => {
+            setShowUsers(true);
+            document.getElementById(makeId(id)).showModal();
+          }}
         ></BiEdit>
       </div>
       <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
@@ -107,16 +95,20 @@ function EditProjectForm(props) {
           </label>
 
           <div className="team-date-container">
-            <label>
-              Team:
-              <ul className="rpgui users-container">{usersListArray}</ul>
-            </label>
+            {showUsers && (
+              <label>
+                Team:
+                <ul className="rpgui users-container">
+                  {getPreselectedProjectTeams(state, id)}
+                </ul>
+              </label>
+            )}
 
             <div className="date">
               <label>
                 Start date:
                 <DatePicker
-                  onChange={onStart}
+                  onChange={setEndDate}
                   value={startDate}
                   className="date-size"
                 />
@@ -125,7 +117,7 @@ function EditProjectForm(props) {
               <label>
                 End date:
                 <DatePicker
-                  onChange={onEnd}
+                  onChange={setEndDate}
                   value={endDate}
                   className="date-size"
                 />

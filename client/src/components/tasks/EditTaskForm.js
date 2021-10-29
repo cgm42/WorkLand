@@ -12,15 +12,17 @@ function EditTaskForm(props) {
     new Date(props.startDate) || new Date()
   );
   const [endDate, onEnd] = useState(new Date(props.endDate) || new Date());
+  const [showUsers, setShowUsers] = useState(false);
   const [error, setError] = useState("");
 
   const { id, state, onSave } = props;
 
   const taskUsersListArray = getTaskTeams(state, id);
-  const projectUsersListArray = getProjectTeams(state, taskUsersListArray);
 
   const validate = () => {
-    const userIDs = projectUsersListArray.map((user) => user.props.id);
+    const userIDs = getProjectTeams(state, taskUsersListArray).map(
+      (user) => user.props.id
+    );
 
     const selectedUsers = document
       .getElementById(makeId(id))
@@ -41,12 +43,15 @@ function EditTaskForm(props) {
       selectedUsers: selectedUsersIDs,
     };
 
+    setShowUsers(false);
     setError("");
     onSave(task, id);
     document.getElementById(makeId(id)).close();
   };
 
   const cancel = () => {
+    setShowUsers(false);
+    setError("");
     document.getElementById(makeId(id)).close();
   };
 
@@ -59,7 +64,10 @@ function EditTaskForm(props) {
       <div>
         <BiEdit
           className="edit-icon"
-          onClick={() => document.getElementById(makeId(id)).showModal()}
+          onClick={() => {
+            setShowUsers(true);
+            document.getElementById(makeId(id)).showModal();
+          }}
         ></BiEdit>
       </div>
       <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
@@ -94,10 +102,14 @@ function EditTaskForm(props) {
           </label>
 
           <div className="team-date-container">
-            <label>
-              Assignees:
-              <ul className="rpgui users-container">{projectUsersListArray}</ul>
-            </label>
+            {showUsers && (
+              <label>
+                Assignees:
+                <ul className="rpgui users-container">
+                  {getProjectTeams(state, taskUsersListArray)}
+                </ul>
+              </label>
+            )}
 
             <div className="date">
               <label>

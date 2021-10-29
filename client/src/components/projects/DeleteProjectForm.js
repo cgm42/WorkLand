@@ -3,29 +3,29 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import Button from "../button/Button";
 
 function DeleteProjectForm(props) {
-  const { id } = props;
+  const { id, onConfirm } = props;
 
   const confirm = () => {
-    // onSave(task);
-    document.getElementById("delete").close();
+    onConfirm(id);
+    document.getElementById(makeId(id)).close();
   };
 
   const cancel = () => {
-    document.getElementById("delete").close();
-    // setEdit(false);
+    document.getElementById(makeId(id)).close();
   };
 
   const makeId = (id) => {
     return `dialog-dark-rounded-edit-${id}`;
   };
+
   return (
     <div>
       <div className="delete-button">
         <RiDeleteBinLine
-          onClick={() => document.getElementById("delete").showModal()}
+          onClick={() => document.getElementById(makeId(id)).showModal()}
         ></RiDeleteBinLine>
       </div>
-      <dialog className="nes-dialog is-dark is-rounded" id="delete">
+      <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
         <form
           className="form"
           autoComplete="off"

@@ -50,7 +50,6 @@ async function createTask(req: Request, res: Response) {
 function editTask(req: Request, res: Response) {
   const task_id = parseInt(req.params.id);
   const selectedUsers = req.body.selectedUsers;
-  console.log("selectUsers in task controller", selectedUsers);
 
   const task = {
     id: task_id,

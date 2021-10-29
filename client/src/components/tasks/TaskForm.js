@@ -9,6 +9,7 @@ function TaskForm(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [priority, setPriority] = useState(0);
+  const [showUsers, setShowUsers] = useState(false);
   const [error, setError] = useState("");
 
   const { state, onSave, projectID, setEdit } = props;
@@ -27,12 +28,6 @@ function TaskForm(props) {
     }
   }
 
-  const usersListArray = projectUsersList.map((user) => {
-    const { id, name, avatar } = user;
-
-    return <User key={id} id={id} avatar={avatar} name={name} />;
-  });
-
   const validate = () => {
     const selectedUsers = document
       .getElementById("dialog-dark-rounded")
@@ -41,7 +36,7 @@ function TaskForm(props) {
     const selectedUsersIDs = [];
 
     for (const user of selectedUsers) {
-      selectedUsersIDs.push(user.id);
+      selectedUsersIDs.push(parseInt(user.id));
     }
 
     const task = {
@@ -59,6 +54,7 @@ function TaskForm(props) {
     setDescription("");
     setStartDate(new Date());
     setEndDate(new Date());
+    setShowUsers(false);
     setError("");
     onSave(task);
     document.getElementById("dialog-dark-rounded").close();
@@ -66,20 +62,18 @@ function TaskForm(props) {
 
   const cancel = () => {
     document.getElementById("dialog-dark-rounded").close();
+    setShowUsers(false);
   };
-
-  // const makeId = (id) => {
-  //   return `dialog-dark-rounded-edit-${id}`;
-  // };
 
   return (
     <div>
       <Button
         type="button"
         className="nes-btn is-primary"
-        onClick={() =>
-          document.getElementById("dialog-dark-rounded").showModal()
-        }
+        onClick={() => {
+          document.getElementById("dialog-dark-rounded").showModal();
+          setShowUsers(true);
+        }}
         title={"New Task"}
       ></Button>
       <dialog
@@ -117,10 +111,20 @@ function TaskForm(props) {
           </label>
 
           <div className="team-date-container">
-            <label>
-              Assignees:
-              <ul className="rpgui users-container">{usersListArray}</ul>
-            </label>
+            {showUsers && (
+              <label>
+                Assignees:
+                <ul className="rpgui users-container">
+                  {projectUsersList.map((user) => {
+                    const { id, name, avatar } = user;
+
+                    return (
+                      <User key={id} id={id} avatar={avatar} name={name} />
+                    );
+                  })}
+                </ul>
+              </label>
+            )}
 
             <label>
               Priority:

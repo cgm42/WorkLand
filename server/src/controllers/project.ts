@@ -31,7 +31,7 @@ function addProject(req: Request, res: Response) {
 
   model
     .addProject(project)
-    .then((data) => {
+    .then(async (data) => {
       for (const user of req.body.users) {
         const userProject = {
           user_id: user,
@@ -39,14 +39,14 @@ function addProject(req: Request, res: Response) {
           role: "",
         };
 
-        user_project_model.addUserToProject(userProject);
+        await user_project_model.addUserToProject(userProject);
       }
       const userProject = {
         user_id: creatorID,
         project_id: data.rows[0].id,
         role: "Project Manager",
       };
-      user_project_model.addUserToProject(userProject);
+      await user_project_model.addUserToProject(userProject);
       return data.rows[0];
     })
     .then((data) => {

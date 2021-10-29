@@ -39,7 +39,6 @@ function TaskForm(props) {
     };
 
     setError("");
-    // setEdit(false);
     onSave(task);
     document.getElementById("dialog-dark-rounded").close();
   };
@@ -47,6 +46,10 @@ function TaskForm(props) {
   const cancel = () => {
     document.getElementById("dialog-dark-rounded").close();
   };
+
+  // const makeId = (id) => {
+  //   return `dialog-dark-rounded-edit-${id}`;
+  // };
 
   return (
     <div>

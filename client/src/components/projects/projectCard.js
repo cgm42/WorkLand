@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { stateContext } from "../providers/StateProvider";
-import getProjectTeams from "../../helpers/getProjectTeams";
+import getProjectTeamsForCard from "../../helpers/getProjectTeamsForCard";
 
 export default function ProjectCard(props) {
   const { state } = useContext(stateContext);
@@ -10,16 +10,9 @@ export default function ProjectCard(props) {
   //   return state.user;
   // });
 
-  const {
-    id,
-    projectTeams,
-    users,
-    setCurrentProject,
-    setShowForm,
-    editProject,
-  } = props;
+  const { id, setCurrentProject, editProject } = props;
 
-  const usersListArray = getProjectTeams(state);
+  const usersListArray = getProjectTeamsForCard(state, id);
 
   return (
     <div

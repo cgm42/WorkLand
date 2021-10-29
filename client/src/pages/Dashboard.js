@@ -10,16 +10,13 @@ import Players from '../components/players';
 import Map from '../components/map/Map';
 import ModalInput from '../components/modal/ModalInput';
 import MainModal from '../components/modal/MainModal';
+import useMapGuide from './../hooks/useMapGuide';
+import Chat from '../components/chat/chat';
+
 const Dashboard = () => {
+  const { playerNearGuide } = useMapGuide();
   const modalCanOpen = useSelector((state) => state.mapRoute.modalCanOpen);
   const mapGuideState = useSelector((state) => state.mapGuide);
-  let playerNearGuide = false;
-  for (let key in mapGuideState) {
-    if (mapGuideState[key]) {
-      playerNearGuide = true;
-      break;
-    }
-  }
 
   return (
     <div className="dashboard-layout">
@@ -27,6 +24,7 @@ const Dashboard = () => {
       <ModalInput isOpen={true} />
       <Map x={0} />
       <Players />
+      {<Chat canOpen={!(modalCanOpen && playerNearGuide)} />}
     </div>
   );
 };

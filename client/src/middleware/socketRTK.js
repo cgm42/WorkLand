@@ -13,26 +13,12 @@ export const socketRTK = () => {
     socket.on('connect', () => {
       storeAPI.dispatch(SET_SOCKETID({ id: socket.id }));
     });
-    socket.on('callUser', (data) => {
-      console.log('call user recevied at B', data);
-      // storeAPI.dispatch(
-      //   RECEIVECALL({
-      //     receivingCall: true,
-      //     caller: data.from,
-      //     name: data.name,
-      //     callerSignal: data.signal,
-      //   })
-      // );
-    });
+
     socket.on('userList', (users) => {
       storeAPI.dispatch(SET_VIDEO_PARTICIPANTS(users));
     });
-    socket.on('callAccepted', (signal) => {
-      // storeAPI.dispatch(INITCALLACCEPTED({ callAccepted: true, signal }));
-    });
+
     socket.on('movementMessage', (arg) => {
-      // console.log("MW on message payload :>> ", arg);
-      //receives an update from server
       storeAPI.dispatch(JSON.parse(arg)); //type:UPDATE_OTHERS
     });
 
@@ -40,42 +26,42 @@ export const socketRTK = () => {
       storeAPI.dispatch(USER_DISCONNECT(id));
     });
 
-    let lastSent = new Date().getTime();
+    socket.on('receivedAnnouncement', (arg) => {
+      storeAPI.dispatch(JSON.parse(arg));
+    });
+
+    socket.on('receiveDirect', (arg) => {
+      storeAPI.dispatch(arg);
+    });
 
     return (next) => (action) => {
       const newState = next(action);
       if (action.type === 'WALK') {
-        console.log('storeAPI.getState() :>> ', storeAPI.getState());
-        //throttle to optimize performance
-        let currentTime = new Date().getTime();
-        if (currentTime - lastSent > 100) {
-          socket.emit(
-            'movementMessage',
-            JSON.stringify({
-              type: 'UPDATE_OTHERS',
-              payload: storeAPI.getState().players[action.payload.id],
-            })
-          );
-          lastSent = currentTime;
-        }
+        socket.volatile.emit(
+          'movementMessage',
+          JSON.stringify({
+            type: 'UPDATE_OTHERS',
+            payload: storeAPI.getState().players[action.payload.id],
+          })
+        );
       }
 
-      // if (action.type === 'INITCALL') {
-      //   console.log('middleware init call');
-      //   socket.emit('callUser', {
-      //     userToCall: action.payload.otherId,
-      //     signalData: action.payload.data,
-      //     from: storeAPI.getState().localId,
-      //     // name: name,
-      //   });
-      // }
-      // if (action.type === 'ACCEPTCALL') {
-      //   console.log('sending call acceptance');
-      //   socket.emit('answerCall', {
-      //     signal: action.payload.data,
-      //     to: storeAPI.getState().chat.caller,
-      //   });
-      // }
+      if (action.type === 'ANNOUNCEMENT') {
+        socket.emit(
+          'announcement',
+          JSON.stringify({
+            type: 'RECEIVED_ANNOUNCEMENT',
+            payload: storeAPI.getState().outgoingGif,
+          })
+        );
+      }
+
+      if (action.type === 'SEND_DIRECT') {
+        socket.emit('sendDirect', {
+          type: 'RECEIVE_DIRECT',
+          payload: storeAPI.getState().outgoingGif,
+        });
+      }
       return newState;
     };
   };

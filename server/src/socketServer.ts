@@ -9,18 +9,31 @@ const io = new Server(socketServer, {
   },
 });
 
-// const users = {};
-
 let socketIds: SocketId[] = [];
 
 io.on('connection', (socket: Socket) => {
   console.log('.........socket connected.......🙌');
+  socket.on('disconnect', () => {
+    const allOtherUsers = socketIds.filter((id) => id !== socket.id);
+    socketIds = [...allOtherUsers];
+    io.emit('userDisconnect', socket.id);
+  });
 
   socket.on('movementMessage', (arg) => {
-    console.log('event :>> ', arg);
+    // console.log('event :>> ', arg);
     socket.broadcast.emit('movementMessage', arg);
   });
 
+  socket.on('announcement', (arg) => {
+    io.emit('receivedAnnouncement', arg);
+  });
+
+  socket.on('sendDirect', (arg) => {
+    io.to(arg.payload.receiverSocketId).emit('receiveDirect', arg);
+    io.to(arg.payload.senderSocketId).emit('receiveDirect', arg);
+  });
+
+  //-------------------video attempt below--------------------------
   socket.on('joinVideo', () => {
     if (socketIds.length === 10) {
       socket.emit('capacity reached!');
@@ -44,25 +57,4 @@ io.on('connection', (socket: Socket) => {
       id: socket.id,
     });
   });
-
-  socket.on('disconnect', () => {
-    const allOtherUsers = socketIds.filter((id) => id !== socket.id);
-    socketIds = [...allOtherUsers];
-    io.emit('userDisconnect', socket.id);
-  });
-
-  //-----------------------p2p code below
-  // socket.on("callUser", (data) => {
-  //   console.log("call user data :>> ", data);
-  //   socket.broadcast.emit("callUser", {
-  //     signal: data.signalData,
-  //     from: data.from,
-  //     name: data.name,
-  //   });
-  // });
-
-  // socket.on("answerCall", (data) => {
-  //   console.log("answer call data :>> ", data);
-  //   socket.broadcast.emit("callAccepted", data.signal);
-  // });
 });

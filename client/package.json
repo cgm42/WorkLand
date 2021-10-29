@@ -21,6 +21,7 @@
     "react-giphy-searchbox": "^1.5.4",
     "react-google-charts": "^3.0.15",
     "react-icons": "^4.3.1",
+    "react-infinite-scroller": "^1.2.4",
     "react-modal": "^3.14.3",
     "react-piano": "^3.1.3",
     "react-redux": "^7.2.5",

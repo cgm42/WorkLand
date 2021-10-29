@@ -1,78 +1,68 @@
 import React, { useState } from "react";
 import Button from "../button/Button";
 import DatePicker from "react-date-picker";
-import User from "../users/User";
-import { useSelector } from "react-redux";
+import { BiEdit } from "react-icons/bi";
+import getProjectTeams from "../../helpers/getProjectTeams";
+import getTaskTeams from "../../helpers/getTaskTeams";
 
-function ProjectForm(props) {
-  const userState = useSelector((state) => {
-    console.log("state:", state);
-    return state.user;
-  });
-
+function EditTaskForm(props) {
   const [name, setName] = useState(props.name || "");
   const [description, setDescription] = useState(props.description || "");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, onStart] = useState(
+    new Date(props.startDate) || new Date()
+  );
+  const [endDate, onEnd] = useState(new Date(props.endDate) || new Date());
   const [error, setError] = useState("");
 
-  const { usersList, setShowForm, onSave, setEdit } = props;
+  const { id, state, onSave } = props;
 
-  const usersListArray = usersList.map((user) => {
-    if (user.id !== userState.id) {
-      const { id, name, avatar } = user;
-      return (
-        <User key={id} id={id} avatar={avatar} name={name} selected={false} />
-      );
-    }
-  });
+  const taskUsersListArray = getTaskTeams(state, id);
+  const projectUsersListArray = getProjectTeams(state, taskUsersListArray);
 
   const validate = () => {
-    const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
-    );
+    const userIDs = projectUsersListArray.map((user) => user.props.id);
+
+    const selectedUsers = document
+      .getElementById(makeId(id))
+      .getElementsByClassName("user-list--selected");
 
     const selectedUsersIDs = [];
 
     for (const user of selectedUsers) {
-      selectedUsersIDs.push(user.id);
+      selectedUsersIDs.push(parseInt(user.id));
     }
 
-    const project = {
-      creatorID: userState.id,
+    const task = {
       name,
       description,
       startDate,
       endDate,
-      users: selectedUsersIDs,
+      users: userIDs,
+      selectedUsers: selectedUsersIDs,
     };
 
-    setName("");
-    setDescription("");
-    setStartDate(new Date());
-    setEndDate(new Date());
     setError("");
-    onSave(project);
-    document.getElementById("dialog-dark-rounded").close();
+    onSave(task, id);
+    document.getElementById(makeId(id)).close();
   };
 
   const cancel = () => {
-    document.getElementById("dialog-dark-rounded").close();
+    document.getElementById(makeId(id)).close();
+  };
+
+  const makeId = (id) => {
+    return `dialog-dark-rounded-edit-${id}`;
   };
 
   return (
     <div>
-      <Button
-        type="button"
-        onClick={() =>
-          document.getElementById("dialog-dark-rounded").showModal()
-        }
-        title={"New Project"}
-      ></Button>
-      <dialog
-        className="nes-dialog is-dark is-rounded"
-        id="dialog-dark-rounded"
-      >
+      <div>
+        <BiEdit
+          className="edit-icon"
+          onClick={() => document.getElementById(makeId(id)).showModal()}
+        ></BiEdit>
+      </div>
+      <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
         <form
           className="form"
           autoComplete="off"
@@ -80,7 +70,7 @@ function ProjectForm(props) {
           method="dialog"
         >
           <label>
-            Project name:
+            Task name:
             <input
               value={name}
               type="text"
@@ -105,15 +95,15 @@ function ProjectForm(props) {
 
           <div className="team-date-container">
             <label>
-              Choose your team:
-              <ul className="rpgui users-container">{usersListArray}</ul>
+              Assignees:
+              <ul className="rpgui users-container">{projectUsersListArray}</ul>
             </label>
 
             <div className="date">
               <label>
                 Start date:
                 <DatePicker
-                  onChange={setStartDate}
+                  onChange={onStart}
                   value={startDate}
                   className="date-size"
                 />
@@ -122,7 +112,7 @@ function ProjectForm(props) {
               <label>
                 End date:
                 <DatePicker
-                  onChange={setEndDate}
+                  onChange={onEnd}
                   value={endDate}
                   className="date-size"
                 />
@@ -139,4 +129,4 @@ function ProjectForm(props) {
   );
 }
 
-export default ProjectForm;
+export default EditTaskForm;

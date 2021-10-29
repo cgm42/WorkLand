@@ -3,8 +3,8 @@ const router = express.Router();
 
 import * as controller from "../controllers/user_task";
 
-router.get('/', controller.getAllUsersAndTasks);
-router.post('/', controller.addUserToTask);
-router.delete('/', controller.deleteUserFromTask);
+router.get("/", controller.getAllUsersAndTasks);
+router.post("/", controller.addUserToTask);
+// router.delete("/", controller.deleteUsersFromTask);
 
 export default router;

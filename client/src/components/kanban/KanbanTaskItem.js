@@ -16,11 +16,11 @@ function KanbanTaskItem(props) {
     taskTeams,
   } = props;
 
-  const iconPriorityClass = classNames(
+  const priorityClass = classNames(
     "priority-icon",
-    { late: priority === 0 },
-    { progress: priority === 1 },
-    { done: priority === 2 }
+    { low: priority === 0 },
+    { medium: priority === 1 },
+    { high: priority === 2 }
   );
 
   const team = taskTeams.filter((team) => {
@@ -53,7 +53,7 @@ function KanbanTaskItem(props) {
         >
           <div className="task-item-header">
             <h1>{title}</h1>
-            <div className={iconPriorityClass}>
+            <div className={priorityClass}>
               <AiFillWarning></AiFillWarning>
             </div>
           </div>

@@ -1,6 +1,7 @@
 export const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 export const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 export const SET_TASK_STATUS = "SET_TASK_STATUS";
+export const SET_TASK_PRIORITY = "SET_TASK_PRIORITY";
 
 export default function applicationDataReducer(state, action) {
   if (reducers[action.type]) {
@@ -12,14 +13,23 @@ export default function applicationDataReducer(state, action) {
   );
 }
 
-const setApplicationData = (state, action) => ({
-  ...state,
-  users: action.value.users,
-  projects: action.value.projects,
-  projectTeams: action.value.projectTeams,
-  tasks: action.value.tasks,
-  taskTeams: action.value.taskTeams,
-});
+const setApplicationData = (state, action) => {
+  let tasks = [];
+  if (action.value.tasks) {
+    tasks = giveTasksIndices(action.value.tasks);
+  }
+
+  const newState = {
+    ...state,
+    users: action.value.users,
+    projects: action.value.projects,
+    projectTeams: action.value.projectTeams,
+    tasks: tasks.length > 0 ? tasks : action.value.tasks,
+    taskTeams: action.value.taskTeams,
+  };
+
+  return newState;
+};
 
 const setCurrentProject = (state, action) => {
   const tasks = giveTasksIndices(action.tasks);
@@ -34,6 +44,16 @@ const setCurrentProject = (state, action) => {
 };
 
 const updateTaskStatus = (state, action) => {
+  const tasks = giveTasksIndices(action.tasks);
+  const newState = {
+    ...state,
+    tasks: tasks,
+  };
+
+  return newState;
+};
+
+const updateTaskPriority = (state, action) => {
   const tasks = giveTasksIndices(action.tasks);
   const newState = {
     ...state,
@@ -66,11 +86,17 @@ const giveTasksIndices = (tasks) => {
     });
 
   const newTasks = column1.concat(column2, column3, column4);
-  return newTasks;
+
+  const sortedTasks = newTasks.sort((a, b) => {
+    return a.id - b.id;
+  });
+
+  return sortedTasks;
 };
 
 const reducers = {
   SET_APPLICATION_DATA: setApplicationData,
   SET_CURRENT_PROJECT: setCurrentProject,
   SET_TASK_STATUS: updateTaskStatus,
+  SET_TASK_PRIORITY: updateTaskPriority,
 };

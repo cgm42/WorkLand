@@ -4,6 +4,7 @@ import applicationDataReducer, {
   SET_APPLICATION_DATA,
   SET_CURRENT_PROJECT,
   SET_TASK_STATUS,
+  SET_TASK_PRIORITY,
 } from "../../reducers/applicationDataReducer";
 
 export const stateContext = createContext();
@@ -77,6 +78,18 @@ export default function StateProvider(props) {
     });
   };
 
+  const editTask = (task, id) => {
+    axios.patch(`/tasks/${id}`, task).then(() => {
+      updateTaskList();
+    });
+  };
+
+  const deleteTask = (id) => {
+    axios.delete(`/tasks/${id}`).then(() => {
+      updateTaskList();
+    });
+  };
+
   const updateTaskList = () => {
     Promise.all([
       axios.get(`/tasks/project/${state.current_project}`),
@@ -110,12 +123,32 @@ export default function StateProvider(props) {
     });
   };
 
+  const updateTaskPriority = (priority, id) => {
+    axios.patch(`/tasks/priority/${id}`, { priority }).then((data) => {
+      const newTasks = state.tasks.map((task) => {
+        if (task.id === id) {
+          return data.data;
+        } else {
+          return task;
+        }
+      });
+
+      dispatch({
+        type: SET_TASK_PRIORITY,
+        tasks: newTasks,
+      });
+    });
+  };
+
   const providerData = {
     state,
     createProject,
     setCurrentProject,
     createTask,
+    editTask,
     updateTaskStatus,
+    updateTaskPriority,
+    deleteTask,
   };
 
   return (

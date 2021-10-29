@@ -1,16 +1,20 @@
 import React, { useContext } from "react";
 import { stateContext } from "../providers/StateProvider";
+import { useSelector } from "react-redux";
 import getProjectTeamsForCard from "../../helpers/getProjectTeamsForCard";
+import EditProjectForm from "./EditProjectForm";
+import DeleteProjectForm from "./DeleteProjectForm";
 
 export default function ProjectCard(props) {
-  const { state } = useContext(stateContext);
+  const userState = useSelector((state) => {
+    console.log("state:", state);
+    return state.user;
+  });
 
-  // const userState = useSelector((state) => {
-  //   console.log('state:', state);
-  //   return state.user;
-  // });
+  const { state, editProject } = useContext(stateContext);
 
-  const { id, setCurrentProject, editProject } = props;
+  const { id, name, description, startDate, endDate, setCurrentProject } =
+    props;
 
   const usersListArray = getProjectTeamsForCard(state, id);
 
@@ -21,12 +25,20 @@ export default function ProjectCard(props) {
     >
       <div className="card-header">
         <header>{props.name}</header>
-        {/* {userState.id === props.creatorID && <div className='edit-button' onClick={() => {
-        setShowForm(true)
-        setEdit(true);
-        }}>
-          <BiEdit ></BiEdit> */}
-        {/* </div>} */}
+        {userState.id === props.creatorID && (
+          <div className="buttons">
+            <EditProjectForm
+              id={id}
+              name={name}
+              description={description}
+              startDate={startDate}
+              endDate={endDate}
+              state={state}
+              onSave={editProject}
+            />
+            <DeleteProjectForm></DeleteProjectForm>
+          </div>
+        )}
       </div>
       <h1>Description:</h1>
       <p>{props.description}</p>

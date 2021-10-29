@@ -18,9 +18,9 @@ function ProjectCardList(props) {
         creatorID={project.creatorId}
         name={project.name}
         description={project.description}
+        startDate={project.startDate}
+        endDate={project.endDate}
         setCurrentProject={setCurrentProject}
-        // setShowForm={setShowForm}
-        // editProject={editProject}
       />
     );
   });
@@ -30,21 +30,11 @@ function ProjectCardList(props) {
       <div className="welcome">
         <h1>Project Dashboard</h1>
       </div>
+      <div className="new-project">
+        <ProjectForm usersList={state.users} onSave={createProject} />
+      </div>
 
-      <section>
-        {projectsList}
-        <div className="new-project">
-          <ProjectForm usersList={state.users} onSave={createProject} />
-
-          {/* {showForm && edit &&
-          <Form 
-          setShowForm={setShowForm}
-          usersList={state.users}
-          onSave={createProject}
-          setEdit={setEdit}
-        />}  */}
-        </div>
-      </section>
+      <section>{projectsList}</section>
     </div>
   );
 }

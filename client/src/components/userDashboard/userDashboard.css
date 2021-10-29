@@ -6,9 +6,16 @@
 
 .welcome {
   margin-left: 20px;
-  font-size: 2rem;
   letter-spacing: 3px;
   color: white
+}
+
+.project-title {
+  display: flex;
+  justify-content: space-between;
+}
+.welcome h1{
+  font-size: 2rem;
 }
 
 .user-info-cards{

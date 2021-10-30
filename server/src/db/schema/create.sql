@@ -29,8 +29,8 @@ CREATE TABLE projects (
   creator_id INT REFERENCES users(id),
   name VARCHAR(255) NOT NULL,
   description TEXT,
-  start_date DATE NOT NULL,
-  end_date DATE NOT NULL,
+  start_date DATE,
+  end_date DATE,
   background_img VARCHAR(255) NOT NULL,
   current_status TEXT DEFAULT 'Incomplete'
 );

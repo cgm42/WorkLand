@@ -1,9 +1,9 @@
-import pool from '../db/dbConfig';
+import pool from "../db/dbConfig";
 
 // import { Person } from "../../../types";
 
 function getPerson(id: number) {
-  return pool.query('SELECT * FROM users WHERE id = $1', [id]);
+  return pool.query("SELECT * FROM users WHERE id = $1", [id]);
 }
 
 function getPersonByGitHub(githubId: number) {
@@ -32,9 +32,16 @@ async function createPersonByGitHub(
       INSERT INTO oauth_mapping(user_id, oauth_provider, oauth_id) 
       VALUES($1, $2, $3);
       `;
-    const insertValues = [insertedUserId, 'GitHub', githubId];
-    console.log('insertValues :>> ', insertValues);
+    const insertValues = [insertedUserId, "GitHub", githubId];
+    console.log("insertValues :>> ", insertValues);
     await client.query(insertText, insertValues);
+    client.query(
+      `
+      INSERT INTO users_projects (user_id, project_id)
+      VALUES ($1, 1);
+    `,
+      [insertedUserId]
+    );
   } catch (e) {
     throw e;
   }

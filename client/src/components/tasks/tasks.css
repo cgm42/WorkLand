@@ -2,13 +2,14 @@
   border-collapse: collapse;
   width: 100%;
   text-align: center;
-  background-color: rgb(26, 24, 24);
+  background-color: rgb(30, 30, 30);
   color: white;
   border: 1px solid #ddd;
 }
 .table thead {
   font-size: 18px;
   border: 1px solid #ddd;
+  background-color: rgb(34, 62, 111);
 }
 
 .table tbody {
@@ -23,6 +24,7 @@
 .table td {
   border: 1px solid white;
 }
+
 .task-user-container {
   display: flex;
   justify-content: space-around;

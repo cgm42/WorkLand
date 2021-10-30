@@ -72,24 +72,19 @@ export default function StateProvider(props) {
   };
 
   const editProject = (project, id) => {
-    console.log("-------- edit project ---------");
     axios.patch(`/projects/${id}`, project).then(() => {
       updateProjectList();
     });
   };
 
   const deleteProject = (id) => {
-    console.log("-------- delete project ---------");
     axios.delete(`/projects/${id}`).then(() => {
       updateProjectList();
     });
   };
 
   const setCurrentProject = (id) => {
-    console.log("setCurrentProject was called +++++++++++++++++++++");
-
     axios.get(`/tasks/project/${id}`).then((data) => {
-      console.log("-----axios data create project-----", data);
       dispatch({
         type: SET_CURRENT_PROJECT,
         id,

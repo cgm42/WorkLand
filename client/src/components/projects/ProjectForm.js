@@ -20,9 +20,6 @@ function ProjectForm(props) {
   const { usersList, onSave } = props;
 
   const validate = () => {
-    console.log(startDate);
-    const startDateToNum = startDate;
-
     if (!!!name) {
       setError("Please enter a name");
       return;
@@ -148,6 +145,7 @@ function ProjectForm(props) {
                 <DatePicker
                   onChange={setEndDate}
                   value={endDate}
+                  minDate={new Date(startDate)}
                   className="date-size"
                 />
               </label>

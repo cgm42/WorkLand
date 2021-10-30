@@ -29,6 +29,15 @@ function TaskForm(props) {
   }
 
   const validate = () => {
+    if (!!!name) {
+      setError("Please enter a name");
+      return;
+    }
+    if (!!!description) {
+      setError("Please enter a description");
+      return;
+    }
+
     const selectedUsers = document
       .getElementById("dialog-dark-rounded")
       .getElementsByClassName("user-list--selected");
@@ -37,6 +46,11 @@ function TaskForm(props) {
 
     for (const user of selectedUsers) {
       selectedUsersIDs.push(parseInt(user.id));
+    }
+
+    if (selectedUsersIDs.length === 0) {
+      setError("Please select at least one assignee");
+      return;
     }
 
     const task = {
@@ -93,6 +107,7 @@ function TaskForm(props) {
           onSubmit={(e) => e.preventDefault()}
           method="dialog"
         >
+          {error && <p className="error">{error}</p>}
           <label>
             Task name:
             <input
@@ -121,7 +136,10 @@ function TaskForm(props) {
             {showUsers && (
               <label>
                 Assignees:
-                <ul className="rpgui users-container">
+                <ul
+                  className="rpgui users-container"
+                  onClick={() => setError("")}
+                >
                   {projectUsersList.map((user) => {
                     const { id, name, avatar } = user;
 
@@ -160,6 +178,7 @@ function TaskForm(props) {
                 <DatePicker
                   onChange={setEndDate}
                   value={endDate}
+                  minDate={new Date(startDate)}
                   className="date-size"
                 />
               </label>

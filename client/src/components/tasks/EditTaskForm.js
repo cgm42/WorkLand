@@ -20,6 +20,15 @@ function EditTaskForm(props) {
   const taskUsersListArray = getTaskTeams(state, id);
 
   const validate = () => {
+    if (!!!name) {
+      setError("Please enter a name");
+      return;
+    }
+    if (!!!description) {
+      setError("Please enter a description");
+      return;
+    }
+
     const userIDs = getProjectTeams(state, taskUsersListArray).map(
       (user) => user.props.id
     );
@@ -32,6 +41,11 @@ function EditTaskForm(props) {
 
     for (const user of selectedUsers) {
       selectedUsersIDs.push(parseInt(user.id));
+    }
+
+    if (selectedUsersIDs.length === 0) {
+      setError("Please select at least one assignee");
+      return;
     }
 
     const task = {
@@ -77,6 +91,7 @@ function EditTaskForm(props) {
           onSubmit={(e) => e.preventDefault()}
           method="dialog"
         >
+          {error && <p className="error">{error}</p>}
           <label>
             Task name:
             <input
@@ -105,7 +120,10 @@ function EditTaskForm(props) {
             {showUsers && (
               <label>
                 Assignees:
-                <ul className="rpgui users-container">
+                <ul
+                  className="rpgui users-container"
+                  onClick={() => setError("")}
+                >
                   {getProjectTeams(state, taskUsersListArray)}
                 </ul>
               </label>
@@ -126,6 +144,7 @@ function EditTaskForm(props) {
                 <DatePicker
                   onChange={onEnd}
                   value={endDate}
+                  minDate={new Date(startDate)}
                   className="date-size"
                 />
               </label>

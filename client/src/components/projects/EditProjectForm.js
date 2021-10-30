@@ -18,6 +18,15 @@ function EditProjectForm(props) {
   const { id, state, onSave } = props;
 
   const validate = () => {
+    if (!!!name) {
+      setError("Please enter a name");
+      return;
+    }
+    if (!!!description) {
+      setError("Please enter a description");
+      return;
+    }
+
     const selectedUsers = document
       .getElementById(makeId(id))
       .getElementsByClassName("user-list--selected");
@@ -70,6 +79,7 @@ function EditProjectForm(props) {
           onSubmit={(e) => e.preventDefault()}
           method="dialog"
         >
+          {error && <p className="error">{error}</p>}
           <label>
             Project name:
             <input
@@ -119,6 +129,7 @@ function EditProjectForm(props) {
                 <DatePicker
                   onChange={setEndDate}
                   value={endDate}
+                  minDate={new Date(startDate)}
                   className="date-size"
                 />
               </label>

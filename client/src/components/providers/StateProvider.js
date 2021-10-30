@@ -63,7 +63,13 @@ export default function StateProvider(props) {
   };
 
   const editProject = (project, id) => {
-    axios.patch(`/projects/${id}`, project).then((data) => {
+    axios.patch(`/projects/${id}`, project).then(() => {
+      updateProjectList();
+    });
+  };
+
+  const deleteProject = (id) => {
+    axios.delete(`/projects/${id}`).then(() => {
       updateProjectList();
     });
   };
@@ -150,6 +156,7 @@ export default function StateProvider(props) {
     state,
     createProject,
     editProject,
+    deleteProject,
     setCurrentProject,
     createTask,
     editTask,

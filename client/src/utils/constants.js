@@ -7,7 +7,7 @@ export const basemapWidth = 1024;
 export const basemapHeight = 704;
 
 //number of pixel a character walks at a time
-export const stepSize = 5;
+export const stepSize = 10;
 
 //corresponds to filenames in /public/sprites/skins
 export const avatarSkinArr = [

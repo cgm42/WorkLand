@@ -61,8 +61,13 @@ function TaskForm(props) {
   };
 
   const cancel = () => {
-    document.getElementById('dialog-dark-rounded').close();
+    setName('');
+    setDescription('');
+    setStartDate(new Date());
+    setEndDate(new Date());
     setShowUsers(false);
+    setError('');
+    document.getElementById('dialog-dark-rounded').close();
   };
 
   return (
@@ -71,8 +76,8 @@ function TaskForm(props) {
         type="button"
         className="nes-btn is-primary"
         onClick={() => {
-          document.getElementById('dialog-dark-rounded').showModal();
           setShowUsers(true);
+          document.getElementById('dialog-dark-rounded').showModal();
         }}
         title={'New Task'}></Button>
       <dialog

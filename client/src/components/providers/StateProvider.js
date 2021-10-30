@@ -59,12 +59,16 @@ export default function StateProvider(props) {
     axios
       .post("/projects", project)
       .then((data) => {
+        console.log("data in axios", data);
         setCurrentProject(data.data.id);
-        updateTaskList();
       })
       .then(() => {
         updateProjectList();
-      });
+      })
+      .then(() => {
+        updateTaskList();
+      })
+      .catch((error) => console.log("error", error));
   };
 
   const editProject = (project, id) => {

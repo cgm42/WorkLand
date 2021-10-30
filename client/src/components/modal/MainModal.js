@@ -9,7 +9,7 @@ import Kanban from '../kanban/Kanban';
 import TaskTable from '../tasks/TaskTable';
 import PianoComp from '../piano';
 import GuitarComp from '../guitar';
-import GameComp from '../game';
+import Tetris from '../game';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -39,7 +39,7 @@ function MainModal(props) {
           <ProjectCardList />
         </div> */}
 
-        {/* {===============cool extra features==============} */}
+        {/* {===============cool features==================} */}
         {mapRoute === 'piano' ? (
           <div>
             <PianoComp></PianoComp>
@@ -56,7 +56,7 @@ function MainModal(props) {
         )}
         {mapRoute === 'tetris' ? (
           <div>
-            <GameComp></GameComp>
+            <Tetris xSize="14" ySize="20"></Tetris>
           </div>
         ) : (
           <div />

@@ -1,31 +1,76 @@
-.game-block {
-  margin: 0;
+html,
+body {
+  background-color: black;
+}
+h1 {
+  color: white;
+}
+h3 {
+  color: Grey;
+}
+.AlignCenter {
+  margin: 0px auto;
   padding: 0;
-  width: 1.5em;
-  height: 1.5em;
-  border: 1px solid #ddd;
+  border: 10px solid;
+  border-color: #888888;
+  text-align: center;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.piece-i {
-  background-color: #ec858b;
+.ButtonAlignCenter {
+  margin: 0px auto;
+  padding: 0;
+  border: 2px solid;
+  border-color: #444444;
+  text-align: center;
+  background-color: black;
 }
-.piece-j {
-  background-color: #f1b598;
+.PlayField {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
 }
-.piece-l {
-  background-color: #f8efae;
+.WhiteText {
+  color: white;
+  background-color: black;
 }
-.piece-o {
-  background-color: #b5a677;
+.FancyBorder {
+  padding: 10px 10px;
+  border: 1px solid;
+  border-color: #aaaaaa;
 }
-.piece-s {
-  background-color: #816e56;
+.tdcol-0 {
+  color: #ffffff;
+  background-color: #ffffff;
 }
-.piece-t {
-  background-color: #b77c72;
+.tdcol-1 {
+  color: #ff0000;
+  background-color: #ff0000;
 }
-.piece-z {
-  background-color: #e3be58;
+.tdcol-2 {
+  color: #00ff00;
+  background-color: #00ff00;
 }
-.piece-preview {
-  background-color: #eee;
+.tdcol-3 {
+  color: #0000ff;
+  background-color: #0000ff;
+}
+.tdcol-4 {
+  color: #ff00ff;
+  background-color: #ff00ff;
+}
+.tdcol-5 {
+  color: #00ffff;
+  background-color: #00ffff;
+}
+.tdcol-6 {
+  color: #ff88ff;
+  background-color: #ff88ff;
+}
+.tdcol-7 {
+  color: #44ff44;
+  background-color: #44ff44;
 }

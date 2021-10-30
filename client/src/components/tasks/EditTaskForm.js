@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import Button from "../button/Button";
-import DatePicker from "react-date-picker";
-import { BiEdit } from "react-icons/bi";
-import getProjectTeams from "../../helpers/getProjectTeams";
-import getTaskTeams from "../../helpers/getTaskTeams";
+import React, { useState } from 'react';
+import Button from '../button/Button';
+import DatePicker from 'react-date-picker';
+import { BiEdit } from 'react-icons/bi';
+import getProjectTeams from '../../helpers/getProjectTeams';
+import getTaskTeams from '../../helpers/getTaskTeams';
 
 function EditTaskForm(props) {
-  const [name, setName] = useState(props.name || "");
-  const [description, setDescription] = useState(props.description || "");
+  const [name, setName] = useState(props.name || '');
+  const [description, setDescription] = useState(props.description || '');
   const [startDate, onStart] = useState(
     new Date(props.startDate) || new Date()
   );
   const [endDate, onEnd] = useState(new Date(props.endDate) || new Date());
   const [showUsers, setShowUsers] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const { id, state, onSave } = props;
 
@@ -26,7 +26,7 @@ function EditTaskForm(props) {
 
     const selectedUsers = document
       .getElementById(makeId(id))
-      .getElementsByClassName("user-list--selected");
+      .getElementsByClassName('user-list--selected');
 
     const selectedUsersIDs = [];
 
@@ -44,14 +44,14 @@ function EditTaskForm(props) {
     };
 
     setShowUsers(false);
-    setError("");
+    setError('');
     onSave(task, id);
     document.getElementById(makeId(id)).close();
   };
 
   const cancel = () => {
     setShowUsers(false);
-    setError("");
+    setError('');
     document.getElementById(makeId(id)).close();
   };
 
@@ -67,24 +67,33 @@ function EditTaskForm(props) {
           onClick={() => {
             setShowUsers(true);
             document.getElementById(makeId(id)).showModal();
-          }}
-        ></BiEdit>
+          }}></BiEdit>
       </div>
       <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
         <form
           className="form"
           autoComplete="off"
           onSubmit={(e) => e.preventDefault()}
-          method="dialog"
-        >
+          method="dialog">
           <label>
             Task name:
             <input
               value={name}
               type="text"
+              onKeyDown={(ev) => {
+                if (
+                  ev.code === 'Space' ||
+                  ev.code === 'ArrowUp' ||
+                  ev.code === 'ArrowDown' ||
+                  ev.code === 'ArrowLeft' ||
+                  ev.code === 'ArrowRight'
+                ) {
+                  ev.stopPropagation();
+                }
+              }}
               onChange={(e) => {
                 setName(e.target.value);
-                setError("");
+                setError('');
               }}
             />
           </label>
@@ -96,7 +105,18 @@ function EditTaskForm(props) {
               type="text"
               onChange={(e) => {
                 setDescription(e.target.value);
-                setError("");
+                setError('');
+              }}
+              onKeyDown={(ev) => {
+                if (
+                  ev.code === 'Space' ||
+                  ev.code === 'ArrowUp' ||
+                  ev.code === 'ArrowDown' ||
+                  ev.code === 'ArrowLeft' ||
+                  ev.code === 'ArrowRight'
+                ) {
+                  ev.stopPropagation();
+                }
               }}
             />
           </label>
@@ -132,8 +152,8 @@ function EditTaskForm(props) {
             </div>
           </div>
           <div className="cancel-submit">
-            <Button onClick={cancel} title={"cancel"}></Button>
-            <Button onClick={validate} title={"submit"}></Button>
+            <Button onClick={cancel} title={'cancel'}></Button>
+            <Button onClick={validate} title={'submit'}></Button>
           </div>
         </form>
       </dialog>

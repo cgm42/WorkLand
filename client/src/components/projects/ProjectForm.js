@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Button from "../button/Button";
-import DatePicker from "react-date-picker";
-import User from "../users/User";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import Button from '../button/Button';
+import DatePicker from 'react-date-picker';
+import User from '../users/User';
+import { useSelector } from 'react-redux';
 
 function ProjectForm(props) {
   const userState = useSelector((state) => {
@@ -10,18 +10,18 @@ function ProjectForm(props) {
     return state.user;
   });
 
-  const [name, setName] = useState(props.name || "");
-  const [description, setDescription] = useState(props.description || "");
+  const [name, setName] = useState(props.name || '');
+  const [description, setDescription] = useState(props.description || '');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [showUsers, setShowUsers] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const { usersList, onSave } = props;
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
+      'user-list--selected'
     );
 
     const selectedUsersIDs = [];
@@ -39,24 +39,24 @@ function ProjectForm(props) {
       users: selectedUsersIDs,
     };
 
-    setName("");
-    setDescription("");
+    setName('');
+    setDescription('');
     setStartDate(new Date());
     setEndDate(new Date());
     setShowUsers(false);
-    setError("");
+    setError('');
     onSave(project);
-    document.getElementById("dialog-dark-rounded").close();
+    document.getElementById('dialog-dark-rounded').close();
   };
 
   const cancel = () => {
-    setName("");
-    setDescription("");
+    setName('');
+    setDescription('');
     setStartDate(new Date());
     setEndDate(new Date());
     setShowUsers(false);
-    setError("");
-    document.getElementById("dialog-dark-rounded").close();
+    setError('');
+    document.getElementById('dialog-dark-rounded').close();
   };
 
   return (
@@ -65,20 +65,17 @@ function ProjectForm(props) {
         type="button"
         onClick={() => {
           setShowUsers(true);
-          document.getElementById("dialog-dark-rounded").showModal();
+          document.getElementById('dialog-dark-rounded').showModal();
         }}
-        title={"NEW"}
-      ></Button>
+        title={'NEW'}></Button>
       <dialog
         className="nes-dialog is-dark is-rounded"
-        id="dialog-dark-rounded"
-      >
+        id="dialog-dark-rounded">
         <form
           className="form"
           autoComplete="off"
           onSubmit={(e) => e.preventDefault()}
-          method="dialog"
-        >
+          method="dialog">
           <label>
             Project name:
             <input
@@ -86,7 +83,18 @@ function ProjectForm(props) {
               type="text"
               onChange={(e) => {
                 setName(e.target.value);
-                setError("");
+                setError('');
+              }}
+              onKeyDown={(ev) => {
+                if (
+                  ev.code === 'Space' ||
+                  ev.code === 'ArrowUp' ||
+                  ev.code === 'ArrowDown' ||
+                  ev.code === 'ArrowLeft' ||
+                  ev.code === 'ArrowRight'
+                ) {
+                  ev.stopPropagation();
+                }
               }}
             />
           </label>
@@ -98,7 +106,18 @@ function ProjectForm(props) {
               type="text"
               onChange={(e) => {
                 setDescription(e.target.value);
-                setError("");
+                setError('');
+              }}
+              onKeyDown={(ev) => {
+                if (
+                  ev.code === 'Space' ||
+                  ev.code === 'ArrowUp' ||
+                  ev.code === 'ArrowDown' ||
+                  ev.code === 'ArrowLeft' ||
+                  ev.code === 'ArrowRight'
+                ) {
+                  ev.stopPropagation();
+                }
               }}
             />
           </label>
@@ -141,8 +160,8 @@ function ProjectForm(props) {
             </div>
           </div>
           <div className="cancel-submit">
-            <Button onClick={cancel} title={"cancel"}></Button>
-            <Button onClick={validate} title={"submit"}></Button>
+            <Button onClick={cancel} title={'cancel'}></Button>
+            <Button onClick={validate} title={'submit'}></Button>
           </div>
         </form>
       </dialog>

@@ -1,5 +1,5 @@
 //web socket endpoint(our server)
-export const wsEndpoint = "ws://localhost:5080";
+export const wsEndpoint = 'ws://localhost:5080';
 
 export const navBarHeight = 40;
 //basemap size
@@ -7,16 +7,38 @@ export const basemapWidth = 1024;
 export const basemapHeight = 704;
 
 //number of pixel a character walks at a time
-export const stepSize = 10;
+export const stepSize = 8;
 
 //corresponds to filenames in /public/sprites/skins
-export const avatarSkinArr = ["f1", "f2", "f3", "dc1", "dc2"];
+export const avatarSkinArr = [
+  // 'f1',
+  // 'f2',
+  // 'f3',
+  'dc1',
+  'dc2',
+  'dc3',
+  'dc4',
+  'dc5',
+  'dc6',
+  'dc7',
+  'dc8',
+  'dc9',
+  'dc10',
+  'dc11',
+  'dc12',
+  'dc13',
+  'dc14',
+  'dc15',
+  'dc16',
+  'dc17',
+  'dc18',
+];
 
 //Zoom factor for sprite file names starting with f
 export const spriteSizeFactorF = 1.35;
 
 //Zoom factor for modern sprite files
-export const spriteSizeFactorC = 1.5;
+export const spriteSizeFactorC = 1.7;
 
 export const modifier = {
   ArrowDown: { x: 0, y: stepSize },
@@ -40,10 +62,10 @@ export const playerTemplate = {
   isJoined: true,
   x: initX * 32,
   y: initY * 32,
-  dir: "ArrowDown",
+  dir: 'ArrowDown',
   step: 0,
-  name: "local user",
-  skin: "f1",
+  name: 'local user',
+  skin: null,
 };
 //sprite animation constants
 export const spriteDimensions = { h: 32, w: 32 };
@@ -52,30 +74,34 @@ export const maxSteps = 3;
 //Project Management Assets
 const X = { walk: false, action: false, special: false };
 const O = { walk: true, action: false, special: false };
-const K = { walk: true, action: true, special: false, asset: "kanban" };
-const k = { walk: false, action: true, special: false, asset: "kanban" };
-const G = { walk: true, action: true, special: false, asset: "ganttChart" };
-const g = { walk: false, action: true, special: false, asset: "ganttChart" };
+const K = { walk: true, action: true, special: false, asset: 'kanban' };
+const k = { walk: false, action: true, special: false, asset: 'kanban' };
+const G = { walk: true, action: true, special: false, asset: 'ganttChart' };
+const g = { walk: false, action: true, special: false, asset: 'ganttChart' };
 const P = {
   walk: true,
   action: true,
   special: false,
-  asset: "projectDashboard",
+  asset: 'projectDashboard',
 };
 const p = {
   walk: false,
   action: true,
   special: false,
-  asset: "projectDashboard",
+  asset: 'projectDashboard',
 };
-const U = { walk: true, action: true, special: false, asset: "userDashboard" };
-const u = { walk: false, action: true, special: false, asset: "userDashboard" };
-const L = { walk: true, action: true, special: false, asset: "taskList" };
-const l = { walk: false, action: true, special: false, asset: "taskList" };
+const U = { walk: true, action: true, special: false, asset: 'userDashboard' };
+const u = { walk: false, action: true, special: false, asset: 'userDashboard' };
+const L = { walk: true, action: true, special: false, asset: 'taskList' };
+const l = { walk: false, action: true, special: false, asset: 'taskList' };
 
 //Cool features
-const Q = { walk: true, action: true, special: false, asset: "piano" };
-const q = { walk: false, action: true, special: false, asset: "piano" };
+const Q = { walk: true, action: true, special: false, asset: 'piano' };
+const q = { walk: false, action: true, special: false, asset: 'piano' };
+const J = { walk: true, action: true, special: false, asset: 'guitar' };
+const j = { walk: false, action: true, special: false, asset: 'guitar' };
+const T = { walk: true, action: true, special: false, asset: 'tetris' };
+const t = { walk: false, action: true, special: false, asset: 'tetris' };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [
@@ -90,8 +116,8 @@ const OFFICE_MAP = [
   [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 7
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 8
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 9
-  [X, X, X, X, X, X, X, X, X, X, q, q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 10
-  [X, O, O, O, O, O, O, O, O, O, Q, Q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 11
+  [X, X, X, X, t, t, X, j, X, X, q, q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 10
+  [X, O, O, T, T, O, J, J, O, O, Q, Q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 11
   [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 12
   [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 13
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 14

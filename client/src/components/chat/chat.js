@@ -39,8 +39,12 @@ function Chat({ canOpen }) {
   for (let key in onlineUsers) {
     userArr.push(onlineUsers[key].name);
   }
-  const userSelectList = userArr.map((e) => {
-    return <option value={e}>{e}</option>;
+  const userSelectList = userArr.map((e, i) => {
+    return (
+      <option key={i} value={e}>
+        {e}
+      </option>
+    );
   });
 
   return (
@@ -88,6 +92,10 @@ function Chat({ canOpen }) {
             {userSelectList}
           </select>
           <ReactGiphySearchbox
+            masonryConfig={[
+              { columns: 2, imageWidth: 110, gutter: 4 },
+              { mq: '280px', columns: 2, imageWidth: 140, gutter: 4 },
+            ]}
             apiKey="IqdjO72Noi1ikvZCa1ehpeiKkK7atZGd"
             onSelect={(item) => {
               hideGifSearch();

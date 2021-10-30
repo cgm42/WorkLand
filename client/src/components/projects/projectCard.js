@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { stateContext } from "../providers/StateProvider";
 import { useSelector } from "react-redux";
 import getProjectTeamsForCard from "../../helpers/getProjectTeamsForCard";
 import EditProjectForm from "./EditProjectForm";
 import DeleteProjectForm from "./DeleteProjectForm";
+import axios from "axios";
 
 export default function ProjectCard(props) {
   const userState = useSelector((state) => {
@@ -11,10 +12,20 @@ export default function ProjectCard(props) {
     return state.user;
   });
 
+  const [tasks, setTasks] = useState([]);
   const { state, editProject, deleteProject } = useContext(stateContext);
-
   const { id, name, description, startDate, endDate, setCurrentProject } =
     props;
+
+  useEffect(async () => {
+    const { data } = await axios.get(`/tasks/project/${id}`);
+    setTasks(data);
+  }, []);
+
+  const completedTasks = tasks.filter((task) => task.currentStatus === 2);
+  const percentComplete = Math.round(
+    (completedTasks.length / tasks.length) * 100
+  );
 
   const usersListArray = getProjectTeamsForCard(state, id);
 
@@ -42,8 +53,12 @@ export default function ProjectCard(props) {
       </div>
       <h1>Description:</h1>
       <p>{props.description}</p>
-      <h1>Tasks completed:</h1>
-      <p>9/10</p>
+      <h1>Completion: {percentComplete}%</h1>
+      <progress
+        className="nes-progress is-success"
+        value={percentComplete}
+        max="100"
+      ></progress>
       <h1>The team:</h1>
       {usersListArray}
     </div>

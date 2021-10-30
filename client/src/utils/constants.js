@@ -1,5 +1,5 @@
 //web socket endpoint(our server)
-export const wsEndpoint = 'ws://localhost:5080';
+export const wsEndpoint = "ws://localhost:5080";
 
 export const navBarHeight = 40;
 //basemap size
@@ -7,10 +7,10 @@ export const basemapWidth = 1024;
 export const basemapHeight = 704;
 
 //number of pixel a character walks at a time
-export const stepSize = 5;
+export const stepSize = 10;
 
 //corresponds to filenames in /public/sprites/skins
-export const avatarSkinArr = ['f1', 'f2', 'f3', 'dc1', 'dc2'];
+export const avatarSkinArr = ["f1", "f2", "f3", "dc1", "dc2"];
 
 //Zoom factor for sprite file names starting with f
 export const spriteSizeFactorF = 1.35;
@@ -40,10 +40,10 @@ export const playerTemplate = {
   isJoined: true,
   x: initX * 32,
   y: initY * 32,
-  dir: 'ArrowDown',
+  dir: "ArrowDown",
   step: 0,
-  name: 'local user',
-  skin: 'f1',
+  name: "local user",
+  skin: "f1",
 };
 //sprite animation constants
 export const spriteDimensions = { h: 32, w: 32 };
@@ -52,30 +52,30 @@ export const maxSteps = 3;
 //Project Management Assets
 const X = { walk: false, action: false, special: false };
 const O = { walk: true, action: false, special: false };
-const K = { walk: true, action: true, special: false, asset: 'kanban' };
-const k = { walk: false, action: true, special: false, asset: 'kanban' };
-const G = { walk: true, action: true, special: false, asset: 'ganttChart' };
-const g = { walk: false, action: true, special: false, asset: 'ganttChart' };
+const K = { walk: true, action: true, special: false, asset: "kanban" };
+const k = { walk: false, action: true, special: false, asset: "kanban" };
+const G = { walk: true, action: true, special: false, asset: "ganttChart" };
+const g = { walk: false, action: true, special: false, asset: "ganttChart" };
 const P = {
   walk: true,
   action: true,
   special: false,
-  asset: 'projectDashboard',
+  asset: "projectDashboard",
 };
 const p = {
   walk: false,
   action: true,
   special: false,
-  asset: 'projectDashboard',
+  asset: "projectDashboard",
 };
-const U = { walk: true, action: true, special: false, asset: 'userDashboard' };
-const u = { walk: false, action: true, special: false, asset: 'userDashboard' };
-const L = { walk: true, action: true, special: false, asset: 'taskList' };
-const l = { walk: false, action: true, special: false, asset: 'taskList' };
+const U = { walk: true, action: true, special: false, asset: "userDashboard" };
+const u = { walk: false, action: true, special: false, asset: "userDashboard" };
+const L = { walk: true, action: true, special: false, asset: "taskList" };
+const l = { walk: false, action: true, special: false, asset: "taskList" };
 
 //Cool features
-const Q = { walk: true, action: true, special: false, asset: 'piano' };
-const q = { walk: false, action: true, special: false, asset: 'piano' };
+const Q = { walk: true, action: true, special: false, asset: "piano" };
+const q = { walk: false, action: true, special: false, asset: "piano" };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [

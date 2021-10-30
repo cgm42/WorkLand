@@ -11,9 +11,9 @@ export const stepSize = 5;
 
 //corresponds to filenames in /public/sprites/skins
 export const avatarSkinArr = [
-  'f1',
-  'f2',
-  'f3',
+  // 'f1',
+  // 'f2',
+  // 'f3',
   'dc1',
   'dc2',
   'dc3',
@@ -31,13 +31,14 @@ export const avatarSkinArr = [
   'dc15',
   'dc16',
   'dc17',
+  'dc18',
 ];
 
 //Zoom factor for sprite file names starting with f
 export const spriteSizeFactorF = 1.35;
 
 //Zoom factor for modern sprite files
-export const spriteSizeFactorC = 1.5;
+export const spriteSizeFactorC = 1.7;
 
 export const modifier = {
   ArrowDown: { x: 0, y: stepSize },

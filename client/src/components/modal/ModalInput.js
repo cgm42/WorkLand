@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
-import { useDispatch } from "react-redux";
-import { avatarSkinArr } from "../../utils/constants";
-import { SELECT_AVATAR } from "../../reducers/mapReducer";
-import "./modal.css";
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import { useDispatch } from 'react-redux';
+import { avatarSkinArr } from '../../utils/constants';
+import { SELECT_AVATAR } from '../../reducers/mapReducer';
+import './modal.css';
 function ModalInput({ isOpen }) {
   const [modalIsOpen, setModalIsOpen] = useState(isOpen);
   const dispatch = useDispatch();
@@ -30,12 +30,20 @@ function ModalInput({ isOpen }) {
     </div>
   ));
 
+  const avatarArr1 = imgAvatarArr.slice(0, 6);
+  const avatarArr2 = imgAvatarArr.slice(6, 12);
+  const avatarArr3 = imgAvatarArr.slice(12);
+  const style = {
+    display: 'flex',
+  };
+
   return (
     <>
       <Modal isOpen={modalIsOpen} ariaHideApp={false}>
         <h3>Choose An Avatar</h3>
-
-        {imgAvatarArr}
+        <div style={style}>{avatarArr1}</div>
+        <div style={style}>{avatarArr2}</div>
+        <div style={style}>{avatarArr3}</div>
       </Modal>
     </>
   );

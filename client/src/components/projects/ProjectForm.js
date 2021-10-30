@@ -21,7 +21,7 @@ function ProjectForm(props) {
 
   const validate = () => {
     console.log(startDate);
-    // const startDateToNum = startDate
+    const startDateToNum = startDate;
 
     if (!!!name) {
       setError("Please enter a name");

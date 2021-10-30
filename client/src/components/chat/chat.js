@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import ReactGiphySearchbox from 'react-giphy-searchbox';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import ReactGiphySearchbox from "react-giphy-searchbox";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {
   ANNOUNCEMENT,
   SEND_DIRECT,
   CLEAR_INCOMING,
-} from '../../reducers/mapReducer';
-import { FaClipboardList } from 'react-icons/fa';
+} from "../../reducers/mapReducer";
+import { FaClipboardList } from "react-icons/fa";
 function Chat({ canOpen }) {
   const [chatboxShow, setChatboxShow] = useState(false);
   const [showGif, setShowGif] = useState(false);
-  const [receiver, setReceiver] = useState('Everyone');
+  const [receiver, setReceiver] = useState("Everyone");
   const dispatch = useDispatch();
   const { width, height, topMargin, leftMargin } = useWindowDimensions();
   const incomingGifState = useSelector((state) => state.incomingGif);
@@ -38,69 +38,83 @@ function Chat({ canOpen }) {
   for (let key in onlineUsers) {
     userArr.push(onlineUsers[key].name);
   }
-  const userSelectList = userArr.map((e) => {
-    return <option value={e}>{e}</option>;
+  const userSelectList = userArr.map((e, ind) => {
+    return (
+      <option key={ind} value={e}>
+        {e}
+      </option>
+    );
   });
 
   return (
     <>
       {canOpen && (
         <div>
-        <h1 style={{
-            left: `${leftMargin}px`,
-            top: `${topMargin - 10}px`,
-            margin: "0 15px 0", 
-            position:"absolute",
-            zIndex: -200, 
-            color:"white"
-          }}>WorkLand</h1>
-        <button
-          onClick={hideGifSearch}
-          style={{
-            zIndex: 20,
-            position: 'absolute',
-            left: `${width - leftMargin - 260}px`,
-            top: `${topMargin - 35}px`,
-            width: '200px',
-          }}>
-          Send a GIF
-        </button>
-        <FaClipboardList className="icon" style={{
-            zIndex: 20,
-            position: 'absolute',
-            left: `${width - leftMargin - 120}px`,
-            top: `${topMargin - 35}px`,
-            width: '200px',
-            color:'white'
-          }}></FaClipboardList>
+          <h1
+            style={{
+              left: `${leftMargin}px`,
+              top: `${topMargin - 10}px`,
+              margin: "0 15px 0",
+              position: "absolute",
+              zIndex: -200,
+              color: "white",
+            }}
+          >
+            WorkLand
+          </h1>
+          <button
+            onClick={hideGifSearch}
+            style={{
+              zIndex: 20,
+              position: "absolute",
+              left: `${width - leftMargin - 260}px`,
+              top: `${topMargin - 35}px`,
+              width: "200px",
+            }}
+          >
+            Send a GIF
+          </button>
+          <FaClipboardList
+            className="icon"
+            style={{
+              zIndex: 20,
+              position: "absolute",
+              left: `${width - leftMargin - 120}px`,
+              top: `${topMargin - 35}px`,
+              width: "200px",
+              color: "white",
+            }}
+          ></FaClipboardList>
         </div>
-        
       )}
       {chatboxShow && canOpen && (
         <div
           className="rpgui-container framed float"
           style={{
             zIndex: 20,
-            position: 'absolute',
+            position: "absolute",
             left: `${width / 2 + 200}px`,
             top: `${height / 2 - 100}px`,
-            width: '335px',
-            margin: "0 15px 0"
-          }}>
+            width: "335px",
+            margin: "0 15px 0",
+          }}
+        >
           <h3
             style={{
-              color: 'white',
-            }}>
+              color: "white",
+            }}
+          >
             Send a GIF!
           </h3>
-          To:{' '}
+          To:{" "}
           <select
             style={{
-              width: '100%',
+              width: "100%",
             }}
             name="pets"
             id="pet-select"
-            onChange={(event) => setReceiver(event.target.value)}>
+            onChange={(event) => setReceiver(event.target.value)}
+          >
             <option value="">Everyone</option>
             {userSelectList}
           </select>
@@ -108,11 +122,11 @@ function Chat({ canOpen }) {
             apiKey="IqdjO72Noi1ikvZCa1ehpeiKkK7atZGd"
             onSelect={(item) => {
               hideGifSearch();
-              if (receiver === 'Everyone') {
+              if (receiver === "Everyone") {
                 return dispatch(ANNOUNCEMENT({ gifObj: item }));
               }
               dispatch(SEND_DIRECT({ gifObj: item, receiverName: receiver }));
-              setReceiver('Everyone');
+              setReceiver("Everyone");
             }}
           />
         </div>
@@ -121,27 +135,29 @@ function Chat({ canOpen }) {
         <div>
           <div
             style={{
-              position: 'absolute',
+              position: "absolute",
               left: `${width / 2 + 260}px`, //260 to center the GIF within walls on the map
               top: `${height / 2 - 50}px`,
-              width: '235px',
-            }}>
+              width: "235px",
+            }}
+          >
             <p>
-              A GIF' from: {incomingGifState.senderName} to{' '}
+              A GIF' from: {incomingGifState.senderName} to{" "}
               {incomingGifState.receiverName === null
-                ? 'everyone'
+                ? "everyone"
                 : `${incomingGifState.receiverName}`}
             </p>
             <iframe
               style={{
-                width: '235px',
+                width: "235px",
               }}
               title="GIF"
               src={incomingGifState.gifObj.embed_url}
               width="320"
               height="320"
               frameBorder="0"
-              className="giphy-embed"></iframe>
+              className="giphy-embed"
+            ></iframe>
           </div>
         </div>
       )}

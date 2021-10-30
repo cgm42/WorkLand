@@ -26,14 +26,14 @@ function Chat({ canOpen }) {
     timer = setTimeout(() => {
       setShowGif(false);
       dispatch(CLEAR_INCOMING());
-    }, 4200);
+    }, 5200);
 
     // return () => {
     //   clearTimeout(timer);
     // };
   }, [incomingGifState, canOpen]);
 
-  const hideGifSearch = () => {
+  const toggleGifSearch = () => {
     setChatboxShow(!chatboxShow);
   };
   const userArr = [];
@@ -54,12 +54,13 @@ function Chat({ canOpen }) {
         playersArr[userId] !== undefined &&
         playersArr[userId].socketId && (
           <button
-            onClick={hideGifSearch}
+            className="nes-btn is-primary"
+            onClick={toggleGifSearch}
             style={{
               zIndex: 20,
               position: 'absolute',
-              left: `${width - leftMargin - 200}px`,
-              top: `${topMargin - 35}px`,
+              left: `${width - leftMargin - 205}px`,
+              top: `${topMargin - 50}px`,
               width: '200px',
             }}>
             Send a GIF
@@ -102,12 +103,19 @@ function Chat({ canOpen }) {
             width: '335px',
             margin: '0 15px 0',
           }}>
-          <h3
-            style={{
-              color: 'white',
-            }}>
-            Send a GIF!
-          </h3>
+          <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
+            <h3
+              style={{
+                color: 'white',
+              }}>
+              Send a GIF!
+            </h3>
+            <section class="icon-list">
+              <i
+                className="nes-icon close is-small"
+                onClick={() => toggleGifSearch()}></i>
+            </section>
+          </div>
           To:{' '}
           <select
             style={{
@@ -126,7 +134,7 @@ function Chat({ canOpen }) {
             ]}
             apiKey="IqdjO72Noi1ikvZCa1ehpeiKkK7atZGd"
             onSelect={(item) => {
-              hideGifSearch();
+              toggleGifSearch();
               if (receiver === 'Everyone') {
                 return dispatch(ANNOUNCEMENT({ gifObj: item }));
               }

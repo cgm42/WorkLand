@@ -20,3 +20,26 @@
 .background {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
+
+.modal-background {
+  background: url(https://64.media.tumblr.com/2b0ec5e7d4763b0cc6aaba6982be379c/tumblr_occujlvMQE1qze3hdo1_r2_500.gif) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  margin: 0;
+}
+.m:first-child {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: rotate 5s infinite;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0px 0px 15px rgba(200, 200, 200, 1);
+}

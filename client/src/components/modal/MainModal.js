@@ -8,6 +8,7 @@ import ProjectCardList from '../projects/projectCardList';
 import Kanban from '../kanban/Kanban';
 import TaskTable from '../tasks/TaskTable';
 import PianoComp from '../piano';
+import GuitarComp from '../guitar';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -30,9 +31,7 @@ function MainModal(props) {
         ) : (
           <div />
         )}
-        {mapRoute === 'projectDashboard' ? <ProjectCardList /> : (
-          <div />
-        )}
+        {mapRoute === 'projectDashboard' ? <ProjectCardList /> : <div />}
         {mapRoute === 'taskList' ? <TaskTable /> : <div />}
 
         {/* <div>
@@ -46,7 +45,14 @@ function MainModal(props) {
           </div>
         ) : (
           <div />
-        )} 
+        )}
+        {mapRoute === 'guitar' ? (
+          <div>
+            <GuitarComp></GuitarComp>
+          </div>
+        ) : (
+          <div />
+        )}
       </Modal>
     </>
   );

@@ -98,6 +98,8 @@ const l = { walk: false, action: true, special: false, asset: 'taskList' };
 //Cool features
 const Q = { walk: true, action: true, special: false, asset: 'piano' };
 const q = { walk: false, action: true, special: false, asset: 'piano' };
+const J = { walk: true, action: true, special: false, asset: 'guitar' };
+const j = { walk: false, action: true, special: false, asset: 'guitar' };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [
@@ -112,8 +114,8 @@ const OFFICE_MAP = [
   [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 7
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 8
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 9
-  [X, X, X, X, X, X, X, X, X, X, q, q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 10
-  [X, O, O, O, O, O, O, O, O, O, Q, Q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 11
+  [X, X, X, X, X, X, X, j, X, X, q, q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 10
+  [X, O, O, O, O, O, J, J, O, O, Q, Q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 11
   [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 12
   [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 13
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 14

@@ -13,6 +13,7 @@ function Map({ x }) {
   );
   const taskList = useSelector((state) => state.mapGuide.taskList);
   const piano = useSelector((state) => state.mapGuide.piano);
+  const guitar = useSelector((state) => state.mapGuide.guitar);
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
     <div
@@ -69,6 +70,13 @@ function Map({ x }) {
           image={'/sprites/action.png'}
           data={{ h: 32, w: 32, x: 0, y: 0 }}
           position={{ x: 336, y: 286 }}
+        />
+      )}
+      {guitar && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 225, y: 286 }}
         />
       )}
     </div>

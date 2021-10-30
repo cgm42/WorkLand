@@ -51,6 +51,7 @@ function Chat({ canOpen }) {
             top: `${topMargin - 10}px`,
             margin: "0 15px 0", 
             position:"absolute",
+            zIndex: -200, 
             color:"white"
           }}>WorkLand</h1>
         <button

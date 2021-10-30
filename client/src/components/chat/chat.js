@@ -13,6 +13,8 @@ function Chat({ canOpen }) {
   const [receiver, setReceiver] = useState('Everyone');
   const dispatch = useDispatch();
   const { width, height, topMargin, leftMargin } = useWindowDimensions();
+  const localId = useSelector((state) => state.players);
+  const playersArr = useSelector((state) => state.players);
   const incomingGifState = useSelector((state) => state.incomingGif);
   const onlineUsers = useSelector((state) => state.players);
 
@@ -43,19 +45,21 @@ function Chat({ canOpen }) {
 
   return (
     <>
-      {canOpen && (
-        <button
-          onClick={hideGifSearch}
-          style={{
-            zIndex: 20,
-            position: 'absolute',
-            left: `${width - leftMargin - 200}px`,
-            top: `${topMargin - 35}px`,
-            width: '200px',
-          }}>
-          Send a GIF
-        </button>
-      )}
+      {canOpen &&
+        playersArr[localId] !== undefined &&
+        playersArr[localId].skin && (
+          <button
+            onClick={hideGifSearch}
+            style={{
+              zIndex: 20,
+              position: 'absolute',
+              left: `${width - leftMargin - 200}px`,
+              top: `${topMargin - 35}px`,
+              width: '200px',
+            }}>
+            Send a GIF
+          </button>
+        )}
       {chatboxShow && canOpen && (
         <div
           className="rpgui-container framed float"

@@ -1,8 +1,30 @@
+.project-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .project-card {
-  width: 29%;
-  height: 400px;
-  margin: 0 20px 50px 20px;
-  overflow:auto;
+  width: 48%;
+  height: 500px;
+  margin: 25px 0 25px 0 !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 5px solid;
+}
+
+.project-card--selected {
+  border: 7.5px solid;
+  border-image: linear-gradient(45deg, turquoise, greenyellow) 1;
+}
+
+.project-card:hover {
+  transform: scale(1.01);
+}
+
+.project-card:active {
+  transform: scale(1);
 }
 
 .card-header {
@@ -17,41 +39,46 @@
   display: flex;
   align-items: center;
   font-size: 35px;
-
 }
 
 .edit-button {
-  color:rgb(252, 252, 252);
-  cursor: pointer;
+  color: rgb(252, 252, 252);
   transition: 1s;
   display: flex;
 }
 
 .edit-button:hover {
-  color:rgb(214, 203, 101);
+  color: rgb(214, 203, 101);
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
 }
 
 .delete-button {
-  color:rgb(252, 252, 252);
-  cursor: pointer;
+  color: rgb(252, 252, 252);
   transition: 1s;
   display: flex;
 }
 
 .delete-button:hover {
-  color:rgb(255, 14, 14);
+  color: rgb(255, 14, 14);
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
 }
 
 .project-card header {
   font-size: 25px;
-  color:rgb(252, 252, 252);
-  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38), -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
+  color: rgb(252, 252, 252);
+  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38),
+    -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
 }
 
 .project-card h1 {
   margin: 5px;
+  margin-top: 30px;
   display: flex;
-  font-size:17px
+  font-size: 17px;
 }
 
 .project-card p {
@@ -61,8 +88,9 @@
   margin-bottom: 15px;
   display: flex;
   width: 90%;
-  color:rgb(252, 252, 252);
-  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38), -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
+  color: rgb(252, 252, 252);
+  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38),
+    -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
 }
 
 /*form */
@@ -71,37 +99,37 @@
   justify-content: center;
 }
 .cancel-submit {
-  display:flex;
+  display: flex;
   justify-content: space-around;
 }
 
 .team-date-container {
-  display:flex;
+  display: flex;
   justify-content: space-around;
   margin-top: 20px;
 }
 
 .users-container {
   height: 300px;
-  overflow:auto;
+  overflow: auto;
   width: 300px;
-  padding:0
+  padding: 0;
 }
 
 .user-list {
   list-style-type: none;
   display: flex;
   margin: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
-.user-list img{
+.user-list img {
   height: 30px;
-  width:30px;
-  background-color:none;
+  width: 30px;
+  background-color: none;
 }
 
-.user-list p{
+.user-list p {
   margin-left: 10px;
   display: flex;
   justify-content: center;
@@ -113,17 +141,15 @@
 }
 
 .date {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.date-size input{
+.date-size input {
   padding: 0;
   height: 35px !important;
   font-size: 12px;
   margin: 0px 12px;
   background-color: #212529;
 }
-
-

@@ -18,7 +18,6 @@ function Map({ x }) {
     <div
       id="map"
       style={{
-        zIndex: -1,
         position: 'absolute',
         top: `${topMargin}px`,
         left: `${leftMargin}px`,

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 function ProjectForm(props) {
   const userState = useSelector((state) => {
-    console.log("state:", state);
+    // console.log("state:", state);
     return state.user;
   });
 
@@ -17,7 +17,7 @@ function ProjectForm(props) {
   const [showUsers, setShowUsers] = useState(false);
   const [error, setError] = useState("");
 
-  const { usersList, setShowForm, onSave, setEdit } = props;
+  const { usersList, onSave } = props;
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName(
@@ -27,7 +27,7 @@ function ProjectForm(props) {
     const selectedUsersIDs = [];
 
     for (const user of selectedUsers) {
-      selectedUsersIDs.push(user.id);
+      selectedUsersIDs.push(parseInt(user.id));
     }
 
     const project = {
@@ -67,7 +67,7 @@ function ProjectForm(props) {
           setShowUsers(true);
           document.getElementById("dialog-dark-rounded").showModal();
         }}
-        title={"New Project"}
+        title={"NEW"}
       ></Button>
       <dialog
         className="nes-dialog is-dark is-rounded"

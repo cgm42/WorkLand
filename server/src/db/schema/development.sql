@@ -12,6 +12,7 @@ VALUES
 
 INSERT INTO projects (creator_id, name, description, start_date, end_date, background_img)
 VALUES
+  (null, 'Workland Walkthrough', 'A project to get new users acquainted with Workland!', null, null, ''),
   (2, 'Final Project', 'Create a tech-focused project management system with an integrated virtual meeting room', '2021-10-21', '2021-11-04', ''),
   (5, 'Refactor legacy code', 'Legacy code test coverage is currently only 20% and we introduce new bugs every time we add features. Let''s change that with a complete refactor.', '2021-03-10', '2022-03-10', ''),
   (1, 'Continued education', 'This purpose of this project is to allocate time blocks for everyone to advance their learning and keep their knowledge up to date', '2022-01-02', '2022-02-01', ''),
@@ -23,25 +24,25 @@ WHERE projects.id = 4;
 
 INSERT INTO users_projects (user_id, project_id, role)
 VALUES
-  (1, 1, 'Backend Dev'),
-  (2, 1, 'Backend Dev'),
-  (3, 1, 'Frontend Dev'),
-  (7, 1, 'Lead Dev'),
-  (4, 2, 'Fullstack Dev'),
-  (5, 2, 'QA & Testing'),
-  (6, 2, 'Lead Dev'),
-  (1, 3, null),
-  (2, 3, null),
-  (3, 3, null),
-  (4, 3, null),
-  (5, 3, null),
-  (6, 3, null),
-  (7, 3, null),
-  (8, 3, null),
-  (9, 3, null),
-  (4, 4, 'Fullstack Dev'),
-  (7, 4, 'Lead Dev'),
-  (9, 4, 'QA & Testing');
+  (1, 2, 'Backend Dev'),
+  (2, 2, 'Backend Dev'),
+  (3, 2, 'Frontend Dev'),
+  (7, 2, 'Lead Dev'),
+  (4, 3, 'Fullstack Dev'),
+  (5, 3, 'QA & Testing'),
+  (6, 3, 'Lead Dev'),
+  (1, 4, null),
+  (2, 4, null),
+  (3, 4, null),
+  (4, 4, null),
+  (5, 4, null),
+  (6, 4, null),
+  (7, 4, null),
+  (8, 4, null),
+  (9, 4, null),
+  (4, 5, 'Fullstack Dev'),
+  (7, 5, 'Lead Dev'),
+  (9, 5, 'QA & Testing');
 
 
 INSERT INTO sprints (project_id, name, description, start_date, end_date)
@@ -55,36 +56,12 @@ WHERE sprints.id = 2;
 
 INSERT INTO tasks (project_id, sprint_id, name, description, start_date, end_date, priority_level)
 VALUES
-  (1, 1, 'Create tables and insert statements for db', null, '2021-10-21', '2021-10-21', 2),
-  (1, 1, 'Project layout and barebones css', 'Need to get the jist of our vision presentable to Andy', '2021-10-21', '2021-10-22', 2),
-  (1, null, 'State management configuration', 'Figure out which states we will need to track and where', '2021-10-21', '2021-10-22', 1),
-  (2, 2, 'Set schedule for daily standups/meetings', null, '2021-03-12', '2021-03-12', 2),
-  (2, null, 'Refactor My Cart', 'Put state management into a reducer', '2021-04-15', '2021-04-16', 1),
-  (3, null, 'React tutorial', 'Watch lecture on React', '2022-01-02', '2021-01-02', 0),
-  (3, null, 'Redux-Toolkit introduction', 'Do the tutorial on state management with Redux-Toolkit', '2022-01-10', '2022-01-10', 1),
-  (4, null, 'Initialize project', 'Create project file structure and necessary initial setup files', '2021-04-19', '2021-04-20', 2),
-  (4, null, 'Schdedule pair programming sessions', 'Allow everyone an opportunity to choose their partners, encourage senior-junior pairing', '2021-04-20', '2021-04-20', 1);
-
-UPDATE tasks
-SET current_status = 2
-WHERE tasks.id IN (1, 4, 5, 8, 9);
-
-INSERT INTO users_tasks (user_id, task_id)
-VALUES
-  (1, 1),
-  (3, 2),
-  (2, 3),
-  (6, 4),
-  (4, 5),
-  (4, 6),
-  (5, 6),
-  (8, 6),
-  (9, 6),
-  (1, 7),
-  (2, 7),
-  (3, 7),
-  (7, 8),
-  (7, 9);
+  (1, null, 'Click on the "Status" column!', 'Clicking on the column toggles the status of your task!', '2021-11-04', '2021-11-05', 0),
+  (1, null, 'Click on the "Priority" column!', 'Click on the column toggles the priority of your task!', '2021-11-05', '2021-11-06', 0),
+  (1, null, 'Go discover your Kanban Board!', 'The Kanban board is another way to manage your tasks'' status. Simply drag and drop!', '2021-11-06', '2021-11-07', 0),
+  (1, null, 'Go discover your Gantt Chart!', 'The Gantt Chart is the best way to view the timeline of your tasks for a proejct.', '2021-11-07', '2021-11-08', 0),
+  (1, null, 'Check out your user dashboard!', 'Here you can see relevent information about yourself.', '2021-11-08', '2021-11-09', 0),
+  (1, null, 'Send a gif!', 'Click on the "Send A Gif" button to send a gif to an individual or all users!', '2021-11-09', '2021-11-10', 0);
 
 INSERT INTO meetings (name, description, date, start_time, end_time)
 VALUES

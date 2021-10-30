@@ -16,13 +16,15 @@ const Dashboard = () => {
   const mapGuideState = useSelector((state) => state.mapGuide);
 
   return (
-    <div className="dashboard-layout">
+    <div className="dashboard-layout stars" id="snow">
+    <div className="twinkling">
       {modalCanOpen && playerNearGuide && <MainModal isOpen={true} />}
       {!(modalCanOpen && playerNearGuide) && <MainNav ></MainNav>}
       <ModalInput isOpen={true} />
       <Map x={0} />
       <Players />
       {<Chat canOpen={!(modalCanOpen && playerNearGuide)} />}
+    </div>
     </div>
   );
 };

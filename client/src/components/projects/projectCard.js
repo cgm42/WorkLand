@@ -9,7 +9,7 @@ import classNames from "classnames";
 
 export default function ProjectCard(props) {
   const userState = useSelector((state) => {
-    console.log("state:", state);
+    // console.log("state:", state);
     return state.user;
   });
 

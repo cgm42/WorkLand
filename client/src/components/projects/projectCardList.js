@@ -39,7 +39,6 @@ function ProjectCardList(props) {
     <div className="rpgui-content rpgui-container framed">
       <div className="welcome">
         <h1>Project Dashboard</h1>
-        <p>{state.tasks.length}</p>
       </div>
       <div className="new-project">
         <ProjectForm usersList={state.users} onSave={createProject} />

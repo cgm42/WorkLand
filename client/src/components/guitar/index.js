@@ -8,12 +8,15 @@ function GuitarComp() {
   const { play } = useSound({ fretting: strings, tuning: standard });
 
   return (
-    <Guitar
-      strings={strings}
-      renderFinger={getRenderFingerSpn(standard)}
-      playOnHover
-      onPlay={play}
-    />
+    <>
+      <h3>Play the guitar with your mouse!</h3>
+      <Guitar
+        strings={strings}
+        renderFinger={getRenderFingerSpn(standard)}
+        playOnHover
+        onPlay={play}
+      />
+    </>
   );
 }
 

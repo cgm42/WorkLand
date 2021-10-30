@@ -79,7 +79,7 @@ function Chat({ canOpen }) {
             WorkLand
           </h1>
 
-          <FaClipboardList
+          {/* <FaClipboardList
             className="icon"
             style={{
               zIndex: 20,
@@ -88,7 +88,7 @@ function Chat({ canOpen }) {
               top: `${topMargin - 35}px`,
               width: '200px',
               color: 'white',
-            }}></FaClipboardList>
+            }}></FaClipboardList> */}
         </div>
       )}
       {chatboxShow && canOpen && (

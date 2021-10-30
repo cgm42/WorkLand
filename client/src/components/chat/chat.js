@@ -59,11 +59,12 @@ function Chat({ canOpen }) {
             onClick={toggleGifSearch}
             style={{
               zIndex: 20,
-              position: 'absolute',
+              position: "absolute",
               left: `${width - leftMargin - 205}px`,
               top: `${topMargin - 50}px`,
-              width: '200px',
-            }}>
+              width: "200px",
+            }}
+          >
             Send a GIF
           </button>
         )}
@@ -73,44 +74,12 @@ function Chat({ canOpen }) {
             style={{
               left: `${leftMargin}px`,
               top: `${topMargin - 10}px`,
-<<<<<<< HEAD
               margin: "0 15px 0",
               position: "absolute",
               zIndex: -200,
               color: "white",
             }}
           >
-            WorkLand
-          </h1>
-          <button
-            onClick={hideGifSearch}
-            style={{
-              zIndex: 20,
-              position: "absolute",
-              left: `${width - leftMargin - 260}px`,
-              top: `${topMargin - 35}px`,
-              width: "200px",
-            }}
-          >
-            Send a GIF
-          </button>
-          <FaClipboardList
-            className="icon"
-            style={{
-              zIndex: 20,
-              position: "absolute",
-              left: `${width - leftMargin - 120}px`,
-              top: `${topMargin - 35}px`,
-              width: "200px",
-              color: "white",
-            }}
-          ></FaClipboardList>
-=======
-              margin: '0 15px 0',
-              position: 'absolute',
-              zIndex: -200,
-              color: 'white',
-            }}>
             WorkLand
           </h1>
 
@@ -124,7 +93,6 @@ function Chat({ canOpen }) {
               width: '200px',
               color: 'white',
             }}></FaClipboardList> */}
->>>>>>> main
         </div>
       )}
       {chatboxShow && canOpen && (
@@ -135,43 +103,32 @@ function Chat({ canOpen }) {
             position: "absolute",
             left: `${width / 2 + 200}px`,
             top: `${height / 2 - 100}px`,
-<<<<<<< HEAD
             width: "335px",
             margin: "0 15px 0",
           }}
         >
-          <h3
-            style={{
-              color: "white",
-            }}
-          >
-            Send a GIF!
-          </h3>
-          To:{" "}
-=======
-            width: '335px',
-            margin: '0 15px 0',
-          }}>
-          <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
+          <div style={{ display: "flex", "justify-content": "space-between" }}>
             <h3
               style={{
-                color: 'white',
-              }}>
+                color: "white",
+              }}
+            >
               Send a GIF!
             </h3>
             <section class="icon-list">
               <i
                 className="nes-icon close is-small nes-pointer"
-                onClick={() => toggleGifSearch()}></i>
+                onClick={() => toggleGifSearch()}
+              ></i>
             </section>
           </div>
           <div
             style={{
-              color: 'white',
-            }}>
-            To:{' '}
+              color: "white",
+            }}
+          >
+            To:{" "}
           </div>
->>>>>>> main
           <select
             style={{
               width: "100%",
@@ -186,17 +143,12 @@ function Chat({ canOpen }) {
           <ReactGiphySearchbox
             masonryConfig={[
               { columns: 2, imageWidth: 110, gutter: 4 },
-              { mq: '280px', columns: 2, imageWidth: 140, gutter: 4 },
+              { mq: "280px", columns: 2, imageWidth: 140, gutter: 4 },
             ]}
             apiKey="IqdjO72Noi1ikvZCa1ehpeiKkK7atZGd"
             onSelect={(item) => {
-<<<<<<< HEAD
-              hideGifSearch();
-              if (receiver === "Everyone") {
-=======
               toggleGifSearch();
-              if (receiver === 'Everyone') {
->>>>>>> main
+              if (receiver === "Everyone") {
                 return dispatch(ANNOUNCEMENT({ gifObj: item }));
               }
               dispatch(SEND_DIRECT({ gifObj: item, receiverName: receiver }));
@@ -208,64 +160,40 @@ function Chat({ canOpen }) {
       {showGif && canOpen && (
         <div
           style={{
-            display: 'flex',
-            position: 'absolute',
-            flexDirection: 'column',
+            display: "flex",
+            position: "absolute",
+            flexDirection: "column",
             left: `${width / 2 + 260}px`, //260 to center the GIF within walls on the map
             top: `${height / 2 - 70}px`,
-          }}>
+          }}
+        >
           <p
             style={{
-<<<<<<< HEAD
-              position: "absolute",
-              left: `${width / 2 + 260}px`, //260 to center the GIF within walls on the map
-              top: `${height / 2 - 50}px`,
               width: "235px",
+              marginBottom: "0px !important",
+              padding: "10px 10px 10px 10px",
+              justifyContent: "center",
             }}
+            className="nes-balloon from-right"
           >
-            <p>
-              A GIF' from: {incomingGifState.senderName} to{" "}
-              {incomingGifState.receiverName === null
-                ? "everyone"
-                : `${incomingGifState.receiverName}`}
-            </p>
-            <iframe
-              style={{
-                width: "235px",
-              }}
-              title="GIF"
-              src={incomingGifState.gifObj.embed_url}
-              width="320"
-              height="320"
-              frameBorder="0"
-              className="giphy-embed"
-            ></iframe>
-          </div>
-=======
-              width: '235px',
-              marginBottom: '0px !important',
-              padding: '10px 10px 10px 10px',
-              justifyContent: 'center',
-            }}
-            className="nes-balloon from-right">
-            A GIF' from: {incomingGifState.senderName} to{' '}
+            A GIF' from: {incomingGifState.senderName} to{" "}
             {incomingGifState.receiverName === null
-              ? 'everyone'
+              ? "everyone"
               : `${incomingGifState.receiverName}`}
           </p>
 
           <iframe
             style={{
-              width: '235px',
-              justifyContent: 'center',
+              width: "235px",
+              justifyContent: "center",
             }}
             title="GIF"
             src={incomingGifState.gifObj.embed_url}
             width="320"
             height="320"
             frameBorder="0"
-            className="giphy-embed"></iframe>
->>>>>>> main
+            className="giphy-embed"
+          ></iframe>
         </div>
       )}
     </>

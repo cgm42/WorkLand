@@ -9,6 +9,7 @@ import Kanban from '../kanban/Kanban';
 import TaskTable from '../tasks/TaskTable';
 import PianoComp from '../piano';
 import GuitarComp from '../guitar';
+import GameComp from '../game';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -49,6 +50,13 @@ function MainModal(props) {
         {mapRoute === 'guitar' ? (
           <div>
             <GuitarComp></GuitarComp>
+          </div>
+        ) : (
+          <div />
+        )}
+        {mapRoute === 'tetris' ? (
+          <div>
+            <GameComp></GameComp>
           </div>
         ) : (
           <div />

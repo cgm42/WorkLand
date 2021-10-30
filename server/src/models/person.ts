@@ -43,7 +43,6 @@ async function createPersonByGitHub(
       [insertedUserId]
     );
     for (const taskId of taskIds) {
-      console.log("user id and task id", insertedUserId, taskId);
       await client.query(
         `
       INSERT INTO users_tasks (user_id, task_id)

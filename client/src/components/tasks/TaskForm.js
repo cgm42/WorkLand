@@ -12,7 +12,7 @@ function TaskForm(props) {
   const [showUsers, setShowUsers] = useState(false);
   const [error, setError] = useState("");
 
-  const { state, onSave, projectID, setEdit } = props;
+  const { state, onSave, projectID } = props;
 
   const team = state.projectTeams.filter((team) => {
     return team.projectId === state.current_project;
@@ -72,15 +72,17 @@ function TaskForm(props) {
 
   return (
     <div>
-      <Button
-        type="button"
-        className="nes-btn is-primary"
-        onClick={() => {
-          setShowUsers(true);
-          document.getElementById("dialog-dark-rounded").showModal();
-        }}
-        title={"New Task"}
-      ></Button>
+      {state.current_project !== 1 && (
+        <Button
+          type="button"
+          className="nes-btn is-primary"
+          onClick={() => {
+            setShowUsers(true);
+            document.getElementById("dialog-dark-rounded").showModal();
+          }}
+          title={"New Task"}
+        ></Button>
+      )}
       <dialog
         className="nes-dialog is-dark is-rounded"
         id="dialog-dark-rounded"

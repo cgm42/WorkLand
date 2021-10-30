@@ -156,7 +156,7 @@ function TaskForm(props) {
               <label>
                 End date:
                 <DatePicker
-                  onChange={setStartDate}
+                  onChange={setEndDate}
                   value={endDate}
                   className="date-size"
                 />

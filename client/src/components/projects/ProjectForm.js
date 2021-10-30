@@ -17,9 +17,21 @@ function ProjectForm(props) {
   const [showUsers, setShowUsers] = useState(false);
   const [error, setError] = useState("");
 
-  const { usersList, setShowForm, onSave, setEdit } = props;
+  const { usersList, onSave } = props;
 
   const validate = () => {
+    console.log(startDate);
+    // const startDateToNum = startDate
+
+    if (!!!name) {
+      setError("Please enter a name");
+      return;
+    }
+    if (!!!description) {
+      setError("Please enter a description");
+      return;
+    }
+
     const selectedUsers = document.getElementsByClassName(
       "user-list--selected"
     );
@@ -79,6 +91,7 @@ function ProjectForm(props) {
           onSubmit={(e) => e.preventDefault()}
           method="dialog"
         >
+          {error && <p className="error">{error}</p>}
           <label>
             Project name:
             <input

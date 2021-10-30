@@ -112,7 +112,7 @@ function Chat({ canOpen }) {
             </h3>
             <section class="icon-list">
               <i
-                className="nes-icon close is-small"
+                className="nes-icon close is-small nes-pointer"
                 onClick={() => toggleGifSearch()}></i>
             </section>
           </div>

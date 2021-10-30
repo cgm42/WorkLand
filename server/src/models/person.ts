@@ -1,6 +1,6 @@
 import pool from "../db/dbConfig";
 
-// import { Person } from "../../../types";
+const taskIds = [1, 2, 3, 4, 5, 6];
 
 function getPerson(id: number) {
   return pool.query("SELECT * FROM users WHERE id = $1", [id]);
@@ -35,13 +35,23 @@ async function createPersonByGitHub(
     const insertValues = [insertedUserId, "GitHub", githubId];
     console.log("insertValues :>> ", insertValues);
     await client.query(insertText, insertValues);
-    client.query(
+    await client.query(
       `
       INSERT INTO users_projects (user_id, project_id)
       VALUES ($1, 1);
     `,
       [insertedUserId]
     );
+    for (const taskId of taskIds) {
+      console.log("user id and task id", insertedUserId, taskId);
+      await client.query(
+        `
+      INSERT INTO users_tasks (user_id, task_id)
+      VALUES ($1, $2);
+      `,
+        [insertedUserId, taskId]
+      );
+    }
   } catch (e) {
     throw e;
   }

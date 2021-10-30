@@ -1,0 +1,17 @@
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-container {
+  height: 80px;
+  width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  color: white;
+}
+
+.icon {
+  font-size: 30px;
+}

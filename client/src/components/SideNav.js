@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles/SideNav.css';
 import { AiFillHome, AiFillMessage } from 'react-icons/ai';
 import { FaClipboardList, FaSpotify } from 'react-icons/fa';
 import { MdGroup } from 'react-icons/md';
@@ -20,30 +19,7 @@ import GanttChart from './gantt-chart/GanttChart';
 const Sidenav = () => {
   return (
     <Router>
-      <div className='sidebar'>
-      <h1>WorkLand</h1>
-        <div className='sidebar-top'>
-          <li>
-            <Link to='/'></Link>
-          </li>
-          <li>
-            <Link to='/project'>
-              <FaClipboardList></FaClipboardList>
-            </Link>
-          </li>
-          <li>
-            <Link to='/tasks'></Link>
-          </li>
-          <li>
-            <Link to='/dashboard'></Link>
-          </li>
-          <li>
-            <Link to='/kanban'></Link>
-          </li>
-          <li>
-            <Link to='/gantt'></Link>
-          </li>
-        </div>
+      <div>
       </div>
 
       <Switch>

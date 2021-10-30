@@ -1,8 +1,30 @@
+.project-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .project-card {
-  width: 29%;
-  height: 400px;
-  margin: 0 20px 50px 20px;
-  overflow: auto;
+  width: 48%;
+  height: 500px;
+  margin: 25px 0 25px 0 !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 5px solid;
+}
+
+.project-card--selected {
+  border: 7.5px solid;
+  border-image: linear-gradient(45deg, turquoise, greenyellow) 1;
+}
+
+.project-card:hover {
+  transform: scale(1.01);
+}
+
+.project-card:active {
+  transform: scale(1);
 }
 
 .card-header {
@@ -21,24 +43,28 @@
 
 .edit-button {
   color: rgb(252, 252, 252);
-  cursor: pointer;
   transition: 1s;
   display: flex;
 }
 
 .edit-button:hover {
   color: rgb(214, 203, 101);
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
 }
 
 .delete-button {
   color: rgb(252, 252, 252);
-  cursor: pointer;
   transition: 1s;
   display: flex;
 }
 
 .delete-button:hover {
   color: rgb(255, 14, 14);
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
 }
 
 .project-card header {
@@ -50,6 +76,7 @@
 
 .project-card h1 {
   margin: 5px;
+  margin-top: 30px;
   display: flex;
   font-size: 17px;
 }
@@ -93,7 +120,7 @@
   list-style-type: none;
   display: flex;
   margin: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .user-list img {

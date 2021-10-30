@@ -2,6 +2,7 @@ export const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 export const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 export const SET_TASK_STATUS = "SET_TASK_STATUS";
 export const SET_TASK_PRIORITY = "SET_TASK_PRIORITY";
+export const ADD_CREATED_PROJECT = "ADD_CREATED_PROJECT";
 
 export default function applicationDataReducer(state, action) {
   if (reducers[action.type]) {
@@ -43,6 +44,16 @@ const setCurrentProject = (state, action) => {
   return newState;
 };
 
+const addCreatedProject = (state, action) => {
+  return {
+    ...state,
+    current_project: action.project.id,
+    projects: [...state.projects, action.project],
+    tasks: [],
+    projectTeams: action.projectTeams,
+  };
+};
+
 const updateTaskStatus = (state, action) => {
   const tasks = giveTasksIndices(action.tasks);
   const newState = {
@@ -64,6 +75,10 @@ const updateTaskPriority = (state, action) => {
 };
 
 const giveTasksIndices = (tasks) => {
+  if (tasks.length === 0) {
+    return [];
+  }
+
   const column1 = tasks
     .filter((task) => task.currentStatus === 3)
     .map((task, index) => {
@@ -99,4 +114,5 @@ const reducers = {
   SET_CURRENT_PROJECT: setCurrentProject,
   SET_TASK_STATUS: updateTaskStatus,
   SET_TASK_PRIORITY: updateTaskPriority,
+  ADD_CREATED_PROJECT: addCreatedProject,
 };

@@ -8,6 +8,7 @@ import ProjectCardList from '../projects/projectCardList';
 import Kanban from '../kanban/Kanban';
 import TaskTable from '../tasks/TaskTable';
 import PianoComp from '../piano';
+import GanttChart from '../gantt-chart/GanttChart';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -26,7 +27,7 @@ function MainModal(props) {
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}
         {mapRoute === 'ganttChart' ? (
-          <div>gantt chart lives here</div>
+          <GanttChart></GanttChart>
         ) : (
           <div />
         )}

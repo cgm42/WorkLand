@@ -10,6 +10,8 @@ import Button from "../button/Button";
 function TaskTable(props) {
   const { state, createTask } = useContext(stateContext);
 
+  console.log("----tasks in task table-----", state.tasks);
+
   return (
     <div className="rpgui-content">
       <div className="dashboard-layout rpgui-container framed-golden-2">

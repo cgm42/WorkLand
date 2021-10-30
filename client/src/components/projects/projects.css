@@ -94,6 +94,10 @@
 }
 
 /*form */
+
+.form label {
+  
+}
 .new-project {
   display: flex;
   justify-content: center;

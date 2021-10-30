@@ -120,6 +120,7 @@ inside your html file.
   padding-left: 35px;
   padding-right: 35px;
   overflow: visible;
+  font-size:17px;
 }
 
 /* button hover */
@@ -792,7 +793,7 @@ ul.rpgui-list-imp {
   /* color and border */
   color: white;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-  font-size: 1em;
+  font-size: 17px;
   line-height: 20px;
   display: inline;
 }

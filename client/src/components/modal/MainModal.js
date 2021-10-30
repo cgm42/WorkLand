@@ -36,7 +36,7 @@ function MainModal(props) {
           <ProjectCardList />
         </div> */}
 
-        {/* {===============cool features==================} */}
+        {/* {===============cool extra features==================} */}
         {mapRoute === 'piano' ? (
           <div>
             <PianoComp></PianoComp>

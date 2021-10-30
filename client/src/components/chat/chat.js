@@ -116,7 +116,12 @@ function Chat({ canOpen }) {
                 onClick={() => toggleGifSearch()}></i>
             </section>
           </div>
-          To:{' '}
+          <div
+            style={{
+              color: 'white',
+            }}>
+            To:{' '}
+          </div>
           <select
             style={{
               width: '100%',
@@ -145,31 +150,39 @@ function Chat({ canOpen }) {
         </div>
       )}
       {showGif && canOpen && (
-        <div>
-          <div
+        <div
+          style={{
+            display: 'flex',
+            position: 'absolute',
+            flexDirection: 'column',
+            left: `${width / 2 + 260}px`, //260 to center the GIF within walls on the map
+            top: `${height / 2 - 70}px`,
+          }}>
+          <p
             style={{
-              position: 'absolute',
-              left: `${width / 2 + 260}px`, //260 to center the GIF within walls on the map
-              top: `${height / 2 - 50}px`,
               width: '235px',
-            }}>
-            <p>
-              A GIF' from: {incomingGifState.senderName} to{' '}
-              {incomingGifState.receiverName === null
-                ? 'everyone'
-                : `${incomingGifState.receiverName}`}
-            </p>
-            <iframe
-              style={{
-                width: '235px',
-              }}
-              title="GIF"
-              src={incomingGifState.gifObj.embed_url}
-              width="320"
-              height="320"
-              frameBorder="0"
-              className="giphy-embed"></iframe>
-          </div>
+              marginBottom: '0px !important',
+              padding: '10px 10px 10px 10px',
+              justifyContent: 'center',
+            }}
+            className="nes-balloon from-right">
+            A GIF' from: {incomingGifState.senderName} to{' '}
+            {incomingGifState.receiverName === null
+              ? 'everyone'
+              : `${incomingGifState.receiverName}`}
+          </p>
+
+          <iframe
+            style={{
+              width: '235px',
+              justifyContent: 'center',
+            }}
+            title="GIF"
+            src={incomingGifState.gifObj.embed_url}
+            width="320"
+            height="320"
+            frameBorder="0"
+            className="giphy-embed"></iframe>
         </div>
       )}
     </>

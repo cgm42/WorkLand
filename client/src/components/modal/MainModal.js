@@ -10,6 +10,7 @@ import TaskTable from '../tasks/TaskTable';
 import PianoComp from '../piano';
 import GuitarComp from '../guitar';
 import Tetris from '../game';
+import GanttChart from '../gantt-chart/GanttChart';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -27,11 +28,7 @@ function MainModal(props) {
         {/* {===============project management features==========} */}
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}
-        {mapRoute === 'ganttChart' ? (
-          <div>gantt chart lives here</div>
-        ) : (
-          <div />
-        )}
+        {mapRoute === 'ganttChart' ? <GanttChart></GanttChart> : <div />}
         {mapRoute === 'projectDashboard' ? <ProjectCardList /> : <div />}
         {mapRoute === 'taskList' ? <TaskTable /> : <div />}
 

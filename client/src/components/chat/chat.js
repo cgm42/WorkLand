@@ -7,6 +7,7 @@ import {
   SEND_DIRECT,
   CLEAR_INCOMING,
 } from '../../reducers/mapReducer';
+import { FaClipboardList } from 'react-icons/fa';
 function Chat({ canOpen }) {
   const [chatboxShow, setChatboxShow] = useState(false);
   const [showGif, setShowGif] = useState(false);
@@ -64,6 +65,32 @@ function Chat({ canOpen }) {
             Send a GIF
           </button>
         )}
+      {canOpen && (
+        <div>
+          <h1
+            style={{
+              left: `${leftMargin}px`,
+              top: `${topMargin - 10}px`,
+              margin: '0 15px 0',
+              position: 'absolute',
+              zIndex: -200,
+              color: 'white',
+            }}>
+            WorkLand
+          </h1>
+
+          <FaClipboardList
+            className="icon"
+            style={{
+              zIndex: 20,
+              position: 'absolute',
+              left: `${width - leftMargin - 120}px`,
+              top: `${topMargin - 35}px`,
+              width: '200px',
+              color: 'white',
+            }}></FaClipboardList>
+        </div>
+      )}
       {chatboxShow && canOpen && (
         <div
           className="rpgui-container framed float"
@@ -73,6 +100,7 @@ function Chat({ canOpen }) {
             left: `${width / 2 + 200}px`,
             top: `${height / 2 - 100}px`,
             width: '335px',
+            margin: '0 15px 0',
           }}>
           <h3
             style={{

@@ -13,7 +13,7 @@ function Chat({ canOpen }) {
   const [receiver, setReceiver] = useState('Everyone');
   const dispatch = useDispatch();
   const { width, height, topMargin, leftMargin } = useWindowDimensions();
-  const localId = useSelector((state) => state.players);
+  const userId = useSelector((state) => state.user.id);
   const playersArr = useSelector((state) => state.players);
   const incomingGifState = useSelector((state) => state.incomingGif);
   const onlineUsers = useSelector((state) => state.players);
@@ -46,8 +46,8 @@ function Chat({ canOpen }) {
   return (
     <>
       {canOpen &&
-        playersArr[localId] !== undefined &&
-        playersArr[localId].skin && (
+        playersArr[userId] !== undefined &&
+        playersArr[userId].socketId && (
           <button
             onClick={hideGifSearch}
             style={{

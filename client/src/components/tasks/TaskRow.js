@@ -64,23 +64,25 @@ export default function TaskRow(props) {
       <td>
         <div className="name-icons">
           {name}
-          <div className="edit-delete">
-            <EditTaskForm
-              state={state}
-              id={id}
-              name={name}
-              description={description}
-              priority={priority}
-              startDate={startDate}
-              endDate={endDate}
-              onSave={editTask}
-            />
-            <DeleteTaskForm
-              id={id}
-              onConfirm={deleteTask}
-              className="delete-icon"
-            ></DeleteTaskForm>
-          </div>
+          {state.current_project !== 1 && (
+            <div className="edit-delete">
+              <EditTaskForm
+                state={state}
+                id={id}
+                name={name}
+                description={description}
+                priority={priority}
+                startDate={startDate}
+                endDate={endDate}
+                onSave={editTask}
+              />
+              <DeleteTaskForm
+                id={id}
+                onConfirm={deleteTask}
+                className="delete-icon"
+              ></DeleteTaskForm>
+            </div>
+          )}
         </div>
       </td>
       <td className="task-user-container">{taskUsersListArray}</td>

@@ -34,7 +34,7 @@ export default function StateProvider(props) {
           projects: all[1].data,
           projectTeams: all[2].data,
           tasks: all[3].data,
-          taskTeams: all[3].data,
+          taskTeams: all[4].data,
         },
       });
     });
@@ -59,6 +59,7 @@ export default function StateProvider(props) {
     axios.post("/projects", project).then((data) => {
       setCurrentProject(data.data.id);
       updateProjectList();
+      updateTaskList();
     });
   };
 

@@ -8,6 +8,8 @@ import ProjectCardList from '../projects/projectCardList';
 import Kanban from '../kanban/Kanban';
 import TaskTable from '../tasks/TaskTable';
 import PianoComp from '../piano';
+import GuitarComp from '../guitar';
+import Tetris from '../game';
 import GanttChart from '../gantt-chart/GanttChart';
 function MainModal(props) {
   const dispatch = useDispatch();
@@ -26,28 +28,36 @@ function MainModal(props) {
         {/* {===============project management features==========} */}
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}
-        {mapRoute === 'ganttChart' ? (
-          <GanttChart></GanttChart>
-        ) : (
-          <div />
-        )}
-        {mapRoute === 'projectDashboard' ? <ProjectCardList /> : (
-          <div />
-        )}
+        {mapRoute === 'ganttChart' ? <GanttChart></GanttChart> : <div />}
+        {mapRoute === 'projectDashboard' ? <ProjectCardList /> : <div />}
         {mapRoute === 'taskList' ? <TaskTable /> : <div />}
 
         {/* <div>
           <ProjectCardList />
         </div> */}
 
-        {/* {===============cool extra features==============} */}
+        {/* {===============cool extra features==================} */}
         {mapRoute === 'piano' ? (
           <div>
             <PianoComp></PianoComp>
           </div>
         ) : (
           <div />
-        )} 
+        )}
+        {mapRoute === 'guitar' ? (
+          <div>
+            <GuitarComp></GuitarComp>
+          </div>
+        ) : (
+          <div />
+        )}
+        {mapRoute === 'tetris' ? (
+          <div>
+            <Tetris xSize="14" ySize="20"></Tetris>
+          </div>
+        ) : (
+          <div />
+        )}
       </Modal>
     </>
   );

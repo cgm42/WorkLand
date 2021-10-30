@@ -98,6 +98,17 @@ function ProjectForm(props) {
                 setName(e.target.value);
                 setError("");
               }}
+              onKeyDown={(ev) => {
+                if (
+                  ev.code === "Space" ||
+                  ev.code === "ArrowUp" ||
+                  ev.code === "ArrowDown" ||
+                  ev.code === "ArrowLeft" ||
+                  ev.code === "ArrowRight"
+                ) {
+                  ev.stopPropagation();
+                }
+              }}
             />
           </label>
 
@@ -109,6 +120,17 @@ function ProjectForm(props) {
               onChange={(e) => {
                 setDescription(e.target.value);
                 setError("");
+              }}
+              onKeyDown={(ev) => {
+                if (
+                  ev.code === "Space" ||
+                  ev.code === "ArrowUp" ||
+                  ev.code === "ArrowDown" ||
+                  ev.code === "ArrowLeft" ||
+                  ev.code === "ArrowRight"
+                ) {
+                  ev.stopPropagation();
+                }
               }}
             />
           </label>

@@ -97,6 +97,17 @@ function EditTaskForm(props) {
             <input
               value={name}
               type="text"
+              onKeyDown={(ev) => {
+                if (
+                  ev.code === "Space" ||
+                  ev.code === "ArrowUp" ||
+                  ev.code === "ArrowDown" ||
+                  ev.code === "ArrowLeft" ||
+                  ev.code === "ArrowRight"
+                ) {
+                  ev.stopPropagation();
+                }
+              }}
               onChange={(e) => {
                 setName(e.target.value);
                 setError("");
@@ -112,6 +123,17 @@ function EditTaskForm(props) {
               onChange={(e) => {
                 setDescription(e.target.value);
                 setError("");
+              }}
+              onKeyDown={(ev) => {
+                if (
+                  ev.code === "Space" ||
+                  ev.code === "ArrowUp" ||
+                  ev.code === "ArrowDown" ||
+                  ev.code === "ArrowLeft" ||
+                  ev.code === "ArrowRight"
+                ) {
+                  ev.stopPropagation();
+                }
               }}
             />
           </label>

@@ -15,6 +15,8 @@ function ProjectCardList(props) {
     setSelected(state.current_project);
   }, [state.current_project]);
 
+  // console.log(state.projectTeams);
+
   const projectsList = state.projects.map((project) => {
     const isSelected = selected === project.id;
 

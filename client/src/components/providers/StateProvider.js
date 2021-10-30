@@ -5,6 +5,7 @@ import applicationDataReducer, {
   SET_CURRENT_PROJECT,
   SET_TASK_STATUS,
   SET_TASK_PRIORITY,
+  ADD_CREATED_PROJECT,
 } from "../../reducers/applicationDataReducer";
 
 export const stateContext = createContext();
@@ -58,29 +59,37 @@ export default function StateProvider(props) {
   const createProject = (project) => {
     axios
       .post("/projects", project)
-      .then((data) => {
-        setCurrentProject(data.data.id);
-        updateTaskList();
+      .then(async (data) => {
+        const projectTeamsData = await axios.get("/users_projects");
+
+        dispatch({
+          type: ADD_CREATED_PROJECT,
+          project: data.data,
+          projectTeams: projectTeamsData.data,
+        });
       })
-      .then(() => {
-        updateProjectList();
-      });
+      .catch((error) => console.log("error", error));
   };
 
   const editProject = (project, id) => {
+    console.log("-------- edit project ---------");
     axios.patch(`/projects/${id}`, project).then(() => {
       updateProjectList();
     });
   };
 
   const deleteProject = (id) => {
+    console.log("-------- delete project ---------");
     axios.delete(`/projects/${id}`).then(() => {
       updateProjectList();
     });
   };
 
   const setCurrentProject = (id) => {
+    console.log("setCurrentProject was called +++++++++++++++++++++");
+
     axios.get(`/tasks/project/${id}`).then((data) => {
+      console.log("-----axios data create project-----", data);
       dispatch({
         type: SET_CURRENT_PROJECT,
         id,

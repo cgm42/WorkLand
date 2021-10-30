@@ -55,7 +55,7 @@ function addProject(project: {
     `
       INSERT INTO projects (creator_id, name, description, start_date, end_date, background_img)
       VALUES ($1, $2, $3, $4, $5, $6)
-      RETURNING id;
+      RETURNING *;
     `,
     values
   );

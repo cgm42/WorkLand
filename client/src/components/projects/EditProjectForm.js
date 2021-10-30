@@ -78,7 +78,13 @@ function EditProjectForm(props) {
                 setError('');
               }}
               onKeyDown={(ev) => {
-                if (ev.code === 'Space') {
+                if (
+                  ev.code === 'Space' ||
+                  ev.code === 'ArrowUp' ||
+                  ev.code === 'ArrowDown' ||
+                  ev.code === 'ArrowLeft' ||
+                  ev.code === 'ArrowRight'
+                ) {
                   ev.stopPropagation();
                 }
               }}
@@ -95,7 +101,13 @@ function EditProjectForm(props) {
                 setError('');
               }}
               onKeyDown={(ev) => {
-                if (ev.code === 'Space') {
+                if (
+                  ev.code === 'Space' ||
+                  ev.code === 'ArrowUp' ||
+                  ev.code === 'ArrowDown' ||
+                  ev.code === 'ArrowLeft' ||
+                  ev.code === 'ArrowRight'
+                ) {
                   ev.stopPropagation();
                 }
               }}

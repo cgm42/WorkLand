@@ -81,7 +81,13 @@ function EditTaskForm(props) {
               value={name}
               type="text"
               onKeyDown={(ev) => {
-                if (ev.code === 'Space') {
+                if (
+                  ev.code === 'Space' ||
+                  ev.code === 'ArrowUp' ||
+                  ev.code === 'ArrowDown' ||
+                  ev.code === 'ArrowLeft' ||
+                  ev.code === 'ArrowRight'
+                ) {
                   ev.stopPropagation();
                 }
               }}
@@ -102,7 +108,13 @@ function EditTaskForm(props) {
                 setError('');
               }}
               onKeyDown={(ev) => {
-                if (ev.code === 'Space') {
+                if (
+                  ev.code === 'Space' ||
+                  ev.code === 'ArrowUp' ||
+                  ev.code === 'ArrowDown' ||
+                  ev.code === 'ArrowLeft' ||
+                  ev.code === 'ArrowRight'
+                ) {
                   ev.stopPropagation();
                 }
               }}

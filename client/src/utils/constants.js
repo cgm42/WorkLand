@@ -65,7 +65,7 @@ export const playerTemplate = {
   dir: 'ArrowDown',
   step: 0,
   name: 'local user',
-  skin: 'f1',
+  skin: null,
 };
 //sprite animation constants
 export const spriteDimensions = { h: 32, w: 32 };

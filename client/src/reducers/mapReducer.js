@@ -38,6 +38,7 @@ const initialState = {
     guitar: false,
     arcade: false,
     typeWritter: false,
+    guitar: false,
     tetris: false,
   },
   mapRoute: {

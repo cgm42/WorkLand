@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import Button from "../button/Button";
-import DatePicker from "react-date-picker";
-import User from "../users/User";
-import { BiEdit } from "react-icons/bi";
+import React, { useState } from 'react';
+import Button from '../button/Button';
+import DatePicker from 'react-date-picker';
+import User from '../users/User';
+import { BiEdit } from 'react-icons/bi';
 
 function EditProjectForm(props) {
-  const [name, setName] = useState(props.name || "");
-  const [description, setDescription] = useState(props.description || "");
+  const [name, setName] = useState(props.name || '');
+  const [description, setDescription] = useState(props.description || '');
   const [startDate, onStart] = useState(
     new Date(props.startDate) || new Date()
   );
   const [endDate, onEnd] = useState(new Date(props.endDate) || new Date());
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const { id, state, onSave } = props;
 
@@ -36,7 +36,7 @@ function EditProjectForm(props) {
 
   const validate = () => {
     const selectedUsers = document.getElementsByClassName(
-      "user-list--selected"
+      'user-list--selected'
     );
 
     const selectedUsersIDs = [];
@@ -54,7 +54,7 @@ function EditProjectForm(props) {
       // selectedUsers: selectedUsersIDs,
     };
 
-    setError("");
+    setError('');
     onSave(project, id);
     document.getElementById(makeId(id)).close();
   };
@@ -72,16 +72,16 @@ function EditProjectForm(props) {
       <div>
         <BiEdit
           className="edit-button"
-          onClick={() => document.getElementById(makeId(id)).showModal()}
-        ></BiEdit>
+          onClick={() =>
+            document.getElementById(makeId(id)).showModal()
+          }></BiEdit>
       </div>
       <dialog className="nes-dialog is-dark is-rounded" id={makeId(id)}>
         <form
           className="form"
           autoComplete="off"
           onSubmit={(e) => e.preventDefault()}
-          method="dialog"
-        >
+          method="dialog">
           <label>
             Project name:
             <input
@@ -89,7 +89,12 @@ function EditProjectForm(props) {
               type="text"
               onChange={(e) => {
                 setName(e.target.value);
-                setError("");
+                setError('');
+              }}
+              onKeyDown={(ev) => {
+                if (ev.code === 'Space') {
+                  ev.stopPropagation();
+                }
               }}
             />
           </label>
@@ -101,7 +106,12 @@ function EditProjectForm(props) {
               type="text"
               onChange={(e) => {
                 setDescription(e.target.value);
-                setError("");
+                setError('');
+              }}
+              onKeyDown={(ev) => {
+                if (ev.code === 'Space') {
+                  ev.stopPropagation();
+                }
               }}
             />
           </label>
@@ -133,8 +143,8 @@ function EditProjectForm(props) {
             </div>
           </div>
           <div className="cancel-submit">
-            <Button onClick={cancel} title={"cancel"}></Button>
-            <Button onClick={validate} title={"submit"}></Button>
+            <Button onClick={cancel} title={'cancel'}></Button>
+            <Button onClick={validate} title={'submit'}></Button>
           </div>
         </form>
       </dialog>

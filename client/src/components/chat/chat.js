@@ -53,7 +53,7 @@ function Chat({ canOpen }) {
       {canOpen &&
         playersArr[userId] !== undefined &&
         playersArr[userId].socketId &&
-        playersArr[userId].skin(
+        playersArr[userId].skin && (
           <button
             className="nes-btn is-primary"
             onClick={toggleGifSearch}

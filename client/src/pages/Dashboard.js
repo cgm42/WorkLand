@@ -19,7 +19,7 @@ const Dashboard = () => {
   const mapGuideState = useSelector((state) => state.mapGuide);
 
   return (
-    <div className="dashboard-layout">
+    <div className="dashboard-layout modal-background">
       {modalCanOpen && playerNearGuide && <MainModal isOpen={true} />}
       <ModalInput isOpen={true} />
       <Map x={0} />

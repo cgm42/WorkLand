@@ -1,3 +1,9 @@
+.new-task {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .table {
   border-collapse: collapse;
   width: 100%;
@@ -37,7 +43,9 @@
 }
 
 .table-container {
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .task-user-container li {
@@ -120,4 +128,9 @@
 
 .warning {
   color: red !important;
+}
+
+.new-task {
+  display: flex;
+  justify-content: center;
 }

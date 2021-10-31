@@ -21,11 +21,13 @@ function TaskTable(props) {
 
 
           <div className="table-container">
+          <div className="new-task">
             <TaskForm
               onSave={createTask}
               state={state}
               projectID={state.current_project}
             />
+          </div>
 
           <table className="table">
             <thead>

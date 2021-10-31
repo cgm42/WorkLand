@@ -14,19 +14,18 @@ function TaskTable(props) {
 
   return (
     <div className="rpgui-content">
-      <div className="dashboard-layout rpgui-container framed-golden-2">
+      <div className="dashboard-layout nes-container is-rounded is-dark">
         <div className="welcome">
           <h1>Tasks</h1>
         </div>
 
-        <div className="rpgui-container framed ">
+
           <div className="table-container">
             <TaskForm
               onSave={createTask}
               state={state}
               projectID={state.current_project}
             />
-          </div>
 
           <table className="table">
             <thead>

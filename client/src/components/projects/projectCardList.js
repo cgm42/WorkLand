@@ -15,8 +15,6 @@ function ProjectCardList(props) {
     setSelected(state.current_project);
   }, [state.current_project]);
 
-  // console.log(state.projectTeams);
-
   const projectsList = state.projects.map((project) => {
     const isSelected = selected === project.id;
 
@@ -36,7 +34,7 @@ function ProjectCardList(props) {
   });
 
   return (
-    <div className="rpgui-content rpgui-container framed">
+    <div className="rpgui-content nes-container is-rounded is-dark">
       <div className="welcome">
         <h1>Project Dashboard</h1>
       </div>

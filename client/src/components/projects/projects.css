@@ -12,11 +12,12 @@
   overflow-x: hidden;
   overflow-y: auto;
   border: 5px solid;
+  border-radius: 15px;
 }
 
 .project-card--selected {
-  border: 7.5px solid;
   border-image: linear-gradient(45deg, turquoise, greenyellow) 1;
+
 }
 
 .project-card:hover {
@@ -95,9 +96,6 @@
 
 /*form */
 
-.form label {
-  
-}
 .new-project {
   display: flex;
   justify-content: center;
@@ -111,6 +109,10 @@
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+}
+
+.new-size {
+  width:200px
 }
 
 .users-container {

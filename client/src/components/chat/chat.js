@@ -73,20 +73,20 @@ function Chat({ canOpen }) {
           className="nes-container is-rounded is-dark"
           style={{
             position: 'absolute',
-            left: `${(width - 535) / 2}px`,
-            top: `${(height - 400) / 2}px`,
+            left: `${(width - 535) / 2}px`, //keep instruction window centered
+            top: `${(height - 300) / 2}px`,
             width: '535px',
-            height: '400px',
+            height: '300px',
             margin: '0 15px 0',
           }}>
           <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
-            <h3
+            <h2
               style={{
                 zIndex: '1',
                 color: 'white',
               }}>
               Instruction
-            </h3>
+            </h2>
             <section class="icon-list">
               <i
                 style={{ backgroundColor: 'white' }}
@@ -94,7 +94,8 @@ function Chat({ canOpen }) {
                 onClick={() => toggleInstruction()}></i>
             </section>
           </div>
-          lorem
+          <p>Use ⬆ ➡ ⬇ ⬅ to navigate around WorkLand.</p>
+          <p> Press space bar to interact with furniture!</p>
         </div>
       )}
       {/* ---Send GIF button--- */}
@@ -109,9 +110,10 @@ function Chat({ canOpen }) {
               zIndex: 20,
               position: 'absolute',
               left: `${width - leftMargin - 255}px`,
-              top: `${topMargin + 38}px`,
+              top: `${topMargin + 134}px`,
               width: '186px',
               height: '39px',
+              paddingLeft: '3px',
             }}>
             Send a GIF
           </button>
@@ -137,7 +139,7 @@ function Chat({ canOpen }) {
       {/* ---Search GIF Box--- */}
       {chatboxShow && canOpen && (
         <div
-          className="rpgui-container framed float"
+          className="nes-container is-rounded is-dark"
           style={{
             zIndex: 20,
             position: 'absolute',
@@ -155,6 +157,7 @@ function Chat({ canOpen }) {
             </h3>
             <section class="icon-list">
               <i
+                style={{ backgroundColor: 'white' }}
                 className="nes-icon close is-small nes-pointer"
                 onClick={() => toggleGifSearch()}></i>
             </section>

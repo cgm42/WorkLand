@@ -91,6 +91,7 @@ app.post('/loc', (req: Request, res: Response) => {
   }
   res.status(401).send('not authenticated');
 });
+
 interface LocData {
   user: UserLoc;
   others: OtherLoc[];
@@ -105,32 +106,33 @@ interface UserLoc extends OtherLoc {
 }
 
 app.get('/loc', (req: Request, res: Response) => {
-  // if (req.isAuthenticated()) {
-  const githubId = 5065625;
-  getLoc().then((data) => {
-    const result: LocData = {
-      user: {
-        lat: 0,
-        lng: 0,
-        name: '',
-      },
-      others: [],
-    };
-    for (let userLocObj of data.rows) {
-      if (userLocObj.oauth_id === githubId) {
-        result.user.lat = userLocObj.lat;
-        result.user.lng = userLocObj.lng;
-        result.user.name = userLocObj.name;
-      } else {
-        result.others.push({ lat: userLocObj.lat, lng: userLocObj.lng });
+  if (req.isAuthenticated()) {
+    const reqUser = req.user as any;
+    const githubId = reqUser.oauth_id;
+    getLoc().then((data) => {
+      const result: LocData = {
+        user: {
+          lat: 0,
+          lng: 0,
+          name: '',
+        },
+        others: [],
+      };
+      for (let userLocObj of data.rows) {
+        if (userLocObj.oauth_id === githubId) {
+          result.user.lat = userLocObj.lat;
+          result.user.lng = userLocObj.lng;
+          result.user.name = userLocObj.name;
+        } else {
+          result.others.push({ lat: userLocObj.lat, lng: userLocObj.lng });
+        }
       }
-    }
-    console.log('result :>> ', result);
-    res.status(200).send(result);
-  });
-  return;
-  // }
-  // res.status(401).send('not authenticated');
+      // console.log('result :>> ', result);
+      res.status(200).send(result);
+    });
+    return;
+  }
+  res.status(401).send('not authenticated');
 });
 
 app.listen(port, () => {

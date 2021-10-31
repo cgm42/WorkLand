@@ -19,7 +19,6 @@
     "react-dnd": "^9.4.0",
     "react-dom": "^17.0.2",
     "react-giphy-searchbox": "^1.5.4",
-    "react-globe": "^5.0.2",
     "react-google-charts": "^3.0.15",
     "react-guitar": "^1.1.0",
     "react-guitar-sound": "^1.1.0",
@@ -35,10 +34,13 @@
     "simple-peer": "^9.11.0",
     "socket.io-client": "^4.3.2",
     "soundfont-player": "^0.12.0",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "react-globe": "5.0.2",
+    "three": "0.109.0"
   },
   "scripts": {
     "start": "PORT=5001 react-scripts start",
+    "workland": "npm i --force",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

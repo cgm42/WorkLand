@@ -27,6 +27,7 @@ function Map({ x }) {
   const piano = useSelector((state) => state.mapGuide.piano);
   const guitar = useSelector((state) => state.mapGuide.guitar);
   const tetris = useSelector((state) => state.mapGuide.tetris);
+  const globe = useSelector((state) => state.mapGuide.globe);
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
     <div
@@ -96,6 +97,13 @@ function Map({ x }) {
           image={'/sprites/action.png'}
           data={{ h: 32, w: 32, x: 0, y: 0 }}
           position={{ x: 145, y: 286 }}
+        />
+      )}
+      {globe && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 32, w: 32, x: 0, y: 0 }}
+          position={{ x: 560, y: 480 }}
         />
       )}
     </div>

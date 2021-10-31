@@ -38,8 +38,8 @@ const initialState = {
     guitar: false,
     arcade: false,
     typeWritter: false,
-    guitar: false,
     tetris: false,
+    globe: false,
   },
   mapRoute: {
     modalCanOpen: false,

@@ -11,6 +11,7 @@ import PianoComp from '../piano';
 import GuitarComp from '../guitar';
 import Tetris from '../game';
 import GanttChart from '../gantt-chart/GanttChart';
+import Globe from '../globe';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -54,6 +55,14 @@ function MainModal(props) {
         {mapRoute === 'tetris' ? (
           <div>
             <Tetris xSize="14" ySize="20"></Tetris>
+          </div>
+        ) : (
+          <div />
+        )}
+
+        {mapRoute === 'globe' ? (
+          <div>
+            <Globe></Globe>
           </div>
         ) : (
           <div />

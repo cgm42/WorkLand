@@ -13,19 +13,21 @@
   overflow-y: auto;
   border: 5px solid;
   border-radius: 15px;
+  background:#eee !important;
+  
 }
 
 .project-card--selected {
-  border-image: linear-gradient(45deg, turquoise, greenyellow) 1;
+  border-image: linear-gradient(45deg, turquoise, greenyellow) 1 !important;
 
 }
 
 .project-card:hover {
-  transform: scale(1.01);
+  background:#eee !important;
 }
 
 .project-card:active {
-  transform: scale(1);
+  transform: scale(1.1);
 }
 
 .card-header {
@@ -43,20 +45,20 @@
 }
 
 .edit-button {
-  color: rgb(252, 252, 252);
+  color: #212529 ;
   transition: 1s;
   display: flex;
 }
 
 .edit-button:hover {
-  color: rgb(214, 203, 101);
+  color: rgb(55, 142, 255);
   cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
       14 0,
     pointer;
 }
 
 .delete-button {
-  color: rgb(252, 252, 252);
+  color: #212529 ;
   transition: 1s;
   display: flex;
 }
@@ -70,9 +72,7 @@
 
 .project-card header {
   font-size: 25px;
-  color: rgb(252, 252, 252);
-  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38),
-    -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
+  color: #212529 !important;
 }
 
 .project-card h1 {
@@ -89,9 +89,13 @@
   margin-bottom: 15px;
   display: flex;
   width: 90%;
-  color: rgb(252, 252, 252);
-  text-shadow: -1px -1px 0 rgb(38, 38, 38), 2px -1px 0 rgb(38, 38, 38),
-    -1px 2px 0 #000, 2px 2px 0 rgb(38, 38, 38);
+  color: #212529 !important;
+  text-shadow: none;
+}
+
+.project-card h1 {
+  color: #212529 !important;
+  text-shadow: none;
 }
 
 /*form */
@@ -126,7 +130,8 @@
   list-style-type: none;
   display: flex;
   margin: 20px;
-  /* cursor: pointer; */
+  color: #212529 !important;
+  text-shadow: none;
 }
 
 .user-list img {

@@ -1,5 +1,5 @@
 .login-container {
-  position: fixed;
+  position: absolute;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -16,7 +16,7 @@
 
 .login  {
   position:absolute;
-  z-index: 0;
+  z-index: 1;
 }
 .github {
   font-size: 30px;

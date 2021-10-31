@@ -131,3 +131,14 @@ const OFFICE_MAP = [
 ];
 
 export const MAP_TABLE = OFFICE_MAP;
+
+export const kanbanData = { h: 180, w: 279, x: 0, y: 0 };
+export const kanbanPosition = { x: 325, y: -68 };
+export const projectData = { h: 180, w: 350, x: 0, y: 0 };
+export const projectPosition = { x: 62, y: -76 };
+export const taskData = { h: 225, w: 280, x: 0, y: 0 };
+export const taskPosition = { x: 176, y: -85 };
+export const userData = { h: 180, w: 351, x: 0, y: 0 };
+export const userPosition = { x: 561, y: -78 };
+export const ganttChartData = { h: 180, w: 306, x: 0, y: 0 };
+export const ganttChartPosition = { x: 437, y: -68 };

@@ -3,6 +3,18 @@ import Sprite from '../sprites';
 import MapTile from './MapTile';
 import './style.css';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import {
+  kanbanPosition,
+  kanbanData,
+  projectData,
+  projectPosition,
+  taskData,
+  taskPosition,
+  ganttChartPosition,
+  ganttChartData,
+  userData,
+  userPosition,
+} from '../../utils/constants';
 
 function Map({ x }) {
   const kanban = useSelector((state) => state.mapGuide.kanban);
@@ -29,40 +41,40 @@ function Map({ x }) {
         <Sprite
           zoom={0.4}
           image={'/sprites/bubbles/kanban.gif'}
-          data={{ h: 180, w: 279, x: 0, y: 0 }}
-          position={{ x: 83, y: -68 }}
+          data={kanbanData}
+          position={kanbanPosition}
         />
       )}
       {userDashboard && (
         <Sprite
           zoom={0.4}
           image={'/sprites/bubbles/dashboard.gif'}
-          data={{ h: 180, w: 351, x: 0, y: 0 }}
-          position={{ x: 437, y: -68 }}
+          data={userData}
+          position={userPosition}
         />
       )}
       {ganttChart && (
         <Sprite
           zoom={0.4}
           image={'/sprites/bubbles/schedule.gif'}
-          data={{ h: 180, w: 306, x: 0, y: 0 }}
-          position={{ x: 206, y: -60 }}
+          data={ganttChartData}
+          position={ganttChartPosition}
         />
       )}
       {projectDashboard && (
         <Sprite
           zoom={0.4}
           image={'/sprites/bubbles/projects.gif'}
-          data={{ h: 180, w: 350, x: 0, y: 0 }}
-          position={{ x: 310, y: -68 }}
+          data={projectData}
+          position={projectPosition}
         />
       )}
       {taskList && (
         <Sprite
           zoom={0.4}
           image={'/sprites/bubbles/tasks.gif'}
-          data={{ h: 225, w: 280, x: 0, y: 0 }}
-          position={{ x: 561, y: -78 }}
+          data={taskData}
+          position={taskPosition}
         />
       )}
       {piano && (

@@ -1,0 +1,22 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Work in progress. Live demo on Nov.4, 2021 at 3PM PST. Register [here](https://hopin.com/events/copy-of-digital-demo-day-west-coast-november).",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgm42/finalTBD.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cgm42/finalTBD/issues"
+  },
+  "homepage": "https://github.com/cgm42/finalTBD#readme"
+}

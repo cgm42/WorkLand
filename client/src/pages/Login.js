@@ -34,7 +34,7 @@ const Login = () => {
               </a>
             </div>
           </div>
-          <div className='stars'>
+          <div className='stars-login'>
             <div id='stars'></div>
             <div id='stars2'></div>
             <div id='stars3'></div>

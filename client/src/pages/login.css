@@ -80,6 +80,10 @@ height:100%;
 display:absolute;
 }
 
+.stars-login {
+z-index:0;
+}
+
 .stars {
 background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
 z-index:0;

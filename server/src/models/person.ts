@@ -20,14 +20,17 @@ function getPersonByGitHub(githubId: number) {
 
 const saveLoc = async (githubId: number, location: string) => {
   const lat = location.split(',')[0];
-  console.log('lat :>> ', lat);
   const lng = location.substr(location.indexOf(',') + 1);
-  console.log('lng :>> ', lng);
   return pool.query(
     `UPDATE users SET lat=${lat}, lng=${lng}  WHERE id=(SELECT user_id from oauth_mapping where oauth_id=${githubId})`
   );
 };
 
+const getLoc = async () => {
+  return pool.query(
+    `select users.name, users.lat, users.lng, users.id, oauth_mapping.oauth_id from users join oauth_mapping on users.id=oauth_mapping.user_id`
+  );
+};
 async function createPersonByGitHub(
   githubId: number,
   name: string,
@@ -68,4 +71,4 @@ async function createPersonByGitHub(
   }
 }
 
-export { getPerson, getPersonByGitHub, createPersonByGitHub, saveLoc };
+export { getPerson, getPersonByGitHub, createPersonByGitHub, saveLoc, getLoc };

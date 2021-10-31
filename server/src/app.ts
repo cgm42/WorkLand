@@ -12,7 +12,7 @@ import meetingsRouter from './routes/meetings';
 import usersMeetingsRouter from './routes/users_meetings';
 import messagesRouter from './routes/messages';
 import usersRouter from './routes/users';
-import { getPersonByGitHub, saveLoc } from './models/person';
+import { getLoc, getPersonByGitHub, saveLoc } from './models/person';
 import { socketServer } from './socketServer';
 const cors = require('cors');
 const app: Application = express();
@@ -80,16 +80,57 @@ app.get('/user', (req: Request, res: Response) => {
   console.log('Not logged in or not authenticated');
 });
 
-app.post('/ip', (req: Request, res: Response) => {
+app.post('/loc', (req: Request, res: Response) => {
   if (req.isAuthenticated()) {
     const reqUser = req.user as any;
     const loc: string = req.body.loc;
     saveLoc(reqUser.oauth_id, loc).then((data) => {
-      //TODO
-      // res.status(200).send(data.rows[0]);
+      res.status(200).send('saved');
     });
     return;
   }
+  res.status(401).send('not authenticated');
+});
+interface LocData {
+  user: UserLoc;
+  others: OtherLoc[];
+}
+
+interface OtherLoc {
+  lat: number;
+  lng: number;
+}
+interface UserLoc extends OtherLoc {
+  name: string;
+}
+
+app.get('/loc', (req: Request, res: Response) => {
+  // if (req.isAuthenticated()) {
+  const githubId = 5065625;
+  getLoc().then((data) => {
+    const result: LocData = {
+      user: {
+        lat: 0,
+        lng: 0,
+        name: '',
+      },
+      others: [],
+    };
+    for (let userLocObj of data.rows) {
+      if (userLocObj.oauth_id === githubId) {
+        result.user.lat = userLocObj.lat;
+        result.user.lng = userLocObj.lng;
+        result.user.name = userLocObj.name;
+      } else {
+        result.others.push({ lat: userLocObj.lat, lng: userLocObj.lng });
+      }
+    }
+    console.log('result :>> ', result);
+    res.status(200).send(result);
+  });
+  return;
+  // }
+  // res.status(401).send('not authenticated');
 });
 
 app.listen(port, () => {

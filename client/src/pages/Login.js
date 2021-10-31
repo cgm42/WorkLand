@@ -24,10 +24,8 @@ const Login = () => {
   async function saveLoc(loc) {
     console.log('loc :>> ', loc);
     await axios
-      .post('/ip', { loc })
-      .then((res) => {
-        console.log('res---', res);
-      })
+      .post('/loc', { loc })
+      .then((res) => {})
       .catch((err) => console.log(err));
   }
   useEffect(() => {

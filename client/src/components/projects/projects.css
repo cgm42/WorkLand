@@ -94,6 +94,10 @@
 }
 
 /*form */
+
+.form label {
+  
+}
 .new-project {
   display: flex;
   justify-content: center;
@@ -152,4 +156,8 @@
   font-size: 12px;
   margin: 0px 12px;
   background-color: #212529;
+}
+
+.error {
+  color: rgb(198, 30, 30) !important;
 }

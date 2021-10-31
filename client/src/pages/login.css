@@ -1,5 +1,5 @@
 .login-container {
-  position: fixed;
+  position: absolute;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -11,7 +11,12 @@
 
 .login a {
   text-decoration: none;
-  color: #eee
+  color: #eee;
+}
+
+.login  {
+  position:absolute;
+  z-index: 1;
 }
 .github {
   font-size: 30px;
@@ -73,6 +78,10 @@ bottom:0;
 width:100%;
 height:100%;
 display:absolute;
+}
+
+.stars-login {
+z-index:0;
 }
 
 .stars {

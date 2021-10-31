@@ -1,6 +1,6 @@
 import pool from "../db/dbConfig";
 
-const taskIds = [1, 2, 3, 4, 5, 6];
+const taskIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function getPerson(id: number) {
   return pool.query("SELECT * FROM users WHERE id = $1", [id]);

@@ -28,6 +28,7 @@ function Map({ x }) {
   const guitar = useSelector((state) => state.mapGuide.guitar);
   const tetris = useSelector((state) => state.mapGuide.tetris);
   const globe = useSelector((state) => state.mapGuide.globe);
+
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
     <div

@@ -6,6 +6,7 @@ import {
   ANNOUNCEMENT,
   SEND_DIRECT,
   CLEAR_INCOMING,
+  TOGGLE_GIF_SEARCH_OPEN,
 } from '../../reducers/mapReducer';
 import './chat.css';
 import { FaClipboardList } from 'react-icons/fa';
@@ -20,6 +21,7 @@ function Chat({ canOpen }) {
   const playersArr = useSelector((state) => state.players);
   const incomingGifState = useSelector((state) => state.incomingGif);
   const onlineUsers = useSelector((state) => state.players);
+  const gifSearchOpen = useSelector((state) => state.gifSearchOpen);
 
   useEffect(() => {
     if (!incomingGifState.gifObj || !canOpen) return;
@@ -32,7 +34,7 @@ function Chat({ canOpen }) {
   }, [incomingGifState, canOpen]);
 
   const toggleGifSearch = () => {
-    setChatboxShow(!chatboxShow);
+    dispatch(TOGGLE_GIF_SEARCH_OPEN());
   };
   const toggleInstruction = () => {
     setShowInstruction(!showInstruction);
@@ -137,7 +139,7 @@ function Chat({ canOpen }) {
       )}
 
       {/* ---Search GIF Box--- */}
-      {chatboxShow && canOpen && (
+      {gifSearchOpen && canOpen && (
         <div
           className="nes-container is-rounded is-dark"
           style={{
@@ -147,6 +149,12 @@ function Chat({ canOpen }) {
             top: `${height / 2 - 150}px`,
             width: '335px',
             margin: '0 15px 0',
+          }}
+          onKeyPressCapture={(e) => {
+            if (e.code === 'Space') {
+              e.stopPropagation();
+              console.log(e.isPropagationStopped());
+            }
           }}>
           <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
             <h3

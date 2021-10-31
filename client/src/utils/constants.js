@@ -107,8 +107,8 @@ const t = { walk: false, action: true, special: false, asset: 'tetris' };
 const OFFICE_MAP = [
   // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
-  [X, X, X, X, k, k, k, X, g, g, X, X, p, p, X, X, u, u, X, X, X, l, l, X], // y = 1
-  [X, X, X, X, K, K, K, X, G, G, X, X, P, P, X, X, U, U, O, X, X, L, L, X], // y= 2
+  [X, X, X, X, p, p, p, X, l, l, X, X, k, k, X, X, g, g, X, X, X, u, u, X], // y = 1
+  [X, X, X, X, P, P, P, O, L, L, O, O, K, K, X, X, G, G, O, X, X, U, U, X], // y= 2
   [X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 3
   [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X, X], // y = 4
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 5

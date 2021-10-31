@@ -11,7 +11,12 @@
 
 .login a {
   text-decoration: none;
-  color: #eee
+  color: #eee;
+}
+
+.login  {
+  position:absolute;
+  z-index: 0;
 }
 .github {
   font-size: 30px;

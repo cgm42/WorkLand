@@ -144,7 +144,7 @@ function Chat({ canOpen }) {
             zIndex: 20,
             position: 'absolute',
             left: `${width / 2 + 200}px`,
-            top: `${height / 2 - 100}px`,
+            top: `${height / 2 - 150}px`,
             width: '335px',
             margin: '0 15px 0',
           }}>

@@ -17,14 +17,7 @@ function MainModal(props) {
   const mapRoute = useSelector((state) => state.mapRoute.routeName);
   return (
     <>
-      <Modal isOpen={modalIsOpen} ariaHideApp={false}>
-        <button
-          onClick={() => {
-            setModalIsOpen(false);
-            dispatch(TOGGLE_MODAL_CAN_OPEN());
-          }}>
-          close
-        </button>
+      <Modal isOpen={modalIsOpen} ariaHideApp={false} className="modal">     
         {/* {===============project management features==========} */}
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}

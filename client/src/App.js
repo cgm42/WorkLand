@@ -7,6 +7,7 @@ import Login from './pages/Login';
 // import Dashboard from "./pages/Dashboard";
 import './App.css';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 function App() {
   const userState = useSelector((state) => {

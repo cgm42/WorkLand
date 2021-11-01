@@ -38,8 +38,9 @@ const initialState = {
     guitar: false,
     arcade: false,
     typeWritter: false,
-    guitar: false,
     tetris: false,
+    globe: false,
+    reception: false,
   },
   mapRoute: {
     modalCanOpen: false,
@@ -64,6 +65,7 @@ const initialState = {
     gifObj: null,
     receiverName: null,
   },
+  gifSearchOpen: false,
 };
 export const SET_USER = createAction('SET_USER');
 export const WALK = createAction('WALK');
@@ -73,6 +75,7 @@ export const WALK_IN_PLACE = createAction('WALK_IN_PLACE');
 export const SET_MAP_GUIDE = createAction('SET_MAP_GUIDE');
 export const HIDE_MAP_GUIDE = createAction('HIDE_MAP_GUIDE');
 export const TOGGLE_MODAL_CAN_OPEN = createAction('TOGGLE_MODAL_CAN_OPEN');
+export const TOGGLE_GIF_SEARCH_OPEN = createAction('TOGGLE_GIF_SEARCH_OPEN');
 export const JOIN_VIDEO = createAction('JOIN_VIDEO');
 export const SET_VIDEO_PARTICIPANTS = createAction('SET_VIDEO_PARTICIPANTS');
 export const SET_SOCKETID = createAction('SET_SOCKETID');
@@ -159,8 +162,13 @@ export const mapReducer = createReducer(initialState, (builder) => {
     state.mapRoute.modalCanOpen = false;
     state.mapRoute.routeName = null;
   });
+
   builder.addCase(TOGGLE_MODAL_CAN_OPEN, (state, action) => {
     state.mapRoute.modalCanOpen = !state.mapRoute.modalCanOpen;
+  });
+
+  builder.addCase(TOGGLE_GIF_SEARCH_OPEN, (state, action) => {
+    state.gifSearchOpen = !state.gifSearchOpen;
   });
 
   builder.addCase(UPDATE_OTHERS, (state, action) => {

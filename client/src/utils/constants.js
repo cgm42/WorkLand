@@ -1,7 +1,7 @@
 //web socket endpoint(our server)
 export const wsEndpoint = 'ws://localhost:5080';
 
-export const navBarHeight = 40;
+export const navBarHeight = 0;
 //basemap size
 export const basemapWidth = 1024;
 export const basemapHeight = 704;
@@ -102,18 +102,22 @@ const J = { walk: true, action: true, special: false, asset: 'guitar' };
 const j = { walk: false, action: true, special: false, asset: 'guitar' };
 const T = { walk: true, action: true, special: false, asset: 'tetris' };
 const t = { walk: false, action: true, special: false, asset: 'tetris' };
+const E = { walk: true, action: true, special: false, asset: 'globe' };
+const e = { walk: false, action: true, special: false, asset: 'globe' };
+const R = { walk: true, action: true, special: false, asset: 'reception' };
+const r = { walk: false, action: true, special: false, asset: 'reception' };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [
   // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
-  [X, X, X, X, k, k, k, X, g, g, X, X, p, p, X, X, u, u, X, X, X, l, l, X], // y = 1
-  [X, X, X, X, K, K, K, X, G, G, X, X, P, P, X, X, U, U, O, X, X, L, L, X], // y= 2
+  [X, X, X, X, p, p, p, X, l, l, X, X, k, k, k, X, g, g, X, X, X, u, u, X], // y = 1
+  [X, X, X, X, P, P, P, O, L, L, O, O, K, K, K, O, G, G, O, O, O, U, U, X], // y= 2
   [X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 3
-  [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X, X], // y = 4
-  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 5
-  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 6
-  [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 7
+  [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 4
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X], // y = 5
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X], // y = 6
+  [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X, X], // y = 7
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 8
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, X, X, X, X], // y = 9
   [X, X, X, X, t, t, X, j, X, X, q, q, O, O, O, O, O, O, O, O, O, X, X, X], // y = 10
@@ -121,13 +125,24 @@ const OFFICE_MAP = [
   [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 12
   [X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 13
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 14
-  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 15
-  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, X, X, X, X, X, X, X, X, X], // y = 16
-  [X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 17
-  [X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 18
-  [X, O, O, O, O, O, O, O, O, O, O, O, X, X, X, X, X, X, X, X, X, X, X, X], // y = 19
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, e, e, e, X, X, X, X, X, X], // y = 15
+  [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, E, E, E, O, X, X, X, X, X], // y = 16
+  [X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, E, E, E, O, O, O, O, O, X], // y = 17
+  [X, r, r, r, r, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 18
+  [X, R, R, R, R, O, O, O, O, O, O, O, X, X, X, X, X, X, X, X, X, X, X, X], // y = 19
   [X, O, O, O, O, O, O, O, O, O, O, O, X, X, X, X, X, X, X, X, X, X, X, X], // y = 20
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 21
 ];
 
 export const MAP_TABLE = OFFICE_MAP;
+
+export const kanbanData = { h: 180, w: 279, x: 0, y: 0 };
+export const kanbanPosition = { x: 325, y: -68 };
+export const projectData = { h: 180, w: 350, x: 0, y: 0 };
+export const projectPosition = { x: 62, y: -76 };
+export const taskData = { h: 225, w: 280, x: 0, y: 0 };
+export const taskPosition = { x: 176, y: -85 };
+export const userData = { h: 180, w: 351, x: 0, y: 0 };
+export const userPosition = { x: 561, y: -78 };
+export const ganttChartData = { h: 180, w: 306, x: 0, y: 0 };
+export const ganttChartPosition = { x: 437, y: -68 };

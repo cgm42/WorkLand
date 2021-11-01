@@ -1,9 +1,11 @@
-import pool from "../db/dbConfig";
+import pool from '../db/dbConfig';
+const https = require('https');
+require('dotenv').config();
 
-const taskIds = [1, 2, 3, 4, 5, 6];
+const taskIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function getPerson(id: number) {
-  return pool.query("SELECT * FROM users WHERE id = $1", [id]);
+  return pool.query('SELECT * FROM users WHERE id = $1', [id]);
 }
 
 function getPersonByGitHub(githubId: number) {
@@ -16,6 +18,19 @@ function getPersonByGitHub(githubId: number) {
   );
 }
 
+const saveLoc = async (githubId: number, location: string) => {
+  const lat = location.split(',')[0];
+  const lng = location.substr(location.indexOf(',') + 1);
+  return pool.query(
+    `UPDATE users SET lat=${lat}, lng=${lng}  WHERE id=(SELECT user_id from oauth_mapping where oauth_id=${githubId})`
+  );
+};
+
+const getLoc = async () => {
+  return pool.query(
+    `select users.name, users.lat, users.lng, users.id, oauth_mapping.oauth_id from users join oauth_mapping on users.id=oauth_mapping.user_id`
+  );
+};
 async function createPersonByGitHub(
   githubId: number,
   name: string,
@@ -32,8 +47,8 @@ async function createPersonByGitHub(
       INSERT INTO oauth_mapping(user_id, oauth_provider, oauth_id) 
       VALUES($1, $2, $3);
       `;
-    const insertValues = [insertedUserId, "GitHub", githubId];
-    console.log("insertValues :>> ", insertValues);
+    const insertValues = [insertedUserId, 'GitHub', githubId];
+    console.log('insertValues :>> ', insertValues);
     await client.query(insertText, insertValues);
     await client.query(
       `
@@ -56,4 +71,4 @@ async function createPersonByGitHub(
   }
 }
 
-export { getPerson, getPersonByGitHub, createPersonByGitHub };
+export { getPerson, getPersonByGitHub, createPersonByGitHub, saveLoc, getLoc };

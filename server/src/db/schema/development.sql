@@ -1,14 +1,14 @@
-INSERT INTO users(name, avatar)
+INSERT INTO users(name, avatar, lat, lng)
 VALUES
-  ('Johnny', 'https://i.imgur.com/31MtvRN.png'),
-  ('Carrie', 'https://i.imgur.com/qn5TFDx.png'),
-  ('Jose', 'https://i.imgur.com/31MtvRN.png'),
-  ('David', 'https://i.imgur.com/31MtvRN.png'),
-  ('Amanda', 'https://i.imgur.com/qn5TFDx.png'),
-  ('Matthew', 'https://i.imgur.com/31MtvRN.png'),
-  ('Lydia Miller-Jones', 'https://i.imgur.com/qn5TFDx.png'),
-  ('Archie', 'https://i.imgur.com/31MtvRN.png'),
-  ('Justin', 'https://i.imgur.com/31MtvRN.png');
+  ('Johnny', 'https://i.imgur.com/31MtvRN.png', 115.4378133,-8.5435824),
+  ('Carrie', 'https://i.imgur.com/qn5TFDx.png', -123.2276101,49.2568524),
+  ('Jose', 'https://i.imgur.com/31MtvRN.png', 2.2768478,48.8588376),
+  ('David', 'https://i.imgur.com/31MtvRN.png', 39, 6),
+  ('Amanda', 'https://i.imgur.com/qn5TFDx.png', 55, 23),
+  ('Matthew', 'https://i.imgur.com/31MtvRN.png', 78, 20),
+  ('Lydia Miller-Jones', 'https://i.imgur.com/qn5TFDx.png', 33, 45),
+  ('Archie', 'https://i.imgur.com/31MtvRN.png', 0, 0),
+  ('Justin', 'https://i.imgur.com/31MtvRN.png', 120, 49);
 
 INSERT INTO projects (creator_id, name, description, start_date, end_date, background_img)
 VALUES
@@ -61,7 +61,10 @@ VALUES
   (1, null, 'Go discover your Kanban Board!', 'The Kanban board is another way to manage your tasks'' status. Simply drag and drop!', '2021-11-06', '2021-11-07', 0),
   (1, null, 'Go discover your Gantt Chart!', 'The Gantt Chart is the best way to view the timeline of your tasks for a proejct.', '2021-11-07', '2021-11-08', 0),
   (1, null, 'Check out your user dashboard!', 'Here you can see relevent information about yourself.', '2021-11-08', '2021-11-09', 0),
-  (1, null, 'Send a gif!', 'Click on the "Send A Gif" button to send a gif to an individual or all users!', '2021-11-09', '2021-11-10', 0);
+  (1, null, 'Send a gif!', 'Click on the "Send A Gif" button to send a gif to an individual or all users!', '2021-11-09', '2021-11-10', 0),
+  (1, null, 'Play an instrument', 'Head over to the piano or guitar and have some fun!', '2021-11-10', '2021-11-11', 0),
+  (1, null, 'Play some tetris', 'Head over to the arcade machines and play some tetris!', '2021-11-10', '2021-11-11', 0),
+  (1, null, 'Check out the world map!', 'Go to the map on the wall to see a 3d globe of where your coworkers are located!', '2021-11-10', '2021-11-11', 0);
 
 INSERT INTO meetings (name, description, date, start_time, end_time)
 VALUES

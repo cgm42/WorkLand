@@ -13,7 +13,9 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
   avatar VARCHAR(255),
-  total_experience INT DEFAULT 0
+  total_experience INT DEFAULT 0,
+  lat DOUBLE PRECISION,
+  lng DOUBLE PRECISION  
 );
 
 CREATE TABLE oauth_mapping (

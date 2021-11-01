@@ -13,18 +13,18 @@ import MainNav from '../components/MainNav';
 const Dashboard = () => {
   const { playerNearGuide } = useMapGuide();
   const modalCanOpen = useSelector((state) => state.mapRoute.modalCanOpen);
-  const mapGuideState = useSelector((state) => state.mapGuide);
+  const gifSearchOpen = useSelector((state) => state.gifSearchOpen);
 
   return (
     <div className="dashboard-layout stars" id="snow">
-    <div className="twinkling">
-      {modalCanOpen && playerNearGuide && <MainModal isOpen={true} />}
-      {!(modalCanOpen && playerNearGuide) && <MainNav ></MainNav>}
-      <ModalInput isOpen={true} />
-      <Map x={0} />
-      <Players />
-      {<Chat canOpen={!(modalCanOpen && playerNearGuide)} />}
-    </div>
+      <div className="twinkling">
+        {modalCanOpen && playerNearGuide && <MainModal isOpen={true} />}
+        {/* {!(modalCanOpen && playerNearGuide) && <MainNav></MainNav>} */}
+        <ModalInput isOpen={true} />
+        <Map x={0} />
+        <Players />
+        {<Chat canOpen={!(modalCanOpen && playerNearGuide)} />}
+      </div>
     </div>
   );
 };

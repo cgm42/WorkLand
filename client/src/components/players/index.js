@@ -1,4 +1,5 @@
 import Actor from '../actor';
+import { useState } from 'react';
 import useKeyPress from '../../hooks/useKeyPress';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -14,7 +15,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export default function Players({ socket }) {
   const { leftMargin, topMargin } = useWindowDimensions();
-
+  const gifSearchOpen = useSelector((state) => state.gifSearchOpen);
   const localUserState = useSelector((state) => {
     return state.players[state.localID];
   });
@@ -59,7 +60,7 @@ export default function Players({ socket }) {
       walk(e.key);
       return;
     }
-    if (e.code === 'Space') {
+    if (e.code === 'Space' && !gifSearchOpen) {
       dispatch(TOGGLE_MODAL_CAN_OPEN());
     }
   });

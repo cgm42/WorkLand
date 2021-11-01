@@ -9,7 +9,12 @@ import {
 } from '../reducers/mapReducer';
 export const socketRTK = () => {
   return (storeAPI) => {
-    const socket = io(process.env.REACT_APP_WS_SOCKET);
+    const socket = io(process.env.REACT_APP_WS_SOCKET, {
+      withCredentials: true,
+      extraHeaders: {
+        'Access-Control-Allow-Credentials': 'abcd',
+      },
+    });
     socket.on('connect', () => {
       storeAPI.dispatch(SET_SOCKETID({ id: socket.id }));
     });

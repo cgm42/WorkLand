@@ -12,10 +12,6 @@ const Login = () => {
     axios
       .get('/user', {
         withCredentials: true,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        },
       })
       .then((data) => {
         console.log(data);

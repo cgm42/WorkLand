@@ -9,10 +9,18 @@ import { BsGithub } from 'react-icons/bs';
 const Login = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get('/user', { withCredentials: true }).then((data) => {
-      console.log(data);
-      dispatch(SET_USER(data.data));
-    });
+    axios
+      .get('/user', {
+        withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch(SET_USER(data.data));
+      });
   }, [dispatch]);
 
   const userState = useSelector((state) => {

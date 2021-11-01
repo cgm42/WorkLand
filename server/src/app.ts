@@ -19,12 +19,13 @@ const app: Application = express();
 const port = process.env.PORT || 5000;
 
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Credentials', 'true');
+  //@ts-ignore
+  res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Origin', req.headers.origin);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH, DELETE');
   res.header(
     'Access-Control-Allow-Headers',
-    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
+    'Origin, X-Requested-With, Content-Type, Accept, authorization'
   );
   if ('OPTIONS' == req.method) {
     res.send(200);
@@ -36,10 +37,13 @@ app.use(function (req, res, next) {
 // app.use(cors());
 const passportSetup = require('./config/');
 app.use(cookieParser());
+
+app.set('trust proxy', 1); // trust first proxy
 app.use(
   cookieSession({
     name: 'session',
     keys: [process.env.COOKIE_KEY!],
+    // domain: 'https://workland.netlify.app',
   })
 );
 

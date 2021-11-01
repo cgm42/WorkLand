@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import Globe from 'react-globe.gl';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 function GlobeComp() {
   // const myData = [{ lat: 42, lng: 130, size: 20, color: 'red' }];
   const globeState = useSelector((state) => state.mapGuide.globe);
   const [data, setData] = useState();
+  const { width, height } = useWindowDimensions();
   useEffect(() => {
     axios
       .get('/loc')
@@ -21,8 +23,9 @@ function GlobeComp() {
   }, [globeState]);
   return (
     <>
-      <div className="nes-container is-rounded is-dark">
+      <div>
         <Globe
+          style={{ width: `${width - 100}px`, height: `${height - 100}px` }}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
           pointsData={data}
         />

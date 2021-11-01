@@ -16,9 +16,10 @@ function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
   const mapRoute = useSelector((state) => state.mapRoute.routeName);
+
   return (
     <>
-      <Modal isOpen={modalIsOpen} ariaHideApp={false}>
+      <Modal isOpen={modalIsOpen} ariaHideApp={true}>
         <button
           onClick={() => {
             setModalIsOpen(false);

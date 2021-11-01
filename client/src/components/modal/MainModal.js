@@ -12,6 +12,7 @@ import GuitarComp from '../guitar';
 import Tetris from '../game';
 import GanttChart from '../gantt-chart/GanttChart';
 import GlobeComp from '../globe';
+import Computer from '../win98';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
@@ -67,6 +68,14 @@ function MainModal(props) {
         {mapRoute === 'globe' ? (
           <div>
             <GlobeComp></GlobeComp>
+          </div>
+        ) : (
+          <div />
+        )}
+
+        {mapRoute === 'win98' ? (
+          <div>
+            <Computer></Computer>
           </div>
         ) : (
           <div />

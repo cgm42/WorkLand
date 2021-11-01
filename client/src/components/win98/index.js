@@ -1,11 +1,12 @@
 import Iframe from 'react-iframe';
-
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 function Computer() {
+  const { width, height } = useWindowDimensions();
   return (
     <Iframe
-      url="http://www.youtube.com/embed/xDMP3i36naA"
-      width="450px"
-      height="450px"
+      src="https://packard-belle.netlify.app/"
+      width={width * 0.94}
+      height={height * 0.9}
       id="myId"
       className="myClassname"
       display="initial"

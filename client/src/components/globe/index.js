@@ -25,7 +25,8 @@ function GlobeComp() {
     <>
       <div>
         <Globe
-          style={{ width: `${width - 100}px`, height: `${height - 100}px` }}
+          width={width - 50}
+          height={height - 100}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
           pointsData={data}
         />

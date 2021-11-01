@@ -19,7 +19,10 @@ function MainModal(props) {
 
   return (
     <>
-      <Modal isOpen={modalIsOpen} ariaHideApp={true}>
+      <Modal
+        className="nes-container is-rounded is-dark "
+        isOpen={modalIsOpen}
+        ariaHideApp={true}>
         <button
           onClick={() => {
             setModalIsOpen(false);

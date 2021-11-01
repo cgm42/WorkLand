@@ -104,6 +104,8 @@ const T = { walk: true, action: true, special: false, asset: 'tetris' };
 const t = { walk: false, action: true, special: false, asset: 'tetris' };
 const E = { walk: true, action: true, special: false, asset: 'globe' };
 const e = { walk: false, action: true, special: false, asset: 'globe' };
+const R = { walk: true, action: true, special: false, asset: 'reception' };
+const r = { walk: false, action: true, special: false, asset: 'reception' };
 
 //each element in the nested array equals a tile on the x-axis
 const OFFICE_MAP = [
@@ -126,8 +128,8 @@ const OFFICE_MAP = [
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, e, e, e, X, X, X, X, X, X], // y = 15
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, E, E, E, O, X, X, X, X, X], // y = 16
   [X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, E, E, E, O, O, O, O, O, X], // y = 17
-  [X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 18
-  [X, O, O, O, O, O, O, O, O, O, O, O, X, X, X, X, X, X, X, X, X, X, X, X], // y = 19
+  [X, r, r, r, r, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 18
+  [X, R, R, R, R, O, O, O, O, O, O, O, X, X, X, X, X, X, X, X, X, X, X, X], // y = 19
   [X, O, O, O, O, O, O, O, O, O, O, O, X, X, X, X, X, X, X, X, X, X, X, X], // y = 20
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 21
 ];

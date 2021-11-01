@@ -28,6 +28,7 @@ function Map({ x }) {
   const guitar = useSelector((state) => state.mapGuide.guitar);
   const tetris = useSelector((state) => state.mapGuide.tetris);
   const globe = useSelector((state) => state.mapGuide.globe);
+  const reception = useSelector((state) => state.mapGuide.reception);
 
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
@@ -105,6 +106,14 @@ function Map({ x }) {
           image={'/sprites/action.png'}
           data={{ h: 32, w: 32, x: 0, y: 0 }}
           position={{ x: 560, y: 480 }}
+        />
+      )}
+      {reception && (
+        <Sprite
+          zoom={0.3}
+          image={'/sprites/bubbles/welcome.gif'}
+          data={{ h: 180, w: 288, x: 0, y: 0 }}
+          position={{ x: 5, y: 456 }}
         />
       )}
     </div>

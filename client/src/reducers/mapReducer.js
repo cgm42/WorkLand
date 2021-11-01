@@ -40,6 +40,7 @@ const initialState = {
     typeWritter: false,
     tetris: false,
     globe: false,
+    reception: false,
   },
   mapRoute: {
     modalCanOpen: false,

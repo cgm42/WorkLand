@@ -11,13 +11,18 @@ import PianoComp from '../piano';
 import GuitarComp from '../guitar';
 import Tetris from '../game';
 import GanttChart from '../gantt-chart/GanttChart';
+import GlobeComp from '../globe';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
   const mapRoute = useSelector((state) => state.mapRoute.routeName);
+
   return (
     <>
-      <Modal isOpen={modalIsOpen} ariaHideApp={false}>
+      <Modal
+        className="nes-container is-rounded is-dark "
+        isOpen={modalIsOpen}
+        ariaHideApp={true}>
         <button
           onClick={() => {
             setModalIsOpen(false);
@@ -54,6 +59,14 @@ function MainModal(props) {
         {mapRoute === 'tetris' ? (
           <div>
             <Tetris xSize="14" ySize="20"></Tetris>
+          </div>
+        ) : (
+          <div />
+        )}
+
+        {mapRoute === 'globe' ? (
+          <div>
+            <GlobeComp></GlobeComp>
           </div>
         ) : (
           <div />

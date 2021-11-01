@@ -1,14 +1,14 @@
-INSERT INTO users(name, avatar)
+INSERT INTO users(name, avatar, lat, lng)
 VALUES
-  ('Johnny', 'https://i.imgur.com/31MtvRN.png'),
-  ('Carrie', 'https://i.imgur.com/qn5TFDx.png'),
-  ('Jose', 'https://i.imgur.com/31MtvRN.png'),
-  ('David', 'https://i.imgur.com/31MtvRN.png'),
-  ('Amanda', 'https://i.imgur.com/qn5TFDx.png'),
-  ('Matthew', 'https://i.imgur.com/31MtvRN.png'),
-  ('Lydia Miller-Jones', 'https://i.imgur.com/qn5TFDx.png'),
-  ('Archie', 'https://i.imgur.com/31MtvRN.png'),
-  ('Justin', 'https://i.imgur.com/31MtvRN.png');
+  ('Johnny', 'https://i.imgur.com/31MtvRN.png', 115.4378133,-8.5435824),
+  ('Carrie', 'https://i.imgur.com/qn5TFDx.png', -123.2276101,49.2568524),
+  ('Jose', 'https://i.imgur.com/31MtvRN.png', 2.2768478,48.8588376),
+  ('David', 'https://i.imgur.com/31MtvRN.png', 39, 6),
+  ('Amanda', 'https://i.imgur.com/qn5TFDx.png', 55, 23),
+  ('Matthew', 'https://i.imgur.com/31MtvRN.png', 78, 20),
+  ('Lydia Miller-Jones', 'https://i.imgur.com/qn5TFDx.png', 33, 45),
+  ('Archie', 'https://i.imgur.com/31MtvRN.png', 0, 0),
+  ('Justin', 'https://i.imgur.com/31MtvRN.png', 120, 49);
 
 INSERT INTO projects (creator_id, name, description, start_date, end_date, background_img)
 VALUES

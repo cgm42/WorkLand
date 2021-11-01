@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { stateContext } from "../providers/StateProvider";
 import "./projects.css";
 import "nes.css/css/nes.min.css";
-import "../rpgui.css";
+
 import ProjectCard from "./projectCard";
 import ProjectForm from "./ProjectForm";
 import Button from "../button/Button";
@@ -34,7 +34,7 @@ function ProjectCardList(props) {
   });
 
   return (
-    <div className="rpgui-content nes-container is-rounded is-dark">
+    <div className="nes-container is-rounded is-dark">
       <div className="welcome">
         <h1>Project Dashboard</h1>
       </div>

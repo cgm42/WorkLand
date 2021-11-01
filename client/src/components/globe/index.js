@@ -7,20 +7,26 @@ function GlobeComp() {
   const globeState = useSelector((state) => state.mapGuide.globe);
   const [data, setData] = useState();
   useEffect(() => {
-    axios.get('/loc').then((res) => {
-      // console.log('res :>> ', res.data);
-      const userLoc = res.data.user;
-      const dataToDisplay = [userLoc, ...res.data.others];
-      setData(dataToDisplay);
-    });
+    axios
+      .get('/loc')
+      .then((res) => {
+        // console.log('res :>> ', res.data);
+        const userLoc = res.data.user;
+        const dataToDisplay = [userLoc, ...res.data.others];
+        setData(dataToDisplay);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }, [globeState]);
   return (
     <>
-      <div></div>
-      <Globe
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-        pointsData={data}
-      />
+      <div className="nes-container is-rounded is-dark">
+        <Globe
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+          pointsData={data}
+        />
+      </div>
     </>
   );
 }

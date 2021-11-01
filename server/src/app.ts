@@ -119,6 +119,9 @@ app.get('/loc', (req: Request, res: Response) => {
         others: [],
       };
       for (let userLocObj of data.rows) {
+        if (!userLocObj.lat || !userLocObj.lng) {
+          continue;
+        }
         if (userLocObj.oauth_id === githubId) {
           result.user.lat = userLocObj.lat;
           result.user.lng = userLocObj.lng;

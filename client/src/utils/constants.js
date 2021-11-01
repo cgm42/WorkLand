@@ -109,8 +109,8 @@ const e = { walk: false, action: true, special: false, asset: 'globe' };
 const OFFICE_MAP = [
   // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23
   [X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X, X], // y = 0
-  [X, X, X, X, p, p, p, X, l, l, X, X, k, k, X, X, g, g, X, X, X, u, u, X], // y = 1
-  [X, X, X, X, P, P, P, O, L, L, O, O, K, K, O, O, G, G, O, O, O, U, U, X], // y= 2
+  [X, X, X, X, p, p, p, X, l, l, X, X, k, k, k, X, g, g, X, X, X, u, u, X], // y = 1
+  [X, X, X, X, P, P, P, O, L, L, O, O, K, K, K, O, G, G, O, O, O, U, U, X], // y= 2
   [X, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O, X], // y = 3
   [X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, O, X, X, X], // y = 4
   [X, X, X, X, X, X, X, X, X, X, X, X, O, O, O, O, O, O, O, O, O, X, X, X], // y = 5

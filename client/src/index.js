@@ -7,18 +7,23 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { mapReducer } from './reducers/mapReducer';
 import { socketRTK } from './middleware/socketRTK';
+import axios from 'axios';
+
+if (process.env.REACT_APP_BACKEND_URL) {
+  axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
+  axios.defaults.withCredentials = true;
+}
 
 const store = configureStore({
   reducer: mapReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(socketRTK())
+    getDefaultMiddleware().concat(socketRTK()),
 });
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
       <App />
-
     </Provider>
   </BrowserRouter>,
   document.getElementById('root')

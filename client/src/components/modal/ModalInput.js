@@ -41,11 +41,15 @@ function ModalInput({ isOpen }) {
 
   return (
     <>
-      <Modal isOpen={modalIsOpen} ariaHideApp={false}>
+      <Modal className="Modal" isOpen={modalIsOpen} ariaHideApp={false}>
         <div
           className="nes-container with-title is-centered is-rounded"
           style={{ top: `${topMargin}px` }}>
-          <h3 className="title">Choose An Avatar</h3>
+          <h3
+            style={{ backgroundColor: 'rgb(99, 96, 96)', color: 'black' }}
+            className="title">
+            Choose An Avatar
+          </h3>
           <div style={style}>{avatarArr1}</div>
           <div style={style}>{avatarArr2}</div>
           <div style={style}>{avatarArr3}</div>

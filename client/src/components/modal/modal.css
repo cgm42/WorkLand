@@ -43,3 +43,12 @@
 .Character--walk-down .Character_sprite-sheet {
   top: 0;
 }
+
+.Modal {
+  background-color: rgb(99, 96, 96);
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+}

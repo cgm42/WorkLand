@@ -19,17 +19,8 @@ function MainModal(props) {
 
   return (
     <>
-      <Modal
-        className="nes-container is-rounded is-dark "
-        isOpen={modalIsOpen}
-        ariaHideApp={true}>
-        <button
-          onClick={() => {
-            setModalIsOpen(false);
-            dispatch(TOGGLE_MODAL_CAN_OPEN());
-          }}>
-          close
-        </button>
+      <Modal isOpen={modalIsOpen} ariaHideApp={false} className="modal">     
+
         {/* {===============project management features==========} */}
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}

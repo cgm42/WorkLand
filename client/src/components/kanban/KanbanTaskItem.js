@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { AiFillWarning } from "react-icons/ai";
-import TaskUser from "../users/TaskUser";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import classNames from "classnames";
+import React, { useState } from 'react';
+import { AiFillWarning } from 'react-icons/ai';
+import TaskUser from '../users/TaskUser';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import classNames from 'classnames';
+import KanbanTaskInfo from './KanbanTaskInfo';
 
 function KanbanTaskItem(props) {
   const {
@@ -13,11 +14,11 @@ function KanbanTaskItem(props) {
     priority,
     currentStatus,
     users,
-    taskTeams,
+    taskTeams
   } = props;
 
   const priorityClass = classNames(
-    "priority-icon",
+    'priority-icon',
     { low: priority === 0 },
     { medium: priority === 1 },
     { high: priority === 2 }
@@ -46,20 +47,26 @@ function KanbanTaskItem(props) {
     <Draggable key={id} draggableId={`${id}`} index={index}>
       {(provided) => (
         <div
-          className="task-item-container"
+          className='task-item-container'
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <div className="task-item-header">
-            <h1>{title}</h1>
+          <div className='task-item-header'>
+            <div className='task-users'>{usersListArray}</div>
             <div className={priorityClass}>
               <AiFillWarning></AiFillWarning>
             </div>
           </div>
-
-          <p>{description}</p>
-          <div className="task-users">{usersListArray}</div>
+          <div className='task-title'>
+            <h1>{title}</h1>
+          </div>
+          <div className='dialog-button'>
+            <KanbanTaskInfo
+              title={title}
+              description={description}
+            ></KanbanTaskInfo>
+          </div>
         </div>
       )}
     </Draggable>

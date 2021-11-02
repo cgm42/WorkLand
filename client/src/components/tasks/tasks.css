@@ -1,33 +1,51 @@
+.new-task {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .table {
   border-collapse: collapse;
   width: 100%;
   text-align: center;
-  background-color: rgb(30, 30, 30);
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   border: 1px solid #ddd;
+  border-collapse: separate !important;
+  border-spacing: 0;
 }
 .table thead {
   font-size: 18px;
-  border: 1px solid #ddd;
+  color: white;
+  border: 1px solid black;
   background-color: rgb(34, 62, 111);
 }
 
 .table tbody {
   font-size: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid black;
+
 }
 
 .table th {
-  border: 1px solid white;
+    border: 1px solid black;
+
 }
 
 .table td {
-  border: 1px solid white;
+    border: 1px solid black;
+
 }
 
 .task-user-container {
   display: flex;
   justify-content: space-around;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .task-user-container li {
@@ -57,7 +75,7 @@
 }
 
 .medium {
-  color: yellow;
+  color: #e5ce00;
 }
 
 .high {
@@ -72,7 +90,7 @@
 }
 
 .progress-status {
-  background-color: rgba(255, 255, 0, 0.719);
+  background-color: #ff5722;
 }
 .edit-icon {
   display: flex;
@@ -110,4 +128,9 @@
 
 .warning {
   color: red !important;
+}
+
+.new-task {
+  display: flex;
+  justify-content: center;
 }

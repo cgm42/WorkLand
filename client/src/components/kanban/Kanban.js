@@ -44,7 +44,7 @@ function Kanban() {
   };
 
   return (
-    <div className="rpgui-content rpgui-container framed-golden-2">
+    <div className=" rpgui-content nes-container is-rounded is-dark">
       <div className="welcome">
         <h1>Welcome to your Kanban</h1>
       </div>

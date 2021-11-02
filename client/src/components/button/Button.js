@@ -4,8 +4,9 @@ import "./Button.css";
 
 function Button(props) {
   const buttonClass = classNames(
-    'button',
-    'rpgui-button golden'
+    'nes-btn',
+    'is-primary',
+    "new-size"
   )
 
   return (

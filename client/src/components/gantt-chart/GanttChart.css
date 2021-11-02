@@ -1,18 +1,19 @@
 .gantt-container {
-  width: 100%;
-  height: 600px;
-  border-radius: 25px;
-  font-family: 'Press Start 2P', cursive !important;
+  /* width: 100%; */
+  /* height: 600px; */
+  /* border-radius: 25px; */
+  /* font-family: 'Press Start 2P', cursive !important; */
 }
 
 .gantt-container svg{
-  border-radius: 25px;
+  border-radius: 20px;
   -moz-box-shadow: 0 0 20px rgb(0, 0, 0);
 -webkit-box-shadow: 0 0 20px rgb(0, 0, 0);
 box-shadow: 0 0 15px rgb(0, 0, 0);
-border: 5px solid rgb(0, 0, 0);
+border: 2px solid rgb(0, 0, 0);
 }
 
 text {
-  font-family: 'Press Start 2P', cursive !important;
+  /* font-family: 'Press Start 2P', cursive !important; */
+  font-size: 15px !important;
 }

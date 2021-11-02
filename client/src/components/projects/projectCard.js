@@ -25,7 +25,7 @@ export default function ProjectCard(props) {
     setCurrentProject,
   } = props;
 
-  const projectClass = classNames("project-card", "nes-container", "is-dark", {
+  const projectClass = classNames("project-card", "nes-container", "is-rounded", {
     "project-card--selected": selected,
   });
 

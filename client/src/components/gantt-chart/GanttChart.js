@@ -23,7 +23,7 @@ function GanttChart() {
   console.log("tasks", ...tasks);
 
   return (
-    <div className="rpgui-content rpgui-container framed-golden-2">
+    <div className="rpgui-content nes-container is-rounded is-dark">
       <div className="welcome">
         <h1>Gantt Chart</h1>
       </div>

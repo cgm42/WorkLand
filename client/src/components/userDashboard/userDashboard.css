@@ -1,7 +1,8 @@
 .dashboard-layout {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .welcome {
@@ -10,6 +11,16 @@
   color: white
 }
 
+.welcome h1 {
+  margin: 0;
+  display: flex;
+  justify-content:center
+}
+
+.welcome hr {
+  width: 70%;
+  margin-bottom: 40px;
+}
 .project-title {
   display: flex;
   justify-content: space-between;
@@ -18,13 +29,26 @@
   font-size: 2rem;
 }
 
-.user-info-cards{
+.user-welcome{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-self: center;
-  max-width: 1920px;
+  align-items: center;
 }
+
+.user-welcome h1{
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.user-welcome p{
+  font-size: 18px;
+  width: 70%;
+  text-align: center;
+  line-height: 35px;
+}
+
+
 .card{
   width: 31%;
   height: 350px;
@@ -67,26 +91,26 @@
 }
 
 .user-progress {
-  width: 650px;
-  background-color:yellow;
+  width: 280px;
+  background-color:rgb(233, 233, 233);
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 40px;
+  justify-content: center;
+  flex-direction: column;
+  color:black;
 }
 
 .user{
-  width: 25%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-right:20px;
 }
 
-.user-icon{
-  font-size:75px;
+.user-img{
+  height: 100px;
+  width: 100px;
+  border: 3px solid;
 }
 
 .user-info {
@@ -99,8 +123,7 @@
 .user-info-text {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  font-size:20px;
+  font-size:15px;
 }
 
 .experience-bar {

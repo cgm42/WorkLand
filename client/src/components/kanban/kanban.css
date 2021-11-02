@@ -1,3 +1,9 @@
+.kanban {
+  overflow: show;
+  height: 100vh;
+  width: 100%;
+}
+
 .kanban-layout {
   display: flex;
   justify-content: space-evenly;
@@ -60,6 +66,7 @@
   padding: 0;
   border: 3px solid black;
   color: black;
+  overflow: hidden;
 }
 
 @keyframes GradientBackground {
@@ -85,11 +92,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  margin: 5px 0;
 }
 
-.task-item-header h1 {
-  margin: 0 0 0 10px;
+.task-title h1 {
+  margin: 0;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .task-item-container p {
@@ -131,4 +142,26 @@
 .task-users img {
   margin-left: 10px;
   border-radius: 25px;
+}
+
+.dialog-button {
+  display: flex;
+  justify-content: center;
+  transition: 0.5s;
+}
+
+.dialog-button:hover {
+  color: red;
+}
+
+.show-more {
+  font-size: 30px;
+}
+
+.task-dialog {
+  overflow: hidden;
+}
+
+.task-dialog h1 {
+  text-align: left;
 }

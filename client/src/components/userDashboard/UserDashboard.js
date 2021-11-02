@@ -10,10 +10,11 @@ import { useState, useEffect } from 'react';
 import UserInfoCard from './UserInfoCard';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 function UserDashboard() {
   const [projects, setProjects] = useState([]);
   const [meetings, setMeetings] = useState([]);
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     Promise.all([axios.get('/projects'), axios.get('/meetings')]).then(
@@ -38,44 +39,50 @@ function UserDashboard() {
         <hr style={{ width: '200px' }}></hr>
       </div>
 
-      <div className="user-progress nes-container is-rounded">
-        <div className="user">
-          <img src={userState.avatar} className="user-img"></img>
-          <div
-            style={{ display: 'flex', flexDirection: 'column' }}
-            className="user-info-text">
-            <p>{userState.name}</p>
-            <p>user #{userState.id}</p>
+      {/* {height <= 1200 ? (
+        <div className="user-progress nes-container is-rounded">
+          <div className="user">
+            <img src={userState.avatar} className="user-img"></img>
+            <div
+              style={{ display: 'flex', flexDirection: 'column' }}
+              className="user-info-text">
+              <p>{userState.name}</p>
+              <p>user #{userState.id}</p>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div />
+      )} */}
 
       <section className="user-welcome">
-        <h1>Thanks for visiting us!</h1>
-        <p>
-          WorkLand is a virtual workspace with built in project management tools
-          designed for tech teams.
+        <h2>Thanks for visiting WorkLand</h2>
+        <p style={{ fontSize: '16px' }}>
+          Our mission is to be productive as a team and stay connected, no
+          matter where we are. We do this by creating a metaverse for tech teams
+          to manage projects, get work done and stay connected.
         </p>
         <span />
-        <hr style={{ width: '200px' }}></hr>
+        <span />
+        {/* <hr style={{ width: '200px' }}></hr> */}
         <h3>Built with: </h3>
+        <hr style={{ width: '200px' }}></hr>
         <p>
           JavaScript TypeScript React Redux Websocket Node Express PostgreSQL
         </p>
-        <hr style={{ width: '200px' }}></hr>
 
         <div style={{ display: 'flex' }}>
           <section className="nes-container is-dark member-card">
             <div className="avatar">
               <img
-                style={{ width: '200px' }}
+                style={{ width: '180px' }}
                 alt="profile pic"
                 src="	https://avatars.githubusercontent.com/u/38818956?v=4"
                 target="_blank"
               />
             </div>
             <div className="profile">
-              <h4 className="name">{'Carrie G'}</h4>
+              <h4 className="name">{'Carrie'}</h4>
               <div>
                 <a
                   href="https://github.com/cgm42"
@@ -96,13 +103,13 @@ function UserDashboard() {
           <section className="nes-container is-dark member-card">
             <div className="avatar">
               <img
-                style={{ width: '200px' }}
+                style={{ width: '180px' }}
                 alt="profile pic"
                 src="	https://avatars.githubusercontent.com/u/86113795?v=4"
               />
             </div>
             <div className="profile">
-              <h4 className="name">{'Johnny L'}</h4>
+              <h4 className="name">{'Johnny'}</h4>
               <div>
                 <a
                   href="https://github.com/jlabedzki"
@@ -123,13 +130,13 @@ function UserDashboard() {
           <section className="nes-container is-dark member-card">
             <div className="avatar">
               <img
-                style={{ width: '200px' }}
+                style={{ width: '180px' }}
                 alt="profile pic"
                 src="	https://avatars.githubusercontent.com/u/82417707?v=4"
               />
             </div>
             <div className="profile">
-              <h4 className="name">{'Jose B'}</h4>
+              <h4 className="name">{'Jose'}</h4>
               <div>
                 <a
                   href="https://github.com/Josebautista10"
@@ -137,13 +144,36 @@ function UserDashboard() {
                   target="_blank">
                   <i class="nes-icon github"></i>
                 </a>
-                <a>
+                <a
+                  href="https://www.linkedin.com/in/jose-bautista-a323b6217/"
+                  rel="noopener noreferrer"
+                  target="_blank">
                   <i class="nes-icon linkedin"></i>
                 </a>
               </div>
             </div>
           </section>
         </div>
+        <br></br>
+        <h3>Sources </h3>
+        <hr style={{ width: '200px' }}></hr>
+        <p style={{ fontSize: '15px' }}>
+          This project uses licensed assets from{' '}
+          <a
+            href="https://limezu.itch.io/"
+            rel="noopener noreferrer"
+            target="_blank">
+            @limezu
+          </a>{' '}
+          and{' '}
+          <a
+            href="https://codepen.io/punkydrewster713"
+            rel="noopener noreferrer"
+            target="_blank">
+            Drew Conley
+          </a>{' '}
+          .
+        </p>
       </section>
     </div>
   );

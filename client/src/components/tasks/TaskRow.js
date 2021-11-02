@@ -8,6 +8,7 @@ import classNames from "classnames";
 import EditTaskForm from "./EditTaskForm";
 import getTaskTeams from "../../helpers/getTaskTeams";
 import DeleteTaskForm from "./DeleteTaskForm";
+import TaskItemInfo from './TaskItemInfo';
 
 export default function TaskRow(props) {
   const { state, editTask, updateTaskStatus, updateTaskPriority, deleteTask } =
@@ -85,7 +86,7 @@ export default function TaskRow(props) {
           )}
         </div>
       </td>
-      <td className="task-user-container">{taskUsersListArray}</td>
+      {taskUsersListArray.length <= 4 ? <td className="task-user-container">{taskUsersListArray}</td> : <td><TaskItemInfo id={id} users={taskUsersListArray}></TaskItemInfo></td>}
       <td
         className={statusClass}
         onClick={() => updateTaskStatus(newStatus, id)}

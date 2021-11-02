@@ -54,6 +54,7 @@
   margin: 0;
 }
 
+
 .task-user-list img {
   height: 30px;
   width: 30px;
@@ -133,4 +134,16 @@
 .new-task {
   display: flex;
   justify-content: center;
+}
+
+.list-of-users  {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-of-users li {
+  list-style: none;
+  padding: 0;
+  margin: 5px;
 }

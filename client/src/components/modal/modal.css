@@ -50,3 +50,54 @@
 .Character--walk-down .Character_sprite-sheet {
   top: 0;
 }
+
+.Modal {
+  background-color: rgb(99, 96, 96);
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  overflow: auto;
+}
+
+.ReactModal__Body--open {
+  overflow: auto; /* prevents background page from scrolling when the modal is open */
+}
+
+.ReactModal__Html--open,
+.ReactModal__Body--open {
+  overflow: hidden; /* prevents background page from scrolling when the modal is open */
+}
+
+.ReactModal__Overlay {
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ReactModal__Content {
+  background: white;
+  width: 50rem;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close-btn {
+  cursor: pointer;
+  top: 1.5rem;
+  right: 1.5rem;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+}

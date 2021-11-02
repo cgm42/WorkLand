@@ -75,10 +75,10 @@ function Chat({ canOpen }) {
           className="nes-container is-rounded is-dark"
           style={{
             position: 'absolute',
-            left: `${(width - 535) / 2}px`, //keep instruction window centered
-            top: `${(height - 300) / 2}px`,
-            width: '535px',
-            height: '300px',
+            left: `${(width - 375) / 2}px`, //keep instruction window centered
+            top: `${(height - 200) / 2}px`,
+            width: '375px',
+            height: '200px',
             margin: '0 15px 0',
           }}>
           <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
@@ -89,15 +89,16 @@ function Chat({ canOpen }) {
               }}>
               Instruction
             </h2>
-            <section class="icon-list">
+            <section className="icon-list">
               <i
                 style={{ backgroundColor: 'white' }}
                 className="nes-icon close is-small nes-pointer"
                 onClick={() => toggleInstruction()}></i>
             </section>
           </div>
-          <p>Use ⬆ ➡ ⬇ ⬅ to navigate around WorkLand.</p>
-          <p> Press space bar to interact with furniture!</p>
+          <p>Move: ⬆ ➡ ⬇ ⬅ </p>
+          <p>Action: Space</p>
+          <p>Close window: Space</p>
         </div>
       )}
       {/* ---Send GIF button--- */}
@@ -163,7 +164,7 @@ function Chat({ canOpen }) {
               }}>
               Send a GIF!
             </h3>
-            <section class="icon-list">
+            <section className="icon-list">
               <i
                 style={{ backgroundColor: 'white' }}
                 className="nes-icon close is-small nes-pointer"

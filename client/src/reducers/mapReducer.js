@@ -41,6 +41,7 @@ const initialState = {
     tetris: false,
     globe: false,
     reception: false,
+    win98: false,
   },
   mapRoute: {
     modalCanOpen: false,

@@ -29,6 +29,7 @@ function Map({ x }) {
   const tetris = useSelector((state) => state.mapGuide.tetris);
   const globe = useSelector((state) => state.mapGuide.globe);
   const reception = useSelector((state) => state.mapGuide.reception);
+  const win98 = useSelector((state) => state.mapGuide.win98);
 
   const { leftMargin, topMargin } = useWindowDimensions();
   return (
@@ -51,7 +52,7 @@ function Map({ x }) {
       {userDashboard && (
         <Sprite
           zoom={0.4}
-          image={'/sprites/bubbles/dashboard.gif'}
+          image={'/sprites/bubbles/about.gif'}
           data={userData}
           position={userPosition}
         />
@@ -114,6 +115,13 @@ function Map({ x }) {
           image={'/sprites/bubbles/welcome.gif'}
           data={{ h: 180, w: 288, x: 0, y: 0 }}
           position={{ x: 5, y: 456 }}
+        />
+      )}
+      {win98 && (
+        <Sprite
+          image={'/sprites/action.png'}
+          data={{ h: 180, w: 288, x: 0, y: 0 }}
+          position={{ x: 45, y: 286 }}
         />
       )}
     </div>

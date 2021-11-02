@@ -17,13 +17,20 @@ const keyboardShortcuts = KeyboardShortcuts.create({
   keyboardConfig: KeyboardShortcuts.QWERTY_ROW,
 });
 function PianoComp() {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        width: `${width * 0.9}px`,
+        height: `${height * 0.9}px`,
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}>
       <h1>Play some tunes!</h1>
 
       <div className="mt-5">
-        <ResponsivePiano width={width} />
+        <ResponsivePiano width={width} height={height * 0.5} />
       </div>
     </div>
   );

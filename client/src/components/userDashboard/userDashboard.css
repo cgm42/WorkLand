@@ -2,7 +2,14 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: auto;  */
+  align-items: center
+}
+.main-dashboard-layout {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center
 }
 
 .welcome {
@@ -153,4 +160,9 @@
 
 .chart {
   font-size:150px;
+}
+
+.the-team {
+  display: flex;
+  justify-content: space-around;
 }

@@ -4,7 +4,6 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function TetrisField(props) {
   const { width } = useWindowDimensions();
-
   var rows = [];
   props.field.forEach(function (row) {
     const cols = row.map((c) => (
@@ -492,7 +491,7 @@ class Tetris extends React.Component {
   }
   render() {
     return (
-      <div style={{}}>
+      <div>
         {' '}
         <table>
           {' '}
@@ -541,4 +540,20 @@ class Tetris extends React.Component {
   }
 }
 
-export default Tetris;
+function TetrisComp() {
+  const { width, height } = useWindowDimensions();
+  return (
+    <div
+      style={{
+        display: 'flex',
+        width: `${width * 0.9}px`,
+        height: `${height * 0.9}px`,
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}>
+      <Tetris xSize="14" ySize="20"></Tetris>
+    </div>
+  );
+}
+
+export default TetrisComp;

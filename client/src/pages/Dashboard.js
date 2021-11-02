@@ -18,7 +18,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard-layout stars" id="snow">
       <div className="twinkling">
-        {modalCanOpen && playerNearGuide && <MainModal isOpen={true} />}
+        {modalCanOpen && playerNearGuide && <MainModal isOpen={true} className="main-modal"/>}
         {/* {!(modalCanOpen && playerNearGuide) && <MainNav></MainNav>} */}
         <ModalInput isOpen={true} />
         <Map x={0} />

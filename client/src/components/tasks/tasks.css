@@ -1,3 +1,9 @@
+.task-dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .new-task {
   display: flex;
   justify-content: center;

@@ -9,18 +9,30 @@ import Kanban from '../kanban/Kanban';
 import TaskTable from '../tasks/TaskTable';
 import PianoComp from '../piano';
 import GuitarComp from '../guitar';
-import Tetris from '../game';
+import TetrisComp from '../game';
 import GanttChart from '../gantt-chart/GanttChart';
 import GlobeComp from '../globe';
+import Computer from '../win98';
 function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
   const mapRoute = useSelector((state) => state.mapRoute.routeName);
-
+  let modal = document.getElementsByClassName('ReactModal__Overlay')
+  modal.className += "main-modal";
+  MainModal.defaultStyles = {}
   return (
     <>
-      <Modal isOpen={modalIsOpen} ariaHideApp={false} className="modal">     
-
+      <Modal
+        className="nes-container is-rounded is-dark main-modal"
+        isOpen={modalIsOpen}
+        ariaHideApp={true}>
+        <i
+          style={{ backgroundColor: 'white' }}
+          className="nes-icon close is-small nes-pointer"
+          onClick={() => {
+            setModalIsOpen(false);
+            dispatch(TOGGLE_MODAL_CAN_OPEN());
+          }}></i>
         {/* {===============project management features==========} */}
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}
@@ -49,7 +61,7 @@ function MainModal(props) {
         )}
         {mapRoute === 'tetris' ? (
           <div>
-            <Tetris xSize="14" ySize="20"></Tetris>
+            <TetrisComp></TetrisComp>
           </div>
         ) : (
           <div />
@@ -58,6 +70,14 @@ function MainModal(props) {
         {mapRoute === 'globe' ? (
           <div>
             <GlobeComp></GlobeComp>
+          </div>
+        ) : (
+          <div />
+        )}
+
+        {mapRoute === 'win98' ? (
+          <div>
+            <Computer></Computer>
           </div>
         ) : (
           <div />

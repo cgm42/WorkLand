@@ -60,11 +60,13 @@ function KanbanTaskItem(props) {
           </div>
           <div className='task-title'>
             <h1>{title}</h1>
+            {/* <p>{description}</p> */}
           </div>
           <div className='dialog-button'>
             <KanbanTaskInfo
               title={title}
               description={description}
+              id={id}
             ></KanbanTaskInfo>
           </div>
         </div>

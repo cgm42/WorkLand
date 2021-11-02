@@ -9,7 +9,7 @@ import Kanban from '../kanban/Kanban';
 import TaskTable from '../tasks/TaskTable';
 import PianoComp from '../piano';
 import GuitarComp from '../guitar';
-import Tetris from '../game';
+import TetrisComp from '../game';
 import GanttChart from '../gantt-chart/GanttChart';
 import GlobeComp from '../globe';
 import Computer from '../win98';
@@ -59,7 +59,7 @@ function MainModal(props) {
         )}
         {mapRoute === 'tetris' ? (
           <div>
-            <Tetris xSize="14" ySize="20"></Tetris>
+            <TetrisComp></TetrisComp>
           </div>
         ) : (
           <div />

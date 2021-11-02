@@ -60,7 +60,7 @@ function UserDashboard() {
         <p style={{ fontSize: '16px' }}>
           Our mission is to be productive as a team and stay connected, no
           matter where we are. We do this by creating a metaverse for tech teams
-          to manage projects, get work done and stay connected.
+          to manage projects, get work done and have fun together.
         </p>
         <span />
         <span />

@@ -24,13 +24,13 @@ function MainModal(props) {
         className="nes-container is-rounded is-dark  "
         isOpen={modalIsOpen}
         ariaHideApp={true}>
-        <button
+        <i
+          style={{ backgroundColor: 'white' }}
+          className="nes-icon close is-small nes-pointer"
           onClick={() => {
             setModalIsOpen(false);
             dispatch(TOGGLE_MODAL_CAN_OPEN());
-          }}>
-          close
-        </button>
+          }}></i>
         {/* {===============project management features==========} */}
         {mapRoute === 'userDashboard' ? <UserDashboard /> : <div />}
         {mapRoute === 'kanban' ? <Kanban /> : <div />}

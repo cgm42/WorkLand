@@ -17,11 +17,13 @@ function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
   const mapRoute = useSelector((state) => state.mapRoute.routeName);
-
+  let modal = document.getElementsByClassName('ReactModal__Overlay')
+  modal.className += "main-modal";
+  MainModal.defaultStyles = {}
   return (
     <>
       <Modal
-        className="nes-container is-rounded is-dark  "
+        className="nes-container is-rounded is-dark main-modal"
         isOpen={modalIsOpen}
         ariaHideApp={true}>
         <i

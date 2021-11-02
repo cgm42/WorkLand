@@ -14,7 +14,7 @@ function TaskTable(props) {
 
   return (
     <div className="rpgui-content">
-      <div className="dashboard-layout nes-container is-rounded is-dark">
+      <div className="task-dashboard-layout nes-container is-rounded is-dark">
         <div className="welcome">
           <h1>Tasks</h1>
         </div>

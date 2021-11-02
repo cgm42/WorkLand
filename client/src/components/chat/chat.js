@@ -89,7 +89,7 @@ function Chat({ canOpen }) {
               }}>
               Instruction
             </h2>
-            <section class="icon-list">
+            <section className="icon-list">
               <i
                 style={{ backgroundColor: 'white' }}
                 className="nes-icon close is-small nes-pointer"
@@ -164,7 +164,7 @@ function Chat({ canOpen }) {
               }}>
               Send a GIF!
             </h3>
-            <section class="icon-list">
+            <section className="icon-list">
               <i
                 style={{ backgroundColor: 'white' }}
                 className="nes-icon close is-small nes-pointer"

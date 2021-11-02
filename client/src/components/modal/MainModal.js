@@ -21,7 +21,7 @@ function MainModal(props) {
   return (
     <>
       <Modal
-        className="nes-container is-rounded is-dark "
+        className="nes-container is-rounded is-dark  "
         isOpen={modalIsOpen}
         ariaHideApp={true}>
         <button

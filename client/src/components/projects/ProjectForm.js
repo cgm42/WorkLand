@@ -77,6 +77,7 @@ function ProjectForm(props) {
           document.getElementById("dialog-dark-rounded").showModal();
         }}
         title={"NEW"}
+        
       ></Button>
       <dialog
         className="nes-dialog is-dark is-rounded"

@@ -1,6 +1,13 @@
 :root {
   --pixel-size: 3;
 }
+
+.modal {
+  inset:0;
+  position:unset;
+  height: 100vh
+}
+
 .PixelArtImage {
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-crisp-edges;

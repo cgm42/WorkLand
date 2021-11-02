@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { stateContext } from "../providers/StateProvider";
 import "./projects.css";
 import "nes.css/css/nes.min.css";
-import "../rpgui.css";
+
 import ProjectCard from "./projectCard";
 import ProjectForm from "./ProjectForm";
 import Button from "../button/Button";
@@ -14,8 +14,6 @@ function ProjectCardList(props) {
   useEffect(() => {
     setSelected(state.current_project);
   }, [state.current_project]);
-
-  // console.log(state.projectTeams);
 
   const projectsList = state.projects.map((project) => {
     const isSelected = selected === project.id;
@@ -36,7 +34,7 @@ function ProjectCardList(props) {
   });
 
   return (
-    <div className="rpgui-content rpgui-container framed">
+    <div className="nes-container is-rounded is-dark">
       <div className="welcome">
         <h1>Project Dashboard</h1>
       </div>

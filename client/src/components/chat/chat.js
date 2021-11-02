@@ -96,8 +96,8 @@ function Chat({ canOpen }) {
                 onClick={() => toggleInstruction()}></i>
             </section>
           </div>
-          <p>Use ⬆ ➡ ⬇ ⬅ to navigate around WorkLand.</p>
-          <p> Press space bar to interact with furniture!</p>
+          <p>Move: ⬆ ➡ ⬇ ⬅ </p>
+          <p> Action: Space</p>
         </div>
       )}
       {/* ---Send GIF button--- */}

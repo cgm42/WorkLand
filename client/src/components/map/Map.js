@@ -52,7 +52,7 @@ function Map({ x }) {
       {userDashboard && (
         <Sprite
           zoom={0.4}
-          image={'/sprites/bubbles/dashboard.gif'}
+          image={'/sprites/bubbles/about.gif'}
           data={userData}
           position={userPosition}
         />

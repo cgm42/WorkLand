@@ -9,10 +9,14 @@ import { BsGithub } from 'react-icons/bs';
 const Login = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get('/user').then((data) => {
-      // console.log(data);
-      dispatch(SET_USER(data.data));
-    });
+    axios
+      .get('/user', {
+        withCredentials: true,
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch(SET_USER(data.data));
+      });
   }, [dispatch]);
 
   const fetchIp = async () => {

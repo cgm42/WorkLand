@@ -75,10 +75,10 @@ function Chat({ canOpen }) {
           className="nes-container is-rounded is-dark"
           style={{
             position: 'absolute',
-            left: `${(width - 535) / 2}px`, //keep instruction window centered
-            top: `${(height - 300) / 2}px`,
-            width: '535px',
-            height: '300px',
+            left: `${(width - 375) / 2}px`, //keep instruction window centered
+            top: `${(height - 200) / 2}px`,
+            width: '375px',
+            height: '200px',
             margin: '0 15px 0',
           }}>
           <div style={{ display: 'flex', 'justify-content': 'space-between' }}>
@@ -97,7 +97,8 @@ function Chat({ canOpen }) {
             </section>
           </div>
           <p>Move: ⬆ ➡ ⬇ ⬅ </p>
-          <p> Action: Space</p>
+          <p>Action: Space</p>
+          <p>Close window: Space</p>
         </div>
       )}
       {/* ---Send GIF button--- */}

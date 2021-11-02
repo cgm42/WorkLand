@@ -24,6 +24,7 @@ function GlobeComp() {
   return (
     <>
       <div>
+        <h3>Locate your team on the globe!</h3>
         <Globe
           width={width - 50}
           height={height - 100}

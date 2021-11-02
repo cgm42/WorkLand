@@ -126,6 +126,14 @@
   color: red;
 }
 
+.count-users {
+  display: flex;
+  margin-left: 10px;
+  justify-content: flex-end;
+  font-size: 15px;
+  list-style: none;
+}
+
 .task-users {
   display: flex;
   margin-right: 10px;

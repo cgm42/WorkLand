@@ -12,7 +12,6 @@
   overflow-x: hidden;
   overflow-y: auto;
   border: 5px solid;
-  border-radius: 15px;
   background:#eee !important;
   
 }
@@ -27,6 +26,7 @@
 }
 
 .project-card:active {
+  transform: scale(0.99);
 }
 
 .card-header {
@@ -93,7 +93,7 @@
   text-shadow: none;
 }
 
-.project-card h1 {
+.project-card-heading {
   color: #212529 !important;
   text-shadow: none;
 }

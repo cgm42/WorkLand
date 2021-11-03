@@ -3,9 +3,9 @@
 }
 
 .modal {
-  inset:0;
-  position:unset;
-  height: 100vh
+  inset: 0;
+  position: unset;
+  height: 100vh;
 }
 
 .PixelArtImage {
@@ -100,4 +100,13 @@
   position: absolute;
   width: 3rem;
   height: 3rem;
+}
+
+.Modal {
+  background-color: rgb(99, 96, 96);
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
 }

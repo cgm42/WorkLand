@@ -105,8 +105,8 @@
 .Modal {
   background-color: rgb(99, 96, 96);
   position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 }

@@ -1,5 +1,5 @@
 // middleware example link: https://gist.github.com/markerikson/3df1cf5abbac57820a20059287b4be58
-import { wsEndpoint } from '../utils/constants';
+// import { wsEndpoint } from '../utils/constants';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 import {
@@ -9,7 +9,12 @@ import {
 } from '../reducers/mapReducer';
 export const socketRTK = () => {
   return (storeAPI) => {
-    const socket = io(wsEndpoint);
+    const socket = io(process.env.REACT_APP_WS_SOCKET, {
+      withCredentials: true,
+      extraHeaders: {
+        'Access-Control-Allow-Credentials': 'abcd',
+      },
+    });
     socket.on('connect', () => {
       storeAPI.dispatch(SET_SOCKETID({ id: socket.id }));
     });

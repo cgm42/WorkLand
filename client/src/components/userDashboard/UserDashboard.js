@@ -31,16 +31,19 @@ function UserDashboard() {
   });
 
   return (
-    <div className='main-dashboard-layout'>
-      <div className='welcome'>
+    <div className="main-dashboard-layout">
+      <div className="welcome">
         <h1>About</h1>
         <hr style={{ width: '200px' }}></hr>
       </div>
 
-      {/* {height <= 1200 ? (
+      {
         <div className="user-progress nes-container is-rounded">
           <div className="user">
-            <img src={userState.avatar} className="user-img"></img>
+            <img
+              src={userState.avatar}
+              className="user-img"
+              alt="user avatar"></img>
             <div
               style={{ display: 'flex', flexDirection: 'column' }}
               className="user-info-text">
@@ -49,11 +52,9 @@ function UserDashboard() {
             </div>
           </div>
         </div>
-      ) : (
-        <div />
-      )} */}
+      }
 
-      <section className='user-welcome'>
+      <section className="user-welcome">
         <h2>Thanks for visiting WorkLand</h2>
         <p style={{ fontSize: '16px' }}>
           Our mission is to be productive as a team and stay connected, no
@@ -69,90 +70,84 @@ function UserDashboard() {
           JavaScript TypeScript React Redux Websocket Node Express PostgreSQL
         </p>
 
-        <div className='the-team'>
-          <section className='nes-container is-dark member-card'>
-            <div className='avatar'>
+        <div className="the-team">
+          <section className="nes-container is-dark member-card">
+            <div className="avatar">
               <img
                 style={{ width: '180px' }}
-                alt='profile pic'
-                src='	https://avatars.githubusercontent.com/u/38818956?v=4'
-                target='_blank'
+                alt="profile pic"
+                src="	https://avatars.githubusercontent.com/u/38818956?v=4"
+                target="_blank"
               />
             </div>
-            <div className='profile'>
-              <h4 className='name'>{'Carrie'}</h4>
+            <div className="profile">
+              <h4 className="name">{'Carrie'}</h4>
               <div>
                 <a
-                  href='https://github.com/cgm42'
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <i className='nes-icon github'></i>
+                  href="https://github.com/cgm42"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <i className="nes-icon github"></i>
                 </a>
                 <a
-                  href='https://www.linkedin.com/in/carriegeng/'
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <i className='nes-icon linkedin'></i>
+                  href="https://www.linkedin.com/in/carriegeng/"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <i className="nes-icon linkedin"></i>
                 </a>
               </div>
             </div>
           </section>
 
-          <section className='nes-container is-dark member-card'>
-            <div className='avatar'>
+          <section className="nes-container is-dark member-card">
+            <div className="avatar">
               <img
                 style={{ width: '180px' }}
-                alt='profile pic'
-                src='	https://avatars.githubusercontent.com/u/86113795?v=4'
+                alt="profile pic"
+                src="	https://avatars.githubusercontent.com/u/86113795?v=4"
               />
             </div>
-            <div className='profile'>
-              <h4 className='name'>{'Johnny'}</h4>
+            <div className="profile">
+              <h4 className="name">{'Johnny'}</h4>
               <div>
                 <a
-                  href='https://github.com/jlabedzki'
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <i className='nes-icon github'></i>
+                  href="https://github.com/jlabedzki"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <i className="nes-icon github"></i>
                 </a>
                 <a
-                  href='https://www.linkedin.com/in/johnny-labedzki-5bb4b220a/'
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <i className='nes-icon linkedin'></i>
+                  href="https://www.linkedin.com/in/johnny-labedzki-5bb4b220a/"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <i className="nes-icon linkedin"></i>
                 </a>
               </div>
             </div>
           </section>
 
-          <section className='nes-container is-dark member-card'>
-            <div className='avatar'>
+          <section className="nes-container is-dark member-card">
+            <div className="avatar">
               <img
                 style={{ width: '180px' }}
-                alt='profile pic'
-                src='	https://avatars.githubusercontent.com/u/82417707?v=4'
+                alt="profile pic"
+                src="	https://avatars.githubusercontent.com/u/82417707?v=4"
               />
             </div>
-            <div className='profile'>
-              <h4 className='name'>{'Jose'}</h4>
+            <div className="profile">
+              <h4 className="name">{'Jose'}</h4>
               <div>
                 <a
-                  href='https://github.com/Josebautista10'
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <i className='nes-icon github'></i>
+                  href="https://github.com/Josebautista10"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <i className="nes-icon github"></i>
                 </a>
                 <a
-                  href='https://www.linkedin.com/in/jose-bautista-a323b6217/'
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <i className='nes-icon linkedin'></i>
+                  href="https://www.linkedin.com/in/jose-bautista-a323b6217/"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <i className="nes-icon linkedin"></i>
                 </a>
               </div>
             </div>
@@ -162,20 +157,18 @@ function UserDashboard() {
         <h3>Sources </h3>
         <hr style={{ width: '200px' }}></hr>
         <p style={{ fontSize: '15px' }}>
-          This project uses licensed assets from {' '}
+          This project uses licensed assets from{' '}
           <a
-            href='https://limezu.itch.io/'
-            rel='noopener noreferrer'
-            target='_blank'
-          >
+            href="https://limezu.itch.io/"
+            rel="noopener noreferrer"
+            target="_blank">
             @limezu{' '}
           </a>
-          and {' '}
+          and{' '}
           <a
-            href='https://codepen.io/punkydrewster713'
-            rel='noopener noreferrer'
-            target='_blank'
-          >
+            href="https://codepen.io/punkydrewster713"
+            rel="noopener noreferrer"
+            target="_blank">
             Drew Conley
           </a>
           .

@@ -17,9 +17,9 @@ function MainModal(props) {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(props.isOpen);
   const mapRoute = useSelector((state) => state.mapRoute.routeName);
-  let modal = document.getElementsByClassName('ReactModal__Overlay')
-  modal.className += "main-modal";
-  MainModal.defaultStyles = {}
+  let modal = document.getElementsByClassName('ReactModal__Overlay');
+  modal.className += 'main-modal';
+  MainModal.defaultStyles = {};
   return (
     <>
       <Modal
@@ -78,6 +78,14 @@ function MainModal(props) {
         {mapRoute === 'win98' ? (
           <div>
             <Computer></Computer>
+          </div>
+        ) : (
+          <div />
+        )}
+
+        {mapRoute === 'reception' ? (
+          <div>
+            <UserDashboard />
           </div>
         ) : (
           <div />

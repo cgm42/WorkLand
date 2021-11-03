@@ -112,9 +112,9 @@ function Map({ x }) {
       {reception && (
         <Sprite
           zoom={0.3}
-          image={'/sprites/bubbles/welcome.gif'}
-          data={{ h: 180, w: 288, x: 0, y: 0 }}
-          position={{ x: 5, y: 456 }}
+          image={'/sprites/bubbles/work.gif'}
+          data={{ h: 180, w: 588, x: 0, y: 0 }}
+          position={{ x: -135, y: 456 }}
         />
       )}
       {win98 && (

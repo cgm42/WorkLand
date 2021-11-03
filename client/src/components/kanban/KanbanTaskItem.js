@@ -53,7 +53,7 @@ function KanbanTaskItem(props) {
           {...provided.dragHandleProps}
         >
           <div className='task-item-header'>
-            <div className='task-users'>{usersListArray}</div>
+            {usersListArray.length <= 5 ? <div className='task-users'>{usersListArray}</div>:<div className='count-users'>{`${usersListArray.length} users`}</div>}
             <div className={priorityClass}>
               <AiFillWarning></AiFillWarning>
             </div>

@@ -36,7 +36,7 @@ function ProjectCardList(props) {
   return (
     <div className="nes-container is-rounded is-dark">
       <div className="welcome">
-        <h1>Project Dashboard</h1>
+        <h1 className="project-card-heading">Project Dashboard</h1>
       </div>
       <div className="new-project">
         <ProjectForm usersList={state.users} onSave={createProject} />

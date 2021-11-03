@@ -62,14 +62,14 @@ export default function ProjectCard(props) {
           </div>
         )}
       </div>
-      <p>{props.description}</p>
-      <h1>Completion: {zeroPercentErrorHandler(percentComplete)}%</h1>
+      <p className='project-card-description'>{props.description}</p>
+      <h1 className='project-card-description'>Completion: {zeroPercentErrorHandler(percentComplete)}%</h1>
       <progress
         className="nes-progress is-success"
         value={zeroPercentErrorHandler(percentComplete)}
         max="100"
       ></progress>
-      <h1>The team:</h1>
+      <h1 className='project-card-description'>The team:</h1>
       {usersListArray}
     </div>
   );

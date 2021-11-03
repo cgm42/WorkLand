@@ -80,51 +80,53 @@ function EditProjectForm(props) {
           method="dialog"
         >
           {error && <p className="error">{error}</p>}
-          <label>
-            Project name:
-            <input
-              value={name}
-              type="text"
-              onChange={(e) => {
-                setName(e.target.value);
-                setError("");
-              }}
-              onKeyDown={(ev) => {
-                if (
-                  ev.code === "Space" ||
-                  ev.code === "ArrowUp" ||
-                  ev.code === "ArrowDown" ||
-                  ev.code === "ArrowLeft" ||
-                  ev.code === "ArrowRight"
-                ) {
-                  ev.stopPropagation();
-                }
-              }}
-            />
-          </label>
+          <div className='form-label'>
+            <label>
+              <p>Project name:</p>
+              <input
+                value={name}
+                type='text'
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setError('');
+                }}
+                onKeyDown={(ev) => {
+                  if (
+                    ev.code === 'Space' ||
+                    ev.code === 'ArrowUp' ||
+                    ev.code === 'ArrowDown' ||
+                    ev.code === 'ArrowLeft' ||
+                    ev.code === 'ArrowRight'
+                  ) {
+                    ev.stopPropagation();
+                  }
+                }}
+              />
+            </label>
 
-          <label>
-            Description:
-            <textarea
-              value={description}
-              type="text"
-              onChange={(e) => {
-                setDescription(e.target.value);
-                setError("");
-              }}
-              onKeyDown={(ev) => {
-                if (
-                  ev.code === "Space" ||
-                  ev.code === "ArrowUp" ||
-                  ev.code === "ArrowDown" ||
-                  ev.code === "ArrowLeft" ||
-                  ev.code === "ArrowRight"
-                ) {
-                  ev.stopPropagation();
-                }
-              }}
-            />
-          </label>
+            <label>
+              <p>Description:</p>
+              <textarea
+                value={description}
+                type='text'
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                  setError('');
+                }}
+                onKeyDown={(ev) => {
+                  if (
+                    ev.code === 'Space' ||
+                    ev.code === 'ArrowUp' ||
+                    ev.code === 'ArrowDown' ||
+                    ev.code === 'ArrowLeft' ||
+                    ev.code === 'ArrowRight'
+                  ) {
+                    ev.stopPropagation();
+                  }
+                }}
+              />
+            </label>
+          </div>
 
           <div className="team-date-container">
             {showUsers && (

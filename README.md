@@ -1,6 +1,6 @@
 # Welcome to WorkLand
 
-Work in progress. Live demo on Nov.4, 2021 at 3PM PST. Register [here](https://hopin.com/events/copy-of-digital-demo-day-west-coast-november).
+Work in progress.
 
 - [About](#about)
 - [Features](#features)
@@ -25,7 +25,6 @@ Sneak Preview
 - React
 - Redux (RTK)
 - Context API
-- React-router
 - socket.io-client
 - NES.CSS
 - RPGUI

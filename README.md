@@ -8,13 +8,9 @@ Work in progress.
 
 ## About
 
-WorkLand is an interactive workspace designed to make tech teams function better. Team members can gather in WorkLand, interact with each other and have access to a myriad of project management tools. It also features built in learning and recreational activities.
+WorkLand is an interactive workspace designed to make tech teams function better. Team members can gather in WorkLand, manage projects, prioritize tasks and get work done. WorkLand also features a break room, furnished with a guitar, a piano and an aracde machine.
 
 ## Features
-
-To be finalized.
-
-Sneak Preview
 
 ![workspace-halloween](./docs/workspace-preview.gif)
 

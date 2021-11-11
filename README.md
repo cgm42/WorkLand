@@ -2,23 +2,24 @@
 
 ## About
 
-WorkLand is an interactive workspace designed to make tech teams function better. Team members can gather in WorkLand, manage projects, prioritize tasks and get work done. WorkLand also features a break room, furnished with a guitar, a piano and an aracde machine.
+WorkLand is a metaverse for tech teams. Team members can gather in WorkLand, manage projects, track tasks and get work done. WorkLand also features a break room.
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
-- [Tech Stack](#tech-stack)
-
-### What people have been to WorkLand say about WorkLand?
 
 <img src="./docs/client-testimony.png" alt='client testiomony' width='700'>
 
-### Demo Party
+<!-- ### Demo Party
 
-<img src="./docs/demo-day-screenshot.png" alt='demo day screenshot' width='700'>
+<img src="./docs/demo-day-screenshot.png" alt='demo day screenshot' width='700'> -->
 
 ## Features
 
 <!-- ![workspace-halloween](./docs/workspace-preview.gif) -->
+
+### **WorkLand - Instruction**
+
+<img src="./docs/instruction.png" alt='instruction' width='700'>
 
 ### **WorkLand - Live GIF Chat**
 
@@ -40,11 +41,13 @@ WorkLand is an interactive workspace designed to make tech teams function better
 
 ### Kanban board
 
-![kanban](./docs/kanban.gif)
+<img src="./docs/kanban.gif" alt=`kanban board` width='700'>
 
 ### **WorkLand - Break Room**
 
-### 3D Globe that shows where WorkLand team members are located
+### 3D Globe
+
+Shows location based on IP address of WorkLanders
 
 <img src="https://media4.giphy.com/media/tt1qOeBCv0NiK5wLTl/giphy.gif?cid=790b76111a64cd1c31612949ca0f55a35de95ced64037c24&rid=giphy.gif&ct=g" alt='3d globe' width='700'>
 

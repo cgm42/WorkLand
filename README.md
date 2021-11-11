@@ -41,7 +41,7 @@ WorkLand is a metaverse for tech teams. Team members can gather in WorkLand, man
 
 ### Kanban board
 
-<img src="./docs/kanban.gif" alt=`kanban board` width='700'>
+<img src="./docs/kanban.gif" alt='kanban board' width='700'>
 
 ### **WorkLand - Break Room**
 

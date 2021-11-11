@@ -22,7 +22,7 @@ Browser needs to support 3rd party cookies.
 
 <!-- ![workspace-halloween](./docs/workspace-preview.gif) -->
 
-### **WorkLand - Instruction**
+### **Instruction**
 
 <img src="./docs/instruction.png" alt='instruction' width='700'>
 
@@ -30,11 +30,11 @@ Browser needs to support 3rd party cookies.
 
 <img src="./docs/demo-day-screenshot.png" alt='demo day screenshot' width='700'>
 
-### **WorkLand - Live GIF Chat**
+### **Live GIF Chat**
 
 <img src="./docs/GIF-Messaging.gif" alt='GIF Messaging' width='700'>
 
-### **WorkLand - Work Area**
+### **Work Area**
 
 <img src="./docs/feature-wall.gif" alt='feature-wall' width='700'>
 
@@ -52,7 +52,7 @@ Browser needs to support 3rd party cookies.
 
 <img src="./docs/kanban.gif" alt='kanban board' width='700'>
 
-### **WorkLand - Break Room**
+### **Break Room**
 
 ### 3D Globe
 

@@ -4,14 +4,23 @@
 
 WorkLand is a metaverse for tech teams. Team members can gather in WorkLand, manage projects, track tasks and get work done. WorkLand also features a break room.
 
+- [Demo](#demo)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Credit](#credit)
 
 <img src="./docs/client-testimony.png" alt='client testiomony' width='700'>
 
 <!-- ### Demo Party
 
 <img src="./docs/demo-day-screenshot.png" alt='demo day screenshot' width='700'> -->
+
+## Demo
+
+Deployed on Netlify: [WorkLand](https://workland.netlify.app/).
+Hosted on Heroku.
+Browser needs to support 3rd party cookies.
 
 ## Features
 
@@ -61,23 +70,37 @@ Shows location based on IP address of WorkLanders
 
 ## Tech Stack
 
-### Front End
-
-- React
-- Redux (RTK)
-- Context API
-- socket.io-client
-- NES.CSS
-- RPGUI
-
-### Back End
-
-- TypeScript
-- Node
-- Express
-- socket.io
-- passport & OAuth
+- Built using JavaScript, React, Redux(RTK)
+- Back end used TypeScript, Node, Express, OAuth, passport, CORS
+- Socket.io used for multiplayer movement and Snapchat-styled instant GIF messaging
+- NES.CSS and RPGUI used for retro game styling
+- React-beautiful-DND used for drag and drop on the Kanban page
 
 ### Database
 
 - PostgreSQL
+
+## Installation
+
+Clone the repository with git:
+
+```shell
+git clone git@github.com:cgm42/WorkLand.git
+```
+
+Install dependencies in the client folder with [npm](https://npmjs.com):
+
+```shell
+npm workland
+```
+
+Install dependencies in the server folder:
+
+```shell
+npm i
+```
+
+## Licenses
+
+Character sprites coursty of [Drew Conley](https://codepen.io/punkydrewster713), used under MIT license.
+Licensed interior and office assets purchased from [LimeZu](https://limezu.itch.io/).

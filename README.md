@@ -12,10 +12,6 @@ WorkLand is a metaverse for tech teams. Team members can gather in WorkLand, man
 
 <img src="./docs/client-testimony.png" alt='client testiomony' width='700'>
 
-<!-- ### Demo Party
-
-<img src="./docs/demo-day-screenshot.png" alt='demo day screenshot' width='700'> -->
-
 ## Demo
 
 Deployed on Netlify: [WorkLand](https://workland.netlify.app/).
@@ -29,6 +25,10 @@ Browser needs to support 3rd party cookies.
 ### **WorkLand - Instruction**
 
 <img src="./docs/instruction.png" alt='instruction' width='700'>
+
+### MMORPG-like Environment
+
+<img src="./docs/demo-day-screenshot.png" alt='demo day screenshot' width='700'>
 
 ### **WorkLand - Live GIF Chat**
 

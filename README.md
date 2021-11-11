@@ -100,7 +100,7 @@ Install dependencies in the server folder:
 npm i
 ```
 
-## Licenses
+## Credit
 
 Character sprites coursty of [Drew Conley](https://codepen.io/punkydrewster713), used under MIT license.
 Licensed interior and office assets purchased from [LimeZu](https://limezu.itch.io/).

@@ -15,7 +15,7 @@ WorkLand is a metaverse for tech teams. Team members can gather in WorkLand, man
 ## Demo
 
 Deployed on Netlify: [WorkLand](https://workland.netlify.app/).
-Hosted on Heroku.
+Server hosted on Heroku.
 Browser needs to support 3rd party cookies.
 
 ## Features
@@ -59,6 +59,8 @@ Browser needs to support 3rd party cookies.
 Shows location based on IP address of WorkLanders
 
 <img src="https://media4.giphy.com/media/tt1qOeBCv0NiK5wLTl/giphy.gif?cid=790b76111a64cd1c31612949ca0f55a35de95ced64037c24&rid=giphy.gif&ct=g" alt='3d globe' width='700'>
+
+### Guitar - thanks to [React-Guitar](https://github.com/4lejandrito/react-guitar)
 
 ### Piano
 

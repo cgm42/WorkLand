@@ -62,6 +62,8 @@ Shows location based on IP address of WorkLanders
 
 ### Guitar - thanks to [React-Guitar](https://github.com/4lejandrito/react-guitar)
 
+https://user-images.githubusercontent.com/38818956/141935520-d8b9106a-c0f9-4638-87db-ac30aa3df914.mov
+
 ### Piano
 
 <img src="https://media2.giphy.com/media/wrvNEKidC9GNejwidr/giphy.gif?cid=790b76116f316d4f98993962ea578bed491e3e24c38c8821&rid=giphy.gif&ct=g" alt='piano' width='700'>

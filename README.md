@@ -124,4 +124,4 @@ Licensed interior and office assets purchased from [itch.io](https://limezu.itch
 To be updated. 
 
 ### Inspirations
-Inspired by [WorkAdventure](https://github.com/thecodingmachine/workadventure) and [Gather](gather.town). 
+Inspired by [WorkAdventure](https://github.com/thecodingmachine/workadventure) and Gather. 

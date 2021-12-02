@@ -101,7 +101,7 @@ git clone git@github.com:cgm42/WorkLand.git
 Install dependencies in the client folder with [npm](https://npmjs.com):
 
 ```shell
-npm workland
+npm run workland
 ```
 
 Install dependencies in the server folder:

@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
+import { useState } from 'react';
 import Guitar, { getRenderFingerSpn } from 'react-guitar';
 import { standard } from 'react-guitar-tunings';
 import useSound from 'react-guitar-sound';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 function GuitarComp() {
-  const strings = useMemo(() => [0, 1, 2, 2, 0, -1], []);
+  const [strings, setStrings] = useState([0, 1, 2, 2, 0, -1]);
   const { play } = useSound({ fretting: strings, tuning: standard });
   const { width, height } = useWindowDimensions();
   return (
@@ -22,6 +22,7 @@ function GuitarComp() {
           strings={strings}
           renderFinger={getRenderFingerSpn(standard)}
           playOnHover
+          onChange={setStrings}
           onPlay={play}
         />
       </div>

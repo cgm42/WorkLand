@@ -127,6 +127,4 @@ function Map({ x }) {
     </div>
   );
 }
-
-ions;
 export default Map;

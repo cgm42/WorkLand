@@ -40,7 +40,7 @@ function Map({ x }) {
         top: `${topMargin}px`,
         left: `${leftMargin}px`,
       }}>
-      <MapTile map={`officev6`} />
+      <MapTile map={`officevxmas`} />
       {kanban && (
         <Sprite
           zoom={0.4}
@@ -128,4 +128,5 @@ function Map({ x }) {
   );
 }
 
+ions;
 export default Map;

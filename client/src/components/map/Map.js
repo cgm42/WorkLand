@@ -128,5 +128,4 @@ function Map({ x }) {
   );
 }
 
-ions;
 export default Map;
